@@ -1,0 +1,60 @@
+<div id="addJudgementContent" class="editJudgementContent" data-url="ajax_edit_judgementContent">
+    <button type="button" class="btn btn-primary" >新增</button>
+
+</div>
+<table class="table table-striped table-bordered dataTable no-footer" style="min-width: 800px">
+
+    <thead>
+    <tr class="headings">
+        <!--<th><input type="checkbox" id="check-all"  class="checkAll "></th>-->
+        <th class="column-title">序号</th>
+        <th class="column-title">项目/参数名称</th>
+        <th class="column-title">技术参数标准值或参数范围</th>
+        <th class="column-title">实际试验值/技术状况</th>
+        <th class="column-title">符合程度</th>
+        <th class="column-title">评估或试验人员</th>
+        <th class="column-title">建议或措施</th>
+        <th class="column-title">验证实施</th>
+        <th class="column-title no-link last"><span class="nobr">操作</span>
+        </th>
+        <th class="bulk-actions" colspan="7">
+            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = 0%>
+    <%if(assessContentDtos&&assessContentDtos.length > 0){%>
+    <%for(var i = 0 ; i < assessContentDtos.length; i++) {%>
+    <tr data-tt-id="<%=assessContentDtos[i].id%>">
+        <!--<td class=" " > <input type="checkbox" class="checkBtn" name="table_records" value="<%=assessContentDtos[i].id%>"></td>-->
+        <td class="num"><%=num+i+1%></td>
+        <td class=" "><%=assessContentDtos[i].parameterName%></td>
+        <td class=" "><%=assessContentDtos[i].parameterRange%></td>
+        <td class=" "><%=assessContentDtos[i].testValue%></td>
+        <td class=" "><%=assessContentDtos[i].conform%></td>
+        <td class=" "><%=assessContentDtos[i].testCrew%></td>
+        <td class=" "><%=assessContentDtos[i].suggest%></td>
+        <td class=" "><%=assessContentDtos[i].implement%></td>
+
+        <td class="last">
+
+            <a class="editJudgementContent"
+                data-url="ajax_edit_judgementContent?id=<%=assessContentDtos[i].id%>">
+                <i class="green fa fa-edit"></i>修改 </a>
+
+            <!--<a href="detailEquipmentInfo?id=<%=assessContentDtos[i].id%>">
+                <i class="blue fa fa-list-alt"></i>详细信息 </a>-->
+            <a class="deleteJudgementContent"
+             data-url="ajax_delete_judgementContent?id=<%=assessContentDtos[i].id%>">
+            <span><i class="green fa fa-remove"></i>删除</span></a>
+        </td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="9" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

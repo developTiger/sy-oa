@@ -1,0 +1,256 @@
+
+<!--<style>
+    span.select2-dropdown.select2-dropdown&#45;&#45;below {
+        width: 60.8% !important;
+    }
+    ul#select2-groupMemberList1-xx-results {
+        width: 100% !important;
+    }
+    span.select2-container.select2-container&#45;&#45;default.select2-container&#45;&#45;open {
+        width: 100% !important;
+    }
+    span.select2-selection.select2-selection&#45;&#45;multiple {
+        width: 83.33% !important;
+    }
+</style>-->
+
+$ui.loadCss("select2/select2.min.css")
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+<input type="hidden" name="id" #if($formDeliverApplyDto) value="$formDeliverApplyDto.id" #end/>
+<input type="hidden" id="formDeliverApplyDto" name="formNo2" #if($formDeliverApplyDto) value="$formDeliverApplyDto.formNo" #end />
+<input type="hidden" id="formDeliverApplyDto2" #if($formDeliverApplyDto) value="$formDeliverApplyDto.projectNo" #end />
+<input type="hidden" id="planInfo"  #if($formDeliverApplyDto) #if($formDeliverApplyDto.projectPlanInfo) value="$formDeliverApplyDto.projectPlanInfo" #end #end />
+#if($viewOnly=="true")
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <label class="col-xs-12">
+            主要完成人员:
+            #if($formDeliverApplyDto.groupMembers)
+            $formDeliverApplyDto.groupMembers
+            #end
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <label class="col-xs-12">
+            主要协作单位:
+            #if($formDeliverApplyDto.joinComopany)
+            $formDeliverApplyDto.joinComopany
+            #end
+        </label>
+    </div>
+</div>
+#end
+
+#if($viewOnly=="false")
+<input  id="formNo" hidden/>
+
+<div class="form-group col-xs-12">
+    <label  class="col-xs-2"  style="text-align: right" >
+        项目名称:
+    </label>
+    <div class="col-xs-8" id="name1">
+        <select id="projectName"  name="projectName"  class="col-xs-8 form-control" style="">
+            <option value="">请选择</option>
+            #if($projectName)
+            #foreach($pname in $projectName)
+            <option  value="$pname.projectName" #if($pname.projectNo=="$scientificRPKU.projectNo") selected #end>$pname.projectName</option>
+            #end
+            #end
+        </select>
+    </div>
+    <div class="col-xs-2" style="width: 30px;" id="name2">
+        <input  type="button" id="zdy" data-url="" class="btn" value="自定义" >
+    </div>
+
+    <div class="col-xs-8" id="name3" hidden >
+        <input id="projectName3"  name="projectName3" class="col-xs-10 form-control" />
+    </div>
+    <div class="col-xs-2" style="width: 30px;" id="name4" hidden>
+        <input  type="button" id="zdy2" data-url="" class="btn" value="选取库中数据">
+    </div>
+
+    <div class="col-xs-8" hidden id="projectNameDiv">
+        <input id="projectName2" class="col-xs-10 form-control"  name="projectName2" readonly/>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label  class="col-xs-2"  style="text-align: right" >
+        主要完成单位:
+    </label>
+    <div class="col-xs-8">
+        <input  id="assumeCompany"  name="assumeCompany" class="col-xs-8 form-control"  required="required" />
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <label  class="col-xs-2"  style="text-align: right" >
+        项目长:
+    </label>
+    <!--<div class="col-xs-8" hidden>
+        <input readonly id="leaderName"  name="leaderName" class="col-xs-10 form-control"  required="required" />
+    </div>-->
+    <div class="col-xs-8"  >
+        <!-- select2_group 下拉框样式-->
+        <select class=" col-xs-10 select2_group ename form-control txtValue1" name="leader" id="leader">
+            <option value="">请选择</option>
+            </optgroup>
+            #foreach($s in $empInfos)
+            <optgroup label="$s.deptName">
+                #foreach($e in $s.empDtos)
+                <option  value="$e.id"  #if($bean.leader==$e.id) selected #end >$e.name</option>
+                #end
+            </optgroup>
+            #end
+
+        </select>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <label  class="col-xs-2"  style="text-align: right" >
+        专业分类:
+    </label>
+    <!--<div class="col-xs-8" hidden>
+        <input readonly id="specialtyType"  name="specialtyType" class="col-xs-10 form-control"  required="required" />
+    </div>-->
+    <div class="col-xs-8">
+        <select id="specialtyType" required="required" name="specialtyType" class="col-xs-10 form-control"
+                data-parsley-id="0004">
+            <option value="">请选择</option>
+            #if($alltype)
+            #foreach($s in  $alltype)
+            <option value="$s.specialtyType" #if($bean.specialtyType==$s.specialtyType) selected #end>$s.specialtyType</option>
+            #end
+            #else
+            <dd>没数据</dd>
+            #end
+        </select>
+        <input type="hidden" id="specialtyTypehid">
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <label  class="col-xs-2"  style="text-align: right" >
+        开始时间:
+    </label>
+    <div class="col-xs-8">
+        <input type="text" class=" mini-width Wdate form-control col-xs-10 form-control" id="beginTime" value="#if($bean)$bean.beginTime1#end" style="float: left;width: 100%" placeholder="项目开始时间"
+               name="beginTime1" >
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <label  class="col-xs-2"  style="text-align: right" >
+        结束时间:
+    </label>
+    <div class="col-xs-8">
+        <input type="text" class=" mini-width Wdate col-xs-10 form-control" id="endTime"
+               style="" placeholder="项目终止时间"value="#if($bean)$bean.endTime1#end"
+               name="endTime1" >
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <!--<input type="hidden" value="$formDeliverApplyDto.groupMembers" name="groupMembers" id="groupMembers">-->
+    <label class="col-xs-2" style="text-align: right">
+        主要完成人员:
+    </label>
+    <div class="col-xs-8">
+        <input readonly id="groupMembers"  name="groupMembers" class="col-xs-10 form-control"   type="hidden" id="groupMembers"/>
+        <input type="hidden"  name="renming" id="renming">
+        <select class="select2_group form-control txtValue "  name="groupMemberList1">
+            <option value="">请选择</option>
+            #foreach($s in $empInfos)
+            <optgroup label="$s.deptName">
+                #foreach($e in $s.empDtos)
+                <option  value="$e.name" data-value="$e.name" #if($e.name==$ssl) selected #end >$e.name</option>
+                #end
+            </optgroup>
+            #end
+        </select>
+    </div>
+    <div class="col-xs-1" style="margin-bottom: 15px;">
+        <button type="button" class="btn btn-defalut Js_addPeople">新增</button>
+    </div>
+</div>
+
+#if($ssls)
+#foreach($person in $ssls)
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2"><span class="required"></span>
+    </label>
+    <div class="col-xs-8 " >
+        <select name="mainPeople" id="" class="form-control select2_group  txtValue" >
+            <option value="">请选择</option>
+            #foreach($s in $empInfos)
+            <optgroup label="$s.deptName">
+                #foreach($e in $s.empDtos)
+                <option  value="$e.name" data-value="$e.name" #if($person==$e.name) selected #end>$e.name</option>
+                #end
+            </optgroup>
+            #end
+        </select>
+    </div>
+    <div class="col-xs-2" style="margin-bottom: 15px;">
+        <button type="button" class="btn btn-danger Js_mainPeople_delete">删除</button>
+    </div>
+</div>
+#end
+#end
+<div class="Js_attendPeople"></div>
+
+
+<div class="form-group col-xs-12">
+    <label class="col-xs-2" style="text-align: right">
+        主要协作单位:
+    </label>
+    <div class="col-xs-8">
+        <textarea required="required" id="joinComopany"  name="joinComopany" class="col-xs-10 form-control">#if($formDeliverApplyDto.joinComopany)$formDeliverApplyDto.joinComopany#end</textarea>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="control-label col-xs-2" style="text-align: right">
+        主题词:
+    </label>
+    <div class="col-xs-8">
+        <textarea name="ztc" class="col-xs-10 form-control" required="required" id="ztc"></textarea>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="control-label col-xs-2"  style="text-align: right">
+        三新一性:
+    </label>
+    <div class="col-xs-8">
+        <textarea name="sxyx" class="col-xs-10 form-control" required="required" id="sxyx"></textarea>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label  class="col-xs-2"  style="text-align: right">
+        内容摘要:
+    </label>
+    <div class="col-xs-8">
+        <textarea name="nrzy" class="col-xs-10 form-control" required="required" id="nrzy"></textarea>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label  class="col-xs-2"  style="text-align: right" >
+        专利类型及数量:
+    </label>
+    <div class="col-xs-8">
+        <textarea required="required"   name="zllxjsl" class="col-xs-10 form-control"  required="required" id="zllxjsl"></textarea>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class=" col-xs-12 col-xs-offset-4">
+        <input  type="submit" id="Submit" data-url="ajax_add_update_lc06_apply" class="btn btn-success" value="申请">
+        <a class="btn btn-primary" href="javascript:window.close();">返回</a>
+    </div>
+</div>
+#end
+<script>
+    require(['app/deliverables_flow/syy_kg_lc06']);
+</script>

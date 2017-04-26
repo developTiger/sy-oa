@@ -1,0 +1,192 @@
+<form id="addBooksInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+
+
+    <!--<div class="form-group">
+        <label class="control-label  col-xs-3" for="car-type">获奖人 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="car-type" required="required" #if($beans.carType)value="$beans.carType" #end
+                   name="carType"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+        </div>
+    </div>-->
+
+
+    <div class="form-group">
+
+        <div class="container">
+            <label class="control-label  col-xs-3">获奖人 <span class="required">*</span>
+            </label>
+
+            <div class="col-xs-5" >
+                <input class="txtValue form-control col-md-7 col-xs-10 " type="text" data-value="" name="groupMemberList1" value="" />
+            </div>
+            <div>
+                <input type="button" class="btn" data-toggle="modal" data-target="#myModal_1" value="选择" />
+            </div>
+            <div class="modal fade" id="myModal_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+                            <h3 class="modal-title" id="myModalLabel">组员选择</h3>
+                        </div>
+                        <div class="modal-body">
+
+                            <input type="checkbox" data-type="checkall" />全选</td>
+
+                            <input type="checkbox" name="keleyi" data-type="checkbox" data-value="组员1" value="1"/>组员1
+                            <input type="checkbox" name="keleyi" data-type="checkbox" data-value="组员2" value="2" />组员2
+                            <input type="checkbox" name="keleyi" data-type="checkbox" data-value="组员3" value="3" />组员3
+                            <input type="checkbox" name="keleyi" data-type="checkbox" data-value="组员4" value="4" />组员4
+                            <input type="checkbox" name="keleyi" data-type="checkbox" data-value="组员5" value="5" />组员5
+                            <input type="checkbox" name="keleyi" data-type="checkbox" data-value="组员6" value="6" />组员6
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class=" col-xs-6 col-xs-offset-3">
+                                <button type="submit" class="btn btn-success" data-dismiss="modal">提交</button>
+                                <button type="button" class="btn btn-primary" id="cancelModal_1">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">发表/出版时间 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" class="form-control col-md-7 col-xs-12 mini-width Wdate" id="endTime"  style="float: left;" placeholder="截止时间"
+                   name="endTime1" >
+            <ul class="parsley-errors-list" id="parsley-id-2139"></ul>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="status">论著级别 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select id="status" required="required" name="status" class="form-control col-xs-7"
+                    data-parsley-id="0004">
+                <option value="">请选择</option>
+                <option value="1" #if(1==$beans.status) selected="selected" #end>国家级</option>
+                <option value="2" #if(2==$beans.status) selected="selected" #end>省部级</option>
+                <option value="3" #if(3==$beans.status) selected="selected" #end>油田公司级</option>
+                <option value="4" #if(4==$beans.status) selected="selected" #end>厂处级</option>
+            </select>
+        </div>
+
+
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label  col-xs-3" for="repairLog">出版社/刊物名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="repairLog" required="required" #if($sysPermission)value="$sysPermission.sort" #end
+                   name="repairLog"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="status">是否核心 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select id="staus" required="required" name="status" class="form-control col-xs-7"
+                    data-parsley-id="0004">
+                <option value="">请选择</option>
+                <option value="1" #if(1==$beans.status) selected="selected" #end>核心</option>
+                <option value="2" #if(2==$beans.status) selected="selected" #end>非核心</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label  col-xs-3" for="repairLog">发表/出版单位 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="repirLog" required="required" #if($sysPermission)value="$sysPermission.sort" #end
+                   name="repairLog"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        </div>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label  col-xs-3" for="repairLog">书/期刊号 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="reirLog" required="required" #if($sysPermission)value="$sysPermission.sort" #end
+                   name="repairLog"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="status">著作人集合 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select id="stus" required="required" name="status" class="form-control col-xs-7"
+                    data-parsley-id="0004">
+                <option value="">请选择</option>
+                <option value="1" #if(1==$beans.status) selected="selected" #end>第一著作人</option>
+                <option value="2" #if(2==$beans.status) selected="selected" #end>第二著作人</option>
+                <option value="1" #if(1==$beans.status) selected="selected" #end>第三著作人</option>
+                <option value="2" #if(2==$beans.status) selected="selected" #end>第四著作人</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="status">是否合著 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select id="saus" required="required" name="status" class="form-control col-xs-7"
+                    data-parsley-id="0004">
+                <option value="">请选择</option>
+                <option value="1" #if(1==$beans.status) selected="selected" #end>yes</option>
+                <option value="2" #if(2==$beans.status) selected="selected" #end>no</option>
+            </select>
+        </div>
+
+    </div>
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdatebook" data-url="ajax_add_update_book" class="btn btn-success">提交</button>
+            <!--<button type="button" id="cancelModal" class="btn btn-primary"><a href="javascript:history.go(-1);">取消</a></button>-->
+            <a class="btn btn-primary" href="javascript:history.go(-1);">取消</a>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    require(['app/userAchievements/addWorks']);
+</script>
+
+

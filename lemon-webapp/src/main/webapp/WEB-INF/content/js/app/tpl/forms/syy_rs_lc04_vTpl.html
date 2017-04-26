@@ -1,0 +1,126 @@
+
+    <input type="hidden" name="id"  value="<%=id%>" />
+    <div class="form-group" >
+        <label class="control-label " style="font-size:larger">考核名称:<%=appraisTitle%></label>
+    </div>
+
+
+    <div class="form-group" >
+        <label class="control-label " style="font-size: larger">考核时间:<%=dateFormat(startDate)%>——<%=dateFormat(endDate)%></label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label " style="font-size: larger">考核内容:<%=description%></label>
+    </div>
+
+    <!--<div class="form-group col-xs-12" >-->
+        <!--<label class="pull-right " style="margin-right: 20px" ><a  target="_blank" style="color: blue" href="/sra_p_showNews?id=<%=fTemp%>">查看具体通知</a> </label>-->
+    <!--</div>-->
+
+    <%if(clStep==2){%>
+    <input type="hidden" name="form_deptName" value="<%=detailDtos[0].deptName%>">
+    <input type="hidden" name="form_deptId" value="<%=detailDtos[0].deptId%>">
+    <%}%>
+
+    <%if(clStep==2 && isViewOnly == false && isComplete == false){%>
+    <hr style="border:none;border-top: 2px solid #E6E9ED;color: #1780d2"/>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-6" style="font-size:larger">部门档次:<span class="required"></span></label>
+        <div class="col-xs-6" style="font-size: larger">
+            <!--<input type="text" class="form-control mini-width "   required="true" name="deptLevel">-->
+            <select name="deptLevel" id="deptLevel" style="width: 62px;height: 32px;margin-top: 2px">
+                <option value="优秀">优秀</option>
+                <option value="称职">称职</option>
+                <option value="不称职">不称职</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group col-xs-4">
+        <label class="control-label   col-xs-6" style="font-size:larger">部门得分:<span class="required"></span></label>
+        <div class="col-xs-6" style="font-size: larger">
+            <input type="text" class="form-control mini-width " required="true" name="deptScores" min="0" placeholder="请填数字">
+
+        </div>
+    </div>
+
+    <div class="form-group col-xs-4">
+        <label class="control-label   col-xs-6" style="font-size:larger">部门等级:<span class="required"></span></label>
+        <div class="col-xs-6" style="font-size: larger;">
+            <!--<input type="text" class="form-control mini-width "   required="true" name="deptGrade">-->
+            <select name="deptGrade" id="deptGrade" style="width: 50px;height: 32px;margin-top: 2px;">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+        </div>
+    </div>
+    <%}%>
+
+
+    <%if(clStep>=4 && isViewOnly == false && isComplete == false){%>
+    <hr style="height: 5px;color: #1780d2"/>
+    <div class="form_group">
+        <a class="btn btn-default left" href="ajax_syy_rs_lc04_down?formNo=<%=formNo%>">下载</a>
+        <!--<%if(!isViewOnly){%>-->
+        <input type="button" class="btn btn-default" style="float: right" id="upload" value="上传结果"><input  style="float: right;width: 200px"  id="upFile" form_no="<%=formNo%>" type="file" class="btn btn-default right"  name="myfiles" value="考核结果">
+        <!--<%}%>-->
+    </div>
+    <%}%>
+
+    <%if((clStep==2 &&  isViewOnly == true) || clStep>=3   ){%>
+    <table class="table table-striped table-bordered dataTable no-footer">
+        <thead>
+        <tr class="headings">
+            <th class="column-title">序号 </th>
+            <th class="column-title">部门名称</th>
+            <th class="column-title">自评档次</th>
+            <th class="column-title">自评得分</th>
+            <th class="column-title">自评等级</th>
+            <th class="column-title" style="text-align: center;">审核意见</th>
+            <th class="column-title">最终档次</th>
+            <th class="column-title">最终得分</th>
+            <th class="column-title">最终等级</th>
+            <!--<th class="column-title no-link last" style="width: 150px;"><span class="nobr">操作</span>-->
+            <!--</th>-->
+            <th class="bulk-actions" colspan="7">
+                <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <%var num =0%>
+        <%if(detailDtos.length > 0){%>
+        <%for(var i = 0 ; i < detailDtos.length; i++) {%>
+        <tr>
+            <td class="num"><%=num+i+1%></td>
+            <td><%=detailDtos[i].deptName%></td>
+            <td class=" "><%=detailDtos[i].deptLevel%></td>
+            <td class=" "><%=detailDtos[i].deptScores %></td>
+            <td class=" "><%=detailDtos[i].deptGrade %></td>
+            <td class=" "><%=detailDtos[i].deptRemark %></td>
+            <td class=" "><%=detailDtos[i].groupLevel%></td>
+            <td class=" "><%=detailDtos[i].groupScores %></td>
+            <td class=" "><%=detailDtos[i].groupGrade %></td>
+            <!-- <td class=" ">4</td>
+            <td class="a-right a-right ">$7.45</td>-->
+            <!--<td class=" last">-->
+            <!--<a class="i_modal  "-->
+            <!--data-title="修改部门" data-url=" ">-->
+            <!--<span><i class="green fa fa-edit"></i>修改</span></a>-->
+        </tr>
+        <%}%>
+        <%}else{%>
+        <tr>
+            <td colspan="10" align="center">等待部门自评</td>
+        </tr>
+        <%}%>
+        </tbody>
+    </table>
+    <%}%>
+
+
+
+
+

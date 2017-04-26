@@ -1,0 +1,116 @@
+
+$ui.loadCss("select2/select2.min.css")
+<div style="min-width: 800px">
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >设备维修记录 <span class="required">*</span>
+        </label>
+
+        <input type="hidden" id="hidName" name="hiddenName">
+        <div class="col-xs-6">
+            <select class="form-control  col-xs-7"  name="resId" id="equipmentName" >
+                <option value="">请选择</option>
+                #if($beans)
+                #foreach($bean in $beans)
+                <option value="$bean.id" #if($formCheck.resId==$bean.id) selected #end>$!bean.measuringName</option>
+                #end
+                #else
+                <d>暂无数据</d>
+                #end
+
+            </select>
+            <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="unit">使用单位
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="unit" name="unit" readonly
+                   class="form-control  col-xs-7" data-parsley-id="2038">
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">规格型号</label>
+        <div class=" col-xs-6">
+
+            <input type="text" class="form-control col-xs-7" id="standard" readonly
+                   name="standard">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">维修方 <span class="required">*</span></label>
+        <div class=" col-xs-6">
+
+            <input type="text" class="form-control col-xs-7" id="serviceUnit" required="required"
+                   name="serviceUnit" value="$!formCheck.serviceUnit">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="testers">验收人员 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <select  id="testers" class="col-xs-7 form-control select2" multiple>
+
+                #if($depts)
+                #if($emps)
+                #foreach($d in $depts)
+                <optgroup label="$d.deptName">
+                    #foreach($e in $emps)
+                    #if($d.id==$e.deptId)
+                    <option value="#if($e.name)$e.name#else$e.loginName#end" #if($formCheck.testers.contains($e.name)) selected #end> #if($e.name) $e.name #else $e.loginName #end</option>
+                    #end
+                    #end
+                </optgroup>
+                #end
+                #end
+                #end
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="repairProject">维修项目 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <input type="text" id="repairProject" required="required" name="repairProject"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!formCheck.repairProject">
+            <ul class="parsley-errors-list" id="parsley-id-1203"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="runCondition">维修项目运行情况 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <textarea id="runCondition" required="required" name="runCondition"
+                   class="form-control  col-xs-7" data-parsley-id="2038">$!formCheck.runCondition</textarea>
+
+        </div>
+    </div>
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-8 col-xs-offset-5">
+            <button type="submit" id="equipmentCheckSubmit" data-url="ajax_add_update_equipmentCheck" class="btn btn-success">提交</button>
+            <a class="btn btn-primary" href="javascript:window.close();">取消</a>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/equipForms/equipmentCheck"]);
+</script>
+
+
+
+

@@ -1,0 +1,85 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/项目信息管理
+            <small>- 项目详细信息管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 项目详细信息管理.
+        </div>
+
+        <div class="row">
+            <div class="form-inline  col-xs-12" style="" >
+                <form id="searchForm" data-url="ajax_project_query_list">
+
+                    <div class="form-group" >
+                    <label class="control-label">
+                        项目编号：
+                    </label>
+                    <input type="text" class="form-control" name="projectNo" style="">
+                    <label class="control-label">
+                        项目名称：
+                    </label>
+                        <input type="text" class="form-control" name="projectName" style="">
+                    <label class="control-label">承担单位：
+                    </label>
+                    <input type="text" class="form-control" name="assumeCompany" style="">
+                    <label class="control-label">项目类别：
+                    </label>
+                        <select id="projectType" name="projectType" class="form-control" style=""
+                                data-parsley-id="0004">
+                            <option value="">请选择</option>
+                            #if($itemsList)
+                            #foreach($s in  $itemsList)
+                            <option value="$s.itemName" #if($s.itemName==$projectType) selected #end >$s.itemName</option>
+                            #end
+                            #end
+                        </select>
+                        <label class="control-label">申请部门：
+                        </label>
+                        <select id="deptName" name="deptName" class="form-control" style="">
+                            <option value="">请选择</option>
+                               #if($dept)
+                                 #foreach( $deptName in $dept)
+                                 <option value="$deptName.id" #if($deptName.id==$dept1)selected="selected" #end>$deptName.deptName</option>
+                                 #end
+                               #end
+                        </select>
+                        <br/>
+                    <label class="control-label">运行状态：</label>
+                        <select id="projectYXStatus" name="projectYXStatus" class="form-control" style=""
+                                data-parsley-id="0004">
+                            <option value="">请选择</option>
+                            <option value="1" #if($projectYXStatus=="1")selected="selected" #end >运行中</option>
+                            <option value="2" #if($projectYXStatus=="2")selected="selected" #end >完成</option>
+                        </select>
+                    <label class="control-label">
+                        年度：
+                    </label>
+                    <input type="text" class="form-control Wdate" id="niandu_Str"  readonly value="#if($niandu_Str)$niandu_Str#end"
+                           placeholder="年度"
+                           name="niandu_Str">
+
+                        <label class="control-label">
+                            <input type="button" class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" id="projectQueryBtn" value="查询" style="margin-top: 5px">
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table">
+        </div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+        <div class="form_group">
+            <a class="btn btn-default left" id="daochu">导出</a>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/projectInfo/projectInfo"]);
+</script>

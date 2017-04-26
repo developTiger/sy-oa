@@ -1,0 +1,161 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+
+    <thead>
+    <tr class="headings">
+        <th><input type="checkbox" id="check-all"  class="checkAll "></th>
+        <th class="column-title">序号</th>
+        <th class="column-title">项目名称</th>
+        <th class="column-title">竞赛类别</th>
+        <th class="column-title">竞赛负责人</th>
+        <th class="column-title">竞赛单位</th>
+
+
+        <!--<th class="column-title">主要参与人</th>-->
+        <!--<th class="column-title">申报时间</th>-->
+
+        <th class="column-title">成果评审小组成员</th>
+        <th class="column-title">成果评审小组组长</th>
+        <th class="column-title">成果评分</th>
+        <th class="column-title" >评审意见</th>
+
+        <th class="column-title" >荣誉级别</th>
+        <th class="column-title">荣誉名称</th>
+        <th class="column-title">获得时间</th>
+        <th class="column-title">颁发机构</th>
+
+        <th class="column-title" width="200px">备注</th>
+        <th class="column-title" width="150px">操作</th>
+        <!-- <th class="column-title" hidden>companyid</th>-->
+        <!--<th class="column-title no-link last"><span class="nobr">操作</span></th>-->
+        <th class="bulk-actions" colspan="7">
+            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = 0%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr data-tt-id="<%=items[i].id%>" style="text-align: center">
+        <td class="firstTd " > <input type="checkbox" class="checkBtn" name="table_records" value="<%=items[i].formNo%>" data-value="<%=items[i].formKind%>">
+
+            <!--<input type="hidden" class="checkBoxFormNo" value="<%=items[i].formNo%>">-->
+            <!--<input type="hidden" class="checkBoxFormKind" value="<%=items[i].formKind%>">-->
+
+        </td>
+        <td class="num"><%=num+i+1%></td>
+        <td class=" "><a style="color: blue" data-title="劳动竞赛挖潜增效成果详情" data-url="ajax_workAchi_failAll_singleDetail?formNo=<%=items[i].formNo%>" class="i_modal"> <%=items[i].projectName%></a></td>
+        <td class=" "><%=items[i].competitionType%></td>
+
+        <td class=" "><%=items[i].leader%></td>
+        <td class=" "><%=items[i].deptName%></td>
+        <!--<td class=" "><%=items[i].joinPeople%></td>-->
+        <!--<td class=" ">-->
+            <!--<%if(items[i].cpmpetitionTime){%>-->
+            <!--<%=dateFormat2(items[i].cpmpetitionTime)%>-->
+            <!--<%}%>-->
+        <!--</td>-->
+        <td class=" achi_judgeMembers">
+            <%if(items[i].clStep ==2){%>
+            <select class="example-dropUp" multiple="multiple">
+                <%for(var j=0;j < items[i].project_empDtos.length;j++){%>
+                <optgroup label="<%=items[i].project_empDtos[j].deptName%>">
+                    <%for(var k=0;k < items[i].project_empDtos[j].empDtos.length;k++){%>
+                    <option value="<%=items[i].project_empDtos[j].empDtos[k].id%>" <%if(items[i].achiGroupMembersIds && items[i].achiGroupMembersIds.indexOf(items[i].project_empDtos[j].empDtos[k].id)>=0 ){%> selected <%}%> >
+                    <%=items[i].project_empDtos[j].empDtos[k].name%>
+                    </option>
+                    <%}%>
+                </optgroup>
+                <%}%>
+
+            </select>
+            <%}%>
+            <%if(items[i].clStep >2){%>
+            <%=items[i].reviewGroupMembers%>
+            <%}%>
+        </td>
+        <td>
+            <%if(items[i].clStep ==2){%>
+            <select class="example-dropUp">
+                <%for(var j=0;j < items[i].project_empDtos.length;j++){%>
+                <optgroup label="<%=items[i].project_empDtos[j].deptName%>">
+                    <%for(var k=0;k < items[i].project_empDtos[j].empDtos.length;k++){%>
+                    <option value="<%=items[i].project_empDtos[j].empDtos[k].id%>" <%if(items[i].achi_leader_id && items[i].achi_leader_id.indexOf(items[i].project_empDtos[j].empDtos[k].id)>=0 ){%> selected <%}%> >
+                    <%=items[i].project_empDtos[j].empDtos[k].name%>
+                    </option>
+                    <%}%>
+                </optgroup>
+                <%}%>
+            </select>
+            <%}%>
+            <%if(items[i].clStep >2){%>
+            <%=items[i].achi_judgeMemberLeader%>
+            <%}%>
+        </td>
+        <td class="approveScore">
+            <%if(items[i].clStep ==3){%>
+            <input type="text" class="form-control" value="<%if(items[i].approveScore){%><%=items[i].approveScore%><%}%>">
+            <%}%>
+            <%if(items[i].clStep ==4){%>
+            <%=items[i].approveScore%>
+            <%}%>
+        </td>
+        <td class="achi_judgeSuggestion">
+            <%if(items[i].clStep ==3){%>
+            <textarea class="form-control" name="achievementJudgeSuggestions"><%if(items[i].achievementJudgeSuggestions){%><%=items[i].achievementJudgeSuggestions%><%}%></textarea>
+            <%}%>
+            <%if(items[i].clStep ==4){%>
+            <%=items[i].achievementJudgeSuggestions%>
+            <%}%>
+        </td>
+
+        <td>
+            <%if(items[i].clStep ==4){%>
+            <select class="form-control">
+                <option value="国家级">国家级</option>
+                <option value="省部级">省部级</option>
+                <option value="市级">市级</option>
+                <option value="厂处级">厂处级</option>
+            </select>
+            <%}%>
+        </td>
+        <td>
+            <%if(items[i].clStep ==4){%>
+            <input type="text" class="form-control">
+            <%}%>
+        </td>
+        <td>
+            <%if(items[i].clStep ==4){%>
+            <input type="text" class="form-control Wdate">
+            <%}%>
+        </td>
+        <td>
+            <%if(items[i].clStep ==4){%>
+            <input type="text" class="form-control">
+            <%}%>
+        </td>
+
+        <td class=" singleContent">
+            <textarea class="form-control "  ></textarea>
+        </td>
+        <td class=" ">
+
+            <a class="btn btn-success approveSingle">同意</a>
+
+            <a class="btn btn-primary rejectSingle">退回</a>
+
+            <input type="hidden" class="hiddenFormNo" value="<%=items[i].formNo%>">
+            <input type="hidden" class="hiddenFormKind" value="<%=items[i].formKind%>">
+
+        </td>
+
+
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="16" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

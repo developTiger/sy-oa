@@ -1,0 +1,45 @@
+<div class="x_content">
+
+    <div role="tabpanel" data-example-id="togglable-tabs">
+        <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+            <li class="active" role="presentation"><a id="home-tab" role="tab" aria-expanded="true" class="tablist"
+                                                      data-url="ajax_treatiseCount_query_list" href="#tab_content1"
+                                                      data-toggle="tab">论著信息</a>
+            </li>
+            <li role="presentation"><a id="profile-tab" role="tab" aria-expanded="false" class="tablist"
+                                       data-url="ajax_project_query" href="#tab_content2" data-toggle="tab">项目成果信息</a>
+            </li>
+            <li role="presentation"><a id="profile-tab2" role="tab" aria-expanded="false" class="tablist"
+                                       data-url="ajax_patent_query" href="#tab_content3" data-toggle="tab">专利记录</a>
+            </li>
+
+        </ul>
+        <div id="table1"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+<div class="ln_solid"></div>
+<div class="form-group">
+    <div class=" col-xs-6 col-xs-offset-3">
+
+        <!--<button type="submit" id="detailInfoProject" data-url="ajax_detailInfo_project" class="btn btn-success">提交
+        </button>-->
+        <!--<button type="button" id="cancelModal" class="btn btn-primary">取消</button>-->
+        <a href="javascript:history.go(-1)" class="btn btn-primary">返回</a>
+
+    </div>
+</div>
+
+<script>
+    require(["app/userAchievements/treatiseCount"]);
+</script>
+

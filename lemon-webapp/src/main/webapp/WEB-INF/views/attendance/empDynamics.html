@@ -1,0 +1,78 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>单位考勤管理/
+            <small>- 单位动态设置</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 是否在岗员工动态
+        </div>
+
+        <input type="hidden" value="empDynamics" id="ajax_attend">
+        <label class="control-label text-center text-danger col-md-12"><h3><strong>近日（<span id="month">$NowMonth</span>月<span
+                id="day">$NowDday</span>日）不在岗员工动态</strong></h3>
+        </label>
+
+
+        <div class="row">
+            <div class="form-inline pull-right" style="margin-bottom: 15px;">
+                <form id="searchForm" class="" data-url="ajax_empDynamics_Query_list">
+                    <!--#if(!$isDept)-->
+                    <!--<div class="form-group" style="margin-left: 245px">-->
+                    <!--<label class="control-label">部门</label>-->
+
+                    <!--<select class="form-control" name="deptId">-->
+                    <!--<option value="0">请选择</option>-->
+                    <!--#if($deptAll)-->
+                    <!--#foreach($bean in $deptAll)-->
+                    <!--<option value="$bean.id" >$bean.deptName</option>-->
+                    <!--#end-->
+                    <!--#end-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--#end-->
+
+
+                    <div class="form-group">
+                        <label for="beginDate" class="control-label">开始日期:</label>
+                        <input id="beginDate" type="text" class="form-control Wdate beginDate" name="beginDate"
+                               value="$beginDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate" class="control-label">结束日期:</label>
+                        <input id="endDate" type="text" class="form-control Wdate endDate" name="endDate"
+                               value="$endDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">姓名
+                        </label> <input type="text" id="loginName" class="form-control " name="loginName">
+                        <input type="button" class="btn btn-default" id="eqBtn" value="查询"
+                               style="position: relative;top: 0.2em">
+                    </div>
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <div id="table">
+
+    </div>
+    <div class="col-lg-10 dataTables_paginate  ">
+        <ul class="pagination "></ul>
+    </div>
+
+</div>
+
+<script>
+    require(["app/attendance/empAttendance"]);
+</script>

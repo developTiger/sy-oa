@@ -1,0 +1,295 @@
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/党群科信息管理
+            <small>- 劳动竞赛信息管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 劳动竞赛挖潜增效项目及成果信息统计.
+        </div>
+        <div class="row">
+            <div class=" btn-group  ">
+                <!--<a class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="添加车辆信息"
+                   data-url="_addCarInfoForm"><span><i class="green fa fa-plus" ></i>新增</span></a>
+
+                <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="deleteCar"  tabindex="0"
+                   aria-controls="datatable-buttons"><span><i
+                        class="red fa fa-remove"></i>删除</span></a>-->
+
+            </div>
+            <div class="form-inline col-xs-12" >
+                <div class=" " style="text-align: left">
+
+                    <table width="100%" >
+                        <tr>
+                            <td width="12%">
+                                <label style="font-size: larger;">项目名称：</label>
+                            </td>
+                            <td width="38%">
+                                <label style="font-size: larger;">$!beans.projectName</label>
+                            </td>
+                            <td width="10%">
+                                <label style="font-size: larger;">竞赛类别：</label>
+                            </td>
+                            <td width="40%">
+                                <label style="font-size: larger">$!beans.competitionType</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">项目负责人：</label>
+                            </td>
+                            <td>
+                                <label style="font-size: larger;">$!beans.leader</label>
+                            </td>
+
+                            <td>
+                                <label style="font-size: larger;">主要参加人：</label>
+                            </td>
+                            <td>
+                                <label style="font-size: larger;">$!beans.joinPeople</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">竞赛单位：</label>
+                            </td>
+                            <td>
+                                <label style="font-size: larger;">$!beans.competitionUnit</label>
+                            </td>
+
+                            <td>
+                                <label style="font-size: larger;">申报时间：</label>
+                            </td>
+                            <td>
+                                <label style="font-size: larger;">
+                                    #if($beans.cpmpetitionTime)
+                                    $help.formatDateToString($!beans.cpmpetitionTime,"yyyy-MM-dd")
+                                    #end
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">竞赛主题：</label>
+                            </td>
+                            <td >
+                                <label style="font-size: larger;">$!beans.competitionTitle  </label>
+                            </td>
+                            <td>
+                                <label style="font-size: larger;">项目状态：</label>
+                            </td>
+                            <td>
+                                <label style="font-size: larger;">#if($!beans.formStatus == "UA") 未通过 #else 通过 #end</label>
+                            </td>
+
+
+                        </tr>
+                        <tr>
+
+
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">项目评审小组：</label>
+                            </td>
+                            <td colspan="3">
+                                <label style="font-size: larger;">$!beans.projectJudgeMembers  </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">项目评审小组评审意见：</label>
+                            </td>
+                            <td colspan="3">
+                                <label style="font-size: larger;">$!beans.judgeSuggestion  </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <label style="font-size: larger;">获奖等级：</label>
+                            </td>
+                            <td>
+                            <label style="font-size: larger">
+                            $!beans.prizeLeval
+                            </label>
+                            </td>
+                            <td>
+                            <label style="font-size: larger;">成果得分：</label>
+                            </td>
+                            <td colspan="3">
+                            <label style="font-size: larger;">$!beans.approveScore</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger">证书颁发人姓名/单位名称：</label>
+                            </td>
+                            <td>
+                                <label style="font-size: larger">
+                                    $!beans.nameOrdept
+                                </label>
+                            </td>
+                            <td>
+                                <label style="font-size: larger">
+                                    成果荣誉名称
+                                </label>
+                            </td>
+                            <td>
+                                <label style="font-size: larger">
+                                    $!beans.prizeName
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger">成果获得时间：</label>
+                            </td>
+                            <td>
+                                <label style="font-size: larger">
+                                    #if($beans.achiGetTime)
+                                    $help.formatDateToString($!beans.achiGetTime,"yyyy-MM-dd")
+                                    #end
+                                </label>
+                            </td>
+                            <td>
+                                <label style="font-size: larger">
+                                    成果颁发机构
+                                </label>
+                            </td>
+                            <td>
+                                <label style="font-size: larger">
+                                    $!beans.awardAgency
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">成果评审小组：</label>
+                            </td>
+                            <td colspan="3">
+                                <label style="font-size: larger;">$!beans.reviewGroupMembers  </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">成果评审小组评审意见：</label>
+                            </td>
+                            <td colspan="3">
+                                <label style="font-size: larger;">$!beans.achievementJudgeSuggestions  </label>
+                            </td>
+                        </tr>
+                        #if($beans.achiOnlyScores)
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">成员评分：</label>
+                            </td>
+                            <td colspan="3">
+                                <label style="font-size: larger;">#foreach($bean in $beans.achiOnlyScores)
+                                    $bean
+                                    #end
+                                </label>
+                            </td>
+                        </tr>
+                        #end
+                        #if($beans.achiOnlyAdvise)
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">成员意见：</label>
+                            </td>
+                            <td colspan="3">
+                                <label style="font-size: larger;">
+                                    #foreach($bean in $beans.achiOnlyAdvise)
+                                    $bean
+                                    #end
+                                </label>
+                            </td>
+                        </tr>
+                        #end
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">成果申报附件：</label>
+                            </td>
+                            <td colspan="3">
+                                <label style="font-size: larger;"><a href="downloadFile?id=$!beans.achi_fileId">$!beans.achi_fileName</a></label>
+                            </td>
+                        </tr>
+                        #if($beans.achi_imageStatus == "已生成")
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">成果证书：</label>
+                            </td>
+                            <td colspan="3">
+                                <label style="font-size: larger;"><a href="downloadWorkAchievement?formNo=$!beans.achi_formNo">下载</a></label>
+                            </td>
+                        </tr>
+                        #end
+
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">现状说明：</label>
+                            </td>
+                            <td colspan="3">
+                                <label style="font-size: larger;">$!beans.situationExplain</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">立项依据：</label>
+                            </td>
+                            <td colspan="3">
+                                <label style="font-size: larger;">$!beans.controlAction</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">控制措施：</label>
+                            </td>
+                            <td colspan="3">
+                                <label style="font-size: larger;">$!beans.controlAction</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">进度安排：</label>
+                            </td>
+                            <td colspan="3">
+                                <label style="font-size: larger;">$!beans.scheduleArrange</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">预期效果：</label>
+                            </td>
+                            <td colspan="3">
+                                <label style="font-size: larger;">$!beans.expectResult</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="font-size: larger;">项目申报附件：</label>
+                            </td>
+                            <td>
+                                <label style="font-size: larger;"><a href="downloadFile?id=$!beans.fileId">$!beans.fileName</a></label>
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

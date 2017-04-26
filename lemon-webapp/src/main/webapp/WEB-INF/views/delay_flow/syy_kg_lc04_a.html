@@ -1,0 +1,162 @@
+<input type="hidden" name="type_zy" id="type_zy" #if($majorType) value="$majorType" #end/>
+<input type="hidden" name="id" id="id" #if($formDelayApplyDto) value="$formDelayApplyDto.id" #end/>
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2">延期项目: <span class="required">：</span>
+    </label>
+
+        <!--<input type="hidden" id="delayNames" required="required"-->
+               <!--name="delayNames"-->
+               <!--class="form-control col-md-7 col-xs-12" data-parsley-id="4639">-->
+        <input type="hidden" name="delayname2" id="delayname2" #if($scientificRPKU) value="$scientificRPKU.projectName" #end/>
+        <div class="col-xs-6">
+
+            <select id="delayNamesel" required="required" name="delayNamesel" class="form-control col-xs-12" #if($scientificRPKU) disabled #end>
+                <option value="">请选择</option>
+                #if($projectName)
+                #foreach($pname in $projectName)
+                <option value="$pname.projectNo" #if($pname.projectNo=="$scientificRPKU.projectNo") selected #end>$pname.projectName</option>
+                #end
+            </select>
+            #else
+            <dd>没有数据</dd>
+            #end
+            <!--#if($scientificRPKU)
+            <input type="text" required="required" readonly
+                   name="projectName" #if($scientificRPKU)value="$scientificRPKU.projectName"#end
+                   class="form-control col-md-7 col-xs-12" >
+            #else
+
+            <select id="delayNamesel" required="required" name="delayNamesel" class="form-control col-xs-12">
+                <option value="">请选择</option>
+                #if($projectName)
+                #foreach($pname in $projectName)
+                <option value="$pname.projectNo" #if($pname.projectNo=="$scientificRPKU.projectNo") selected #end>$pname.projectName</option>
+                #end
+            </select>
+            #else
+            <dd>没有数据</dd>
+            #end
+            </select>
+
+            #end-->
+
+
+        </div>
+
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">项目编号 <span class="required">：</span>
+    </label>
+
+    <div class="col-xs-6">
+        <input type="text" id="projectNo" required="required" readonly
+               name="projectNo" #if($scientificRPKU)value="$scientificRPKU.projectNo"#end
+               class="form-control col-md-7 col-xs-12" >
+
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">承担单位 <span class="required">：</span>
+    </label>
+
+    <div class="col-xs-6">
+        <input type="text" id="assumeCompany" required="required" readonly
+               name="assumeCompany" #if($scientificRPKU)value="$scientificRPKU.assumeCompany"#end
+               class="form-control col-md-7 col-xs-12" >
+
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">项目开始时间 <span class="required">：</span>
+    </label>
+
+    <div class="col-xs-6">
+        <input type="text" id="beginTime" required="required"readonly
+               name="beginTime" #if($scientificRPKU)value="$scientificRPKU.beginTime"#end
+               class="form-control col-md-7 col-xs-12" >
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2 ">项目结束时间 <span class="required">：</span>
+    </label>
+
+    <div class="control-label col-xs-6">
+        <input type="text" id="endTime" required="required"readonly
+               name="endTime" #if($scientificRPKU)value="$scientificRPKU.endTime"#end
+               class="form-control col-md-7 col-xs-12"  data-parsley-id="4639">
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">负责人 <span class="required">：</span>
+    </label>
+
+    <div class="col-xs-6">
+        <input type="text" id="leaderName" required="required" readonly
+               name="leaderName" #if($scientificRPKU)value="$scientificRPKU.leaderName"#end
+               class="form-control col-md-7 col-xs-12" >
+
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">延期理由 <span class="required">：</span>
+    </label>
+
+    <div class="col-xs-6">
+
+        <textarea type="text" id="delayReason" required="required" rows="5"
+                  name="delayReason"
+                  class="form-control col-md-7 col-xs-12" > #if($formDelayApplyDto) $formDelayApplyDto.delayReason #end</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-2039"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">延期日期 <span class="required">:</span>
+    </label>
+
+    <div class="control-label col-xs-6">
+        <input type="text" id="delayTime" required="required"
+               name="delayTime"style="float: left;width: 100%" placeholder="延期日期" #if($delaytime)value="$delaytime"#end
+               class="form-control mini-width Wdate" data-parsley-id="4639">
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">延期上传附件 <span class="required">:</span>
+    </label>
+
+    <div class="control-label col-xs-6">
+        <!--<input type="file" name="projectFile" id="upFile">-->
+        #if($formDelayApplyDto)
+            #if($formDelayApplyDto.fileName)
+            <a href="/downloadFile?id=$formDelayApplyDto.fileId">$formDelayApplyDto.fileName</a>
+            #end
+        #else
+            <input type="file" name="projectFile" id="upFile">
+        #end
+    </div>
+</div>
+
+<div class="form-group">
+    <div class=" col-xs-6 col-xs-offset-3">
+
+        <input  type="submit" id="addOrUpdateDelayInfo" data-url="ajax_add_update_lc04_apply" class="btn btn-success" value="申请">
+        <a class="btn btn-primary" href="javascript:history.go(-1);">返回</a>
+    </div>
+</div>
+
+<script>
+    require(['app/delay_flow/syy_kg_lc04']);
+</script>

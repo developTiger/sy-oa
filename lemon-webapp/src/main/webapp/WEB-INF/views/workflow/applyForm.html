@@ -1,0 +1,40 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理
+            <small>- 流程入口</small>
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 流程入口.
+        </div>
+
+        <div class="bs-glyphicons">
+            <ul class="bs-glyphicons-list">
+
+
+                #if($list)
+                #foreach($bean in $list.items)
+                <li class="createForm"  form-kind="$bean.formKind" style="height: 80px!important;" >
+                    <span class="glyphicon-class">$bean.formKind <br/>$bean.formName</span>
+                </li>
+                #end
+
+                #else
+                <li>
+                    <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+                    <span class="glyphicon-class">暂无表单</span>
+                </li>
+                #end
+
+            </ul>
+        </div>
+
+    </div>
+</div>
+<script>
+    require(["app/workflow/applyForm"]);
+</script>

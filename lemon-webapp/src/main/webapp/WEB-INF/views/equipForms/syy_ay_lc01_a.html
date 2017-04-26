@@ -1,0 +1,412 @@
+$ui.loadCss("select2/select2.min.css")
+<div style="min-width: 800px">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="measuringName">设备名称<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <input type="text" id="measuringName" required="required" name="measuringName" maxlength="50"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!formEquipment.measuringName">
+            <ul class="parsley-errors-list" id="parsley-id-1203"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="propertyNum">资产编号<span class="required">*</span></label>
+
+        <div class="col-xs-7">
+            <input type="text" id="propertyNum" name="propertyNum" required="required"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!formEquipment.propertyNum">
+            <ul class="parsley-errors-list" id="parsley-id-12035"></ul>
+        </div>
+    </div>
+
+   <!-- <div class="form-group">
+        <label class="control-label  col-xs-2" for="propertyType">资产类别名称<span class="required">*</span></label>
+
+        <div class="col-xs-7">
+            <input type="text" id="propertyType" name="propertyType"
+                   class="form-control  col-xs-7" data-parsley-id="2038" required="required"
+                   #if($formEquipment.propertyType) value="$formEquipment.propertyType" #end>
+            <ul class="parsley-errors-list" id="parsley-id-11035"></ul>
+        </div>
+    </div>-->
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="measurement">计量单位<span class="required">*</span></label>
+
+        <div class="col-xs-7">
+            <input type="text" id="measurement" name="measurement" required="required"
+                   class="form-control  col-xs-7" data-parsley-id="2038"
+                   #if($formEquipment.measurement) value="$formEquipment.measurement" #end>
+            <ul class="parsley-errors-list" id="parsley-id-11036"></ul>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="standard">规格型号</label>
+
+        <div class="col-xs-7">
+            <input type="text" id="standard" name="standard"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!formEquipment.standard">
+            <ul class="parsley-errors-list" id="parsley-id-1208"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="factoryName">制造厂家</label>
+
+        <div class="col-xs-7">
+            <input type="text" id="factoryName" name="factoryName" maxlength="50"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!formEquipment.factoryName">
+            <ul class="parsley-errors-list" id="parsley-id-1238"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="outFactoryNum">出厂编号</label>
+
+        <div class="col-xs-7">
+            <input type="text" id="outFactoryNum" name="outFactoryNum"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!formEquipment.outFactoryNum">
+            <ul class="parsley-errors-list" id="parsley-id-1038"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="savePersonName">保管人<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <select type="text" id="savePersonName" required="required" name="savePerson"
+                    class="form-control  col-xs-7" data-parsley-id="2038">
+                <option value="">请选择人员</option>
+                #foreach($dept in $deptAll)
+                <optgroup label="$!dept.deptName">
+                    #foreach($sp in $empAll)
+                    #if($sp.deptId==$dept.id)
+                    <option value="$sp.id"
+                            #if($formEquipment.savePersonName.contains($sp.name)) selected #end>$!sp.name
+                    </option>
+                    #end
+                    #end
+                </optgroup>
+                #end
+            </select>
+            <ul class="parsley-errors-list" id="parsley-id-1039"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="unitName">使用单位<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <select type="text" id="unitName" required="required" name="unitName" maxlength="50"
+                    class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+                <option value="">请选择单位</option>
+                #foreach($dept in $deptAll)
+                <option value="$dept.deptName" data-value="$dept.id" #if($formEquipment.unitName && $formEquipment.unitName=="$dept.deptName")
+                        selected #end>$!dept.deptName
+                </option>
+                #end
+            </select>
+            <input type="hidden" name="hiddenDeptId">
+            <ul class="parsley-errors-list" id="parsley-id-2136"></ul>
+        </div>
+    </div>
+    <!--<div class="form-group">-->
+ <!--       <label class="control-label  col-xs-2" for="unitName">所属单位<span
+                class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <select type="text" id="institute" required="required" name="institute"
+                    maxlength="50"
+                    class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+                <option value="">请选择单位</option>
+                #foreach($dept in $deptAll)
+                <option value="$dept.deptName" #if($formEquipment.institute=="$dept.deptName")
+                        selected #end>$!dept.deptName
+                </option>
+                #end
+            </select>
+            <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+        </div>
+    </div>-->
+    <!--<div class="form-group">-->
+        <!--<label class="control-label  col-xs-2" for="address">使用地点</label>-->
+
+        <!--<div class="col-xs-7">-->
+            <!--<input type="text" id="address" name="address" maxlength="60"-->
+                   <!--class="form-control  col-xs-7" data-parsley-id="2038" value="$!formEquipment.address">-->
+            <!--<ul class="parsley-errors-list" id="parsley-id-2037"></ul>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="type">设备类型<span class="required">*</span></label>
+
+        <div class="col-xs-7">
+            <input type="text" id="type" name="type" maxlength="100" required="required"
+                   class="form-control  col-xs-7" data-parsley-id="2038"
+                   #if($formEquipment.type) value="$formEquipment.type" #end>
+            <ul class="parsley-errors-list" id="parsley-id-2338"></ul>
+        </div>
+    </div>
+    <!--<div class="form-group">
+        <label class="control-label  col-xs-2" >存放地点<span class="required">*</span></label>
+
+        <div class="col-xs-7">
+            <input type="text" id="deposit" name="deposit" maxlength="100" required="required"
+                   class="form-control  col-xs-7" data-parsley-id="2038"
+                   #if($formEquipment.deposit) value="$formEquipment.deposit" #end>
+            <ul class="parsley-errors-list" id="parsley-id-2238"></ul>
+        </div>
+    </div>-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="post">使用岗位<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <input type="text" id="post" required="required" name="post" maxlength="50"
+                   class="form-control  col-xs-7" data-parsley-id="2038" required="required"
+                   value="$!formEquipment.post">
+            <ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+        </div>
+    </div>
+
+    <div class="form-group" hidden="hidden">
+        <label class="control-label  col-xs-2" for="currentStation">当前状态<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <input type="text" id="currentStation" name="currentStation"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="Normal">
+            <ul class="parsley-errors-list" id="parsley-id-2040"></ul>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="original">原值<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <input type="text" id="original" required="required" name="original" min="0"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!formEquipment.original">
+            <ul class="parsley-errors-list" id="parsley-id-12038"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="netValue">净值</label>
+
+        <div class="col-xs-7">
+            <input type="text" id="netValue" name="netValue" min="0"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!formEquipment.netValue">
+            <ul class="parsley-errors-list" id="parsley-id-12039"></ul>
+        </div>
+    </div>
+
+    <!--<div class="form-group">-->
+        <!--<label class="control-label  col-xs-2" for="wbuyTime">购进日期<span class="required">*</span>-->
+        <!--</label>-->
+
+        <!--<div class="col-xs-7">-->
+            <!--<input type="text" id="wbuyTime" required="required" name="wbuyTime"-->
+                   <!--class="form-control  col-xs-7 Wdate" data-parsley-id="2038" #if($formEquipment.buyTime)-->
+                   <!--value="$helper.formatDateToString($formEquipment.buyTime,'yyyy-MM-dd')" #end>-->
+            <!--<ul class="parsley-errors-list" id="parsley-id-12057"></ul>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="wproductTime">投产日期</label>
+
+        <div class="col-xs-7">
+            <input type="text" id="wproductTime" name="wproductTime"
+                   class="form-control  col-xs-7 Wdate" data-parsley-id="2038" #if($formEquipment.productTime)
+                   value="$helper.formatDateToString($formEquipment.productTime,'yyyy-MM-dd')" #end>
+            <ul class="parsley-errors-list" id="parsley-id-12058"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="checkdate">检定周期(/月)</label>
+
+
+        <div class="col-xs-7">
+            <select type="text" id="checkdate" name="checkdate" maxlength="50"
+                    class="form-control  col-xs-7" data-parsley-id="2038">
+                <option value="">请选择</option>
+                #foreach($i in [1..36])
+                <option value="$i" #if($formEquipment.checkdate && $formEquipment.checkdate==$i) selected #end>$i
+                </option>
+                #end
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="standardValue">技术参数标准值</label>
+
+        <div class="col-xs-7">
+            <input type="text" id="standardValue" name="standardValue"
+                   class="form-control  col-xs-7" data-parsley-id="2039" value="$!formEquipment.standardValue">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">参数范围</label>
+
+        <div class="col-xs-2">
+            <input type="text" id="minValue" name="minValue" placeholder="最小值" min="0"
+                   class="form-control  col-xs-2" data-parsley-id="2040" value="$!formEquipment.minValue">
+        </div>
+        <label class="control-label  col-xs-1" style="margin-left: -36px">——</label>
+
+        <div class="col-xs-2">
+            <input type="text" id="maxValue" name="maxValue" placeholder="最大值" min="0"
+                   class="form-control  col-xs-6" data-parsley-id="2040" value="$!formEquipment.maxValue">
+        </div>
+    </div>
+
+    <!--<div class="form-group">-->
+        <!--<label class="control-label  col-xs-2" for="parts">配件清单</label>-->
+
+        <!--<div class="col-xs-7">-->
+            <!--<textarea style="height: 80px;" id="parts" name="parts"-->
+                      <!--class="form-control  col-xs-7" data-parsley-id="2038">$!formEquipment.parts</textarea>-->
+
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2"> 符合检定或者校准结果<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <input style="margin-left: 60px;width: 20px;height: 20px" type="radio" data-parsley-id="2038"
+                   name="testResult" value=1 #if($formEquipment.testResult) checked #end> <b
+                style="margin-left: 20px;font-size: 15px">检定</b>
+            <input style="margin-left: 60px;width: 20px;height: 20px" type="radio" data-parsley-id="2039"
+                   name="testResult" value=0 #if($formEquipment.testResult==false) checked #end><b
+                style="margin-left: 20px;font-size: 15px">校准</b>
+            <input style="margin-left: 60px;width: 20px;height: 20px" type="radio" data-parsley-id="2039"
+                   name="testResult" value=0><b style="margin-left: 20px;font-size: 15px">其他</b>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="testValue">检定或校准值</label>
+
+        <div class="col-xs-7">
+            <input type="text" id="testValue" class="form-control  col-xs-7" data-parsley-id="2038" min="0"
+                   name="testValue" value="$!formEquipment.testValue">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">检定或校准时间</label>
+
+        <div class="col-xs-7">
+            <input type="text" class="form-control mini-width Wdate col-xs-7" id="wtestTime"
+                   placeholder="检定校准时间"
+                   name="wtestTime" #if($!formEquipment.testTime)
+                   value="$helper.formatDateToString($!formEquipment.testTime,'yyyy-MM-dd')" #end>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">下次检定或校准时间</label>
+
+        <div class="col-xs-7">
+            <input type="text" class="form-control mini-width  col-xs-7" id="wnextTestTime"
+                   placeholder="下次检定校准时间"
+                   name="wnextTestTime" readonly style="background-color: #d8d6e4" #if($formEquipment.nextTestTime)
+                   value="$helper.formatDateToString($formEquipment.nextTestTime,'yyyy-MM-dd')" #end>
+
+        </div>
+    </div>
+
+    <!--<div class="form-group">-->
+        <!--<label class="control-label  col-xs-2" for="systemNumber">计量管理系统编号<span class="required">*</span></label>-->
+
+        <!--<div class="col-xs-7">-->
+            <!--<input type="text" id="systemNumber" name="systemNumber"-->
+                   <!--class="form-control  col-xs-7" data-parsley-id="2040" required="required"-->
+                   <!--value="$!formEquipment.systemNumber">-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="useStation">使用状况
+        </label>
+
+        <div class="col-xs-7">
+
+            <textarea style="height: 80px;" id="useStation" name="useStation"
+                      class="form-control  col-xs-7" data-parsley-id="2038">$!formEquipment.useStation</textarea>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="remark">备注
+        </label>
+
+        <div class="col-xs-7">
+            <textarea style="height: 80px;" id="remark" name="remark"
+                      class="form-control  col-xs-7" data-parsley-id="2038">$!formEquipment.remark</textarea>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2">附件：</label>
+
+        <div class="col-xs-2">
+            <div class="form-group">
+                <div class="col-xs-8" style="margin-left: -10px">
+                    <input type="file" id="fileId" class="btn btn-default" name="filename"/>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+    #if($formEquipment.fileId)
+    <div class="form-group">
+        <label class="control-label  col-xs-2">上传文件：</label>
+
+        <div class="col-xs-5">
+            <div class="form-group">
+                <a style="font-size: larger;text-decoration:underline" class="col-xs-offset-1"
+                   href="/downloadFile?id=$formEquipment.fileId">$!formEquipment.fileName</a>
+            </div>
+        </div>
+    </div>
+    #end
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-8 col-xs-offset-5">
+            <button type="submit" id="equipApplySubmit" data-url="ajax_add_update_equipApply" class="btn btn-success">
+                提交
+            </button>
+            <a class="btn btn-primary" href="javascript:window.close();">取消</a>
+        </div>
+    </div>
+</div>
+
+</div>
+<script>
+    require(["app/equipForms/equipApply"]);
+</script>
+
+
+
+

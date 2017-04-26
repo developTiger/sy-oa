@@ -1,0 +1,65 @@
+</br>
+<style>
+
+    .form-inline .form-control {
+        display: inline-block;
+        vertical-align: middle;
+        width: 117px;
+    }
+
+</style>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>出差信息查询</h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+      <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 出差信息查看.
+        </div>
+        <div class="row">
+
+            <div class="form-inline" style="text-align:right;padding-bottom: 10px;">
+
+                <form id="js_business_list" action="download_business_list">
+                    <input type="hidden" id="sFromTime" class="form-control Wdate " name="sFromTime">
+                    <input type="hidden" id="sToTime" class="form-control Wdate " name="sToTime">
+                    <input type="hidden" id="targets" class="form-control"  name="targets" placeholder="查询疆内外,直接输入">
+                    <input type="hidden" id="aName" class="form-control " name="aName">
+                </form>
+
+                <form  id="searchForm"  class="" data-url="ajax_business_list">
+
+                    <div class="form-group">
+                        <input class="js_business_download" style="border: none;width: 45px;text-align: center;height: 30px;line-height: 30px;background: #e1e1e1;cursor: pointer;" value="下载">
+
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">出差开始时间</label>
+                        <input type="text" id="strfromTime" class="form-control Wdate " name="strfromTime"> ~
+                        <input type="text" id="strtoTime" class="form-control Wdate " name="strtoTime">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label ">出差目的地
+                        </label>
+                        <input type="text" id="target" class="form-control" style="min-width: 160px;" name="target" placeholder="查询疆内外,直接输入">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" >出差人
+                        </label>  <input type="text" id="applyerName" class="form-control " name="applyerName">
+                        <input type="button" class="btn btn-default" id="empQueryBtn1" value="查询" style="position:relative;top: 0.2em">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table1"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/user/queryBusiness"]);
+</script>

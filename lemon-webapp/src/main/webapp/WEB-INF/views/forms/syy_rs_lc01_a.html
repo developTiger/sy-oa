@@ -1,0 +1,153 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+
+<div style="min-width: 800px">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="trainName">培训班名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="trainName" required="required" #if($beans)value="$beans.trainName" #end name="trainName"
+                   class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+            <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="trainPlace">地点 <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" id="trainPlace" required="required" #if($beans)value="$beans.trainPlace" #end name="trainPlace"
+                   class="form-control  col-xs-7" data-parsley-id="2038">
+            <ul class="parsley-errors-list" id="parsley-id-12038"></ul>
+        </div>
+    </div>
+
+    <div class="form-group ">
+        <label class="control-label col-xs-2">部门 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6" style="height: 40px;">
+                <select id="example-dropUp" multiple="multiple"  name="option" required="required" >
+                #if($dept)
+                #foreach($bean in $dept)
+                <option  value="$bean.id"  required="required" data-value="$bean.deptName" >$bean.deptName</option>
+                #end
+                #else
+                <dd>暂无数据</dd>
+                #end
+                </select>
+                    <input id="hdeptId" type="hidden"   name="trainDeptId" value="$!beans.trainDepts"  >
+                    <input id="deptName" type="hidden" name="trainDeptName" value="$!beans.formDeptName">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">开始时间 <span class="required">*</span></label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control mini-width Wdate col-xs-7 js_FromTime" id="strFromTime"
+                   placeholder="开始时间" #if($beans)value="$beans.trainBeginDate" #end
+                   name="strFromTime" required="required">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">结束时间 <span class="required">*</span></label>
+        <div class=" col-xs-5">
+            <input type="text" class="form-control mini-width Wdate col-xs-7 js_ToTime" id="strToTime"
+                   placeholder="结束时间" #if($beans)value="$beans.trainEndDate" #end  required="required"
+                   name="strToTime">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="studyTime">学时 <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control mini-width col-xs-7" id="studyTime"
+                    required="required"
+                   name="studyTime">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="mainCompany">主办单位 <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control mini-width col-xs-7" id="mainCompany" required="required"
+                   name="mainCompany">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="didCompany">承办单位 <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control mini-width col-xs-7" id="didCompany" required="required"
+                   name="didCompany">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="didCompany">培训分类 <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <select  class="form-control mini-width col-xs-7" name="trainCategory">
+                <option value="0">取证复审</option>
+                <option value="1">取证</option>
+                <option value="2">其他</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="didCompany">计划内或外<span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <select  class="form-control mini-width col-xs-7" name="plan">
+                <option value="0">计划内</option>
+                <option value="1">计划外</option>
+            </select>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="trainContent">培训内容 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <textarea id="trainContent" required="required" name="trainContent"
+                      class="form-control  col-xs-7" >#if($beans) $beans.trainContent  #end</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >附件
+        </label>
+        <div class="col-xs-5 " style="padding-top: 5px">
+            <input type="file"  id="fileId" name="fileName1"/>
+        </div>
+
+    </div>
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <button type="submit" id="trainSubmit" data-url="ajax_add_update_train" class="btn btn-success">提交</button>
+            <a class="btn btn-primary "  href="javascript:window.close();">取消</a>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/forms/train"]);
+</script>
+
+
+
+

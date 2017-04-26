@@ -1,0 +1,88 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>成果奖项管理
+            <small>- 成果奖项管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 成果奖项详情.
+        </div>
+
+
+        <div class="row">
+            <div class=" btn-group  col-xs-12 form-inline">
+                <!--<a class=" btn btn-default buttons-copy buttons-html5 btn-sm" data-title="添加项目详细信息"-->
+                   <!--href="addProjectResultsInfoForm"><span><i class="green fa fa-plus"></i>新增</span></a>-->
+                <!--<a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="deleteProjectResult" tabindex="0"-->
+                   <!--aria-controls="datatable-buttons"><span><i-->
+                        <!--class="red fa fa-remove"></i>删除</span></a>-->
+                <div style="margin-bottom: 5px;margin-top: 0px">
+                    <form id="searchForm" data-url="ajax_awards_query_list">
+                        <div class="control-label col-xs-10 " >
+                        <label class="control-label">项目名称：</label>
+                        <input type="text"  class="form-control" name="projectName" placeholder="成果名称" style="margin-bottom: 5px;">
+                        <label class="control-label">年度：</label>
+                        <label class="control-label" >
+                            <input type="text" id="niandu"class="form-control mini-width Wdate" name="nianduTime" style="float: left;width: 177px" placeholder="项目年度时间">
+                        </label>
+                        <label class="control-label">项目编号：</label>
+                        <input type="text" class="form-control " style="" name="projectNo" placeholder="证书编号">
+
+                        <label class="control-label">主要完成单位：</label>
+                        <input type="text" class="form-control" name="assumeCompany" placeholder="主要完成单位">
+                            <br/>
+                        <label class="control-label">专业分类： </label>
+                            #if($SpecialtyTypes)
+                        <select id="specialtyType" name="specialtyType" class="form-control"
+                                data-parsley-id="0004">
+                            <option value="">请选择</option>
+                            <!--<option #if($projectType=="01")selected="selected" #end value="01">油气勘探</option>-->
+                            <!--<option #if($projectType=="02")selected="selected" #end value="02">油气开发</option>-->
+                            <!--<option #if($projectType=="03")selected="selected" #end value="03">炼油化工</option>-->
+                            <!--<option #if($projectType=="04")selected="selected" #end value="04">油气集输</option>-->
+                            <!--<option #if($projectType=="05")selected="selected" #end value="05">计 算 机</option>-->
+                            <!--<option #if($projectType=="06")selected="selected" #end value="06">软 科 学</option>-->
+                            <!--<option #if($projectType=="07")selected="selected" #end value="07">安全环保</option>-->
+                            #foreach($bean in $SpecialtyTypes)
+                            <option value="$bean.specialtyType">$bean.specialtyType</option>
+                            #end
+                        </select>
+                            #else
+                            <dd>暂无数据</dd>
+                            #end
+                        <label class="control-label">获得时间： </label>
+                        <label class="control-label">
+                            <input type="text" class="form-control mini-width Wdate2" name="beginTime" id="beginTime"
+                                   style="float: left;width: 177px" placeholder="开始时间">
+                        </label>
+                        <label class="control-label">~</label>
+                        <label class="control-label">
+                            <input type="text" class="form-control mini-width Wdate2" name="endTime" id="endTime"
+                                   style="float: left;width: 177px" placeholder="结束时间">
+                        </label>
+                        &nbsp;&nbsp;&nbsp;
+                        <label class="control-label">
+                            <input type="button" class="btn btn-default" style=""
+                                   id="projectrrsultQueryBtn" value="查询">
+                        </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+        <div class="form_group">
+            <a class="btn btn-default left" id="daochu">导出</a>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/awards/awardsInfo"]);
+</script>

@@ -1,0 +1,105 @@
+<form id="addOrUpdate" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="deptId" value="$bean.depId">
+    <input type="hidden" name="empId" #if($bean)value="$bean.empId" #end>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="role-name">姓名 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="role-name" required="required" #if($bean)value="$bean.name" #end name="empName"
+                   readonly
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="role-name">状态 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select class="form-control" name="attendanceKind">
+                <option value="I">请选择</option>
+                <option value="I" #if($bean.attendanceKind=="I" )selected="selected" #end>出勤</option>
+                <option value="T" #if($bean.attendanceKind=="T" )selected="selected" #end>探亲</option>
+                <option value="B" #if($bean.attendanceKind=="B" )selected="selected" #end>病假</option>
+                <option value="B2" #if($bean.attendanceKind=="B2" )selected="selected" #end>补休</option>
+                <option value="J1" #if($bean.attendanceKind=="J1" )selected="selected" #end>公休加班</option>
+                <option value="J2" #if($bean.attendanceKind=="J2" )selected="selected" #end>节日加班</option>
+                <option value="Y" #if($bean.attendanceKind=="Y" )selected="selected" #end>野外</option>
+                <option value="Z" #if($bean.attendanceKind=="Z" )selected="selected" #end>出差</option>
+                <option value="S1" #if($bean.attendanceKind=="S1" )selected="selected" #end>带薪休假</option>
+                <option value="X1" #if($bean.attendanceKind=="X1" )selected="selected" #end>学历学习</option>
+                <option value="X2" #if($bean.attendanceKind=="X2" )selected="selected" #end>脱产学习</option>
+                <option value="L" #if($bean.attendanceKind=="L" )selected="selected" #end>疗养</option>
+                <option value="S2" #if($bean.attendanceKind=="S2" )selected="selected" #end>护理假/陪护假/计划生育假</option>
+                <option value="S3" #if($bean.attendanceKind=="S3" )selected="selected" #end>事假</option>
+                <option value="H" #if($bean.attendanceKind=="H" )selected="selected" #end>婚丧</option>
+                <option value="G" #if($bean.attendanceKind=="G" )selected="selected" #end>工伤</option>
+                <option value="C" #if($bean.attendanceKind=="C" )selected="selected" #end>产假</option>
+                <option value="C1" #if($bean.attendanceKind=="C1" )selected="selected" #end>产后休长假</option>
+                <option value="X2" #if($bean.attendanceKind=="X2" )selected="selected" #end>休息</option>
+                <option value="W" #if($bean.attendanceKind=="W" )selected="selected" #end>劳保</option>
+                <option value="K1" #if($bean.attendanceKind=="K1" )selected="selected" #end>旷工</option>
+                <option value="K2" #if($bean.attendanceKind=="K2" )selected="selected" #end>拘留</option>
+                <option value="K3" #if($bean.attendanceKind=="K3" )selected="selected" #end>戒毒</option>
+
+            </select>
+        </div>
+    </div>
+
+    <!--<div class="form-group">-->
+    <!--<label class="control-label  col-xs-3" for="role-name">开始时间 <span class="required">*</span>-->
+    <!--</label>-->
+    <!--<div class="col-xs-6">-->
+    <!--<input type="text" class="form-control mini-width Wdate"-->
+    <!--name="strBeginDate" #if($beginDate) value="$beginDate" #end placeholder="开始时间" >-->
+    <!--<ul class="parsley-errors-list" id="parsley-id-45591"></ul>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+    <!--<label class="control-label  col-xs-3" for="role-name">截止时间 <span class="required">*</span>-->
+    <!--</label>-->
+    <!--<div class="col-xs-6">-->
+    <!--<input type="text" class="form-control mini-width Wdate"-->
+    <!--name="strEndDate" #if($endDate) value="$endDate" #end placeholder="截止时间" >-->
+    <!--<ul class="parsley-errors-list" id="parsley-id-35591"></ul>-->
+    <!--</div>-->
+    <!--</div>-->
+
+
+    <!--<div class="form-group">-->
+    <!--<label class="control-label  col-xs-3" for="role-name">请假天数 <span class="required">*</span>-->
+    <!--</label>-->
+    <!--<div class="col-xs-6">-->
+    <!--<input type="text" id="timeRange" required="required" #if($bean.timeRange) value="$bean.timeRange" #end name="timeRange"-->
+    <!--class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-0641"></ul>-->
+    <!--</div>-->
+    <!--</div>-->
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="role-name">考勤日期 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="brief" required="required" #if($bean)value="$!attDate" #end name="attDate" readonly
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-7641"></ul>
+        </div>
+    </div>
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addUpdateInfo" data-url="add_update_attendance"
+                    class="btn btn-success">提交
+            </button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+</form>

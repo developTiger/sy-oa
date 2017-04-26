@@ -1,0 +1,150 @@
+<form id="qjApplyForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate=""
+      xmlns="http://www.w3.org/1999/html">
+
+    <input type="hidden" id="id" name="id" value="<%=id%>"/>
+    <input type="hidden" id="formNo" name="formNo" value="<%=formNo%>"/>
+
+    <div class="form-group">
+        <label class="control-label " style="font-size:larger">考核名称:<%=appraisTitle%></label>
+    </div>
+    <div class="form-group">
+        <label class=" " style="font-size: larger">考核内容:</label>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-offset-1" style="font-size: larger"><%=description%></label>
+    </div>
+    <div class="form-group">
+        <label class="control-label " style="font-size: larger">考核时间:<%=dateFormat(beginDate).substring(0,10)%>——<%=dateFormat(endDate).substring(0,10)%></label>
+    </div>
+    <!--<div class="form-group col-xs-12">-->
+        <!--<label class="pull-right " style="margin-right: 20px"><a target="_blank" style="color: blue"-->
+                                                                 <!--href="/sra_p_showNews?id=<%=fTemp%>">查看具体通知</a>-->
+        <!--</label>-->
+    <!--</div>-->
+
+    <div class="" style="font-size:x-large" align="center">
+        <strong>部门员工</strong>
+    </div>
+    </br>
+
+    <%if(clStep == 3){%>
+    <div class="form_group">
+        <a class="btn btn-default left" href="ajax_syy_rs_lc03_01_down?parentFormNo=<%=parentFormNo%>&blongDeptId=<%=blongDeptId%>">下载</a>
+    </div>
+    <%}%>
+
+    <div class="Department_score">
+    </div>
+    <table class="table  table-bordered dataTable no-footer js_tableSave">
+        <thead>
+        <tr class="headings">
+            <th class="column-title">员工姓名</th>
+            <!--<th class="column-title">员工档次</th>-->
+            <!--<th class="column-title">员工分数</th>-->
+            <th class="column-title">员工自评</th>
+
+            <!--<th class="column-title">部门档次</th>-->
+            <th class="column-title">基层评分</th>
+            <th class="column-title">基层评级</th>
+            <th class="column-title">分管评分</th>
+            <th class="column-title">分管评级</th>
+            <%if(clStep == 3){%>
+            <th class="column-title">委员会评分</th>
+            <th class="column-title">委员会评级</th>
+            <%}%>
+            <!--<th class="column-title">部门备注</th>-->
+            <%if(clStep < 3 && isComplete == false&&isViewOnly==false){%>
+            <th class="column-title" width="100px">操作</th>
+            <%}%>
+        </tr>
+        </thead>
+        <tbody>
+        <% if(empSubAppraiseDetailDtos && empSubAppraiseDetailDtos.length>0 ) {
+        for(var i=0;i< empSubAppraiseDetailDtos.length;i++) {
+        %>
+        <tr class=" disabled">
+            <input type="hidden" id="empId" name="empId" value="<%=empSubAppraiseDetailDtos[i].empId%>"/>
+            <input type="hidden" id="detail_id" name="detail_id" value="<%=empSubAppraiseDetailDtos[i].id%>"/>
+
+            <td class=" "><%=empSubAppraiseDetailDtos[i].loginName%></td>
+            <!--<td class=" "><%=empSubAppraiseDetailDtos[i].empSelfLevel%></td>-->
+            <!--<td class=" "><%=empSubAppraiseDetailDtos[i].empSelfScores%></td>-->
+            <td class=" "><%=empSubAppraiseDetailDtos[i].empSelfGrade%></td>
+            <!--<td class=" " ><%=empSubAppraiseDetailDtos[i].empSelfRemark%></td>-->
+
+            <!--<td class="">-->
+                <!--<input type='text' class='deptLevel disabled' style="width: 80px;" name="deptLevel"-->
+                       <!--disabled="disabled" value="<%=empSubAppraiseDetailDtos[i].deptLevel%>">-->
+            <!--</td>-->
+            <%if(clStep == 1){%>
+            <td class=""><input type='text' class='deptScores disabled' style="width:80px;" name="deptScores"
+                                disabled="disabled" value="<%=empSubAppraiseDetailDtos[i].deptScores%>"></td>
+            <td class="">
+                <!--<input type='text' class='deptGrade disabled' style="width: 80px;"  name="deptGrade"-->
+                       <!--disabled="disabled"   value="<%=empSubAppraiseDetailDtos[i].deptGrade%>">-->
+                <div class="js_hid hidSelect">
+                    <select class='deptGrade disabled' style="width: 80px;" name="deptGrade" disabled="disabled">
+                        <option value="" ></option>
+                        <option value="优秀" <% if(empSubAppraiseDetailDtos[i].deptGrade =="优秀" ) {%> selected <%}%> >优秀</option>
+                        <option value="称职" <%if(empSubAppraiseDetailDtos[i].deptGrade == "称职"){%> selected <%}%> > 称职</option>
+                        <option value="不称职" <%if(empSubAppraiseDetailDtos[i].deptGrade == "不称职"){%> selected <%}%> >不称职</option>
+
+                    </select>
+                </div>
+            </td>
+            <%}else{%>
+            <td class=""><%=empSubAppraiseDetailDtos[i].deptScores%></td>
+            <td class=""><%=empSubAppraiseDetailDtos[i].deptGrade%></td>
+            <%}%>
+
+            <%if(clStep == 2){%>
+            <td class=""><input type='text' class='groupScores disabled' style="width:80px;" name="groupScores"
+                                disabled="disabled" value="<%=empSubAppraiseDetailDtos[i].groupScores%>"></td>
+            <td class="">
+                <!--<input type='text' class='deptGrade disabled' style="width: 80px;"  name="deptGrade"-->
+                <!--disabled="disabled"   value="<%=empSubAppraiseDetailDtos[i].deptGrade%>">-->
+                <div class="js_hid hidSelect">
+                    <select class='groupGrade disabled' style="width: 80px;" name="groupGrade" disabled="disabled">
+                        <option value="" ></option>
+                        <option value="优秀" <% if(empSubAppraiseDetailDtos[i].groupGrade =="优秀" ) {%> selected <%}%> >优秀</option>
+                        <option value="称职" <%if(empSubAppraiseDetailDtos[i].groupGrade == "称职"){%> selected <%}%> > 称职</option>
+                        <option value="不称职" <%if(empSubAppraiseDetailDtos[i].groupGrade == "不称职"){%> selected <%}%> >不称职</option>
+
+                    </select>
+                </div>
+            </td>
+            <%}else{%>
+            <td class=""><%=empSubAppraiseDetailDtos[i].groupScores%></td>
+            <td class=""><%=empSubAppraiseDetailDtos[i].groupGrade%></td>
+            <%}%>
+            <%if(clStep == 3){%>
+            <td class=""><%=empSubAppraiseDetailDtos[i].chargeLeaderScores%></td>
+            <td class=""><%=empSubAppraiseDetailDtos[i].chargeLeaderLevel%></td>
+            <%}%>
+            <!--<td class=""><input type='text' class='deptRemark disabled' style="width: 80px;" name="deptRemark"-->
+                                <!--disabled="disabled" value="<%=empSubAppraiseDetailDtos[i].deptRemark%>"></td>-->
+
+            <%if(clStep <= 2 && isComplete == false&&isViewOnly==false){%>
+            <td class=" ">
+                <a class="empAppraiseUpdate js_update" data-url=" ">
+                    <span><i class="green fa fa-edit"></i>修改</span>
+                </a>
+
+                <a class="empAppraiseSave js_save" data-url=" ">
+                    <span><i class="green fa fa-edit "></i>保存</span>
+                </a>
+            </td>
+            <%}%>
+        </tr>
+        <%}
+        }else{%>
+        <tr>
+            <td colspan="10" align="center">该部门暂无信息</td>
+        </tr>
+        <%}%>
+        </tbody>
+    </table>
+
+
+
+</form>

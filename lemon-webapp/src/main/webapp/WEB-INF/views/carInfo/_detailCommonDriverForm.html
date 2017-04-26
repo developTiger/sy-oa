@@ -1,0 +1,21 @@
+
+<form id="modifyCommomDriverInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($commonDriver)value="$commonDriver.id"#end>
+    <input type="hidden" name="carId" #if($commonDriver)value="$commonDriver.car.id"#end>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >车牌号码 <span class="required">:</span>
+        </label>
+
+        <label  class="control-label col-xs-4" style="text-align: left;"> #if($commonDriver)$commonDriver.car.carNo #end </label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >司机名称 <span class="required">:</span>
+        </label>
+        <label  class="control-label col-xs-4" style="text-align: left;"> #if($commonDriver)$commonDriver.driver.driverName #end </label>
+    </div>
+    <div class="ln_solid"></div>
+</form>

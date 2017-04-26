@@ -1,0 +1,138 @@
+<div class="form-horizontal form-label-left">
+    <input type="hidden" name="id" value="<%=id%>"/>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" style="font-size:larger">考核名称:</label>
+        <div class="col-xs-6 top8" style="font-size: larger;margin-top: 8px;">
+            <%=appraisTitle%>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" style="font-size: larger">考核时间:</label>
+        <div class="col-xs-6 top8" style="font-size: larger;margin-top: 10px;">
+            <%=dateFormat(startDate)%>~<%=dateFormat(endDate)%>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label   col-xs-2" style="font-size: larger">考核内容:</label>
+        <div class="col-xs-6 top8" style="font-size: larger;margin-top: 8px;">
+            <%=description%>
+        </div>
+    </div>
+
+</div>
+<hr style="height: 5px;color: #1780d2"/>
+<!--<div class="form-group col-xs-12" >-->
+    <!--<label class="pull-right " style="margin-right: 20px" ><a  target="_blank" style="color: blue" href="/sra_p_showNews?id=<%=fTemp%>">查看具体通知</a> </label>-->
+<!--</div>-->
+<hr style="color: #c6c4d1;border: solid 2px"/>
+
+<div class="form-group" >
+    <label class="control-label " style="font-size: larger">部门自评</label>
+</div>
+<div class="form-horizontal form-label-left  ">
+    <%if(clStep>1||(clStep==1&&isComplete==true)){%>
+
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-6" style="font-size:larger">部门档次:<span class="required"></span></label>
+        <div class="col-xs-6 top8" style="font-size: larger;margin-top: 8px">
+            <%=deptLevel%>
+        </div>
+    </div>
+
+    <div class="form-group col-xs-4">
+        <label class="control-label   col-xs-6" style="font-size:larger">部门得分:<span class="required"></span></label>
+        <div class="col-xs-6 top8" style="font-size: larger;margin-top: 8px">
+            <%=deptScores%>
+        </div>
+    </div>
+
+    <div class="form-group col-xs-4">
+        <label class="control-label   col-xs-6" style="font-size:larger">部门等级:<span class="required"></span></label>
+        <div class="col-xs-6 top8" style="font-size: larger;margin-top: 8px">
+            <%=deptGrade%>
+        </div>
+    </div>
+    <div class="form-group ">
+        <label class="control-label  col-xs-2" style="font-size:larger">审核意见:<span class="required"></span></label>
+        <div class="col-xs-6 top8" style="font-size: larger;margin-top: 8px">
+            <%=remark%>
+        </div>
+    </div>
+    <%}%>
+    <%if(groupLevel){%>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-6" style="font-size:larger">最终档次:<span class="required"></span></label>
+        <div class="col-xs-6 top8" style="font-size: larger;margin-top: 8px">
+            <%=groupLevel%>
+        </div>
+    </div>
+
+
+    <div class="form-group col-xs-4">
+        <label class="control-label   col-xs-6" style="font-size:larger">最终得分:<span class="required"></span></label>
+        <div class="col-xs-6 top8" style="font-size: larger;margin-top: 8px">
+            <%=groupScores%>
+        </div>
+    </div>
+
+    <div class="form-group col-xs-4">
+        <label class="control-label   col-xs-6" style="font-size:larger">最终等级:<span class="required"></span></label>
+        <div class="col-xs-6 top8" style="font-size: larger;margin-top: 8px">
+            <%=groupGrade%>
+        </div>
+    </div>
+    <div class="form-group ">
+        <label class="control-label  col-xs-2" style="font-size:larger">专家组备注:<span class="required"></span></label>
+        <div class="col-xs-6 top8" style="font-size: larger;margin-top: 8px">
+            <%=groupRemark%>
+        </div>
+    </div>
+    <%}%>
+    <%if(!isViewOnly&&clStep==1&&isComplete==false){%>
+<!--<div class="form-group">-->
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-6" style="font-size:larger">部门档次:<span class="required"></span></label>
+        <div class="col-xs-6" style="font-size: larger">
+            <!--<input type="text" class="form-control mini-width "   required="true" name="deptLevel">-->
+            <select name="deptLevel" id="deptLevel" style="width: 62px;height: 32px;margin-top: 2px">
+                <option value="优秀">优秀</option>
+                <option value="称职">称职</option>
+                <option value="不称职">不称职</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group col-xs-4">
+        <label class="control-label   col-xs-6" style="font-size:larger">部门得分:<span class="required"></span></label>
+        <div class="col-xs-6" style="font-size: larger">
+            <input type="text" class="form-control mini-width " required="true" name="deptScores" min="0" placeholder="请填数字">
+
+        </div>
+    </div>
+
+    <div class="form-group col-xs-4">
+        <label class="control-label   col-xs-6" style="font-size:larger">部门等级:<span class="required"></span></label>
+        <div class="col-xs-6" style="font-size: larger;">
+            <!--<input type="text" class="form-control mini-width "   required="true" name="deptGrade">-->
+            <select name="deptGrade" id="deptGrade" style="width: 50px;height: 32px;margin-top: 2px;">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+        </div>
+    </div>
+<!--</div>-->
+<!--部门备注不需要-->
+    <!--<div class="form-group col-xs-0">-->
+        <!--<label class="control-label  col-xs-2" style="font-size:larger">部门备注:<span class="required"></span></label>-->
+        <!--<div class="col-xs-6" style="font-size: larger;">-->
+            <!--<textarea type="text" class="form-control mini-width "  required="true" name="remark"></textarea>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <%}%>
+</div>

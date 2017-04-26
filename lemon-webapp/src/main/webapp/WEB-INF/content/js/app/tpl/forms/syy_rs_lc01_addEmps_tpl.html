@@ -1,0 +1,33 @@
+<table class="table table-striped table-bordered dataTable no-footer" width="800px">
+    <thead>
+    <tr class="headings">
+        <th style="width: 100px" class="column-title">姓名</th>
+        <th class="column-title">部门</th>
+        <th class="column-title">岗位</th>
+        <th class="column-title">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = (pageNumber-1) * pageSize%>
+    <%if(pagesCount > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr>
+
+
+        <td class="a-right a-right "><%=items[i].name%></td>
+        <td class="a-right a-right "><%=items[i].deptName%></td>
+        <td class="a-right a-right "><%=items[i].position%></td>
+        <td class="a-right a-right ">
+            <button class="btn btn-primary addSingleEmp" value="<%=items[i].id%>" data-url="ajax_add_update_emps">添加</button>
+        </td>
+
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="10" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+
+    </tbody>
+</table>

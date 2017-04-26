@@ -1,0 +1,146 @@
+
+<form id="addDriverInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id"#end>
+   <!-- <div class="form-group" id="hide_company">
+        <label class="control-label  col-xs-5" >
+            调度中心 <span class="required">:</span>
+        </label>
+        #if($companys)
+                #foreach($cop in $companys)
+                     #if ($cop.id==$beans.companyId)
+                   <label  class="control-label col-xs-4" style="text-align: left;"> $cop.name </label>
+                     #end
+        #end
+        #else
+        <dd>暂无数据</dd>
+        #end
+  </div>-->
+
+  <div class="form-group">
+      <label class="control-label  col-xs-5" >
+          司机姓名 <span class="required">:</span>
+      </label>
+      <label  class="control-label col-xs-4" style="text-align: left;"> #if($beans) $beans.driverName #end </label>
+  </div>
+
+  <div class="form-group">
+      <label class="control-label  col-xs-5" >
+          性别 <span class="required">:</span>
+      </label>
+
+      <label  class="control-label col-xs-4" style="text-align: left;">  #if($beans.gender == 1)男 #else 女 #end </label>
+  </div>
+
+
+  <div class="form-group">
+      <label class="control-label  col-xs-5" >
+          联系电话 <span class="required">:</span>
+      </label>
+      <label  class="control-label col-xs-4" style="text-align: left;"> #if($beans)$beans.phone #end </label>
+  </div>
+
+  <div class="form-group">
+      <label class="control-label  col-xs-5" >
+          聘用时间 <span class="required">:</span>
+      </label>
+      <label  class="control-label col-xs-4" style="text-align: left;">#if($beans) $beans.hrieTime_Str #end</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >
+            出生时间 <span class="required">:</span>
+        </label>
+        <label  class="control-label col-xs-4" style="text-align: left;"> #if($beans)$beans.bornTime_Str #end</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >
+            取证时间 <span class="required">:</span>
+        </label>
+        <label  class="control-label col-xs-4" style="text-align: left;"> #if($beans)$beans.obEvidtime_Str #end</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >
+            证件类型 <span class="required">:</span>
+        </label>
+            #if($driverTypes)
+                #foreach($cop in $driverTypes)
+                     #if ($cop==$beans.docType)
+                <label  class="control-label col-xs-4" style="text-align: left;"> $cop</label>
+                   #end
+                #end
+            #else
+            <dd>暂无数据</dd>
+            #end
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >状态 <span class="required">:</span>
+        </label>
+        <label  class="control-label col-xs-4" style="text-align: left;">
+            #if($beans.status==1)待岗 #end
+            #if($beans.status==2)出车 #end
+            #if($beans.status==3)离岗 #end
+        </label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label  col-xs-5" >
+            录入人 <span class="required">:</span>
+        </label>
+
+        <label  class="control-label col-xs-4" style="text-align: left;"> #if($beans)$user.loginName #end  </label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label  col-xs-5" >
+            录入时间 <span class="required">:</span>
+        </label>
+        <label  class="control-label col-xs-4" style="text-align: left;"> #if($beans)$beans.createDateTime_Str #end  </label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >健康状态 <span class="required">:</span>
+        </label>
+
+            <label  class="control-label col-xs-4" style="text-align: left;">
+                #if($beans.healthStatus=="健康")健康 #end
+                #if($beans.healthStatus=="非健康")非健康 #end
+            </label>
+
+        </div>
+    </div>
+
+    <div class="ln_solid"></div>
+<label>上月司机出车评价</label>
+    <table class="table table-striped table-bordered dataTable no-footer">
+        <tr class="headings">
+            <th class="column-title">出车次数 </th>
+            <!--<th class="column-title">上月耗时（分） </th>-->
+            <th class="column-title">优秀（次数）</th>
+            <th class="column-title">良好（次数）</th>
+            <th class="column-title">一般（次数）</th>
+            <th class="column-title">差（次数）</th>
+        <tr>
+     #if($driverFlowCount)
+        #foreach($param in $driverFlowCount)
+        <tr>
+            <th class="column-title">$param.get("CCNO") </th>
+            <!--<th class="column-title">$param.get("ONE_TIMEBILLEN")</th>-->
+            <th class="column-title">$param.get("ANO")</th>
+            <th class="column-title">$param.get("BNO")</th>
+            <th class="column-title">$param.get("CNO")</th>
+            <th class="column-title">$param.get("DNO")</th>
+        <tr>
+        #end
+      #else
+        <tr>
+            <td colspan="6" align="center">暂无数据</td>
+        </tr>
+       #end
+    </table>
+    <div class="ln_solid"></div>
+</form>
+

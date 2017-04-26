@@ -1,0 +1,90 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/新闻展示
+            <small>- 新闻展示</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+      <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 新闻展示.
+      </div>
+
+        <div class=" col-xs-12 " >
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>新闻发布</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content">
+                    <div class="x_title text-center">
+                        <p  ><h3> <strong>$noticeShow.noticeName</strong></h3></p>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-xs-8 col-xs-offset-2">$noticeShow.content</div>
+                    </br>
+                    #if($noticeShow.filename)
+                    <div  class="col-xs-8 col-xs-offset-2">附件：<a href="/downloadFile?id=$!noticeShow.fileId">$!noticeShow.filename</a></div>
+                    #end
+                    <div class="col-md-12"><label class="col-md-11 text-right">发布时间：$helper.formateMinDateToString($noticeShow.createDateTime)</label></div>
+
+                </div>
+            </div>
+        </div>
+
+       <!-- <div class="row text-center"  >
+            &lt;!&ndash;<div style="height: 100px;width: 800px;margin-left: 110px;border: dashed #2a85a0 1px;">&ndash;&gt;
+            <div class="col-md-2"></div>
+                <div class="col-md-8 " style="border: solid #0074d9 1px;height:500px;" >
+
+                    <div class="col-md-12" style="height: 50px;line-height: 50px;" >
+                        <div class="col-md-5"><p style="float:right">名称：</p></div>
+                        <div class="col-md-3">
+                           <input type="text" value="kkk" style="line-height: normal;" >
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" style="height: 50px;line-height: 50px;"  >
+                        <div class="col-md-5" ><p style="float:right">通知部门</p></div>
+                        <div class="col-md-3" >
+                            <select style="line-height: normal;">
+                                <option>请选择</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12" style="height: 50px;line-height: 50px;">
+                        <div class="col-md-5"><p style="float:right">通知类型</p></div>
+                        <div class="col-md-3" style="line-height: normal;">
+                            <input type="checkbox" id="system" name="system">制度
+                            <input type="checkbox" id="train" name="train">培训
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-5"><p style="float:right">内容</p></div>
+                        <div class="col-md-3">
+                            <textarea name="ddd" ></textarea>
+                        </div>
+                    </div>
+                </div>
+               &lt;!&ndash; <div style="width: 600px;height: 100px; border: solid #2a85a0 1px;float: left;display: inline-block">
+
+                </div>&ndash;&gt;
+          &lt;!&ndash;  </div>&ndash;&gt;
+        </div>-->
+
+    </div>
+</div>
+<script>
+    require(["app/publishnews/publishnews"]);
+</script>

@@ -1,0 +1,53 @@
+</br>
+<div class=" x_panel  ">
+        <table width="100%" border="0" align="center" cellpadding="0"
+               class="table_all_border" cellspacing="0" style="margin-bottom: 0px;border-bottom: 0px">
+            <tr>
+                <td align="center">
+                    待办任务
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-bordered dataTable no-footer">
+            <tr class="headings">
+                <th class="column-title">流程名称</th>
+                <th class="column-title">流程编号</th>
+                <th class="column-title">流程启动时间</th>
+                <th class="column-title">任务名称</th>
+                <th class="column-title">任务创建时间</th>
+                <th class="column-title no-link last"><span class="nobr">操作</span>
+            </tr>
+            #foreach($item in $page.result)
+                <tr>
+                    <td align=left >
+                        $item.processName&nbsp;
+                    </td>
+                    <td align=left>
+                        $item.orderNo&nbsp;
+                    </td>
+                    <td align=left >
+                        $item.orderCreateTime&nbsp;
+                    </td>
+                    <td align=left>
+                        $item.taskName&nbsp;
+                    </td>
+                    <td align=left>
+                        $item.taskCreateTime&nbsp;
+                    </td>
+                    <td class=" last">
+                        <a href="#if($item.actionUrl) $item.actionUrl?processId=$item.processId&taskId=$item.taskId&orderId=$item.orderId #end" class="btnEdit" title="处理">处理</a>
+                    </td>
+                </tr>
+            #end
+        </table>
+        <table>
+            <tr>
+                <td>总共$page.totalCount条记录 共$page.totalPages页 当前第$page.pageNo页
+                    <a href="sra_flow_dbquery?pageNo=1">首页</a>
+                    <a href="sra_flow_dbquery?pageNo=$page.prePage">上一页</a>
+                    <a href="sra_flow_dbquery?pageNo=$page.nextPage">下一页</a>
+                    <a href="sra_flow_dbquery?pageNo=$page.totalPages">末页</a>
+                </td>
+            </tr>
+        </table>
+</div>

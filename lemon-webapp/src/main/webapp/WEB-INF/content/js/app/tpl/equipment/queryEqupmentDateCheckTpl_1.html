@@ -1,0 +1,137 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+
+    <thead>
+    <tr class="headings">
+        <!--<th><input type="checkbox" id="check-all"  class="checkAll "></th>-->
+        <th class="column-title">序号</th>
+        <th class="column-title">核查方法</th>
+        <th class="column-title">核查时间</th>
+        <th class="column-title">核查人</th>
+        <th class="column-title">间隔</th>
+        <th class="column-title">核查记录</th>
+        <th class="column-title">核查数据</th>
+        <th class="column-title">数据处理</th>
+        <th class="column-title">核查结论</th>
+        <th class="column-title">负责人</th>
+        <th class="column-title">日期</th>
+        <%if(canOpera==1){%>
+        <th class="column-title">操作</th>
+        <%}%>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = (pageNumber-1)*pageSize%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr data-tt-id="<%=items[i].id%>">
+        <!--<td class=" " > <input type="checkbox" class="checkBtn" name="table_records" value="<%=items[i].id%>"></td>-->
+        <td class="num"><%=num+i+1%></td>
+        <td class=" "><%=items[i].checkWay%></td>
+        <td class=" "><%=items[i].scheckTime%></td>
+        <td class=" "><%=items[i].checkPerson%></td>
+        <td class=" "><%=items[i].days%></td>
+        <td class=" "><%=items[i].content%></td>
+        <td class=" "><%=items[i].checkDate%></td>
+        <td class=" "><%=items[i].date%></td>
+        <td class=" "><%=items[i].headContent%></td>
+        <td class=" "><%=items[i].headPerson%></td>
+        <td class=" "><%=items[i].sheadTime%></td>
+        <%if(canOpera==1){%>
+        <td>
+            <a class="updateDateCheck">修改</a>
+            <!--<a class="deleteHealth">删除</a>-->
+            <input type="hidden" value="<%=items[i].id%>" id="dateCheckId">
+        </td>
+        <%}%>
+    </tr>
+
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="12" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+    <tfoot >
+
+    </tfoot>
+</table>
+
+
+<div class="container addDateCheck hidden addWorkingRecord">
+    <form id="saveDateCheck" class="form-horizontal form-label-left" >
+        <input type="hidden" name="hiddenDateCheckId" id="hiddenDateCheckId">
+        <input type="hidden" name="equipmentId" id="equipmentId">
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label">核查方法：</label>
+            <div class="col-xs-5">
+                <input type="text" class="form-control " name="checkWay" id="checkWay" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-3 control-label">核查时间：</label>
+            <div class="col-xs-5">
+                <input type="text" class="form-control Wdate" name="scheckTime" id="scheckTime" required="required" placeholder="核查时间">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-3 control-label">核查人：</label>
+            <div class="col-xs-5">
+                <input type="text" class="form-control " name="checkPerson" id="checkPerson" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-3 control-label">间隔：</label>
+            <div class="col-xs-5">
+                <input type="text" class="form-control " name="days" id="days" required="required">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-xs-3 control-label">负责人：</label>
+            <div class="col-xs-5">
+                <input type="text" class="form-control " name="headPerson" id="headPerson" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-3 control-label">时间：</label>
+            <div class="col-xs-5">
+                <input type="text" class="form-control Wdate" name="sheadTime" id="sheadTime" required="required" placeholder="负责人签字时间">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-3 control-label">核查记录：</label>
+            <div class="col-xs-5">
+                <textarea type="text" class="form-control " name="content" id="content" required="required"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-3 control-label">核查数据：</label>
+            <div class="col-xs-5">
+                <textarea type="text" class="form-control " name="checkDate" id="checkDate" required="required"></textarea>
+            </div>
+
+        </div>
+        <div class="form-group">
+        <label class="col-xs-3 control-label">数据处理：</label>
+            <div class="col-xs-5">
+                <textarea type="text" class="form-control " name="date" id="date" required="required"></textarea>
+            </div>
+    </div>
+        <div class="form-group">
+            <label class="col-xs-3 control-label">核查结论：</label>
+            <div class="col-xs-5">
+                <textarea type="text" class="form-control " name="headContent" id="headContent" required="required"></textarea>
+            </div>
+        </div>
+        <br>
+        <div class="form-group" style="text-align: center">
+            <button type="submit" class="btn btn-success addOrUpdateDateCheck">保存</button>
+            <button type="button" class="btn btn-default cancelBtn">取消</button>
+        </div>
+
+    </form>
+
+</div>

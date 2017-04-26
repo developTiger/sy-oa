@@ -1,0 +1,42 @@
+
+
+<div class="form-group">
+    <label class="control-label  col-xs-2" for="strBeginDate">开始时间 <span class="required">*</span>
+    </label>
+    <div class="col-xs-6">
+        <input type="text" id="strBeginDate" required="required" name="strBeginDate" value="<%=dateFormat(trainBeginDate).substring(0,10)%>"
+               class="form-control  col-xs-7" data-parsley-id="2038" readonly>
+
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label  col-xs-2" for="strEndDate">结束时间 <span class="required">*</span>
+    </label>
+    <div class="col-xs-6">
+        <input type="text" id="strEndDate" required="required" value="<%=dateFormat(trainEndDate).substring(0,10)%>" name="strEndDate"
+               class="form-control  col-xs-7" data-parsley-id="2038" readonly>
+        <ul class="parsley-errors-list" id="parsley-id-1208"></ul>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label  col-xs-2" for="trainPlace">地点 <span class="required">*</span>
+    </label>
+    <div class="col-xs-6">
+        <input type="text" id="trainPlace" required="required" value="<%=trainPlace%>" name="trainPlace"
+               class="form-control  col-xs-7" data-parsley-id="2038" readonly>
+        <ul class="parsley-errors-list" id="parsley-id-1038"></ul>
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label  col-xs-2" for="trainContent">培训内容 <span class="required">*</span>
+    </label>
+
+    <div class="col-xs-6">
+        <textarea id="trainContent" required="required" name="trainContent" value="<%=trainContent%>"
+                  class="form-control  col-xs-7"  readonly><%=trainContent%></textarea>
+        <ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+    </div>
+</div>

@@ -1,0 +1,104 @@
+
+<table class="table table-striped table-bordered dataTable no-footer">
+
+    <thead>
+    <tr class="headings">
+        <!--<th><input type="checkbox" id="check-all"  class="checkAll "></th>-->
+        <th class="column-title">序号</th>
+        <th class="column-title">日期</th>
+        <th class="column-title">保养员签字</th>
+        <th class="column-title">保养部位</th>
+        <th class="column-title">更换情况</th>
+        <th class="column-title">保养效果</th>
+        <th class="column-title">遗留问题</th>
+        <th class="column-title">保养停机小时</th>
+        <%if(canOpera==1){%>
+        <th class="column-title">操作</th>
+        <%}%>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = (pageNumber-1)*pageSize%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr data-tt-id="<%=items[i].id%>">
+        <!--<td class=" " > <input type="checkbox" class="checkBtn" name="table_records" value="<%=items[i].id%>"></td>-->
+        <td class="num"><%=num+i+1%></td>
+        <td class=" "><%=dateFormat2(items[i].time)%></td>
+        <td class=" "><%=items[i].personName%></td>
+        <td class=" "><%=items[i].position%></td>
+        <td class=" "><%=items[i].changeSituation%></td>
+        <td class=" "><%=items[i].result%></td>
+        <td class=" "><%=items[i].question%></td>
+        <td class=" "><%=items[i].stopMachineTime%></td>
+
+        <%if(canOpera==1){%>
+        <td>
+            <a class="updateHealthRecord">修改</a>
+            <!--<a class="deleteHealth">删除</a>-->
+            <input type="hidden" value="<%=items[i].id%>" id="workingId">
+        </td>
+        <%}%>
+    </tr>
+
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="9" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+    <tfoot >
+
+    </tfoot>
+</table>
+
+
+<div class="container addWorkingRecord hidden">
+    <form id="saveWorking" class="form-horizontal form-label-left" >
+        <input type="hidden" name="hiddenWorkingId" id="hidWorkingId">
+        <input type="hidden" name="equipmentId" id="equipmentId">
+
+        <div class="form-group">
+            <label class="col-xs-4 control-label">保养部位：</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control " name="position" id="position" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-4 control-label">保养停机小时：</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control " name="stopMachineTime" id="stopMachineTime">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-4 control-label">更换情况：</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control " name="changeSituation" id="changeSituation" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-4 control-label">保养效果：</label>
+            <div class="col-xs-4">
+                <textarea type="text" class="form-control " name="result" id="result" required="required"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-4 control-label">遗留问题：</label>
+            <div class="col-xs-4">
+                <textarea type="text" class="form-control " name="question" id="question" required="required"></textarea>
+            </div>
+        </div>
+
+
+        <br>
+        <div class="form-group" style="text-align: center">
+            <button type="submit" class="btn btn-success addOrUpdateHealth">保存</button>
+            <button type="button" class="btn btn-default cancelBtn">取消</button>
+        </div>
+
+    </form>
+
+</div>
+
+

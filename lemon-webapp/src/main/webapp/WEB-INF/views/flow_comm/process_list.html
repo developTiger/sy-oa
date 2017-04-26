@@ -1,0 +1,59 @@
+</br>
+<div class=" x_panel  ">
+        <table width="100%" border="0" align="center" cellpadding="0"
+               class="table_all_border" cellspacing="0" style="margin-bottom: 0px;border-bottom: 0px">
+            <tr>
+                <td align="center">
+                    流程管理
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" id="init_process">初始化</button>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-bordered dataTable no-footer">
+            <tr class="headings">
+                <th class="column-title">名称</th>
+                <th class="column-title">流程显示名称</th>
+                <th class="column-title">状态</th>
+                <th class="column-title">版本号</th>
+                <th class="column-title no-link last"><span class="nobr">操作</span>
+            </tr>
+            #foreach($item in $page.result)
+                <tr>
+                    <td align=left >
+                        $item.name&nbsp;
+                    </td>
+                    <td align=left>
+                        $item.displayName&nbsp;
+                    </td>
+                    <td align=left >
+                        #if($item.state == 1) 启用 #else 禁用 #end &nbsp;
+                    </td>
+                    <td align=left>
+                        $item.version&nbsp;
+                    </td>
+                    <td class=" last">
+                        #if($item.state == 1)
+                            <a href="ajax_syy_process_del?processId=$item.id" class="btnDel" title="卸载">卸载</a>
+                        #end
+                    </td>
+                </tr>
+            #end
+        </table>
+        <table>
+            <tr>
+                <td>总共$page.totalCount条记录 共$page.totalPages页 当前第$page.pageNo页
+                    <a href="sra_flow_process_list?pageNo=1">首页</a>
+                    <a href="sra_flow_process_list?pageNo=$page.prePage">上一页</a>
+                    <a href="sra_flow_process_list?pageNo=$page.nextPage">下一页</a>
+                    <a href="sra_flow_process_list?pageNo=$page.totalPages">末页</a>
+                </td>
+            </tr>
+        </table>
+</div>
+<script>
+    require(["app/flow_comm/process_list"]);
+</script>

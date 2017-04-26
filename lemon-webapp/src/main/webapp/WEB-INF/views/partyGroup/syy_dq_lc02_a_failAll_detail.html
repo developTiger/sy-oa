@@ -1,0 +1,47 @@
+
+<div class=" " style="text-align: left;width: 500px">
+    <div class="col-xs-offset-2" >
+        <div><label class="" style="font-size: larger;margin-top: 5px;">项目名称：$!beans.projectName</label></div>
+        <div><label style="font-size:larger;margin-top: 5px;">项目申报类别：$!beans.competitionType</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">竞赛负责人：$!beans.leader</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">实施时间：$help.formatDateToString($!beans.cpmpetitionTime,"yyyy-MM-dd")</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">主要参与人：$!beans.joinPeople</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">专业主管部门：$!beans.competitionUnit</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">取得净效益：$!beans.netBenefit</label></div>
+
+        <div><label style="font-size: larger;margin-top: 5px;">成果评审小组成员：$!beans.reviewGroupMembers</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">成果评审小组组长：$!beans.achi_judgeMemberLeader</label></div>
+        #if($beans.achiOnlyScores)
+        <div><label style="font-size: larger;margin-top: 5px;">成员评分：</label></div>
+        <div class="col-xs-offset-2" style="font-size: larger;font-weight: bolder">
+
+            #foreach($bean in $beans.achiOnlyScores)
+            <p>$bean</p>
+            #end
+
+        </div>
+        #end
+
+
+        #if($beans.achiOnlyAdvise)
+        <div><label style="font-size: larger;margin-top: 5px;">成员意见：</label></div>
+        <div class="col-xs-offset-2" style="font-size: larger;font-weight: bolder">
+
+            #foreach($bean in $beans.achiOnlyAdvise)
+            <p>$bean</p>
+            #end
+
+        </div>
+        #end
+
+
+        <div><label style="font-size: larger;margin-top: 5px;">附件：<a href="downloadFile?id=$!beans.fileId">$!beans.fileName</a></label></div>
+
+
+
+
+    </div>
+</div>
+
+
+

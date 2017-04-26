@@ -1,0 +1,39 @@
+<div class="pull-right">
+    <a href="sra_p_showNewsList"><strong>更多</strong></a>
+</div>
+<table class="table   dataTable no-footer" border="0">
+
+    <thead>
+    <tr class="headings">
+
+        <th class="column-title">类型</th>
+        <th class="column-title">新闻标题</th>
+        <th class="column-title">发布时间</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = 0%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr >
+
+        <td><%if(items[i].noticeType == "News"){%>
+            [新闻]
+            <%}%>
+        </td>
+        <td><a href="/sra_p_showNews?id=<%=items[i].id%>"><%=items[i].noticeName%></a></td>
+        <td><%if(items[i].sDate){%>
+            <%=dateFormat(items[i].createDateTime)%>
+            <%}%>
+        </td>
+
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="3" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

@@ -1,0 +1,93 @@
+<div class="">
+    <div class="">
+        <form  id="BasicInfoForm" class="form-horizontal fa-align-left">
+            <input type="hidden" id="empId" name="empId"  >
+            <input type="hidden" name="id" value="<%=id%>">
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" >是否是当前上岗证书 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="radio" name="isCurrent" value="1" <%if(isCurrent){%> checked="checked"<%}%> >是
+                    <input type="radio" name="isCurrent" value="0" <%if(!isCurrent){%> checked="checked"<%}%> > 否
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">证书名称 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="name" class="form-control col-md-7 col-xs-12" type="text" value="<%=name%>"
+                           name="name" data-parsley-id="1103"><ul class="parsley-errors-list" id="parsley-id-3103"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">考核项目 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="idCard" class="form-control col-md-7 col-xs-12" type="text" value="<%=idCard%>"
+                           name="idCard" data-parsley-id="1103"><ul class="parsley-errors-list" id="parsley-id-9103"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">证书编号 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="brief" class="form-control col-md-7 col-xs-12" type="text" value="<%=brief%>"
+                           name="brief" data-parsley-id="1103"><ul class="parsley-errors-list" id="parsley-id-91403"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">颁发时间 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="time"  class="form-control col-md-7 col-xs-12 mini-width Wdate" type="text"
+                           value="<%if(creTime){%><%=dateFormat2(creTime)%><%}%>"
+                           name="time" data-parsley-id="1103"><ul class="parsley-errors-list" id="parsley-id-903"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">附件 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <!--<label class=" col-md-2 col-sm-3 col-xs-12 text-right">证书上传 <span class="required">*</span></label>-->
+                    <input type="file" id="fileId" name="filename1">
+                    <ul class="parsley-errors-list" id="parsley-id-5103"></ul>
+                </div>
+            </div>
+
+            <!--<div class="form-group">-->
+                <!--<label class="control-label col-md-2 col-sm-3 col-xs-12">描述 <span class="required">*</span>-->
+                <!--</label>-->
+                <!--<div class="col-md-6 col-sm-6 col-xs-12">-->
+                    <!--<textarea class="form-control col-md-7 col-xs-12" name="brief" data-parsley-id="1103"><%=brief%></textarea>-->
+                    <!--<ul class="parsley-errors-list" id="parsley-id-7103"></ul>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class="ln_solid"></div>
+
+            <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                    <button type="submit" id="submitQualificationInfo" data-url="QualificationInformation"   class="btn btn-success">提交</button>
+                    <button type="button" class="btn btn-primary cancelBtn">取消</button>
+                </div>
+            </div>
+
+         </form>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+

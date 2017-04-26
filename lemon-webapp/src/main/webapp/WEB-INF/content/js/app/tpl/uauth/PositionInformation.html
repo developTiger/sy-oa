@@ -1,0 +1,88 @@
+<div class="">
+    <div class="">
+        <form id="BasicInfoForm" class="form-horizontal fa-align-left">
+            <input type="hidden" id="empId" name="empId"  >
+            <input type="hidden" name="id" value="<%=id%>">
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" >是否是当前职务 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="radio" name="isCurrent" value="1" <%if(isCurrent){%> checked="checked"<%}%> >是
+                    <input type="radio" name="isCurrent" value="0" <%if(!isCurrent){%> checked="checked"<%}%> > 否
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label  class="control-label col-md-2 col-sm-3 col-xs-12">技术职务名称 <span class="required">*</span></label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <!--<input id="major" class="form-control col-md-7 col-xs-12" type="text" value="<%=major%>"-->
+                           <!--name="major" data-parsley-id="1103"><ul class="parsley-errors-list" id="parsley-id-3103"></ul>-->
+
+                    <select id="major" name="major" class="form-control col-xs-7" >
+                        <option value="">请选择</option>
+
+                        <option value="教授级高工"    <%if(major){ if("教授级高工"==major){%> selected="selected"<% } } %> >教授级高工</option>
+                        <option value="高级工程师"  <%if(major){ if("高级工程师"==major){%> selected="selected"<% } } %> >高级工程师</option>
+                        <option value="工程师"    <%if(major){ if("工程师"==major){%> selected="selected"<% } } %> >工程师</option>
+                        <option value="助理工程师"    <%if(major){ if("助理工程师"==major){%> selected="selected"<% } } %> >助理工程师</option>
+                        <option value="技术员"    <%if(major){ if("技术员"==major){%> selected="selected"<% } } %> >技术员</option>
+
+                        <option value="高级政工师"  <%if(major){ if("高级政工师"==major){%> selected="selected"<% } } %> >高级政工师</option>
+                        <option value="政工师"    <%if(major){ if("政工师"==major){%> selected="selected"<% } } %> >政工师</option>
+                        <option value="助理政工师"    <%if(major){ if("助理政工师"==major){%> selected="selected"<% } } %> >助理政工师</option>
+                        <option value="高级会计师"    <%if(major){ if("高级会计师"==major){%> selected="selected"<% } } %> >高级会计师</option>
+                        <option value="会计师"  <%if(major){ if("会计师"==major){%> selected="selected"<% } } %> >会计师</option>
+                        <option value="助理会计师"    <%if(major){ if("助理会计师"==major){%> selected="selected"<% } } %> >助理会计师</option>
+                        <option value="高级经济师"    <%if(major){ if("高级经济师"==major){%> selected="selected"<% } } %> >高级经济师</option>
+                        <option value="经济师"    <%if(major){ if("经济师"==major){%> selected="selected"<% } } %> >经济师</option>
+                        <option value="助理会计师"  <%if(major){ if("助理会计师"==major){%> selected="selected"<% } } %> >助理会计师</option>
+
+                        <option value="高级技师"    <%if(major){ if("高级技师"==major){%> selected="selected"<% } } %> >高级技师</option>
+                        <option value="技师"    <%if(major){ if("技师"==major){%> selected="selected"<% } } %> >技师</option>
+                        <option value="高级工"    <%if(major){ if("高级工"==major){%> selected="selected"<% } } %> >高级工</option>
+                        <option value="中级工"    <%if(major){ if("中级工"==major){%> selected="selected"<% } } %> >中级工</option>
+                        <option value="初级工"  <%if(major){ if("初级工"==major){%> selected="selected"<% } } %> >初级工</option>
+
+                        <option value="未评聘"  <%if(major){ if("未评聘"==major){%> selected="selected"<% } } %> >未评聘</option>
+
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">评聘时间 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" class="form-control mini-width Wdate" value="<%if(strInTime){%><%=strInTime.substring(0,10)%><%}%>"
+                           name="strInTime"  placeholder="评聘时间" >
+                    <ul class="parsley-errors-list" id="parsley-id-2891"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">解聘时间 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" class="form-control mini-width Wdate" value="<%if(strOutTime){%><%=strOutTime.substring(0,10)%><%}%>"
+                           name="strOutTime"  placeholder="解聘时间" >
+                    <ul class="parsley-errors-list" id="parsley-id-9891"></ul>
+                </div>
+            </div>
+
+
+
+
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <!--<button type="submit" class="btn btn-primary">Cancel</button>-->
+                    <button type="submit" id="submitUserInfo" data-title="PositionInformation" data-url="PositionInformation" class="btn btn-success">提交</button>
+                    <button type="button" class="btn btn-primary cancelBtn">取消</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

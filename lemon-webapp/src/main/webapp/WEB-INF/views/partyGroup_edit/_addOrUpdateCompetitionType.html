@@ -1,0 +1,32 @@
+<form id="addOrUpdatetypeForm" data-parsley-validate="" class="form-horizontal form-label-left ">
+
+    <input type="hidden" name="id" #if($bean) value="$bean.id" #end>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >竞赛类别 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <input type="text"  required="required" #if($bean) value="$!bean.name" #end name="name"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="description">描述
+        </label>
+        <div class="col-xs-6">
+            <textarea id="description"  name="description"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">$!bean.description</textarea>
+            <ul class="parsley-errors-list" id="parsley-id-7641"></ul>
+        </div>
+    </div>
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdate" data-url="add_update_competitionType"
+                    class="btn btn-success">提交</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+</form>

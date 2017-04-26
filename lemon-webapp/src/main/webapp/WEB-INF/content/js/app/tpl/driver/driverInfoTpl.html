@@ -1,0 +1,76 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+
+    <thead>
+    <tr class="headings">
+        <th>
+            <input type="checkbox" id="check-all"  class="checkAll ">        </th>
+
+        <th class="column-title">司机姓名 </th>
+        <th class="column-title">性别 </th>
+        <th class="column-title">聘用时间 </th>
+      <!--  <th class="column-title">调度中心 </th>-->
+        <th class="column-title">联系电话 </th>
+        <th class="column-title">证件类型 </th>
+        <th class="column-title">目前状态 </th>
+      <!-- <th class="column-title" hidden>companyid</th>-->
+        <th class="column-title no-link last"><span class="nobr">操作</span>
+        </th>
+        <th class="bulk-actions" colspan="7">
+            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = (pageNumber-1) * pageSize%>
+    <%if(pagesCount > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr data-tt-id="<%=items[i].id%>">
+        <td class=" " > <input type="checkbox" class="checkBtn" name="table_records" value="<%=items[i].id%>"></td>
+        <td class=" "><%=items[i].driverName%></td>
+        <td class=" ">
+            <%if(items[i].gender==1){%>
+                 <%="男"%>
+            <%}%>
+            <%if(items[i].gender==0){%>
+                 <%="女"%>
+            <%}%>
+        </td>
+
+        <td class=" "><%=dateFormat2(items[i].hrieTime)%></td>
+     <!--   <td class=" "><%=items[i].companyName%></td>-->
+        <td class=" "><%=items[i].phone%></td>
+        <td class=" "><%=items[i].docType%></td>
+        <td>
+            <%if(items[i].status==1){%>
+                 <%="待岗"%>
+            <%}%>
+            <%if(items[i].status==2){%>
+                 <%="出车"%>
+            <%}%>
+            <%if(items[i].status==3){%>
+                 <%="离岗"%>
+            <%}%>
+        </td>
+      <!--  <th class="" ><%=items[i].companyId%></th>-->
+        <td class="last">
+            &nbsp; &nbsp; &nbsp;
+            <a class="i_modal"
+               data-title="修改司机信息" data-url="_repaireDriverInfoForm?id=<%=items[i].id%>">
+                <i class="green fa fa-pencil"></i>修改 </a>
+          &nbsp; &nbsp; &nbsp;
+            <a class="i_modal"
+               data-title="司机详细信息" data-url="_detailDriverInfoForm?id=<%=items[i].id%>">
+                <i class="blue fa fa-list-alt"></i>详细 </a>
+            <!--<a class="i_modal label label-default"-->
+               <!--data-title="删除司机信息" data-url="_deleteDriverInfoForm">-->
+                <!--<span><i class="green fa fa-plus"></i>删除</span></a>-->
+         </td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="10" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

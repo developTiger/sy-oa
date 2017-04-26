@@ -1,0 +1,103 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <!--  <th>
+              <input type="checkbox" id="check-all"  class="checkAll flat">        </th>-->
+        <th class="column-title">序号</th>
+        <th class="column-title">单位</th>
+        <th class="column-title"><%=d0%></th>
+        <th class="column-title"><%=d1%></th>
+        <th class="column-title"><%=d2%></th>
+        <th class="column-title"><%=d3%></th>
+        <th class="column-title"><%=d4%></th>
+        <th class="column-title"><%=d5%></th>
+        <th class="column-title"><%=d6%></th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = 0%>
+    <%if(list.length> 0){%>
+    <%for(var i = 0 ; i < list.length; i++) {%>
+    <tr>
+        <td class="num"><%=num+i+1%></td>
+        <td class=" "><%=list[i].deptName%></td>
+        <!--<td class=" "><%=list[i].dateToInt[d0]%></td>-->
+        <td class=" ">
+            <%if(list[i].dateToInt[d0]==1){%>
+            <span style="color: #29fe3d"> 已打考勤 </span>
+            <%}%>
+            <%if(list[i].dateToInt[d0]==0){%>
+            <span style="color: #fc3636"> 未打</span>
+            <%}%>
+            <%if(list[i].dateToInt[d0]==2){%>
+            <span style="color: #a7a5b0"> 休息</span>
+            <%}%>
+
+        </td>
+        <td class=" ">
+            <%if(list[i].dateToInt[d1]=='1'){%>
+            <span style="color: #29fe3d"> 已打考勤 </span>
+            <%}else if(list[i].dateToInt[d1]=='0'){%>
+            <span style="color: #fc3636"> 未打</span>
+            <%} else{%>
+            <span style="color: #a7a5b0"> 休息</span>
+            <%}%>
+        </td>
+        <td class=" ">
+            <%if(list[i].dateToInt[d2]=='1'){%>
+            <span style="color: #29fe3d"> 已打考勤 </span>
+            <%}else if(list[i].dateToInt[d2]=='0'){%>
+            <span style="color: #fc3636"> 未打</span>
+            <%} else{%>
+            <span style="color: #a7a5b0"> 休息</span>
+            <%}%>
+        </td>
+        <td class=" ">
+            <%if(list[i].dateToInt[d3]=='1'){%>
+            <span style="color: #29fe3d"> 已打考勤 </span>
+            <%}else if(list[i].dateToInt[d3]=='0'){%>
+            <span style="color: #fc3636"> 未打</span>
+            <%} else{%>
+            <span style="color: #a7a5b0"> 休息</span>
+            <%}%>
+        </td>
+        <td class=" ">
+            <%if(list[i].dateToInt[d4]=='1'){%>
+            <span style="color: #29fe3d"> 已打考勤 </span>
+            <%}else if(list[i].dateToInt[d4]=='0'){%>
+            <span style="color: #fc3636"> 未打</span>
+            <%} else{%>
+            <span style="color: #a7a5b0"> 休息</span>
+            <%}%>
+        </td>
+        <td class=" ">
+            <%if(list[i].dateToInt[d5]=='1'){%>
+            <span style="color: #29fe3d"> 已打考勤 </span>
+            <%}else if(list[i].dateToInt[d5]=='0'){%>
+            <span style="color: #fc3636"> 未打</span>
+            <%} else{%>
+            <span style="color: #a7a5b0"> 休息</span>
+            <%}%>
+        </td>
+        <td class=" ">
+            <%if(list[i].dateToInt[d6]=='1'){%>
+            <span style="color: #29fe3d"> 已打考勤 </span>
+            <%}else if(list[i].dateToInt[d6]=='0'){%>
+            <span style="color: #fc3636"> 未打</span>
+            <%} else{%>
+            <span style="color: #a7a5b0"> 休息</span>
+            <%}%>
+        </td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="9" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+
+
+</table>

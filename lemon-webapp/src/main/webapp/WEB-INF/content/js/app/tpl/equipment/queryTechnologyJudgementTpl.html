@@ -1,0 +1,55 @@
+
+<%var num = (pageNumber-1)*pageSize%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+
+    <table class="table table-striped table-bordered dataTable no-footer ">
+
+        <tr>
+            <th colspan="2" class="column-title text-center" >设备名称</th>
+            <th colspan="3" class="column-title text-center">评估类型</th>
+            <!--<th colspan="2" class="column-title text-center">评估结论</th>-->
+            <th colspan="3" class="column-title text-center">评估时间</th>
+        </tr>
+        <tr>
+            <th colspan="2"><%=items[i].name%></th>
+            <th colspan="3"><%if(items[i].assessType==1){%>报废前评估<%}else{%>年度评估<%}%></th>
+            <!--<th colspan="2"><%=items[i].assessResult%></th>-->
+            <th colspan="3">
+                <%if(items[i].time){%>
+                <%=dateFormat2(items[i].time)%>
+                <%}%>
+            </th>
+        </tr>
+
+        <tr class="headings">
+            <!--<th><input type="checkbox" id="check-all"  class="checkAll "></th>-->
+            <th class="column-title text-center">序号</th>
+            <th class="column-title text-center">项目参数名</th>
+            <th class="column-title text-center">参数范围</th>
+            <th class="column-title text-center">试验值</th>
+            <th class="column-title text-center">符合程度</th>
+            <th class="column-title text-center">评估或试验人员</th>
+            <th class="column-title text-center">建议或措施</th>
+            <th class="column-title text-center">验证实施</th>
+
+        </tr>
+        <%for(var j=0;j < items[i].assessContents.length;j++){%>
+        <tr >
+            <!--<td class=" " > <input type="checkbox" class="checkBtn" name="table_records" value="<%=items[i].id%>"></td>-->
+            <td class="num"><%=num+j+1%></td>
+
+            <td class=" "><%=items[i].assessContents[j].parameterName%></td>
+            <td class=" "><%=items[i].assessContents[j].parameterRange%></td>
+            <td class=" "><%=items[i].assessContents[j].testValue%></td>
+            <td class=" "><%=items[i].assessContents[j].conform%></td>
+            <td class=" "><%=items[i].assessContents[j].testCrew%></td>
+            <td class=" "><%=items[i].assessContents[j].suggest%></td>
+            <td class=" "><%=items[i].assessContents[j].implement%></td>
+            <%}%>
+
+        </tr>
+
+    </table>
+    <%}%>
+    <%}%>

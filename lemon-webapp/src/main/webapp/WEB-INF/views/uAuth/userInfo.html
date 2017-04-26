@@ -1,0 +1,101 @@
+</br>
+$ui.loadCss("select2/select2.min.css")
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/员工管理
+            <small>- 员工管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 基本信息,教育信息,工作经历,职务信息,资质信息,家庭情况
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <input type="hidden" id="baseEmpId" name="empId" value="$empId">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>员工信息</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content " >
+                    <div class=" col-xs-2 " style="position: relative;zoom: 1;">
+                        <a class="selectUserInfo"  href="BasicInformation" data-toggle="tab"  aria-expanded="false">
+                            <div class="alert  alert-dismissible fade in" style="border:solid #EEEEF9 1px;background-color: #EEEEF9"  role="alert">
+                                <button type="button" class="close"  aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <strong>基本信息</strong>
+                            </div>
+                        </a>
+                        <a class="selectUserInfo" href="EducationInformation"  data-toggle="tab" aria-expanded="false">
+                            <div class="alert  alert-dismissible fade in" style="border:solid #EEEEF9 1px; background-color: #EEEEF9" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                                <strong>教育信息</strong>
+                            </div>
+                        </a>
+                        <a class="selectUserInfo" style="background-color: #497F7F" href="WorkExInformation" data-toggle="tab" aria-expanded="false">
+                            <div class="alert  alert-dismissible fade in" style="border:solid #EEEEF9 1px;background-color: #EEEEF9" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                                <strong>工作经历</strong>
+                            </div>
+                        </a>
+                        <a class="selectUserInfo" style="background-color: #497F7F" href="PositionInformation" data-toggle="tab" aria-expanded="false">
+                            <div class="alert  alert-dismissible fade in" style="border:solid #EEEEF9 1px;background-color: #EEEEF9" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                               <strong>专业技术职务经历</strong>
+                            </div>
+                        </a>
+                        <a class="selectUserInfo" style="background-color: #497F7F"  href="QualificationInformation" data-toggle="tab" aria-expanded="false">
+                            <div class="alert  alert-dismissible fade in" style="border:solid #EEEEF9 1px;background-color: #EEEEF9" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                                <strong>上岗证书</strong>
+                            </div>
+                        </a>
+                        <a class="selectUserInfo" style="background-color: #497F7F"  href="FamilyInformation" data-toggle="tab" aria-expanded="false">
+                            <div class="alert  alert-dismissible fade in " style="border:solid #EEEEF9 1px;background-color: #EEEEF9"  role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                                </button>
+                                <strong>家庭情况</strong>
+                            </div>
+                        </a>
+                        <!--<a class="selectUserInfo" style="background-color: #497F7F"  href="FamilyInformation" data-toggle="tab" aria-expanded="false">-->
+                            <!--<div class="alert  alert-dismissible fade in " style="border:solid #EEEEF9 1px;background-color: #EEEEF9"  role="alert">-->
+                                <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>-->
+                                <!--</button>-->
+                                <!--<strong>获奖情况</strong>-->
+                            <!--</div>-->
+                        <!--</a>-->
+                    </div>
+                <div class="col-xs-10">
+
+                    <div class="tab-content">
+
+                        <div class="tab-pane active" id="home">
+                        </div>
+                        <div id="table"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/user/userBasicInfo"]);
+</script>

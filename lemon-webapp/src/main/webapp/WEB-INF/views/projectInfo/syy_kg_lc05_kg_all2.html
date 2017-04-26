@@ -1,0 +1,72 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+$ui.loadCss("select2/select2.min.css")
+
+    <form id="approveFormLot">
+
+        <div class="x_panel">
+            <div class="x_content">
+
+             <div  style="text-align: center">
+                    <a class=" btn btn-success" id="lotApprove0">同意</a>
+                    <a class=" btn btn-primary" id="lotReject0">否决</a>
+                </div>
+
+                <div>
+                    <label>审核意见：</label>
+                </div>
+
+                <div>
+                    <textarea class="form-control" style="margin: 0px -0.5px 0px 0px; width: 100%; height: 100px;" id="allContent"></textarea>
+                </div>
+
+            </div>
+        </div>
+    </form>
+<div class="x_panel">
+
+    <div style="text-align: center;font-size: xx-small">
+        <h2>科研管理2汇总审批</h2>
+    </div>
+
+    <form id="searchForm">
+        <div class="form-inline col-xs-10 col-xs-offset-8" >
+
+            <label class="control-label">专业类别：</label>
+                <div class="form-group" style="margin-bottom: 5px">
+                        <input type="text" class="form-control" name="specType">
+                        <input class="btn btn-default " type="button"  id="failAllQueryBtn0" value="查询">
+             </div>
+        </div>
+    </form>
+
+    <div id="table1"></div>
+    <div class="col-lg-10 dataTables_paginate  ">
+        <ul class="pagination "></ul>
+    </div>
+
+ </div>
+<input type="hidden" id="hidname" name="hidname"/>
+<input type="hidden" id="hidid" name="hidid"/>
+
+<div class="modal-body">
+    <label class="control-label"  >选择审核领导:</label>
+    <label class="control-label" >
+        <select required="required" multiple="multiple" class="form-control col-xs-4 leaders" data-value="<%=num+i+1%>">
+            #if($emp1)
+                #foreach($bean in $emp1)
+                    <option value="$bean.id">$bean.name</option>
+                #end
+            #end
+        </select>
+        <input type="hidden" id="hidname1" name="hidname1"/>
+        <input type="hidden" id="hidid1" name="hidid1"/>
+    </label>
+</div>
+
+<script>
+    require(["app/projectInfo/syy_kg_lc05_a_lot2"]);
+</script>
+
+
+
+

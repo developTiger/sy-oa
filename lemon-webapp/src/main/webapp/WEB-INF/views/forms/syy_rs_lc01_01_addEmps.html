@@ -1,0 +1,38 @@
+<!--<form id="queryTrainEmps" data-url="_get_emp_by_dept">-->
+<div class="form-inline" style="margin-bottom: 10px">
+
+
+    <div class="form-group">
+        <label class="control-label">姓名</label>
+        <label class="control-label"><input type="text" class="form-control" style="max-width: 160px;"  name="empName" id="empName"></label>
+    </div>
+    <div class="form-group">
+        <label class="control-label">
+            <input type="button" id="queryEmps" class="btn btn-default" value="查询" style="position: relative;top: 0.2em">
+        </label>
+    </div>
+
+</div>
+
+
+    <input type="hidden" value="$fKind" id="emp_formKind">
+    <input type="hidden" value="$deptId" id="emp_deptId">
+
+        <div id="table">
+
+        </div>
+
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+
+        <div class="form-group">
+            <!--<div class=" col-xs-6 col-xs-offset-3">
+
+                <button type="button" id="addOrUpdateEmps" data-url="ajax_add_update_emps" class="btn btn-success">提交</button>
+                <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+            </div>-->
+        </div>
+
+<!--</form>-->
+

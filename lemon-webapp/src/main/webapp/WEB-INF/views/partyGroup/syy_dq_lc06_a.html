@@ -1,0 +1,78 @@
+
+
+<div style="min-width: 800px">
+
+
+    <input type="hidden" name="id" value="$!managementDto.id">
+    <!--<input type="hidden" name="formNo" value="$!managementDto.formNo">-->
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="title">文章标题 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="title" required="required" name="title"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!managementDto.title">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="newsType">新闻类别 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <select class="form-control  col-xs-7" id="newsType" name="newsType" required="required">
+                <option value="">请选择</option>
+                <option value="新闻简讯" #if($managementDto.newsType =="新闻简讯") selected #end >新闻简讯</option>
+                <option value="院内动态" #if($managementDto.newsType =="院内动态") selected #end >院内动态</option>
+                <option value="员工风采" #if($managementDto.newsType =="员工风采") selected #end >员工风采</option>
+                <option value="油田公司动态" #if($managementDto.newsType =="油田公司动态") selected #end >油田公司动态</option>
+                <option value="地市级媒体" #if($managementDto.newsType =="地市级媒体") selected #end >地市级媒体</option>
+                <option value="省部级媒体" #if($managementDto.newsType =="省部级媒体") selected #end >省部级媒体</option>
+
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="author">作者<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="author" required="required" name="author" maxlength="50"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!managementDto.author">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="publishTime">发表时间 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="publishTime" required="required" name="publishTime"
+                   class="form-control  col-xs-7 Wdate" data-parsley-id="2038" >
+            <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+        </div>
+    </div>
+
+
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <button type="submit" id="propagandaManagementSubmit" data-url="ajax_add_update_propagandaManagement" class="btn btn-success">提交</button>
+            <a class="btn btn-primary" href="javascript:window.close();">取消</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(["app/partyGroup/propagandaManagement"]);
+</script>
+
+
+
+

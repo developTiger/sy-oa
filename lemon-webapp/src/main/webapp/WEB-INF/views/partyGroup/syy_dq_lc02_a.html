@@ -1,0 +1,166 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+$ui.loadCss("select2/select2.min.css")
+<style>
+    .multiselect-container .multiselect-group{background-color: #337AB7;}
+    .multiselect-container .multiselect-group a{color: #ffffff}
+</style>
+
+<div style="min-width: 800px">
+
+    <input type="hidden" name="id" value="$!achievementDto.id">
+    <!--<input type="hidden" name="formNo" value="$!achievementDto.formNo">-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >项目名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <select class="form-control  col-xs-7" id="selectProName" name="project_id" required="required">
+                <option value="">请选择</option>
+                #if($beans)
+                #foreach($bean in $beans)
+                <option value="$bean.id" #if($achievementDto.projectName && $achievementDto.projectName=="$bean.projectName") selected #end >$bean.projectName</option>
+                #end
+                #else
+                <d>暂无数据</d>
+                #end
+            </select>
+            <input type="hidden" name="hiddenProjectName">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="leader">竞赛负责人 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="leader"  name="leader" maxlength="50" readonly
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!achievementDto.leader">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >主要参加人 <span class="required">*</span>
+        </label>
+
+        <!--<div class="col-xs-5">-->
+            <!--<select multiple="multiple" class="select2_multiple joinPeople" name="joinPeople">-->
+                <!--#foreach($bean in $emps)-->
+                <!--<optgroup label="$bean.deptName">-->
+                    <!--#foreach($emp in $bean.empDtos)-->
+                    <!--<option value="$emp.name" >$emp.name</option>-->
+                    <!--#end-->
+                <!--</optgroup>-->
+                <!--#end-->
+            <!--</select>-->
+            <!--<input type="hidden" name="hiddenJoinPeople">-->
+        <!--</div>-->
+        <!--<label class="Js_joinPeople col-xs-7" name="hiddenJoinPeople" style="position: relative;top: 0.5em;"></label>-->
+        <div class=" col-xs-5">
+            <input type="text" class="Js_joinPeople form-control" name="hiddenJoinPeople" readonly>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >项目申报类别 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <select class="example-dropUp competitionType"   multiple="multiple"  name="competitionType" required="required" >
+                #if($competitionTypes)
+                #foreach($type in $competitionTypes)
+                <option value="$type.name" >$type.name</option>
+                #end
+                #else
+                <d>暂无数据</d>
+                #end
+            </select>
+            <input type="hidden" name="hiddenType">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >专业主管部门 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <select class="form-control" name="competitionUnit">
+                #if($depts)
+                #foreach($dept in $depts)
+                <option value="$dept.deptName">$dept.deptName</option>
+                #end
+                #end
+            </select>
+
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >实施时间 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" class="Wdate form-control" required="required" name="time"
+                   #if($!achievementDto.cpmpetitionTime) value="$helper.formatDateToString($!achievementDto.cpmpetitionTime,'yyyy-MM-dd')" #end>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">取得净效益 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <textarea id="netBenefit"  name="netBenefit" required="required"
+                      class="form-control  col-xs-7" >$!achievementDto.netBenefit</textarea>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-2">附件</label>
+        <div class="col-xs-7">
+            <input type="file" id="fileName1"  name="fileName1" style="position: relative;top: 0.2em"
+                   class="  col-xs-7" data-parsley-id="2038" >
+
+        </div>
+    </div>
+
+    #if($achievementDto.fileName)
+    <div class="form-group">
+
+        <label class="control-label col-xs-2">已上传附件</label>
+        <input type="hidden" name="oldFileId" value="$achievementDto.fileId">
+        <input type="hidden" name="oldFileName" value="$achievementDto.fileName">
+        <a style="position: relative;top: 8px;" href="/downloadFile?id=$achievementDto.fileId">$achievementDto.fileName</a>
+    </div>
+    #else
+
+    #end
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <button type="submit" id="workAchievementsSubmit" data-url="ajax_add_update_workAchievements" class="btn btn-success">提交</button>
+            <a class="btn btn-primary" href="javascript:window.close();">取消</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(["app/partyGroup/workAchievements"]);
+</script>
+
+
+
+

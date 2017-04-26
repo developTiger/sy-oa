@@ -1,0 +1,49 @@
+
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th><input type="checkbox" id="check-all"  class="checkAll "></th>
+        <th style="width: 50px">序号 </th>
+        <th class="column-title">项目编号 </th>
+        <th class="column-title">项目名称 </th>
+        <th class="column-title">专业类别 </th>
+        <!--<th class="column-title">研究内容 </th>-->
+        <th class="column-title">研究目标和主要研究内容</th>
+        <!--<th class="column-title">参加单位 </th>-->
+      <!--  <th class="column-title">开始时间 </th>
+        <th class="column-title">截止时间 </th>-->
+        <!--<th class="column-title">备注 </th>-->
+       <!-- <th class="column-title">项目类型 </th>
+        <th class="column-title">项目长 </th>-->
+        <!-- <th class="column-title">副项目长 </th>-->
+        <!--  <th class="column-title">组员 </th>-->
+        <!--  <th class="column-title">所属部门 </th>-->
+        <!--  <th class="column-title no-link last"><span class="nobr">选择分管领导</span></th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <%var num=0%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+
+
+    <tr class="sicentId"  data-tt-id="<%=items[i].id%>">
+        <td> <input type="checkbox" class="checkBtn  fo<%=num+i+1%>" name="table_records" value="<%=items[i].formNo%>"></td>
+        <td> <%=num+i+1%></td>
+        <td class="list_projectNo1" name="list_projectNo"><%=items[i].projectNo%></td>
+        <td> <a href="/<%=items[i].currentViewAction%>?formNo=<%=items[i].formNo%>&formKind=SYY_KG_LC02&viewOnly=false"> <font style="color: #0077b3"><%=items[i].projectName%></font></a></td>
+        <td><%=items[i].special_Type%></td>
+        <td> <%=items[i].projectPlanInfoTxt%></td>
+    </tr>
+
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="4" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>
+<script>
+    require(["app/projectInfo/unit_Leadership_Summary"]);
+</script>

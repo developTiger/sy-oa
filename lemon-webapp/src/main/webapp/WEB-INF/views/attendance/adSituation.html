@@ -1,0 +1,33 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/考勤情况
+            <small>- 考勤情况</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 考勤情况.
+            <input type="hidden" value="adSituation" id="ajax_attend">
+        </div>
+
+        <h2 class="col-xs-12 text-center text-info" style="font-family:Courier"><strong>近七个工作日内的考勤情况</strong></h2>
+        <div class="row">
+            <div class=" btn-group  col-xs-4">
+            </div>
+        </div>
+
+
+        <div id="table">
+
+        </div>
+
+        <div class="">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/attendance/empAttendance"]);
+</script>

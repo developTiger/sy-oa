@@ -1,0 +1,40 @@
+<div class="form-inline col-xs-8" >
+    <form id="searchForm"  data-url="ajax_equipment_query_list">
+
+        <!--<div class="form-group ">
+            <label class="control-label" >公司名称
+            </label>
+
+            <label class="control-label">
+                #if($beans)
+                <select id="companyId" required="required" name="companyId" class="form-control col-xs-7"
+                        data-parsley-id="0004">
+                    <option value="">请选择</option>
+                    #foreach($bean in $beans.companys)
+                    <option value="$bean.id">$bean.name</option>
+                    #end
+                </select>
+                #else
+                <dd>暂无数据</dd>
+                #end
+            </label>
+        </div>-->
+
+        <div class="form-group ">
+            <label class="control-label">名称</label>
+            <div class="form-group col-xs-2">
+                <input type="text" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" >
+            </label>
+            <div class="control-label" style="position: relative;top: -0.5em">
+                <input type="button" class="btn btn-default" id="equipmentQueryBtn" value="查询">
+            </div>
+        </div>
+
+
+    </form>
+</div>

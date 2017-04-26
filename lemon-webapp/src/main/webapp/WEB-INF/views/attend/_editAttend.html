@@ -1,0 +1,53 @@
+<form id="addOrUpdateAttend" data-parsley-validate="" class="form-horizontal form-label-left ">
+
+    <input type="hidden" name="id" #if($bean) value="$bean.id" #end>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >姓名 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <input type="text"  required="required" #if($bean) value="$!bean.empName" #end name="empName" readonly disabled style="background-color: #e1dfee"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >出勤类型 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <select class="attendType form-control" required="required" name="typeId">
+                <option value="" >请选择</option>
+                #foreach($t in $types)
+                <option value="$t.id" #if($bean.typeId==$t.id) selected  #end>$!t.name</option>
+                #end
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >日期 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <input style="background-color: #e1dfee" type="text"  required="required" #if($bean) value="$!bean.sdateTime" #end name="sdateTime" disabled
+                   class="form-control col-md-7 col-xs-12 Wdate" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+        </div>
+    </div>
+
+
+    <!--<div class="form-group">-->
+        <!--<label class="control-label  col-xs-3" for="description">描述-->
+        <!--</label>-->
+        <!--<div class="col-xs-6">-->
+            <!--<textarea id="description"  name="description"-->
+                   <!--class="form-control col-md-7 col-xs-12" data-parsley-id="4639">$!bean.description</textarea>-->
+            <!--<ul class="parsley-errors-list" id="parsley-id-7641"></ul>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="button" id="update_attend" data-url="ajax_update_attend"
+                    class="btn btn-success">提交</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+</form>

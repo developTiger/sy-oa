@@ -1,0 +1,26 @@
+<form id="detailProjectInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <div class="form-group">
+    <label class="control-label  col-xs-2" >延期理由 <span class="required">:</span>
+    </label>
+    <label class="control-label col-xs-4"  style="text-align: left;">
+        <%if(delayReason!=null){%>
+            <%=delayReason%>
+        <%}else{%>
+            暂无数据
+        <%}%>
+
+    </label>
+
+    <label class="control-label  col-xs-2" >项目延期结束时间 <span class="required">:</span>
+    </label>
+    <label class="control-label col-xs-4"  style="text-align: left;">
+        <%if(delayTimes_str!=null){%>
+            <%=delayTimes_str%>
+        <%}else{%>
+            暂无数据
+        <%}%>
+        </label>
+    </div>
+</form>
+

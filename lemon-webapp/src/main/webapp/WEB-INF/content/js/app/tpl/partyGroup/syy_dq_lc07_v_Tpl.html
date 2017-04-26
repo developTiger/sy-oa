@@ -1,0 +1,109 @@
+<div id="qjApplyForm" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+    <input type="hidden" name="id"  value="<%=id%>" />
+
+    <div class="form-group col-xs-12" >
+        <label class="col-xs-6" style="font-size: larger">提案标题：<%=title%></label>
+
+        <label class="col-xs-6" style="font-size: larger">电话：<%=phone%></label>
+    </div>
+
+    <div class="form-group col-xs-12" >
+        <label class="col-xs-6" style="font-size: larger">邮箱信息：<%=mail%></label>
+        <label class="col-xs-6" style="font-size: larger">附议人：<%=proposalPerson%></label>
+    </div>
+
+    <div class="form-group col-xs-12" >
+        <label class="col-xs-6" style="font-size: larger">类别：<%=type%></label>
+    </div>
+
+    <div class="form-group col-xs-12" >
+        <label class="col-xs-12" style="font-size: larger">案由：</label>
+    </div>
+
+    <div class="form-group col-xs-12" >
+        <label class="col-xs-offset-1" style="font-size: larger"><%=reason%></label>
+    </div>
+
+    <div class="form-group col-xs-12" >
+        <label class="col-xs-12" style="font-size: larger">提案内容：</label>
+    </div>
+
+    <div class="form-group col-xs-12" >
+        <label class="col-xs-offset-1" style="font-size: larger"><%=content%></label>
+    </div>
+
+
+    <%if(clStep == "2" && isComplete==false && isViewOnly==false){%>
+        <hr style="border: solid 1px #E6E9ED">
+
+        <div class="form-group">
+            <label class="control-label  col-xs-2" >建议承办部门 <span class="required">*</span>
+            </label>
+
+            <div class="col-xs-5">
+                <select class="form-control" required="required" id="undertakeDept" name="undertakeDept_id">
+                    <%if(deptmentDtos && deptmentDtos.length>0){%>
+                        <option value="">请选择</option>
+                        <%for(var i=0;i< deptmentDtos.length;i++){%>
+                        <option value="<%=deptmentDtos[i].id%>" <%if(blongDeptId && blongDeptId == deptmentDtos[i].id){%> selected <%}%> ><%=deptmentDtos[i].deptName%></option>
+                        <%}%>
+                    <%}else{%>
+                    <d>暂无数据</d>
+                    <%}%>
+
+                </select>
+                <input type="hidden" name="hiddenDeptName">
+            </div>
+        </div>
+
+        <br>
+        <div class="form-group col-xs-12" >
+            <label class="pull-right checkAll" style="margin-right: 20px;font-size: larger" ><a  target="_blank" style="color: blue" href="/sra_workersProposal_fail_all?step=<%=clStep%>">查看全部未审批申请</a> </label>
+        </div>
+    <%}%>
+
+    <%if(clStep >= "3" ){%>
+        <hr style="border: solid 1px #E6E9ED">
+        <div class="form-group col-xs-12" >
+            <label class="control-label" style="font-size: larger;">建议承办部门：<%=undertakeDept%></label>
+        </div>
+    <%}%>
+    <%if(clStep == "3" && isComplete==false && isViewOnly==false){%>
+        <!--<div class="form-group col-xs-12">-->
+            <!--<label class="control-label" style="font-size: larger;float: left;margin-right: 40px">评分：</label>-->
+            <!--<input type="text" class="form-control" style="width: 300px" id="approveScore" name="approveScore" value="<%=score%>">-->
+        <!--</div>-->
+        <div class="form-group col-xs-12">
+            <label class="control-label" style="font-size: larger;float: left;">答复意见：</label>
+            <div class="col-xs-8">
+                <textarea class="form-control" name="answerAdvise"></textarea>
+
+            </div>
+        </div>
+
+    <%}%>
+
+
+
+    <%if(clStep > "3"){%>
+    <hr style="border: solid 1px #E6E9ED">
+
+    <div class="form-group col-xs-12">
+        <!--<label class="col-xs-12" style="font-size: larger;float: left">评分：<%=score%></label>-->
+        <label class="control-label" style="font-size: larger;">答复意见：<%=answerAdvise%></label>
+    </div>
+
+    <%}%>
+
+    <%if(clStep == "4" && isComplete==false && isViewOnly==false){%>
+    <hr style="border: solid 1px #E6E9ED">
+
+    <br>
+    <div class="form-group col-xs-12" >
+        <label class="pull-right checkAll" style="margin-right: 20px;font-size: larger" ><a  target="_blank" style="color: blue" href="/sra_workersProposal_fail_all?step=<%=clStep%>">查看全部未审批申请</a> </label>
+    </div>
+    <%}%>
+
+
+</div>

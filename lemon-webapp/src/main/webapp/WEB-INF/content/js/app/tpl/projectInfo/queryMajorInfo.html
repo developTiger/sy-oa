@@ -1,0 +1,54 @@
+<form id="detailProjectInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >项目编号 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"><%=projectNo%></label>
+
+        <label class="control-label  col-xs-2" >项目名称 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"><%=projectName%> </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >承担单位 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"><%=assumeCompany%></label>
+
+        <label class="control-label  col-xs-2" >项目开始时间 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"><%=beginTime%> </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >项目结束时间 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"><%=endTime%></label>
+
+        <label class="control-label  col-xs-2" >项目长 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"><%=leaderName%> </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >课题进展程度 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"><%=projectEvaluate%></label>
+
+        <label class="control-label  col-xs-2" >课题进展情况 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"><%=projectActualComplete%> </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >取得阶段性成果 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"><%=chieveResult%></label>
+
+        <label class="control-label  col-xs-2" >项目经济效益分析 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"><%=economicAnalysis%> </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >存在问题及下步安排 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"><%=projectProblem%></label>
+    </div>
+</form>

@@ -1,0 +1,94 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/司机信息管理
+            <small>- 司机信息管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 司机信息管理.
+        </div>
+        <div class="row">
+            <div class="form-inline  col-xs-12">
+                <form id="searchForm" data-url="ajax_driver_query_list">
+                    <a id="xz" class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="司机信息"
+                       data-url="/_addDriverInfoForm"><span><i class="green fa fa-plus"></i>新增</span></a>
+
+                    <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="deleteDriver" tabindex="0"
+                       aria-controls="datatable-buttons" data-url="/_deleteDriverInfoForm"><span>
+                    <i class="red fa fa-remove"></i>删除</span></a>
+                    <div class="form-group " style="margin-bottom: 5px;margin-top: 0px">
+
+                       <!-- <label class="control-label">调度中心: </label>
+                        <label class="control-label">
+                            #if($companys)
+                            <select id="companyId" required="required" name="companyId" class="form-control"
+                                    style="width: 150px;"
+                                    data-parsley-id="0004">
+                                <option value="" selected="selected">请选择</option>
+                                #foreach($cop in $companys)
+                                <option value="$cop.id" #if ($cop.id==$beans.companyId) selected #end>$cop.name</option>
+                                #end
+                            </select>
+                            #end
+                        </label>-->
+
+                        <label class="control-label">证件类型: </label>
+                        <label class="control-label">
+                            #if($driverTypes)
+                            <select id="docType" required="required" name="docType" class="form-control"
+                                    style="width: 150px;"
+                                    data-parsley-id="0004">
+                                <option value="" selected="selected">请选择</option>
+                                #foreach($cop in $driverTypes)
+                                $cop
+                                <option #if ($cop==$beans.docType) value="$cop" selected #end>$cop</option>
+                                #end
+                            </select>
+                            #end
+                        </label>
+
+                        <label class="control-label">司机状态: </label>
+                        <select id="car-status" required="required" name="status" class="form-control"
+                                style="width: 150px;">
+                            <option value="">请选择</option>
+                            <option value="1">待岗</option>
+                            <option value="2">出车</option>
+                            <option value="3">离岗</option>
+                        </select>
+                        <label class="control-label">司机姓名: </label>
+                        <input type="text" class="form-control " name="name" placeholder="司机姓名" style="width: 150px;">
+
+                        <label class="control-label">聘用时间: </label>
+                        <label class="control-label">
+                            <input type="text" class="form-control mini-width Wdate" id="driver-bgtime"
+                                   style="float: left;width: 150px;" placeholder="开始时间"
+                                   name="beginTime">
+                        </label>
+                        <label>~</label>
+                        <label class="control-label">
+                            <input type="text" class="form-control mini-width Wdate" id="driver-edtime"
+                                   style="float: left;width: 150px" placeholder="结束时间"
+                                   name="endTime">
+                        </label>
+                        <label>
+                            <input type="button" class="btn btn-default buttons-copy buttons-html5 btn-sm"
+                                   style="margin-bottom: -1px" id="driverQueryBtn" value="查询">
+                        </label>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/driver/driverInfo"]);
+</script>

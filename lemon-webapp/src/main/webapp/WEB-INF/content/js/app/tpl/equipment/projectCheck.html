@@ -1,0 +1,79 @@
+<form id="detailProjectInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >项目进展情况<span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">
+            <%if(projectActualComplete!=null){%>
+               <%=projectActualComplete%>
+            <%}else{%>
+                暂无数据
+            <%}%>
+        </label>
+
+        <label class="control-label  col-xs-2" >取得阶段性成果<span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">
+            <%if(chieveResult!=null){%>
+               <%=chieveResult%>
+            <%}else{%>
+               暂无数据
+            <%}%>
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >项目经济效益分析<span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">
+            <%if(economicAnalysis!=null){%>
+               <%=economicAnalysis%>
+            <%}else{%>
+                暂无数据
+            <%}%>
+        </label>
+
+        <label class="control-label  col-xs-2" >课题进展程度<span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">
+            <%if(projectEvaluate!=null){%>
+               <%=projectEvaluate%>
+            <%}else{%>
+               暂无数据
+            <%}%>
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >项目存在问题及一下安排<span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">
+            <%if(projectProblem!=null){%>
+               <%=projectProblem%>
+            <%}else{%>
+               暂无数据
+            <%}%>
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >批示 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-10"  style="text-align: left;">
+            <%if(instructions){%>
+            <%=instructions%>
+            <%}else{%>
+            暂无数据
+            <%}%>
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >专家意见 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-10"  style="text-align: left;">
+            <%if(proficientOpinion){%>
+            <%=proficientOpinion%>
+            <%}else{%>
+            暂无数据
+            <%}%>
+        </label>
+    </div>
+</form>
+

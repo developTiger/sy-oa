@@ -1,0 +1,59 @@
+
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th><input type="checkbox" id="check-all"  class="checkAll "></th>
+        <th style="width: 50px">序号 </th>
+        <th class="column-title">项目编号 </th>
+        <th class="column-title">项目名称 </th>
+        <th class="column-title">专业类别 </th>
+        <!--<th class="column-title">研究内容 </th>-->
+        <th class="column-title">承担单位 </th>
+        <!--<th class="column-title">参加单位 </th>-->
+        <th class="column-title">开始时间 </th>
+        <th class="column-title">截止时间 </th>
+        <!--<th class="column-title">备注 </th>-->
+        <th class="column-title">项目类型 </th>
+        <th class="column-title">项目长 </th>
+       <!-- <th class="column-title">副项目长 </th>-->
+      <!--  <th class="column-title">组员 </th>-->
+      <!--  <th class="column-title">所属部门 </th>-->
+      <!--  <th class="column-title no-link last"><span class="nobr">选择分管领导</span></th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <%var num=0%>
+    <%if(sicent.length > 0){%>
+    <%for(var i = 0 ; i < sicent.length; i++) {%>
+
+
+    <tr class="sicentId"  data-tt-id="<%=sicent[i].id%>">
+        <td> <input type="checkbox" class="checkBtn  fo<%=num+i+1%>" name="table_records" value="<%=sicent[i].formNo%>"></td>
+        <td> <%=num+i+1%></td>
+        <td> <%=sicent[i].projectNo%></td>
+        <td> <a href="/sra_fm_form?formNo=<%=sicent[i].formNo%>&formKind=SYY_KG_LC01&viewurl=projectInfo"> <font style="color: #0077b3"><%=sicent[i].projectName%></font></a></td>
+        <td><%=sicent[i].specialtyType%></td>
+        <td> <%=sicent[i].assumeCompany%></td>
+        <td> <%=dateFormat2(sicent[i].beginTime1)%> </td>
+        <td> <%=dateFormat2(sicent[i].endTime1)%> </td>
+        <td> <%=sicent[i].projectType%></td>
+        <td> <%=sicent[i].leaderName%></td>
+     <!--   <td> <%=sicent[i].deputy%></td>-->
+      <!--  <td> <%=sicent[i].groupMembers%></td>-->
+      <!--  <td> <%=sicent[i].deptName%></td>-->
+       <!-- <td>
+        </td>-->
+
+    </tr>
+
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="11" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>
+<script>
+  /*  require(["app/projectInfo/syy_kg_lc01_a_lot5"]);*/
+</script>

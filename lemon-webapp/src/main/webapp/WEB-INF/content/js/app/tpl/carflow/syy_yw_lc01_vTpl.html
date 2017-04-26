@@ -1,0 +1,313 @@
+<%=isViewOnly%>
+<div class="form-group " >
+    <label class="control-label col-xs-4" style="font-size:larger">
+        申请人:<%=applyerName%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size: larger">
+        前往地点:<%=address%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size: larger">
+        前往同行人员:<% if (goRidePeoples==null){ %>
+        空
+        <%} else{%>
+        <%=goRidePeoples%>
+        <%}%>
+
+    </label>
+</div>
+
+<div class="form-group" >
+    <label class="control-label col-xs-4" style="font-size: larger">
+        预计出发时间:<%=predictGoStartDate%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size: larger">
+        预计返回时间:<%=predictGoArriveDate%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size: larger">
+       备注:<% if (remark==null){ %>
+                空
+            <%} else{%>
+            <%=remark%>
+            <%}%>
+    </label>
+
+</div>
+
+<br /><br /><br/><hr />
+
+
+
+
+<% if ( (clStep == 1 && !isViewOnly) || (clStep==1 && isComplete == false && !isViewOnly)) {%>
+    <div class="form-group" >
+        <div class="control-label col-xs-12" >
+            <div  style="font-size: larger;text-align: center;padding-top: 10px;">
+                <label class="control-label pull-left col-xs-3" style="text-align: right">
+                    车辆选择<span class="required">*</span>
+                </label>
+                <div class="col-xs-5">
+                    <select class="car_sel col-xs-8" required name="carId" style="min-width: 150px;">
+                        <option  value="" selected>请选择</option>
+                        <% if (cars != null && cars.length > 0) {%>
+                            <% for (var i = 0,t = cars.length;i < t ; ++i ) {%>
+                                <option  value="<%=cars[i].id%>"><%=cars[i].carNo%></option>
+                            <% }%>
+                        <% } %>
+                    </select>
+                    <input type="hidden" name="carNo" id="carNo" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group" style="padding-top: 10px;">
+        <div class="control-label col-xs-12">
+            <div  style="font-size: larger;text-align: center;padding-top: 10px;">
+                <label class="control-label pull-left col-xs-3" style="text-align: right">
+                        司机选择<span class="required">*</span>
+                </label>
+                <div class="col-xs-5">
+                    <select class="driver_sel col-xs-8" required  name="driverId" style="min-width: 150px;">
+                        <option  value="" selected>请选择</option>
+
+                        <% if (drivers !=null && drivers.length > 0) {%>
+                        <% for (var i = 0,t = drivers.length;i < t ; ++i ) {%>
+                        <option  value="<%=drivers[i].id%>"><%=drivers[i].driverName%></option>
+                        <% }%>
+                        <% } %>
+                    </select>
+                    <input type="hidden" name="driverName" id="driverName"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="form-group" style="padding-top: 10px;">-->
+        <!--<div class="col-xs-12 control-label">-->
+            <!--<div  style="font-size: larger;text-align: center;padding-top: 10px;">-->
+                <!--<label class="control-label pull-left col-xs-3" style="text-align: right">-->
+                    <!--领导意见<span class="required"></span>&nbsp;-->
+                <!--</label>-->
+                <!--<div class="col-xs-5">-->
+                    <!--<textarea id="leader_comment" name="leader_comment"  style="resize: none;height: 100px;min-width: 320px;"-->
+                          <!--class=" col-xs-9 needclean"></textarea>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+<% } %>
+
+
+<% if ( (clStep >= 2 && isViewOnly) ) {%>
+<div class="form-group" style="padding-top: 10px;">
+    <label class="control-label col-xs-4" style="font-size:larger">
+        车辆:<%=carNo%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size:larger">
+        司机:<%=driverName%>
+    </label>
+</div>
+<br/><hr/>
+<%  if(isComplete == true)  {      %>
+<div class="form-group" style="padding-top: 10px;">
+    <label class="control-label col-xs-4" style="font-size:larger;">
+        前往出发时间:<%=goStartDate%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size:larger">
+        前往到达时间:<%=goArriveDate%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size:larger;">
+        返程出发时间:<%=returnStartDate%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size:larger">
+        返程到达时间:<%=returnArriveDate%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size:larger;">
+        里程数:<%=mileage%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size:larger">
+        费用:<%=cost%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size:larger;">
+        返程同行人员:<%=returnRidePeoples%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size:larger;">
+        用车评价:<%if (evaluate == 1){%>
+        优秀
+        <% }else if (evaluate == 2) {%>
+        良好
+        <% }else if (evaluate == 3) {%>
+        一般
+        <% }else if (evaluate == 4) {%>
+        差
+        <%}%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size:larger;">
+        用车评价备注:<%=returnRemark%>
+    </label>
+</div>
+<br/><hr/>
+
+<%  } } %>
+
+
+<% if ( (clStep == 2 && !isViewOnly ) || (clStep == 2 && isComplete == false && !isViewOnly)) {%>
+    <label class="control-label col-xs-4" style="font-size:larger">
+        车辆：<%=carNo%>
+    </label>
+    <label class="control-label col-xs-4" style="font-size: larger">
+        司机：<%=driverName%>
+    </label>
+<br/><br/><hr/>
+    <div class="form-group" style="">
+        <div class="control-label col-xs-12" >
+            <div  style="font-size: larger;text-align: center;padding-top: 10px;">
+                <label class="pull-left col-xs-3" style="text-align: right;">
+                    实际前往出发时间<span class="required">*</span>
+                </label>
+
+                <div class="col-xs-5">
+                    <input type="text" id="goStartTime"  required  readonly style=""
+                           name="goStartTime" class="form-control col-xs-12 Wdate" >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 10px;">
+        <div class="control-label col-xs-12">
+            <div class="" style="font-size: larger;text-align: center;padding-top: 10px;">
+                <label class="pull-left col-xs-3" style="text-align: right;">
+                    实际前往到达时间<span class="required">*</span>
+                </label>
+                <div class="col-xs-5">
+                    <input type="text" id="goArriveTime" required   readonly style=""
+                           name="goArriveTime" class="form-control col-md-7 col-xs-12 Wdate " >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" style="">
+        <div class="control-label col-xs-12" >
+            <div  style="font-size: larger;text-align: center;padding-top: 10px;">
+                <label class="pull-left col-xs-3" style="text-align: right;">
+                    返程出发时间<span class="required">*</span>
+                </label>
+
+                <div class="col-xs-5">
+                    <input type="text" id="returnStartDate"  required  readonly style=""
+                           name="returnStartDate" class="form-control col-xs-12 Wdate" >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 10px;">
+        <div class="control-label col-xs-12">
+            <div class="" style="font-size: larger;text-align: center;padding-top: 10px;">
+                <label class="pull-left col-xs-3" style="text-align: right;">
+                    返程到达时间<span class="required">*</span>
+                </label>
+                <div class="col-xs-5">
+                    <input type="text" id="returnArriveDate" required   readonly style=""
+                           name="returnArriveDate" class="form-control col-md-7 col-xs-12 Wdate " >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 10px;">
+        <div class="control-label col-xs-12">
+            <div class="" style="font-size: larger;text-align: center;padding-top: 10px;">
+                <label class="pull-left col-xs-3" style="text-align: right;">
+                    里程数
+                </label>
+                <div class="col-xs-5" style="">
+                    <input type="text" id="mileage"
+                           name="mileage" class="form-control col-md-7 col-xs-12   " >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 10px;">
+        <div class="control-label col-xs-12">
+            <div class="" style="font-size: larger;text-align: center;padding-top: 10px;">
+                <label class="pull-left col-xs-3" style="text-align: right;">
+                    费用
+                </label>
+                <div class="col-xs-5" style="">
+                    <input type="text" id="cost" style="margin-top: 0px;"
+                           name="cost" class="form-control col-md-7 col-xs-12  " >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 10px;">
+        <div class="control-label col-xs-12">
+            <div class="" style="font-size: larger;text-align: center;padding-top: 10px;">
+                <div >
+                <label class="pull-left col-xs-3" style="text-align: right;">
+                    返程同行人员
+                </label>
+                </div>
+                <div class="col-xs-5" style="text-align: left;">
+                    <input id="returnRidePeoples" name="returnRidePeoples" class="form-control col-md-7 col-xs-12 ">
+                </div>
+            </div>
+         </div>
+    </div>
+
+
+    <!--<div class="form-group" style="padding-top: 10px;">-->
+        <!--<div class="control-label col-xs-12">-->
+            <!--<div class="" style="font-size: larger;text-align: center;padding-top: 10px;">-->
+                <!--<label class="pull-left ">-->
+                <!--服务态度<span class="required">*</span>-->
+                <!--</label>-->
+                <!--<div class="col-xs-5" style="margin-left: 34px;">-->
+                        <!--<textarea id="evaluate" name="evaluate" style="resize: none;height: 100px;"-->
+                                  <!--class="form-control col-md-7 col-xs-12 needclean"></textarea>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <div class="form-group" style="padding-top: 10px;">
+        <div class="control-label col-xs-12">
+            <div class="" style="font-size: larger;text-align: center;padding-top: 10px;">
+                <label class="pull-left col-xs-3" style="text-align: right;">
+                    用车评价<span class="required">*</span>
+                </label>
+                <div class="col-xs-5" style="">
+                    <select class="form-control" name="evaluate">
+                        <option value="1" selected>优秀</option>
+                        <option value="2">良好</option>
+                        <option value="3">一般</option>
+                        <option value="4">差</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group" style="padding-top: 10px;">
+        <div class="control-label col-xs-12">
+            <div class="" style="font-size: larger;text-align: center;padding-top: 10px;">
+                <div >
+                    <label class="pull-left col-xs-3" style="text-align: right;">
+                        用车评价备注
+                    </label>
+                </div>
+                <div class="col-xs-5" style="text-align: left;">
+                    <textarea class="form-control col-md-7 col-xs-12"  id="returnRemark"
+                              name="returnRemark"
+                              cols="30" rows="10" ></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+<% } %>

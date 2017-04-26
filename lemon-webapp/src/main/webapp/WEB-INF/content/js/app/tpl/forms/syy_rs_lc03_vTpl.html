@@ -1,0 +1,48 @@
+<form id="qjApplyForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" value="<%=formEmpAppraiseDto.clStep%>" id="step">
+    <input type="hidden" value="<%=(formEmpAppraiseDto.isComplete).toString()%>" id="complete">
+
+    <input type="hidden" value="<%=formEmpAppraiseDto.formNo%>" id="empDetailFormNo">
+
+
+    <div class="form-group">
+        <label class="control-label " style="font-size:larger">考核名称:<%=formEmpAppraiseDto.appraisTitle%></label>
+    </div>
+    <div class="form-group">
+        <label class=" " style="font-size: larger">考核内容:</label>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-offset-1" style="font-size: larger"><%=formEmpAppraiseDto.description%></label>
+    </div>
+    <div class="form-group">
+        <label class="control-label " style="font-size: larger">考核时间:<%=dateFormat(formEmpAppraiseDto.beginDate).substring(0,10)%>——<%=dateFormat(formEmpAppraiseDto.
+            endDate).substring(0,10)%></label>
+    </div>
+
+
+    <!--<div class="form-group col-xs-12" >-->
+        <!--<label class="pull-right " style="margin-right: 20px" ><a  target="_blank" style="color: blue" href="/sra_p_showNews?id=<%=fTemp%>">查看具体通知</a> </label>-->
+    <!--</div>-->
+
+    <div class="" style="font-size:x-large" align="center">
+        <strong>员工考核</strong>
+    </div>
+    <br>
+
+
+    <div class="form_group">
+        <a class="btn btn-default left" href="ajax_syy_rs_lc03_down?formNo=<%=formEmpAppraiseDto.formNo%>">下载</a>
+        <%if(formEmpAppraiseDto.clStep == 2 && formEmpAppraiseDto.isComplete==false && !isViewOnly){%>
+        <input type="button" class="btn btn-default" style="float: right" id="upload" value="上传结果"><input  style="float: right;width: 200px"  id="upFile" form_no="<%=formEmpAppraiseDto.formNo%>" type="file" class="btn btn-default right"  name="myfiles" value="考核结果">
+        <%}%>
+    </div>
+
+
+
+
+
+
+
+
+</form>

@@ -1,0 +1,42 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th class="column-title">序号</th>
+        <th class="column-title">申请人 </th>
+        <th class="column-title">请假类型 </th>
+        <th class="column-title">前往地点 </th>
+        <th class="column-title">请假天数 </th>
+        <th class="column-title">请假日期</th>
+        <th class="column-title">申请时间</th>
+        <th class="column-title">归属部门</th>
+        <th class="column-title">操作</th>
+        <th class="bulk-actions" colspan="9">
+            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = (pageNumber-1) * pageSize%>
+    <%if(pagesCount > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr>
+        <td class="num"><%=num+i+1%></td>
+        <td class="a-right a-right "><%=items[i].applyerName%></td>
+        <td class="a-right a-right "><%=items[i].leaveTypeName%></td>
+        <td class="a-right a-right "><%=items[i].target%></td>
+        <td class="a-right a-right "><%=items[i].countTime%></td>
+        <td><%=dateFormat2(items[i].fromTime)%> --- <%=dateFormat2(items[i].toTime)%></td>
+        <td class="a-right a-right "><%=items[i].screateDateTime%></td>
+        <td class="a-right a-right "><%=items[i].deptName%></td>
+        <td><a class="viewForm" data-title="查看详情" m_width="800px" data-url="sra_fm_form_viewonly?formNo=<%=items[i].formNo%>&formKind=<%=items[i].formKind%>&viewurl=forms">查看</a></td>
+        <!--<td><a class="viewForm" data-title="查看详情" m_width="800px"  data-url="sra_fm_form_viewonly?formNo=<%=items[i].id%>&formKind=<%=items[i].formKind%>&viewurl=<%=items[i].viewUrl%>">查看</a></td>-->
+
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="14" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

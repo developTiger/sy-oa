@@ -1,0 +1,58 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <!--  <th style="width: 50px">
+              <input type="checkbox" id="check-all"  class="checkAll ">        </th>-->
+        <th class="column-title">序号</th>
+        <th class="column-title">司机名称 </th>
+        <!--<th class="column-title">调度中心</th>-->
+      <!--  <th class="column-title">部门 </th>
+        <th class="column-title">前往出发时间 </th>-->
+        <th class="column-title">出车次数 </th>
+       <!-- <th class="column-title">上月耗时（分） </th>-->
+        <th class="column-title">优秀（次数）</th>
+        <th class="column-title">良好（次数）</th>
+        <th class="column-title">一般（次数）</th>
+        <th class="column-title">差（次数）</th>
+        <th class="column-title no-link last"><span class="nobr">操作</span>
+        </th>
+        <th class="bulk-actions" colspan="9">
+            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+ <input id="item" type="hidden" value="<%=items.length%>">
+    <%var num =0%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr data-tt-id="<%=items[i].ID%>" class="dr_statistics">
+        <!-- <td > <input type="checkbox" class="checkBtn" name="table_records" value="<%=items[i].ID%>"></td>-->
+        <td class="num"><%=num+i+1%></td>
+        <td class="drname"><%=items[i].DRIVER_NAME%></td>
+       <!-- <td class="drcompanty"><%=items[i].NAME%></td>-->
+        <!--<td><%=items[i].DEPT_NAME%></td>
+        <td><%= dateFormat(items[i].GO_START_TIME) %></td>-->
+        <td><%=items[i].CCNO%></td>
+        <!--<td><%=items[i].ONE_TIMEBILLEN%></td>-->
+        <td><%=items[i].ANO%></td>
+        <td><%=items[i].BNO%></td>
+        <td><%=items[i].CNO%></td>
+        <td><%=items[i].DNO%></td>
+        <td class=" last " >
+            <!--onclick="javascript:console.log($('#driver-bgtime').val())" ajax_drivering_query_list_1 -->
+            <a class="cz" id="operation"
+               onclick="javascript:window.location.href = 'sra_flow_drivering?deptId=<%=items[i].DEPT_ID%>&bgtime=<%=items[i].bgTime%>&edtime=<%=items[i].edTime%>&companyName='+encodeURI(encodeURI('<%=items[i].NAME%>'))+'&driverName='+encodeURI(encodeURI('<%=items[i].DRIVER_NAME%>'));"
+            data-title="查看详情">
+                <i class="blue fa fa-list-alt"></i>详情 </a>
+            <!--<input type="button" id="operation" class="cz" value="详情"/>-->
+        </td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="8" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

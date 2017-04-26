@@ -1,0 +1,86 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>车辆管理/formList
+            <small>- 车辆管理</small>
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 车辆查询.
+        </div>
+        <div class="row">
+
+
+            <div class="form-inline   col-xs-10">
+
+                <form id="searchCar"  class="pull-right" data-url="ajax_carListQuery_list">
+
+                    <div class="form-group">
+
+
+                        <label class="control-label" >司机名称:</label>
+                        <input type="text" class="form-control " style="margin-bottom: 5px" name="driverName" #if($driverName) value="$driverName" #end>
+
+                        <label class="control-label" >租赁公司:</label>
+                        <label class="control-label" >
+                            #if($companys)
+                            <select id="companyId" required="required" name="companyId" class="form-control col-xs-7"
+                                    data-parsley-id="0004">
+                                <option value=""  >请选择</option>
+                                #foreach($cop in $companys)
+                                <option  value="$cop.id" #if ($cop.id==$companyId) selected #end>$cop.name</option>
+                                #end
+                            </select>
+                            #end
+                        </label>
+
+                        <label class="control-label" >部门:</label>
+
+                        #if($findAllDept)
+                        <select id="car-depar"  required="required" name="deptid" class="form-control"  style="width: 20%; " >
+                            <option value="" >请选择</option>
+                            #foreach($cop in $findAllDept)
+                            <option  value="$cop.ID" #if ($cop.ID==$deptId) selected #end>$cop.DEPT_NAME</option>
+                            #end
+                        </select>
+                        #end
+
+                        <label class="control-label" >车牌号</label>
+                        <input type="text" class="form-control " style="margin-bottom: 5px" name="carNo">
+
+                        <label class="control-label" >服务态度</label>
+                        <select id="car-status"  required="required" name="attitude" class="form-control"  style="width: 12%; " >
+                            <option value="" >请选择</option>
+                            <option value="1" >优秀</option>
+                            <option value="2" >良好</option>
+                            <option value="3" >一般</option>
+                            <option value="4" >差</option>
+                        </select>
+
+                        <label class="control-label" >出发时间:  </label>
+                        <label class="control-label" >
+                            <input type="text" class="form-control mini-width Wdate" id="driver-bgtime"  style="float: left;width: 160px" placeholder="开始时间"
+                                   name="beginDate" >
+                        </label>~
+                        <label class="control-label" >
+                            <input type="text" class="form-control mini-width Wdate" id="driver-edtime"  style="float: left;width: 160px" placeholder="结束时间"
+                                   name="endDate" >
+                        </label>
+
+                        <input type="button" class="btn btn-default" id="carListQueryBtn" value="查询">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/car_driver_flow/car_flow_info"]);
+</script>

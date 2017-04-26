@@ -1,0 +1,41 @@
+<form id="detailProjectInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+    <input type="hidden" name="id" #if($id)value="$id" #end>
+    <input type="hidden" name="projectID" #if($projectID)value="$projectID" #end>
+    <div class="x_content">
+        <div role="tabpanel" data-example-id="togglable-tabs">
+            <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                <li class="active" role="presentation"><a id="home-tab" role="tab" aria-expanded="true" href="#tab_content1" data-toggle="tab" class="queryData" data-url="detailInfo1">项目基本信息</a>
+                </li>
+                <li role="presentation"><a id="profile-tab1" role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData" data-url="detailProjectOpen">项目开题信息</a>
+                </li>
+                <li role="presentation"><a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData" data-url="detailProjectCheck">项目检测,运行评测记录</a>
+                </li>
+                <li role="presentation"><a id="profile-tab3" role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData" data-url="detailProjectDelay">项目延迟信息</a>
+                </li>
+                <!--<li role="presentation"><a id="profile-tab4" role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData" data-url="detailProjectAcceptance">项目验收信息</a>
+                </li>-->
+              <!--  <li role="presentation"><a id="profile-tab5" role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData" data-url="detailProjectDeliver">项目成果信息</a>
+                </li>-->
+            </ul>
+            <input type="hidden" name="hiddentId" value="$id" id="hidId">
+            <input type="hidden" name="hidProjectID" value="$projectID" id="hidProjectID">
+            <div id="displayData" class="x_panel">
+            </div>
+            <div id="table">
+            </div>
+            <div class="col-lg-10 dataTables_paginate  ">
+                <ul class="pagination "></ul>
+            </div>
+        </div>
+    </div>
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 ">
+            <a href="javascript:history.go(-1)" class="btn btn-primary">返回</a>
+        </div>
+    </div>
+</form>
+<script>
+    require(["app/projectInfo/detailInfo1"]);
+</script>
+

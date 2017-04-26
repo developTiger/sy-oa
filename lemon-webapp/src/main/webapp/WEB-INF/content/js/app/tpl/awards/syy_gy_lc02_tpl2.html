@@ -1,0 +1,34 @@
+<table class="table table-striped table-bordered dataTable no-footer col-md-3">
+
+    <thead>
+    <tr class="headings" >
+        <th style="text-align: center;" class="column-title">获奖人</th>
+        <th class="column-title" style="text-align: center">部门</th>
+        <th class="column-title" style="text-align: center">岗位</th>
+        <th class="column-title" style="text-align: center">操作</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = (pageNumber-1) * pageSize%>
+    <%if(pagesCount > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr>
+        <td class="a-right a-right "><%=items[i].name%></td>
+        <td class="a-right a-right "><%=items[i].deptName%></td>
+        <td class="a-right a-right "><%=items[i].currenttechPosition%></td>
+        <td class="a-right a-right ">
+            <button type="button" class="addSingleEmp1"  value="<%=items[i].name%>" data-url="ajax_add_update_emps">添加</button>
+            <button type="button" style="display: none" class="addSingleEmp2"  value="<%=items[i].id%>" data-url="ajax_add_update_emps">添加2</button>
+        </td>
+
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="10" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+
+    </tbody>
+</table>

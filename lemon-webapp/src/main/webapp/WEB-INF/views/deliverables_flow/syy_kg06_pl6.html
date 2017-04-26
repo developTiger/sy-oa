@@ -1,0 +1,113 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+$ui.loadCss("select2/select2.min.css")
+<input type="hidden" id="datastep" name="datastep"value="$clstep"/>
+<form id="approveFormLot">
+    <div class="x_panel">
+        <div class="x_content">
+            <div  style="text-align: center">
+                <a class=" btn btn-success" id="lotApprove">同意</a>
+                #if($clstep!=8)
+                <a class=" btn btn-primary" id="lotReject">否决</a>
+                #end
+
+            </div>
+            <div>
+                <label>审核意见：</label>
+            </div>
+            <div>
+                <textarea class="form-control" style="margin: 0px -0.5px 0px 0px; width: 100%; height: 100px;" id="allContent"></textarea>
+            </div>
+        </div>
+    </div>
+</form>
+<div style="text-align: center;font-size: xx-small">
+    <h2>科管科选择主管领导审批</h2>
+</div>
+
+<form id="searchForm">
+    <div class="form-inline col-xs-10 col-xs-offset-8" >
+        <label class="control-label">专业:</label>
+        <div class="form-group">
+            <div class="form-group">
+                <input name="specialtyType" class="form-control " id="specialtyType" />
+            </div>
+            <div class="form-group" style="margin-top: 5px">
+                <a class=" btn btn-default" id="search" style="margin-top: 3px;">查询</a>
+            </div>
+        </div>
+    </div>
+</form>
+    <div id="table1"></div>
+    <div class="col-lg-10 dataTables_paginate  ">
+        <ul class="pagination "></ul>
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <label class="control-label  col-xs-4" for="rank">级别 <span class="required">*</span>
+        </label>
+        <div class="control-label col-xs-8">
+            <select id="rank"  required="required" name="rank" class="form-control col-xs-7" data-parsley-id="0007">
+                <option value="" >--请选择--</option>
+                <option value="1" #if (1==$formDeliverApplyDto.rank) selected #end >国家级</option>
+                <option value="2" #if (2==$formDeliverApplyDto.rank) selected #end>省部级</option>
+                <option value="3" #if (3==$formDeliverApplyDto.rank) selected #end>市级</option>
+                <option value="4" #if (4==$formDeliverApplyDto.rank) selected #end>油田公司级</option>
+                <option value="5" #if (5==$formDeliverApplyDto.rank) selected #end>院级</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <label class="control-label  col-xs-5" for="grade">等级 <span class="required">*</span>
+        </label>
+        <div class="control-label col-xs-6">
+            <select id="grade"  required="required" name="grade" class="form-control col-xs-7" data-parsley-id="0007">
+                <option value="" >--请选择--</option>
+                <option value="1" #if (1==$formDeliverApplyDto.grade) selected #end >特等奖</option>
+                <option value="2" #if (2==$formDeliverApplyDto.grade) selected #end>一等奖</option>
+                <option value="3" #if (3==$formDeliverApplyDto.grade) selected #end>二等奖</option>
+                <option value="4" #if (4==$formDeliverApplyDto.grade) selected #end>三等奖</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <label class="control-label  col-xs-4" for="issuing_unit">颁发单位<span class="required">*</span>
+        </label>
+        <div class="control-label col-xs-8">
+            <input type="text" class="form-control mini-width"  id="issuing_unit"
+                   style="float: left;width: 100%" placeholder="颁发单位"
+                   #if($formDeliverApplyDto.issuing_unit)value="$formDeliverApplyDto.issuing_unit"#end
+                   name="issuing_unit">
+        </div>
+    </div>
+    </div>
+<div class="form-group col-xs-4">
+
+    <label class="control-label col-xs-5" style="text-align: right; padding-top: 10px;margin-left: 0px;">选择主管领导:</label>
+    <div class="col-xs-6">
+        <input id="zgld" hidden />
+        <label class="control-label">
+            <select multiple="multiple" class=" select2_multiple form-control txtValue1 col-xs-5 leaders" tabindex="-1" style="display: none;" name="groupMemberList1" required="required">
+                #if($emp)
+                #foreach($people in $emp)
+                <option   data-value="$people.id" value="$people.id">$people.name</option>
+                #end
+                #end
+            </select>
+        </label>
+    </div>
+
+</div>
+<input type="hidden" id="hidname" name="hidname"/>
+<input type="hidden" id="hidid" name="hidid"/>
+<script>
+    require(["app/deliverables_flow/syy_kg_lc06_a_lot6"]);
+</script>
+
+
+
+

@@ -1,0 +1,16 @@
+
+<form id="deleteCarForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($sysPermission)value="$sysPermission.id"#end>
+
+    <div>是否需要删除此租赁公司信息</div>
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <button type="submit" id="addOrUpdateCompany" data-url="ajax_add_update_company" class="btn btn-success">提交</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+</form>

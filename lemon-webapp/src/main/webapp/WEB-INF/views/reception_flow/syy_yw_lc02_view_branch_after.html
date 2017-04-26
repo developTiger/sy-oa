@@ -1,0 +1,159 @@
+<div style="margin: auto; width: 300px;text-align: center"><h3>公务接待(院长办公室2)</h3></div>
+<div style="margin: auto; height: 30px;text-align: center"></div>
+<div class="x_title">
+    <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-2">申请人： $userInfo.name</div>
+        <div class="col-xs-2"> 部门： $userInfo.deptName</div>
+        <div class="col-xs-3">申请时间： $date</div>
+    </div>
+</div>
+
+<input type="text" id="h1" value="$processId"/>
+<input type="text" id="h2" value="$taskId"/>
+<input type="text" id="h3" value="$orderId"/>
+
+
+
+<input type="hidden" name="id"  value="' + data.id + '" />
+<div class="form-group" >
+    <label class=" col-xs-12 text-left" style="font-size:larger">
+        申请单位:<input type="text" id="i100" value="$receptionDto2.applyDept"/>
+    </label>
+    <label class="control-label col-xs-4"  style="text-align: left;"></label>
+</div>
+<div class="form-group" >
+    <label class=" col-xs-12 text-left" style="font-size: larger">
+        联系人:<input type="text" id="i101" value="$receptionDto2.linkman"/>
+    </label>
+
+</div>
+
+<div class="form-group" >
+    <label class=" col-xs-12 text-left" style="font-size: larger">
+        电话:<input type="text" id="i102" value="$receptionDto2.mobile"/>
+    </label>
+    <label class="control-label col-xs-4"  style="text-align: left;"> </label>
+</div>
+
+<div class="form-group" >
+    <label class=" col-xs-12 text-left" style="font-size: larger">
+        来宾单位:<input type="text" id="i103" value="$receptionDto2.foreignGuest"/>
+    </label>
+    <label class="control-label col-xs-4"  style="text-align: left;"> </label>
+</div>
+
+<div class="form-group" id="reason">
+    <label class=" col-xs-12 text-left" style="font-size: larger">
+        事由:<input type="text" id="i104" value="$receptionDto2.reasons"/>
+    </label>
+    <label class="control-label col-xs-4"  style="text-align: left;"> </label>
+</div>
+
+<div class="form-group">
+    <table border="1">
+        <tr>
+            <td>序号</td>
+            <td colspan="6">接待项目</td>
+
+            <td>费用预算(元)</td>
+        </tr>
+        <tr>
+            <td rowspan="2">1</td>
+            <td rowspan="2">住宿</td>
+            <td>房间型号</td>
+            <td>套间</td>
+            <td>单间</td>
+            <td>标准间</td>
+            <td>其他</td>
+            <td rowspan="2"><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end
+                                   name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>
+        </tr>
+        <tr>
+
+
+            <td>数量</td>
+            <td><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end
+                       name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>
+            <td><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end
+                       name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>
+            <td><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end
+                       name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>
+            <td><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end
+                       name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>
+
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>工作餐</td>
+            <td colspan="2">人/次</td>
+
+            <td colspan="3"><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end
+                                   name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>
+
+
+            <td><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end
+                       name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>
+        </tr>
+
+        <tr>
+            <td rowspan="2">3</td>
+            <td rowspan="2">宴会</td>
+            <td colspan="2">时间</td>
+
+            <td>人数</td>
+            <td colspan="2">标准(元/人)</td>
+
+            <td></td>
+        </tr>
+
+
+        <tr id="tr_list">
+
+            <td colspan="2"><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end
+                                   name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>
+
+            <td><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end
+                       name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>
+            <td colspan="2"><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end
+                                   name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>
+
+            <td></td>
+        </tr>
+
+    </table>
+</div>
+<div class="form-group">
+    <div class=" col-xs-11 col-xs-offset-3" style="margin-left: auto;margin-right: auto;padding-left:48% ">
+        <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="tj">
+            <span><i class="green fa"></i>提交</span></a>
+    </div>
+</div>
+<input type="hidden" value="$recepId" id="m_key"/>
+
+<script>
+    $(function(){
+        $("body").delegate("#tj","click",function(){
+            var obj = new Object();
+            obj.processId = $("#h1").val();
+            obj.taskId = $("#h2").val();
+            obj.orderId = $("#h3").val();
+            obj.id=$("#m_key").val();
+            console.log(obj);
+            $.ajax({
+                url:'syy_yw_lc02_view_confirm_a',
+                type:'post',
+                data:obj,
+                success:function(data){
+                    console.log(data);
+                    if (data) {
+                        alert("处理成功");
+                        location.href = "sra_flow_dbquery";
+                    }else{
+                        alert("处理失败");
+                    }
+                }
+            });
+        });
+    });
+</script>

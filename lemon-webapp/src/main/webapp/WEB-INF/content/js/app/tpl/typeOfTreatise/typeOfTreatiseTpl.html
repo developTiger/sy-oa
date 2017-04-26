@@ -1,0 +1,47 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th>
+            <input type="checkbox" id="check-all"  class="checkAll flat">        </th>
+        <th class="column-title">序号</th>
+        <th class="column-title">论著类型</th>
+        <th class="column-title">部门名称</th>
+        <th class="column-title no-link last" style="width: 150px;"><span class="nobr">操作</span>
+        </th>
+        <th class="bulk-actions" colspan="7">
+            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = (pageNumber-1) * pageSize%>
+    <%if(pageNumber > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr>
+        <td > <input type="checkbox" class="flat checkBtn" name="table_records" value="<%=items[i].id%>"></td>
+        <td class="num"><%=num+i+1%></td>
+        <td><%=items[i].Type_Treatise_Name%></td>
+        <td><%=items[i].dept_Name%></td>
+      <!--  <td class=" "><%=items[i].parentDeptName%></td>
+        <td class=" "><%=items[i].brief%></td>-->
+        <!-- <td class=" ">4</td>
+       <td class="a-right a-right ">$7.45</td>-->
+
+        <td class=" last">
+
+            <a class="i_modal  "
+               data-title="修改部门" data-url="add_typeoftreatise?id=<%=items[i].id%>">
+                <span><i class="green fa fa-edit"></i>修改</span></a>
+            <a class=" " data-title="<%=items[i].id%>" id="deleteTypeOfTreatise">
+                <span><i class="red fa fa-remove"></i>删除</span></a>
+
+
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="8" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

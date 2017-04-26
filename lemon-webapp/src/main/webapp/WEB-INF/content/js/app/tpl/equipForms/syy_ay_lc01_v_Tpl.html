@@ -1,0 +1,167 @@
+<div id="qjApplyForm" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+    <input type="hidden" name="id" value="<%=id%>"/>
+
+    <div class="col-xs-12">
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">设备名称：&nbsp;&nbsp;<%=measuringName%></label>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">资产编号：&nbsp;&nbsp;<%=propertyNum%></label>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <!--<div class="form-group col-xs-6">-->
+            <!--<label class="control-label" style="font-size: larger">资产类别名称：&nbsp;&nbsp;<%=propertyType%></label>-->
+        <!--</div>-->
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">计量单位：&nbsp;&nbsp;<%=measurement%></label>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">使用单位：&nbsp;&nbsp;<%=unitName%></label>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">设备类型：&nbsp;&nbsp;<%=type%></label>
+        </div>
+        <!--<div class="form-group col-xs-6">-->
+            <!--<label class="control-label" style="font-size: larger">计量管理系统编号:&nbsp;&nbsp;<%=systemNumber%></label>-->
+        <!--</div>-->
+        <div class="form-group col-xs-6">
+            <label class="" style="font-size: larger">使用情况：</label>
+            <!--&nbsp;&nbsp;-->
+            <label class="" style="font-size: larger"><%=useStation%></label>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">规格型号：&nbsp;&nbsp;<%=standard%></label>
+        </div>
+
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">厂家名称：&nbsp;&nbsp;<%=factoryName%></label>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">出厂编号：&nbsp;&nbsp;<%=outFactoryNum%></label>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">保管人：&nbsp;&nbsp;<%=savePersonName%></label>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <!--<div class="form-group col-xs-6">-->
+            <!--<label class="control-label" style="font-size: larger">所属单位：&nbsp;&nbsp;<%=institute%></label>-->
+        <!--</div>-->
+        <!--<div class="form-group col-xs-6">-->
+            <!--<label class="control-label" style="font-size: larger">存放地点：&nbsp;&nbsp;<%=deposit%></label>-->
+        <!--</div>-->
+
+    </div>
+    <div class="col-xs-12">
+
+        <!--<div class="form-group col-xs-6">-->
+            <!--<label class="control-label" style="font-size: larger">使用地址：&nbsp;&nbsp;<%=address%></label>-->
+        <!--</div>-->
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">当前状态：&nbsp;&nbsp;<%if(currentStation=="Normal"){%>正常<%}else
+                if(currentStation=="Repair"){%>维修中<%}else{%>已报废<%}%></label>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">原值：&nbsp;&nbsp;<%=original%></label>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">净值：&nbsp;&nbsp;<%=netValue%></label>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">下次检定校准时间:&nbsp;&nbsp;<%=dateFormat(nextTestTime,"yyyy-MM-dd")%></label>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">使用岗位：&nbsp;&nbsp;<%=post%></label>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">投产日期：&nbsp;&nbsp;<%=dateFormat(productTime,"yyyy-MM-dd")%></label>
+        </div>
+
+    </div>
+    <div class="col-xs-12">
+
+
+
+    </div>
+    <div class="col-xs-12">
+        <!--<div class="form-group col-xs-6">-->
+            <!--<label class="control-label" style="font-size: larger">购进日期：&nbsp;&nbsp;<%=dateFormat(buyTime,"yyyy-MM-dd")%></label>-->
+        <!--</div>-->
+
+
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">检定周期：&nbsp;&nbsp;<%=checkdate%></label>
+        </div>
+
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">技术参数标准值：&nbsp;&nbsp;<%=standardValue%></label>
+        </div>
+
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">参数范围:&nbsp;&nbsp;<%=minValue%> <span
+                    style="font-size: 20px">~</span><%=maxValue%></label>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">检定校准时间:&nbsp;&nbsp;<%=dateFormat(testTime,"yyyy-MM-dd")%></label>
+        </div>
+
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">符合检定或者校准结果:&nbsp;&nbsp;<%if(testResult==true){%>符合<%}else{%>不符合<%}%></label>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" style="font-size: larger">检定或校准值:&nbsp;&nbsp;<%=testValue%></label>
+        </div>
+    </div>
+    <div class="col-xs-12">
+
+
+        <!--<div class="form-group col-xs-6">-->
+            <!--<label class="" style="font-size: larger">配件清单:</label>-->
+            <!--&nbsp;&nbsp;-->
+            <!--<label class="col-xs-offset-1" style="font-size: larger"><%=parts%></label>-->
+        <!--</div>-->
+    </div>
+    <div class="col-xs-12">
+
+
+
+
+        <div class="form-group col-xs-6">
+            <label class="" style="font-size: larger">附件：</label>
+            &nbsp;
+            <%if(fileName){%>
+            <a style="font-size: larger;text-decoration:underline" class="col-xs-offset-1" href="/downloadFile?id=<%=fileId%>"><%=fileName%></a>
+            <%}else{%>
+            <span style="font-size: larger">无附件</span>
+            <%}%>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="form-group col-xs-6">
+            <label class="" style="font-size: larger">备注：</label>
+            <!--&nbsp;&nbsp;-->
+            <label class="" style="font-size: larger"><%=remark%></label>
+        </div>
+
+    </div>
+
+
+    <!--<hr style="border: solid 2px #d8d6e4"/>-->
+
+</div>

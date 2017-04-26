@@ -1,0 +1,246 @@
+
+<!--<div class="form-group col-xs-4">
+    <label class="control-label  col-xs-2">项目名称: <span class="required">：</span>
+    </label>
+    <div class="control-label col-xs-6">
+        <select id="projectName" required="required" name="projectName" class="form-control col-xs-7"
+                data-parsley-id="0004">
+            <option value="">请选择</option>
+            #if($projectName)
+            #foreach($pname in $projectName)
+            <option value="$pname.id">$pname.projectName</option>
+            #end
+        </select>
+        #else
+        <dd>没有数据</dd>
+        #end
+        </select>
+    </div>
+</div>-->
+
+#if($viewOnly=="false")
+<input type="hidden"  id="projectNo" name="projectNo" value="$beandto.projectNo">
+<div class="form-group col-xs-4">
+    <label class="control-label  col-xs-2">项目名称: <span class="required">：</span>
+    </label>
+    <div class="control-label col-xs-6">
+        <input type="text" id="projectName" required="required"
+               name="projectName" value="$beandto.projectName"
+               class="form-controlcontrol-label  col-xs-12" data-parsley-id="4639">
+    </div>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label class="control-label  col-xs-2">国内外现状、技术发展趋势、生产需求和市场前景 <span class="required">：</span>
+    </label>
+    <div class="col-xs-6">
+        <textarea type="text" id="prospect" required="required"
+                  name="prospect"
+                  class="form-controlcontrol-label  col-xs-12" >$beandto.prospect</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-203"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label class="control-label  col-xs-2">研究目标和主要研究内容<span class="required">：</span>
+    </label>
+    <div class="col-xs-6">
+        <textarea type="text" id="projectPlanInfoTxt" required="required"
+                  name="projectPlanInfoTxt"
+                  class="form-controlcontrol-label  col-xs-12" >$beandto.projectPlanInfoTxt</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-2039"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label class="control-label  col-xs-2">关键技术和技术研究路线（方案）比选<span class="required">：</span>
+    </label>
+    <div class="col-xs-6">
+        <textarea type="text" id="schemeOpt" required="required"
+                  name="schemeOpt"
+                  class="form-controlcontrol-label  col-xs-12" >$beandto.schemeOpt</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-20"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label class="control-label  col-xs-2">主要技术经济考核指标<span class="required">：</span>
+    </label>
+    <div class="col-xs-6">
+        <textarea type="text" id="examineTarget" required="required"
+                  name="examineTarget"
+                  class="form-controlcontrol-label  col-xs-12" >$beandto.examineTarget</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-211"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label class="control-label  col-xs-2">项目验收最终成果及成果形式<span class="required">：</span>
+    </label>
+    <div class="col-xs-6">
+        <textarea type="text" id="finalShape" required="required"
+                  name="finalShape"
+                  class="form-controlcontrol-label  col-xs-12" >$beandto.finalShape</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-21"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label class="control-label  col-xs-2">项目研究进度计划<span class="required">：</span>
+    </label>
+    <div class="col-xs-6">
+        <textarea type="text" id="proResearchProgress" required="required"
+                  name="proResearchProgress"
+                  class="form-controlcontrol-label  col-xs-12" >$beandto.proResearchProgress</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-201"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label class="control-label  col-xs-2">资源计划<span class="required">：</span>
+    </label>
+    <div class="col-xs-6">
+        <textarea type="text" id="resourcePlan" required="required"
+                  name="resourcePlan"
+                  class="form-controlcontrol-label  col-xs-12" >$beandto.resourcePlan</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-221"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label class="control-label  col-xs-2">前期研究，支撑条件分析<span class="required">：</span>
+    </label>
+    <div class="col-xs-6">
+        <textarea type="text" id="beforeStatusAnalyze" required="required"
+                  name="beforeStatusAnalyze"
+                  class="form-controlcontrol-label  col-xs-12" >$beandto.beforeStatusAnalyze</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-2101"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label class="control-label  col-xs-2">与本项目有关专利<span class="required">：</span>
+    </label>
+    <div class="col-xs-6">
+        <textarea type="text" id="lawAnalyze" required="required"
+                  name="lawAnalyze"
+                  class="form-controlcontrol-label  col-xs-12" >$beandto.lawAnalyze</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-2111"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label class="control-label  col-xs-2">应用前景和经济效应<span class="required">：</span>
+    </label>
+    <div class="col-xs-6">
+        <textarea type="text" id="vistaAndBenefit" required="required"
+                  name="vistaAndBenefit"
+                  class="form-controlcontrol-label  col-xs-12" >$beandto.vistaAndBenefit</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-2112"></ul>
+    </div>
+</div>
+
+
+<div class="form-group col-xs-4" >
+    <label class="control-label  col-xs-2">项目主其他成员<span class="required">：</span>
+    </label>
+    <div class="col-xs-6">
+        <textarea type="text" id="atherPeople" required="required"
+                  name="atherPeople"
+                  class="form-controlcontrol-label  col-xs-12" >$beandto.atherPeople</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-2113"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <input type="button" id="unit_Leadership_Summary" value="批量审批" style="float:right"/>
+    <!--    <label class="control-label " style="float: right">
+            批量审批
+        </label>-->
+</div>
+#end
+
+#if($viewOnly=="true")
+<div class="form-group col-xs-4">
+    <!-- <label class="control-label  col-xs-2">项目名称: <span class="required">：</span>
+     </label>-->
+    <div class="control-label col-xs-6">
+        <label id="projectNameview" name="projectName" class="control-label  col-xs-12" >
+            项目名称: $beandto.projectName
+        </label>
+    </div>
+</div>
+
+
+<div class="form-group col-xs-4" >
+    <label id="prospect_View" name="prospect" class="control-label  col-xs-12" >
+        国内外现状、技术发展趋势、生产需求和市场前景: $beandto.prospect
+    </label>
+
+</div>
+
+<div class="form-group col-xs-4" >
+    <label id="projectPlanInfoTxt_View" name="projectPlanInfoTxt" class="control-label  col-xs-12" >
+        研究目标和主要研究内容: $beandto.projectPlanInfoTxt
+    </label>
+
+</div>
+
+<div class="form-group col-xs-4" >
+    <label id="schemeOpt_view" name="schemeOpt" class="control-label  col-xs-12" >
+        关键技术和技术研究路线（方案）比选: $beandto.schemeOpt
+    </label>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label id="examineTarget_view" name="examineTarget" class="control-label  col-xs-12" >
+        主要技术经济考核指标: $beandto.examineTarget
+    </label>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label id="finalShape_view" name="finalShape" class="control-label  col-xs-12" >
+        项目验收最终成果及成果形式: $beandto.finalShape
+    </label>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label id="proResearchProgress_view" name="proResearchProgress" class="control-label  col-xs-12" >
+        项目研究进度计划: $beandto.proResearchProgress
+    </label>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label id="resourcePlan_view" name="resourcePlan" class="control-label  col-xs-12" >
+        资源计划: $beandto.resourcePlan
+    </label>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label id="beforeStatusAnalyze_view" name="beforeStatusAnalyze" class="control-label  col-xs-12" >
+        前期研究，支撑条件分析: $beandto.beforeStatusAnalyze
+    </label>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label id="lawAnalyze_view" name="lawAnalyze" class="control-label  col-xs-12" >
+        与本项目有关专利: $beandto.lawAnalyze
+    </label>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label id="vistaAndBenefit_view" name="vistaAndBenefit" class="control-label  col-xs-12" >
+        应用前景和经济效应: $beandto.vistaAndBenefit
+    </label>
+</div>
+
+<div class="form-group col-xs-4" >
+    <label id="atherPeople_view" name="atherPeople" class="control-label  col-xs-12" >
+        项目主其他成员: $beandto.atherPeople
+    </label>
+</div>
+
+#end
+<script>
+    require(['app/projectInfo/syy_kg_lc02']);
+</script>

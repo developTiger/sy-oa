@@ -1,0 +1,310 @@
+<style>
+.ln_solid{ clear: both}
+</style>
+<input type="hidden" name="id" #if($beans) value="$beans.id" #end>
+
+
+<div class="form-group col-xs-4">
+    <label class="control-label  col-xs-12">成果类型:
+       <!-- #if(1==$beans.awards_Type)科研#end
+        #if(2==$beans.awards_Type) 生产运行 #end
+        #if(3==$beans.awards_Type) 质量安全 #end
+        #if(4==$beans.awards_Type) 综治维稳 #end
+        #if(5==$beans.awards_Type) 工会共青团 #end
+        #if(6==$beans.awards_Type) 党务 #end-->
+        #if($beans.awards_Type) $beans.awards_Type #end
+    </label>
+    <div class="col-xs-6" style="display: none">
+        <select id="awards_Type" required="required" name="awards_Type" class="form-control col-xs-7"
+                data-parsley-id="0004">
+            <option value="1" #if(1==$beans.awards_Type) selected="selected" #end>科研</option>
+            <option value="2" #if(2==$beans.awards_Type) selected="selected" #end>生产运行</option>
+            <option value="3" #if(3==$beans.awards_Type) selected="selected" #end>质量安全</option>
+            <option value="4" #if(4==$beans.awards_Type) selected="selected" #end>综治维稳</option>
+            <option value="5" #if(5==$beans.awards_Type) selected="selected" #end>工会共青团</option>
+            <option value="6" #if(6==$beans.awards_Type) selected="selected" #end>党务</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <label class="control-label  col-xs-12" for="win_Result_Name">
+        获奖成果名称：#if($beans.win_Result_Name)$beans.win_Result_Name#end <!--<span class="required">*</span>-->
+    </label>
+    <div style="display:none">
+        <input   id="win_Result_Name" required="required" #if($beans)value="$beans.win_Result_Name"#end   name="win_Result_Name"
+                 class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+    </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <label class="control-label  col-xs-12" for="issuing_Unit">
+        颁发单位：#if($beans.issuing_Unit)$beans.issuing_Unit#end <!--<span class="required">*</span>-->
+    </label>
+    <div >
+        <input style="display: none;" type="text" id="issuing_Unit" required="required"  name="issuing_Unit" #if($beans)value="$beans.issuing_Unit"#end
+               class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        <ul class="parsley-errors-list" id="parsley-id-3002"></ul>
+    </div>
+</div>
+
+<div class="form-group " style="padding-left:10px;overflow: hidden" hidden>
+    <label class="control-label  col-xs-12" for="winner_Info" >
+        获奖人：#if($beans.people)
+        #set($i=1)
+        #foreach($a in $beans.people)
+        <!--#if($i>1)-->
+
+        <!--#end-->
+        第$i获奖人：$a.people_Name
+        #if($i<3)#end
+        #set($i=$i+1)
+
+        #end
+        #end
+    </label>
+    <div style="display: none">
+              <textarea style="display:none" id="winner_Info" name="winner_Info"  disabled
+                        class="form-control col-md-7 col-xs-12" data-parsley-id="4639"
+                        data-value="获奖人">#if($beans) $beans.winner_Info #end</textarea>
+
+        <!--提交数据-->
+        <input id="hiden_in" type="hidden"  name="winner_Info1" #if($beans) value="$beans.info" #end>
+        <!--jquery验证数据-->
+        <input id="hiden_in_sb" name="winner_vali" type="text" style="width:0px;height: 0px;border: 0px;"
+               #if($beans) value="$beans.info " #end>
+    </div>
+
+    <div style="display:none">
+        <a id="add_p" href="javascript:void(0);"
+           class=" btn btn-default
+                    buttons-copy buttons-html5 btn-sm" data-title="成果人员">
+                    <span >
+                        <i class="green fa " ></i>
+                        添加
+                    </span>
+        </a>
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <label class="control-label  col-xs-12">
+        获奖人：#if($beans.awards_Name)$beans.awards_Name#end<!-- <span class="required">*</span>-->
+    </label>
+</div>
+<div class="form-group col-xs-4">
+    <label class="control-label col-xs-12">
+        第几获奖人:#if($beans.level_Awards)$beans.level_Awards#end
+    </label>
+</div>
+
+<div class="form-group col-xs-4">
+    <label class="control-label  col-xs-12" for="certif_No">
+        证书编号：#if($beans.certif_No)$beans.certif_No#end<!-- <span class="required">*</span>-->
+    </label>
+    <div class="col-xs-4" style="display: none;">
+        <input  type="text" id="certif_No" required="required"  name="certif_No"  #if($beans)value="$beans.certif_No" #end
+                class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        <ul class="parsley-errors-list" id="parsley-id-3003"></ul>
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <label class="control-label  col-xs-12" >
+        获奖成果类型：#if($beans.win_Result_Classify)$beans.win_Result_Classify&nbsp;&nbsp;&nbsp;&nbsp;$beans.win_Result_type#end
+        <!--<span class="required">*</span>-->
+    </label>
+
+    <div class="col-xs-4" style="display: none">
+        <div class="col-xs-6"  style=" padding-left: 0%">
+
+            #if($winresultclassify)
+            <select id="mark"  class="form-control" required="required" name="win_Result_Classify">
+                <option value="">--请选择--</option>
+                #foreach($a in $winresultclassify.keySet() )
+
+                <option value="$a"  #if ($a==$beans.win_Result_Classify) selected #end>$a</option>
+                #end
+            </select>
+            #else
+            <dd>aaa</dd>
+            #end
+        </div>
+
+        <div class="col-xs-6" style=" padding-left: 0%; padding-right: 0%">
+            #if($winresultclassify)
+            <select id="series" class="form-control col-xs-2" required="required" name="win_Result_type" >
+                <option value="">--请选择--</option>
+                #foreach($a in $winresultclassify.get("Ⅰ") )
+                <option value="$a"  class="Ⅰ"  #if ($a==$beans.win_Result_type) selected #end>$a</option>
+                #end
+                #foreach($b in $winresultclassify.get("Ⅱ") )
+                <option value="$b"  class="Ⅱ" #if ($b==$beans.win_Result_type) selected #end>$b</option>
+                #end
+                #foreach($c in $winresultclassify.get("Ⅲ") )
+                <option value="$c"  class="Ⅲ" #if ($c==$beans.win_Result_type) selected #end>$c</option>
+                #end
+                #end
+            </select>
+
+        </div>
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <label class="control-label  col-xs-12" for="win_Level">
+        获奖级别：#if ($beans.win_Level==1)国家级  #end
+        #if ($beans.win_Level==2)省部级  #end
+        #if ($beans.win_Level==3)油田公司级  #end
+        #if ($beans.win_Level==4)厂处级  #end<!--<span class="required">*</span>-->
+    </label>
+
+    <div class="col-xs-4" style="display: none">
+
+        <select id="win_Level"  required="required" name="win_Level" class="form-control col-xs-7" data-parsley-id="0004">
+            <option value="" >--请选择--</option>
+            <option value="1" #if (1==$beans.win_Level) selected #end  >国家级</option>
+            <option value="2" #if (2==$beans.win_Level) selected #end  >省部级</option>
+            <option value="3" #if (3==$beans.win_Level) selected #end  >油田公司级</option>
+            <option value="4" #if (4==$beans.win_Level) selected #end  >厂处级</option>
+        </select>
+
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <label class="control-label  col-xs-12" for="win_Grade">获奖等级： <!--<span class="required">*</span>-->
+        #if (1==$beans.win_Grade) 一等奖 #end
+        #if (2==$beans.win_Grade) 二等奖 #end
+        #if (3==$beans.win_Grade) 三等奖 #end
+        #if (4==$beans.win_Grade) 其他 #end
+    </label>
+    <div class="col-xs-4" style="display: none">
+        <select id="win_Grade"  required="required" name="win_Grade" class="form-control col-xs-7" data-parsley-id="0007">
+            <option value="" >--请选择--</option>
+            <option value="1" #if (1==$beans.win_Grade) selected #end >一等奖</option>
+            <option value="2" #if (2==$beans.win_Grade) selected #end>二等奖</option>
+            <option value="3" #if (3==$beans.win_Grade) selected #end>三等奖</option>
+            <option value="4" #if (4==$beans.win_Grade) selected #end>其他</option>
+        </select>
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <label class="control-label  col-xs-12" for="win_Date">
+        获奖时间：#if($beans.win_Date_Str)$beans.win_Date_Str#end <!--<span class="required">*</span>-->
+    </label>
+    <div style="display: none;">
+        <input type="text" class="form-control mini-width Wdate"  id="win_Date"  style="float: left;width: 100%" placeholder="获奖时间" #if($beans)value="$beans.win_Date_Str"#end
+               name="win_Date">
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <label class="control-label  col-xs-12" for="is_Cooperate_Result_Str">是否合著：
+        <!--<span class="required">*</span>-->
+        #if ($beans.is_Cooperate_Result==true) 是 #end
+        #if ($beans.is_Cooperate_Result==false) 否 #end
+    </label>
+
+    <div class="col-xs-2" style="display: none">
+        <select id="is_Cooperate_Result_Str"  required="required" name="is_Cooperate_Result" class="form-control col-xs-7" data-parsley-id="0007">
+            <option value="" >--请选择--</option>
+            <option value="true" #if ($beans.is_Cooperate_Result==true) selected #end  >是</option>
+            <option value="false" #if($beans.is_Cooperate_Result==false) selected #end  >否</option>
+
+        </select>
+    </div>
+</div>
+
+#if($beans.files.size()!=0)
+<div class="form-group col-xs-12">
+    <div class="control-label  col-xs-12">
+
+        <label  style="font-size: larger">附件:
+        </label>
+        <div style="font-size: larger">
+            #foreach($files in $beans.files)
+            <a href="downloadFile?id=$files.fileId">$files.fileName</a></br>
+            #end
+        </div>
+
+    </div>
+</div>
+
+#end
+#if($viewOnly==false)
+<!--<div class="form-group" >-->
+<!--<label class="control-label  col-xs-2" for="leaderOpinion">基层单位领导意见-->
+<!--<span class="required">*</span>-->
+<!--</label>-->
+<!--<div class="col-xs-6">-->
+<!--<input id="leaderOpinion" type="text"  required="required" name="leaderOpinion" class="form-control col-md-7 col-xs-12" data-parsley-id="4639" />-->
+<!--</div>-->
+<!--</div>-->
+<!--</br>-->
+#end
+<div class="ln_solid"></div>
+
+<div class="modal fade Js_modal text-center" id="myModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="display: inline-block;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    成果人员
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <input type="hidden" id="sa" value='$emp_fb'>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" btn btn-default buttons-copy buttons-html5 btn-sm pull-left"
+                               data-title="添加项目详细信息" id="addStaff"
+                               href="javascript:void(0);">
+                                    <span>
+                                        <i class="green fa fa-plus"></i>
+                                        新增
+                                    </span>
+                            </a>
+                        </div>
+                        <div class="col-md-12 staff-rows">
+                            <div class="control-group staff-row">
+                                <div class="controls controls-row doc-input-size">
+                                    <label class="control-label col-sm-3">
+                                        第1获奖人
+                                        <span class="required">*</span>
+                                    </label>
+
+                                    #if($emp)
+                                    <select id="selfirst" required="required"  class="span3 col-sm-3 special-sele"  data-parsley-id="0004">
+                                        <option  value="98" data-value="">请选择</option>
+                                        #foreach($key in $emp)
+                                        <option  value="$key.id" data-value="">$key.name</option>
+                                        #end
+                                        <option  value="99" data-value="">其他</option>
+                                    </select>
+                                    #else
+                                    <dd>暂无数据</dd>
+                                    #end
+
+                                    <input type="text" id="inputfirst" class="input_outname col-sm-3 col-md-offset-1" disabled  >
+                                    <a class="btn-sm col-sm-2 delStaff" style="height: 28px;"
+                                       href="javascript:void(0);"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="ln_solid"></div>
+                        <div class=" col-xs-6 col-xs-offset-3">
+                            <button type="button" id="getval" class="btn btn-success">提交</button>
+                            <button type="button" class="btn btn-primary" id="cancelModal_1">返回</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    require(['app/resultCertificate/syy_gy_lc05_view']);
+</script>

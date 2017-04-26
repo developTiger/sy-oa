@@ -1,0 +1,180 @@
+$ui.loadCss("kindEditer/default/default.css")
+$ui.loadCss("kindEditer/simple/simple.css")
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/发布通知
+            <small>- 发布通知</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 发布通知.
+        </div>
+
+        <div class="">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>编写通知</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br>
+
+                    <form class="form-horizontal form-label-left" id="publishNews">
+
+                        <input type="hidden" name="id" value="$!noticeEdit.id">
+                        <div class="form-group">
+                            <label class="control-label col-xs-2">标题：</label>
+
+                            <div class="col-xs-8">
+                                <input type="text" id="noticeName"   required="required" maxlength="200"
+                                       class="  form-control" name="noticeName" #if($noticeEdit.noticeName)
+                                       value="$noticeEdit.noticeName" #end>
+                                <ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-2">概述：</label>
+
+                            <div class="col-xs-8">
+                                <input type="text" id="noticeDesc" required="required" maxlength="200"
+                                       class="demo1 form-control" multiple name="noticeDesc" #if($noticeEdit.noticeDesc)
+                                       value="$!noticeEdit.noticeDesc" #end>
+                                <ul class="parsley-errors-list" ></ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-2">通知类型：</label>
+
+                            <div class="col-xs-8">
+                                <select class="form-control" required="required" id="noticeType" name="adviceType">
+                                    <option value="" >请选择</option>
+                                    #if($adviceTypes)
+                                    #foreach($at in $adviceTypes )
+                                    <option value="$at.name" #if($noticeEdit.adviceType==$at.name) selected #end>$!at.name</option>
+                                    #end
+                                    #end
+                                    <!--<option value="News" #if($noticeEdit.noticeType=="News") selected #end>新闻</option>-->
+                                    <!--&lt;!&ndash;<option value="Train" #if($noticeEdit.noticeType=="Train") selected #end>培训</option>&ndash;&gt;-->
+                                    <!--<option value="Institution" #if($noticeEdit.noticeType=="Institution") selected-->
+                                            <!--#end>制度-->
+                                    <!--</option>-->
+                                    <!--<option value="DeptExamine" #if($noticeEdit.noticeType=="DeptExamine") selected-->
+                                            <!--#end>部门考核-->
+                                    <!--</option>-->
+                                    <!--<option value="EmpExaming" #if($noticeEdit.noticeType=="EmpExaming") selected #end>-->
+                                        <!--员工考核-->
+                                    <!--</option>-->
+                                </select>
+                            </div>
+                        </div>
+                        <!--<div class="form-group deptCt #if($noticeEdit.noticeType=='Train') display #else hidden #end">-->
+                            <!--<label class="control-label  col-xs-2">通知部门：</label>-->
+
+                            <!--<div class="col-xs-8">-->
+                                <!--<select class="form-control" required="required" multiple="multiple" id="toDept">-->
+
+                                    <!--#if($deptAll)-->
+                                    <!--#if($selectDept)-->
+
+                                    <!--#foreach($sd in $selectDept)-->
+                                    <!--#foreach($bean in $deptAll)-->
+
+                                    <!--<option value="$bean.id" #if($sd==$bean.id) selected #end>-->
+                                        <!--$bean.deptName-->
+                                    <!--</option>-->
+                                    <!--#end-->
+                                    <!--#end-->
+                                    <!--#else-->
+                                    <!--#foreach($bean in $deptAll)-->
+                                    <!--<option value="$bean.id">-->
+                                        <!--$bean.deptName-->
+                                    <!--</option>-->
+                                    <!--#end-->
+                                    <!--#end-->
+                                    <!--#end-->
+
+                                <!--</select>-->
+
+                                <!--<span class="required"></span>-->
+
+                            <!--</div>-->
+                            <!--<input type="hidden"  name="toDept" id="tdept"value="$noticeEdit.toDept">-->
+                            <!--<input type="hidden" name="toDeptName"  id="toDeptName" value="$noticeEdit.toDeptName">-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group showTrain #if($noticeEdit.noticeType=='Train') display #else hidden #end">-->
+                            <!--<label class="control-label col-xs-2">地点：</label>-->
+
+                            <!--<div class="col-xs-8">-->
+                                <!--<input type="text" id="locations"   class="  form-control"-->
+                                       <!--name="locations" class="" #if($noticeEdit.locations) value="$noticeEdit.locations" #end>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group showTrain showEx #if($noticeEdit.noticeType=='Train'||$noticeEdit.noticeType=='DeptExamine'||$noticeEdit.noticeType=='EmpExaming') display #else hidden #end">-->
+                            <!--<label class="control-label col-xs-2">开始时间：</label>-->
+
+                            <!--<div class="col-xs-8">-->
+                                <!--<input type="text"  required="required" class="Wdate form-control" placeholder="开始时间"-->
+                                       <!--name="strSDate" #if($noticeEdit.sDate) value="$noticeEdit.sDate"-->
+                                       <!--#end>-->
+
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group showTrain showEx #if($noticeEdit.noticeType=='Train'||$noticeEdit.noticeType=='DeptExamine'||$noticeEdit.noticeType=='EmpExaming') display #else hidden #end">-->
+                            <!--<label class="control-label col-xs-2">结束时间：</label>-->
+
+                            <!--<div class="col-xs-8">-->
+                                <!--<input type="text" required="required" class="Wdate form-control" name="strEDate" #if($noticeEdit.eDate) value="$noticeEdit.eDate" #end-->
+                                       <!--placeholder="结束时间">-->
+
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="form-group">
+                            <label class="control-label col-xs-2">内容：</label>
+
+                            <div class="col-xs-8">
+                                <textarea id="content" class="col-xs-12" name="content" >#if($noticeEdit.content) $noticeEdit.content #end</textarea>
+                                <input type="hidden" id="tempKindEditor" name="tempKindEditors" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label  col-xs-2">附件：</label>
+
+                            <div class="col-xs-2">
+                                <div class="form-group">
+                                    <div class="col-xs-8">
+                                        <input type="file" id="fileId" class="btn btn-default" name="filename1" value="$noticeEdit.filename"/>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-2"></label>
+
+                            <div class=" col-xs-7" style="text-align: center">
+                                <input type="submit" class="btn btn-default" style="width: 200px;font-weight: bold" id="submitPublish" value="提&nbsp;交">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script>
+    require(["app/publishnews/publishnews"]);
+</script>

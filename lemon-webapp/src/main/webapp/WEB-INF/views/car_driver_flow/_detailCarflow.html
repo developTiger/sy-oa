@@ -1,0 +1,112 @@
+
+<form id="detailProjectResultInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans) value="$beans.id" #end>
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >申请人 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.applyerName #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >前往地点 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.address #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >预计出发时间 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.predictGoStartDate #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >预计到达时间 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.predictGoArriveDate #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >申请人单位 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.deptName #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >司机名称 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans.driverName)$beans.driverName #end</label>
+    </div>
+  <!--  <div class="form-group">
+        <label class="control-label  col-xs-4" >调度中心 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($company)$company.name #end</label>
+    </div>-->
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >实际出发时间 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans.goStartDate)$beans.goStartDate #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >实际出发到达时间 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans.goArriveDate)$beans.goArriveDate #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >实际去程通车人员 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans.goRidePeoples)$beans.goRidePeoples #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >实际返程出发时间 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans.returnStartDate)$beans.returnStartDate #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >实际返程到达时间 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans.returnArriveDate)$beans.returnArriveDate #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >实际返程通车人员 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans.returnRidePeoples)$beans.returnRidePeoples #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >服务评价 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">
+            #if($beans.evaluate==1)
+            优秀
+            #end
+            #if($beans.evaluate==2)
+            良好
+            #end
+            #if($beans.evaluate==3)
+            一般
+            #end
+            #if($beans.evaluate==4)
+            差
+            #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-4" >服务评价备注 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans.returnRemark)$beans.returnRemark #end</label>
+    </div>
+   <!-- <div class="form-group">
+        <label class="control-label  col-xs-3" for="win_Project">
+            获奖项目 <span class="required">*</span>
+        </label>
+        <div class="col-xs-4">
+            <input type="text" id="win_Project" required="required"  name="win_Project"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-3004"></ul>
+        </div>
+    </div>-->
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <a class="btn btn-primary cancel" id="cancelModal">返回</a>
+            <!--<button type="submit" id="addOrUpdateProjectResult" data-url="ajax_add_update_projectResult" class="btn btn-success">提交</button>-->
+        </div>
+    </div>
+</form>
+
+<!--<script>-->
+   <!--require(['app/awards/addProjectResult']);-->
+<!--</script>-->

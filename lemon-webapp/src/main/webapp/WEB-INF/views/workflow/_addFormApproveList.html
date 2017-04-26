@@ -1,0 +1,186 @@
+<form id="addFormApproveListForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="formKind" value="$formKind"/>
+    <!--<div class="form-group">-->
+    <!--<label class="control-label  col-xs-3" for="appUserId">签核人 <span class="required">*</span>-->
+    <!--</label>-->
+    <!--<div class="col-xs-6">-->
+    <!--&lt;!&ndash;<input type="text" id="appUserId" required="required" #if($formAppRoleDto)value="$formAppRoleDto.roleName"#end name="appUserId" class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4631"></ul>&ndash;&gt;-->
+    <!--#if($empuser)-->
+    <!--<select id="appUserId" required="required" name="appUserId" class="form-control col-md-7 col-xs-12" data-parsley-id="4639">-->
+    <!--<option value="">请选择</option>-->
+    <!--#foreach($bean in $empuser)-->
+    <!--<option value="$bean.id"  >$bean.name</option>-->
+    <!--#end-->
+    <!--</select>-->
+    <!--#else-->
+    <!--<dd>暂无数据</dd>-->
+    <!--#end-->
+
+    <!--<input id="appActorName" type="hidden" name="appActorName">-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="formApproveStepName">步骤名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+
+            <input id="formApproveStepName" class="form-control  col-xs-7" name="formApproveStepName">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="appSerial">顺序 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <!--<input type="text" id="appSerial"  required="required" #if($formAppRoleDto)value="$formAppRoleDto.roleType"#end name="appSerial"  class="form-control  col-xs-7" data-parsley-id="2038"><ul class="parsley-errors-list" id="parsley-id-2032"></ul>-->
+            <select id="appSerial" required="required" name="appSerial" class="form-control  col-xs-7"
+                    data-parsley-id="2038">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+        </div>
+    </div>
+    <!--<div class="form-group">
+        <label class="control-label  col-xs-3" for="approveType">签核类型 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <select id="approveType"   required="required" #if($formAppRoleDto)value="$formAppRoleDto.roleType"#end name="approveType"  class="form-control  col-xs-7" data-parsley-id="2038">
+                <option value="true" #if(true==$f.isBatchApproved) selected="selected" #end>签核类型1</option>
+                <option value="false" #if(false==$f.isBatchApproved) selected="selected" #end>签核类型2</option>
+            </select>
+        </div>
+    </div>-->
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="appRole">签核角色 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            #if($roler)
+            <select id="appRole" required="required" name="appRoleId" class="form-control col-xs-7"
+                    data-parsley-id="0004">
+                <option value="" selected="selected">请选择</option>
+                #foreach($cop in $roler)
+                <option value="$cop.id">$cop.roleName</option>
+                #end
+            </select>
+            #end
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="byDept">多部门(按部门) <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select id="byDept" required="required" name="byDept" class="form-control  col-xs-7" data-parsley-id="2038">
+                <option value="false">否</option>
+                <option value="true">是</option>
+
+
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group chooseDept hidden" >
+        <label class="control-label  col-xs-3" for="byDept">审核人部门筛选 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select id="DeptType" required="required" name="DeptType" class="form-control  col-xs-7" data-parsley-id="2038">
+                <option value="0">申请人部门</option>
+                <option value="1">归口部门</option>
+
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="appSerial">特殊操作编号 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <!--<input type="text" id="appSerial"  required="required" #if($formAppRoleDto)value="$formAppRoleDto.roleType"#end name="appSerial"  class="form-control  col-xs-7" data-parsley-id="2038"><ul class="parsley-errors-list" id="parsley-id-2032"></ul>-->
+            <select id="clStep" required="required" name="clStep" class="form-control  col-xs-7" data-parsley-id="2038">
+                <option value="0">请选择</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="appRole">特殊操作描述 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+
+            <input id="clStepDesc" class="form-control  col-xs-7" name="clStepDesc">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="appSerial">审核类型 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <!--<input type="text" id="appSerial"  required="required" #if($formAppRoleDto)value="$formAppRoleDto.roleType"#end name="appSerial"  class="form-control  col-xs-7" data-parsley-id="2038"><ul class="parsley-errors-list" id="parsley-id-2032"></ul>-->
+            <select id="appType" required="required" name="appType" class="form-control  col-xs-7"
+                    data-parsley-id="2038">
+                <option value="A">允许退回</option>
+                <option value="D">不允许否决/退回</option>
+                <option value="F" >允许否决</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="viewAction">节点审核/查看页面 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+
+            <input id="viewAction" class="form-control  col-xs-7" name="viewAction">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="approveAction">节点审核操作Action <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+
+            <input id="approveAction" class="form-control  col-xs-7" name="approveAction">
+        </div>
+    </div>
+    <div class="ln_solid"></div>
+
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdateFormAppList" data-url="_add_Update_formAppList"
+                    class="btn btn-success">提交
+            </button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+
+</form>
+

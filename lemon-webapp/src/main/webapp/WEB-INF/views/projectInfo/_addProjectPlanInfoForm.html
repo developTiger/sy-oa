@@ -1,0 +1,412 @@
+$ui.loadCss("select2/select2.min.css")
+
+#if($views=="true")
+<form id="addProjectPlanInfoForm_view" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans) value="$beans.id" #end >
+
+    <!--    <div class="form-group" style="display: none">
+            <label class="control-label  col-xs-3" for="zhuanlimingcheng">
+                序号  <span class="required">*</span>
+            </label>
+            <div class="col-xs-5">
+                <input type="text" id="zhuanlimingcheng"  #if($beans)value="$beans.projectPlan_No"#end  name="projectPlan_No"
+                       class="form-control col-md-7 col-xs-12 no1" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+            </div>
+        </div>-->
+
+    <div class="form-group">
+    <label class="control-label  col-xs-3" >
+        项目年度  <span class="required">*</span>
+    </label>
+    <div class="col-xs-5">
+        <input type="text" id="Inputdate_view"  #if($beans)value="$beans.projectPlan_InputYear_Str"#end  name="projectPlan_InputYear_Str_view"
+               class="form-control col-md-7 col-xs-12 Wdate" placeholder="项目年度"data-parsley-id="4639" readonly>
+        <ul class="parsley-errors-list" id="parsley-id-20304_view"></ul>
+    </div>
+</div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            项目编号 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <!--<select id="car-status"  required="required" name="projectPlan_Name" class="form-control col-xs-7" data-parsley-id="0004">
+                <option value="" >&#45;&#45;请选择&#45;&#45;</option>
+                <option value="1"  #if (1==$beans.patent_Type) selected #end >发明</option>
+                <option value="2"  #if (2==$beans.patent_Type) selected #end >实用新型</option>
+                <option value="3"  #if (3==$beans.patent_Type) selected #end >外观</option>
+            </select>-->
+            <input type="text"   #if($beans)value="$beans.projectPlan_Number"#end  name="projectPlan_Number_view"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639" readonly>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            项目名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <!--<select id="car-status"  required="required" name="projectPlan_Name" class="form-control col-xs-7" data-parsley-id="0004">
+                <option value="" >&#45;&#45;请选择&#45;&#45;</option>
+                <option value="1"  #if (1==$beans.patent_Type) selected #end >发明</option>
+                <option value="2"  #if (2==$beans.patent_Type) selected #end >实用新型</option>
+                <option value="3"  #if (3==$beans.patent_Type) selected #end >外观</option>
+            </select>-->
+            <input type="text"   #if($beans)value="$beans.projectPlan_Name"#end  name="projectPlan_Name_view"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639" readonly>
+
+        </div>
+    </div>
+    <!--    <div class="form-group">
+            <label class="control-label  col-xs-3" >
+                专业类别  <span class="required">*</span>
+            </label>
+            <div class="col-xs-5">
+                <input type="text"  #if($beans)value="$beans.projectPlan_Type"#end  name="projectPlan_Type"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+
+            </div>
+        </div>-->
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            研究内容  <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <textarea type="text" required="required"   name="projectPlan_Content_view" readonly
+                      class="form-control col-md-7 col-xs-12" data-parsley-id="4639">#if($beans)$beans.projectPlan_Content#end</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            承担单位  <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text"  #if($beans)value="$beans.projectPlan_BearUnit"#end  name="projectPlan_BearUnit_view"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            参加单位  <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text"  #if($beans)value="$beans.projectPlan_ParticipatingUnit"#end  name="projectPlan_ParticipatingUnit_view"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639" readonly>
+        </div>
+    </div>
+    <!--    <div class="form-group">
+            <label class="control-label  col-xs-3" for="zhuanlimingcheng">
+                项目起止时间  <span class="required">*</span>
+            </label>
+            <div class="col-xs-5">
+                <input type="text" required="required" #if($beans)value="$beans.projectPlan_StartEndTime"#end  name="projectPlan_StartEndTime"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            </div>
+        </div>-->
+    <div class="form-group" >
+        <label class="control-label  col-xs-3" >
+            项目开始时间 <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control mini-width Wdate" id="projectPlan_StartTime_view" #if($beans)value="$projectPlanStartTime"#end  style="float: left;width: 100%" placeholder="项目开始时间"
+                   name="startTime_Str" readonly>
+        </div>
+    </div>
+    <div class="form-group" >
+        <label class="control-label  col-xs-3" >
+            项目终止时间 <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control mini-width Wdate" id="projectPlan_EndTime_view" #if($beans)value="$projectPlanEndTime" #end   style="float: left;width: 100%" placeholder="项目终止时间"
+                   name="endTime_Str" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">
+            项目长  <span class="required">*</span>
+        </label>
+        <div class="control-label col-xs-5">
+              <textarea type="text" id="winner_Info_view" name="projectPlan_Manager1_view" readonly
+                        class="form-control col-md-7 col-xs-12" data-parsley-id="4639"
+              >#if($beans) $beans.projectPlan_Manager #end</textarea>
+
+        </div>
+
+    </div>
+<!--    <div class="form-group">
+        <label class="control-label  col-xs-3">
+            负责人邮箱  <span class="required">*</span>
+        </label>
+        <div class="control-label col-xs-5">
+              <textarea type="text" id="manager_Email_view" name="manager_Email_view" readonly
+                        class="form-control col-md-7 col-xs-5" data-parsley-id="4639"
+              >#if($beans) $beans.projectPlan_Email #end</textarea>
+        </div>
+    </div>-->
+    <div class="">
+        <input type="hidden" id="Manager_view" name="projectPlan_Manager_view"/>
+    </div>
+    <div class="">
+        <input type="hidden"  id="Email_view" name="projectPlan_Email_view" value="$beans.projectPlan_Email"/>
+    </div>
+<!--    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            修改负责人  <span class="required">*</span>
+        </label>
+        <div class="col-lg-4" id="tests1_view">
+            <select class="form-control select2_group  ename" name="projectPlan_Emails_view">
+                <option value="">请选择</option>
+                #foreach($item in $empInfos)
+                <optgroup label="$item.deptName">
+                    #foreach($e in $item.empDtos)
+                    <option value="$e.email">$e.name
+                    </option>
+                    #end
+                </optgroup>
+                #end
+            </select>
+        </div>
+
+    </div>-->
+    <!--        <div class="form-group" >
+                <label class="control-label  col-xs-3" >
+                    备 注 <span class="required">*</span>
+                </label>
+                <div class="col-xs-5">
+                     <textarea type="text" id="projectPlan_Remark" name="projectPlan_Remark"
+                               class="form-control col-md-7 col-xs-12" data-parsley-id="4639"
+                     >#if($beans) $beans.projectPlan_Remark #end</textarea>
+                </div>
+            </div>-->
+
+    <!-- <div class="form-group">
+     <div class="col-xs-6">
+         <div style=" padding-left: 52%" >
+             <input id="hiden_in" type="hidden" name="winner_Info1" #if($beans) value="$beans.winner_info " #end>
+         </div>
+     </div>
+     </div>-->
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+           <!-- <button type="submit" id="addOrUpdatePatent_view" data-url="ajax_add_update_projectPlan" class="btn btn-success" >提交</button>-->
+            <a class="btn btn-primary" href="javascript:history.go(-1);">返回</a>
+        </div>
+    </div>
+</form>
+#else
+<form id="addProjectPlanInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans) value="$beans.id" #end >
+
+
+    <!--    <div class="form-group" style="display: none">
+            <label class="control-label  col-xs-3" for="zhuanlimingcheng">
+                序号  <span class="required">*</span>
+            </label>
+            <div class="col-xs-5">
+                <input type="text" id="zhuanlimingcheng"  #if($beans)value="$beans.projectPlan_No"#end  name="projectPlan_No"
+                       class="form-control col-md-7 col-xs-12 no1" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+            </div>
+        </div>-->
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            项目年度  <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" id="Inputdate"  #if($beans)value="$beans.projectPlan_InputYear_Str"#end  name="projectPlan_InputYear_Str"
+                   class="form-control col-md-7 col-xs-12 Wdate" placeholder="项目年度"data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-20304"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            项目编号 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <!--<select id="car-status"  required="required" name="projectPlan_Name" class="form-control col-xs-7" data-parsley-id="0004">
+                <option value="" >&#45;&#45;请选择&#45;&#45;</option>
+                <option value="1"  #if (1==$beans.patent_Type) selected #end >发明</option>
+                <option value="2"  #if (2==$beans.patent_Type) selected #end >实用新型</option>
+                <option value="3"  #if (3==$beans.patent_Type) selected #end >外观</option>
+            </select>-->
+            <input type="text"   #if($beans)value="$beans.projectPlan_Number"#end  name="projectPlan_Number"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            项目名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <!--<select id="car-status"  required="required" name="projectPlan_Name" class="form-control col-xs-7" data-parsley-id="0004">
+                <option value="" >&#45;&#45;请选择&#45;&#45;</option>
+                <option value="1"  #if (1==$beans.patent_Type) selected #end >发明</option>
+                <option value="2"  #if (2==$beans.patent_Type) selected #end >实用新型</option>
+                <option value="3"  #if (3==$beans.patent_Type) selected #end >外观</option>
+            </select>-->
+            <input type="text"   #if($beans)value="$beans.projectPlan_Name"#end  name="projectPlan_Name"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+
+        </div>
+    </div>
+    <!--    <div class="form-group">
+            <label class="control-label  col-xs-3" >
+                专业类别  <span class="required">*</span>
+            </label>
+            <div class="col-xs-5">
+                <input type="text"  #if($beans)value="$beans.projectPlan_Type"#end  name="projectPlan_Type"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+
+            </div>
+        </div>-->
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            研究内容  <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <textarea type="text" required="required"   name="projectPlan_Content"
+                      class="form-control col-md-7 col-xs-12" data-parsley-id="4639">#if($beans)$beans.projectPlan_Content#end</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            承担单位  <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text"  #if($beans)value="$beans.projectPlan_BearUnit"#end  name="projectPlan_BearUnit"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            参加单位  <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text"  #if($beans)value="$beans.projectPlan_ParticipatingUnit"#end  name="projectPlan_ParticipatingUnit"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        </div>
+    </div>
+    <!--    <div class="form-group">
+            <label class="control-label  col-xs-3" for="zhuanlimingcheng">
+                项目起止时间  <span class="required">*</span>
+            </label>
+            <div class="col-xs-5">
+                <input type="text" required="required" #if($beans)value="$beans.projectPlan_StartEndTime"#end  name="projectPlan_StartEndTime"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            </div>
+        </div>-->
+    <div class="form-group" >
+        <label class="control-label  col-xs-3" >
+            项目开始时间 <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control mini-width Wdate" id="projectPlan_StartTime" #if($beans)value="$projectPlanStartTime"#end  style="float: left;width: 100%" placeholder="项目开始时间"
+                   name="startTime_Str" >
+        </div>
+    </div>
+    <div class="form-group" >
+        <label class="control-label  col-xs-3" >
+            项目终止时间 <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control mini-width Wdate" id="projectPlan_EndTime" #if($beans)value="$projectPlanEndTime" #end   style="float: left;width: 100%" placeholder="项目终止时间"
+                   name="endTime_Str" >
+        </div>
+    </div>
+
+<!--    <div class="form-group">
+        <label class="control-label  col-xs-3">
+            负责人  <span class="required">*</span>
+        </label>
+        <div class="control-label col-xs-5">
+              <textarea type="text" id="winner_Info" name="projectPlan_Manager1" readonly
+                        class="form-control col-md-7 col-xs-5" data-parsley-id="4639"
+              >#if($beans) $beans.projectPlan_Manager #end</textarea>
+
+        </div>
+
+    </div>-->
+<!--    <div class="form-group">
+        <label class="control-label  col-xs-3">
+            负责人邮箱  <span class="required">*</span>
+        </label>
+        <div class="control-label col-xs-5">
+              <textarea type="text" id="manager_Email" name="manager_Email" readonly
+                        class="form-control col-md-7 col-xs-12" data-parsley-id="4639"
+              >#if($beans) $beans.projectPlan_Email #end</textarea>
+        </div>
+    </div>-->
+    <div class="">
+        <input type="hidden" id="Manager" name="projectPlan_Manager"/>
+    </div>
+    <div class="">
+        <input type="hidden" id="Email" name="projectPlan_Email" value="$beans.projectPlan_Email"/>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            修改项目长  <span class="required">*</span>
+        </label>
+       <!-- col-lg-5-->
+        <div class="col-xs-5"  id="tests1">
+           <!-- select2_group 下拉框样式-->
+            <select class="form-control col-xs-5 select2_group ename" name="projectPlan_Emails">
+               #if($beans)
+                <option  value="$beans.projectPlan_Email"> $beans.projectPlan_Manager</option>
+                #else
+                <option  value="">请选择</option>
+                #end
+
+                #foreach($item in $empInfos)
+                <optgroup  label="$item.deptName">
+                    #foreach($e in $item.empDtos)
+                    <option  value="$e.email">$e.name
+                    </option>
+                    #end
+                </optgroup>
+                #end
+            </select>
+        </div>
+
+    </div>
+    <!--        <div class="form-group" >
+                <label class="control-label  col-xs-3" >
+                    备 注 <span class="required">*</span>
+                </label>
+                <div class="col-xs-5">
+                     <textarea type="text" id="projectPlan_Remark" name="projectPlan_Remark"
+                               class="form-control col-md-7 col-xs-12" data-parsley-id="4639"
+                     >#if($beans) $beans.projectPlan_Remark #end</textarea>
+                </div>
+            </div>-->
+
+    <!-- <div class="form-group">
+     <div class="col-xs-6">
+         <div style=" padding-left: 52%" >
+             <input id="hiden_in" type="hidden" name="winner_Info1" #if($beans) value="$beans.winner_info " #end>
+         </div>
+     </div>
+     </div>-->
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <button type="submit" id="addOrUpdatePatent" data-url="ajax_add_update_projectPlan" class="btn btn-success" >提交</button>
+            <a class="btn btn-primary" href="javascript:history.go(-1);">返回</a>
+        </div>
+    </div>
+</form>
+#end
+
+
+
+<script>
+    require(["app/projectInfo/updateprojectPlan"]);
+</script>

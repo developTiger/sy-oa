@@ -1,0 +1,216 @@
+<div id="qjApplyForm" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+    <input type="hidden" name="id"  value="<%=id%>" />
+    <!--<input type="text" value="<%=userId%>" name="hiddenUserId">-->
+
+    <table width="100%">
+        <tr>
+            <td width="15%">
+                <label class="" style="font-size: larger">项目名称：</label>
+            </td>
+            <td width="35%">
+                <label class="" style="font-size: larger"><%=projectName%></label>
+            </td>
+
+            <td width="15%">
+                <label class=" " style="font-size: larger">竞赛类别：</label>
+            </td>
+            <td width="35%">
+                <label class=" " style="font-size: larger"><%=competitionType%> </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="" style="font-size: larger">竞赛负责人：</label>
+            </td>
+            <td>
+                <label class="" style="font-size: larger"><%=leader%></label>
+            </td>
+            <td>
+                <label class=" " style="font-size: larger">主要参加人：</label>
+            </td>
+            <td>
+                <label class=" " style="font-size: larger"><%=joinPeople%></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="" style="font-size: larger">竞赛单位：</label>
+            </td>
+            <td>
+                <label class=" " style="font-size: larger"><%=deptName%></label>
+            </td>
+            <td>
+                <label class=" " style="font-size: larger">竞赛时间：</label>
+            </td>
+            <td>
+                <label class=" " style="font-size: larger"><%=dateFormat2(cpmpetitionTime)%></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="" style="font-size: larger">竞赛主题：</label>
+            </td>
+            <td colspan="3">
+                <label class=" " style="font-size: larger"><%=competitionTitle%></label>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <label class="" style="font-size: larger">现状说明：</label>
+            </td>
+            <td colspan="3">
+                <label class=" " style="font-size: larger"><%=situationExplain%></label>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <label class="" style="font-size: larger">立项依据：</label>
+            </td>
+            <td colspan="3">
+                <label class=" " style="font-size: larger"><%=projectBasis%></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="" style="font-size: larger">控制措施：</label>
+            </td>
+            <td colspan="3">
+                <label class=" " style="font-size: larger"><%=controlAction%></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="" style="font-size: larger">进度安排：</label>
+            </td>
+            <td colspan="3">
+                <label class=" " style="font-size: larger"><%=scheduleArrange%></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="" style="font-size: larger">预期效果：</label>
+            </td>
+            <td colspan="3">
+                <label class=" " style="font-size: larger"><%=expectResult%></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="" style="font-size: larger">附件：</a>
+                </label>
+            </td>
+            <td>
+                <label class="" style="font-size: larger"><a href="downloadFile?id=<%=fileId%>"><%=fileName%></a>
+                </label>
+            </td>
+
+        </tr>
+    </table>
+
+<!--    <%if(clStep == "2" && isViewOnly == false && isComplete == false){%>
+    <div class="form-group col-xs-12" >
+        <label class="pull-right checkAll" style="margin-right: 20px;font-size: larger" ><a  target="_blank" style="color: blue" href="/sra_workPro_fail_all?formKind=SYY_DQ_LC06&viewurl=partyGroup&step=<%=clStep%>">查看全部未审批申请</a> </label>
+    </div>
+    <%}%>-->
+
+    <%if(clStep == "2" && isViewOnly == false && isComplete == false){%>
+    <hr style="border: 0;border-top: 2px solid #eee">
+
+    <div class="col-xs-12 form-group" style="padding: 0px">
+        <label class="control-label " style="font-size: larger">评审小组成员：</label>
+        <select  class="example-dropUp_1 col-xs-3" multiple="multiple" name="members_names" >
+            <%for(var i=0;i< project_empDtos.length;i++){%>
+            <optgroup label="<%=project_empDtos[i].deptName%>">
+                <%for(var j=0;j < project_empDtos[i].empDtos.length;j++){%>
+                <option value="<%=project_empDtos[i].empDtos[j].name%>" data-value="<%=project_empDtos[i].empDtos[j].id%>" <%if(projectJudgeMembers && projectJudgeMembers.indexOf(project_empDtos[i].empDtos[j].name)>=0){%> selected <%}%> >
+                    <%=project_empDtos[i].empDtos[j].name%>
+                </option>
+                <%}%>
+            </optgroup>
+            <%}%>
+        </select>
+        <input type="hidden" name="project_membersName">
+        <input type="hidden" name="project_membersNameIds">
+    </div>
+
+<!--    <div class="col-xs-12" style="padding: 0px">
+        <label class="control-label " style="font-size: larger">评审小组组长：</label>
+        <select  class="example-dropUp_1 col-xs-3" multiple="multiple" name="members_leader" >
+            <%for(var i=0;i< project_empDtos.length;i++){%>
+            <optgroup label="<%=project_empDtos[i].deptName%>">
+                <%for(var j=0;j < project_empDtos[i].empDtos.length;j++){%>
+                <option value="<%=project_empDtos[i].empDtos[j].name%>" <%if(projectJudgeMembers && projectJudgeMembers.indexOf(project_empDtos[i].empDtos[j].name)>=0){%> selected <%}%> >
+                <%=project_empDtos[i].empDtos[j].name%>
+                </option>
+                <%}%>
+            </optgroup>
+            <%}%>
+        </select>
+    </div>-->
+
+    <div class="col-xs-12 " style="padding: 0px;">
+        <label class="control-label " style="font-size: larger;float: left">评审小组组长：</label>
+        <div class=" col-xs-3">
+            <select class="example-dropUp_1" name="members_leader">
+                <<%for(var i=0;i< project_empDtos.length;i++){%>
+                <optgroup label="<%=project_empDtos[i].deptName%>">
+                    <%for(var j=0;j < project_empDtos[i].empDtos.length;j++){%>
+                    <option value="<%=project_empDtos[i].empDtos[j].name%>" data-value="<%=project_empDtos[i].empDtos[j].id%>" <%if(judgeMembersLeader==project_empDtos[i].empDtos[j].name){%> selected <%}%> >
+                    <%=project_empDtos[i].empDtos[j].name%>
+                    </option>
+                    <%}%>
+                </optgroup>
+                <%}%>
+            </select>
+            <input type="hidden" name="hiddenLeaderId">
+        </div>
+
+    </div>
+
+    <!--<div class="col-xs-12" style="padding: 0px;margin: 15px 0px">
+        <label class="control-label col-xs-2" style="font-size: larger">评审意见：</label>
+
+        <div class="col-xs-10" style="padding: 0px" >
+            <textarea class="form-control " rows="5" name="project_judgeSuggestions" ><%=judgeSuggestion%></textarea>
+
+        </div>
+
+
+    </div>-->
+
+
+    <div class="form-group col-xs-12" >
+        <label class="pull-right checkAll" style="margin-right: 20px;font-size: larger" ><a  target="_blank" style="color: blue" href="/sra_workPro_fail_all?formKind=SYY_DQ_LC01&viewurl=partyGroup&step=<%=clStep%>">查看全部未审批申请</a> </label>
+    </div>
+    <%}%>
+
+
+
+    <%if(clStep > "2"){%>
+    <hr style="border: 0;border-top: 2px solid #eee">
+    <table>
+        <tr>
+            <td ><label style="font-size: larger">评审小组成员：</label></td>
+            <td><label style="font-size: larger"><%=projectJudgeMembers%></label></td>
+        </tr>
+        <tr>
+            <td ><label style="font-size: larger">评审小组组长：</label></td>
+            <td><label style="font-size: larger"><%=judgeMembersLeader%></label></td>
+        </tr>
+        <!--<tr>-->
+            <!--<td><label style="font-size: larger">评审意见：</label></td>-->
+            <!--<td><label style="font-size: larger"><%=judgeSuggestion%></label></td>-->
+        <!--</tr>-->
+    </table>
+    <%}%>
+
+    <%if(clStep == "4" && isViewOnly == false && isComplete == false){%>
+    <div class="form-group col-xs-12" >
+        <label class="pull-right checkAll" style="margin-right: 20px;font-size: larger" ><a  target="_blank" style="color: blue" href="/sra_workPro_fail_all?formKind=SYY_DQ_LC06&viewurl=partyGroup&step=<%=clStep%>">查看全部未审批申请</a> </label>
+    </div>
+    <%}%>
+
+</div>

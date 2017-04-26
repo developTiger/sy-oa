@@ -1,0 +1,75 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>生产管理<small>-生产数据</small></h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="form_group">
+        <a class="btn btn-default left" id="daochu">导出</a>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="form-inline  col-xs-10" style="" >
+                <form id="searchForm" data-url="ajax_productionDate_list">
+                    <div class="form-group" >
+                        <label class="control-label">
+                            对内对外:
+                        </label>
+                        <select  class="form-control" name="yuanneiwai" style="">
+                             <option value="">全部</option>
+                             <option value="0">院内</option>
+                             <option value="1">院外</option>
+                         </select>
+                        <label class="control-label">
+                            样品批号:
+                        </label>
+                        <input type="text" class="form-control" name="YPPH" style="">
+                        <label class="control-label">
+                            委托人:
+                        </label>
+                        <input type="text" class="form-control" name="WTR" style="">
+                        <label class="control-label">
+                            委托单位:
+                        </label>
+                        <input type="text" class="form-control" name="WTDW" style="">
+                        <label class="control-label">送样日期: </label>
+                        <label class="control-label">
+                            <input type="text" class="form-control mini-width Wdate" id="bgtime"
+                                   style="float: left;width: 150px;" placeholder="开始时间"
+                                   name="beginTime">
+                        </label>
+                        <label>~</label>
+                        <label class="control-label">
+                            <input type="text" class="form-control mini-width Wdate" id="edtime"
+                                   style="float: left;width: 150px" placeholder="结束时间"
+                                   name="endTime">
+                        </label>
+                        <label class="control-label">报出日期: </label>
+                        <label class="control-label">
+                            <input type="text" class="form-control mini-width Wdate" id="bgtime1"
+                                   style="float: left;width: 150px;" placeholder="开始时间"
+                                   name="beginTime1">
+                        </label>
+                        <label>~</label>
+                        <label class="control-label">
+                            <input type="text" class="form-control mini-width Wdate" id="edtime1"
+                                   style="float: left;width: 150px" placeholder="结束时间"
+                                   name="endTime1">
+                        </label>
+                        <label class="control-label">
+                            <input type="button" class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" id="ProductionDate" value="查询" style="margin-top: 5px">
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table">
+        </div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/productionDate/productionDate"]);
+</script>

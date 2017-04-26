@@ -1,0 +1,129 @@
+<input type="hidden" id="formDelayApplyDto" name="formNo" value="$formDelayApplyDto2.formNo">
+<input type="hidden" name="projectNo" id="projectNo" value="$projectNo">
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-4">
+        <input type="hidden"  name="delayName" value="$formDelayApplyDto.delayName">
+        <label id="delayName" name="delayName" class=" col-md-7 col-xs-12" >
+            延期项目名称: <a href="/detailInfo?id=$scId&projectID=$projectID">$projectName</a>
+            <!--延期项目名称:<a href="/detailInfo?id=$scId&projectID=$projectID">$projectName</a>-->
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-4">
+        <input type="hidden">
+        <label class=" col-md-7 col-xs-12" >
+            负责人: $leaderName
+        </label>
+    </div>
+
+    <div class="control-label col-xs-4">
+        <input type="hidden">
+        <label class=" col-md-7 col-xs-12" >
+            项目编号: $projectNo
+        </label>
+    </div>
+
+    <div class="control-label col-xs-4">
+        <input type="hidden">
+        <label class=" col-md-7 col-xs-12" >
+            承担单位: $assumeCompany
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+
+    <div class="control-label col-xs-4">
+        <input type="hidden">
+        <label class=" col-md-7 col-xs-12" >
+            项目开始时间: $beginTime
+        </label>
+    </div>
+
+    <div class="control-label col-xs-4">
+        <input type="hidden">
+        <label class=" col-md-7 col-xs-12" >
+            项目结束时间: $endTime
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-4">
+        <input type="hidden">
+        <label class=" col-md-7 col-xs-12" >
+            项目延期日期: $formDelayApplyDto2.delayTime
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-6">
+        <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+        <label id="delayReason" name="delayReason" class=" col-md-7 col-xs-12" >
+            延期理由: $formDelayApplyDto2.delayReason
+        </label>
+    </div>
+</div>
+
+#if($formDelayApplyDto2.fileName)
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-4">
+        <label class=" col-md-7 col-xs-12" >
+            延期附件: <a href="/downloadFile?id=$formDelayApplyDto2.fileId">$formDelayApplyDto2.fileName</a>
+        </label>
+    </div>
+</div>
+#end
+
+#if($viewOnly=="false")
+    #if($formDelayApplyDto2.leaderWord)
+        <div class="form-group col-xs-12">
+            <div class="control-label col-xs-12">
+                <hr style="border: 1px solid silver;width: 100%"/>
+            </div>
+        </div>
+
+        <div class="form-group col-xs-12">
+            <div class="control-label col-xs-12">
+                <label class=" col-md-7 col-xs-12" >
+                    基层单位领导审批: $formDelayApplyDto2.leaderWord
+                </label>
+            </div>
+        </div>
+    #end
+<br/><br/><br/><br/><br/><br/><br/><hr/>
+<div class="col-lg-1  pull-right">
+    <a class="label label-default" data-title="批量审核" href="syy_kg04_pl8?formNo=$formDelayApplyDto2.formNo"><i class="green fa "></i>批量审核项目</a>
+</div>
+#end
+
+#if($viewOnly=="true")
+#if($formDelayApplyDto2.leaderWord)
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <label class=" col-md-7 col-xs-12" >
+            基层单位领导审批: $formDelayApplyDto2.leaderWord
+        </label>
+    </div>
+</div>
+#end
+#end
+
+<script>
+    require(['app/delay_flow/syy_kg_lc04']);
+</script>

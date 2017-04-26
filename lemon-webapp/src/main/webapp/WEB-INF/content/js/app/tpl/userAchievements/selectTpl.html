@@ -1,0 +1,22 @@
+<div class="form-group">
+    <label class="control-label  col-xs-3">第<b class="bbb"><%=addNum%></b>著作人 <span class="required">*</span>
+    </label>
+    <div class="col-xs-3">
+        <select required="required" seq="<%=addNum%>" name="status" class="form-control col-xs-3 selectdd" data-parsley-id="0004">
+            <option value="">请选择</option>
+            <%if(empinfo.length > 0){%>
+            <%for(var i = 0 ; i < empinfo.length; i++) {%>
+            <option value="<%=empinfo[i].id%>"><%=empinfo[i].name%></option>
+            <%}%>
+            <%}%>
+            <option value="0@" data-value="其他" id="qita">其他</option>
+        </select>
+    </div>
+    <div class="inputtt hidden col-xs-3" id="firstInput">
+        <input type="text" id="fInput" value="" required="required" name="repairLog"
+               class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+    </div>
+    <div class="col-xs-3"   >
+       <button type="button" data-num="<%=addNum%>" class="test btn btn-primary" >删除</button>
+   </div>
+</div>

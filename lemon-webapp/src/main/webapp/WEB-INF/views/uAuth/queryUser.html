@@ -1,0 +1,124 @@
+</br>
+<style>
+
+    .form-inline .form-control {
+        display: inline-block;
+        vertical-align: middle;
+        width: 117px;
+    }
+
+</style>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/院员工管理
+            <small>- 员工信息</small>
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+      <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 员工信息查看.
+        </div>
+        <div class="row">
+
+            <div class="form-inline" style="text-align:right;padding-bottom: 10px;">
+
+                <form  id="searchForm"  class="" data-url="ajax_userQuery_list">
+                    <!--<input type="hidden" name="p" value="1">-->
+                    <!--<input type="hidden" name="ps" value="10">-->
+                    <div class="btn-group">
+                        <a class="btn btn-default buttons-copy buttons-html5 btn-sm downloadCanRestYearAndSpa"  tabindex="0"
+                           aria-controls="datatable-buttons" data-id="0"><span><i
+                                class="green fa fa-download"></i>下载可休疗养假人员表</span></a>
+                        </div>
+                    <div class="btn-group">
+                        <a class="btn btn-default buttons-copy buttons-html5 btn-sm downloadCanRestYearAndSpa"  tabindex="0"
+                           aria-controls="datatable-buttons" data-id="1"><span><i
+                                class="green fa fa-download"></i>下载可休带薪年假人员表</span></a>
+                    </div>
+                    <input type="hidden" id="showOperate" name="showOperate" value="$showOperate">
+
+                    <div class="form-group">
+                        <label class="control-label">部门</label>
+                        <select class="form-control" name="deptId">
+                            <option value="">请选择</option>
+                            #if($UserDept)
+                            #foreach($bean in $UserDept)
+                            <option value="$bean.id">$bean.deptName</option>
+                            #end
+                            #else
+                            <d>暂无数据</d>
+                            #end
+                        </select>
+                    </div>
+
+                    <!--<div class="form-group">-->
+                        <!--<label class="control-label">学历</label>-->
+                        <!--<select class="form-control"  name="highestEdu">-->
+                            <!--<option value="">请选择</option>-->
+                            <!--<option value="大专">大专</option>-->
+                            <!--<option value="本科">本科</option>-->
+                            <!--<option value="研究生">研究生</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+
+                    <div class="form-group">
+                        <label class="control-label ">文化程度
+                        </label>
+
+                            <select  name="highestEdu" class="form-control ">
+                                <option value="">请选择</option>
+
+                                <option value="博士" >博士</option>
+                                <option value="硕士" >硕士</option>
+                                <option value="本科" >本科</option>
+                                <option value="大专" >大专</option>
+                                <option value="高职" >高职</option>
+                                <option value="中专" >中专</option>
+                                <option value="高中" >高中</option>
+                                <option value="初中" >初中</option>
+                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">专业技术职务</label>
+                        <select class="form-control "  name="workKind">
+                            <option value="">请选择</option>
+                            <option value="高级工程师">高级工程师</option>
+                            <option value="工程师">工程师</option>
+                            <option value="助理工程师">助理工程师</option>
+                            <option value="技师">技师</option>
+                            <option value="工人">工人</option>
+                            <option value="政工师">政工师</option>
+                            <option value="高级政工师">高级政工师</option>
+                            <option value="经济师">经济师</option>
+                            <option value="会计师">会计师</option>
+                            <option value="高级会计师">高级会计师</option>
+                        </select>
+
+                    </div>
+
+                    <!--<div class="form-group">-->
+                        <!--<label class="control-label">资质</label>-->
+                        <!--<input type="text" class="form-control mini-width "-->
+                               <!--name="qualificationName" >-->
+                    <!--</div>-->
+
+                    <div class="form-group">
+                        <label class="control-label" >姓名
+                        </label>  <input type="text" id="loginName" class="form-control " name="loginName">
+                        <input type="button" class="btn btn-default" id="empQueryBtn1" value="查询" style="position:relative;top: 0.2em">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table1"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/user/user"]);
+</script>

@@ -1,0 +1,190 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+$ui.loadCss("select2/select2.min.css")
+
+<style>
+    .multiselect-container .multiselect-group{background-color: #337AB7;}
+    .multiselect-container .multiselect-group a{color: #ffffff}
+</style>
+
+<div style="min-width: 800px">
+
+    <input type="hidden" name="id" value="$!proposal.id">
+    <!--<input type="hidden" name="formNo" value="$!proposal.formNo">-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="title">提案标题 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="title" required="required" name="title" maxlength="50"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!proposal.title">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="title">电话
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="phone"  name="phone" readonly
+                   class="form-control  col-xs-7" value="$!emp.mobile">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="content">邮箱信息
+        </label>
+
+        <div class="col-xs-5">
+            <input id="mail"  name="mail" readonly value="$!emp.email"
+                      class="form-control  col-xs-7" data-parsley-id="2038" >
+        </div>
+    </div>
+
+    <div class="form-group Js_attendPeople">
+        <label class="control-label  col-xs-2" for="title">附议人 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <select  class="form-control select2_multiple Js_multiPeople" name="mainPeople" >
+
+                #if($depts)
+                #foreach($dept in $depts)
+                <optgroup label="$dept.deptName">
+
+                    <!--<option value="">请选择</option>-->
+                    #if($beans)
+                    #foreach($bean in $beans)
+                    #if($dept.id == $bean.deptId)
+                    <option value="$bean.name" >$bean.name</option>
+
+                    #end
+                    #end
+                    #end
+
+                </optgroup>
+                #end
+                #end
+
+            </select>
+            <input type="hidden" name="hidProposalPerson" id="hiddenPerson">
+        </div>
+
+        <div class="col-xs-2" style="margin-bottom: 15px;">
+            <button type="button" class="btn btn-defalut Js_addPeople">新增</button>
+        </div>
+
+    </div>
+
+    #if($proposal.proposalPeople)
+    #foreach($person in $proposal.proposalPeople)
+    <div class="form-group ">
+
+        <div class="col-xs-5 col-xs-offset-2">
+            <select  class="select2_multiple Js_multiPeople"  name="mainPeople" required="required"  >
+
+                #if($depts)
+                #foreach($dept in $depts)
+                <optgroup label="$dept.deptName">
+
+                    <!--<option value="">请选择</option>-->
+                    #if($beans)
+                    #foreach($bean in $beans)
+                    #if($dept.id == $bean.deptId)
+                    <option value="$bean.name" #if($person == $bean.name) selected #end>$bean.name</option>
+
+                    #end
+                    #end
+                    #end
+
+                </optgroup>
+                #end
+                #end
+
+            </select>
+            <!--<input type="hidden" id="hiddenEmp" name="hidEmpNames" >-->
+            <!--<input type="hidden" id="hiddenId" name="hidId" >-->
+        </div>
+        <div class="col-xs-2" style="margin-bottom: 15px;">
+            <button type="button" class="btn btn-danger Js_mainPeople_delete">删除</button>
+        </div>
+
+    </div>
+    #end
+    #end
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="content">类别 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <select class="form-control" required="required" id="type" name="type">
+                <option value="">请选择</option>
+                <option value="生产经营" #if( $proposal.type  && $proposal.type=="生产经营") selected #end>生产经营</option>
+                <option value="人事劳资" #if( $proposal.type  && $proposal.type=="人事劳资") selected #end>人事劳资</option>
+                <option value="劳动保护" #if( $proposal.type  && $proposal.type=="劳动保护") selected #end>劳动保护</option>
+                <option value="生活福利" #if( $proposal.type  && $proposal.type=="生活福利") selected #end>生活福利</option>
+                <option value="综合治理" #if( $proposal.type  && $proposal.type=="综合治理") selected #end>综合治理</option>
+                <option value="其他" #if( $proposal.type  && $proposal.type=="其他") selected #end>其他</option>
+            </select>
+        </div>
+    </div>
+
+<!--    <div class="form-group">
+        <label class="control-label  col-xs-2" for="title">建议承办部门 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <select class="form-control" required="required" id="undertakeDept" name="undertakeDept_id">
+                #if($depts)
+                <option value="">请选择</option>
+                #foreach($dept in $depts)
+                <option value="$dept.id" #if( $proposal.undertakeDept  && $proposal.undertakeDept ==$dept.deptName) selected #end>$dept.deptName</option>
+                #end
+                #else
+                <d>暂无数据</d>
+                #end
+            </select>
+            <input type="hidden" name="hiddenDeptName">
+        </div>
+    </div>-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="content">案由 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <textarea id="reason" required="required" name="reason"
+                      class="form-control  col-xs-7" data-parsley-id="2038" >$!proposal.reason</textarea>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="content">提案内容 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <textarea id="content" required="required" name="content"
+                   class="form-control  col-xs-7" data-parsley-id="2038" >$!proposal.content</textarea>
+        </div>
+    </div>
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <button type="submit" id="workProposalSubmit" data-url="ajax_add_update_workProposal" class="btn btn-success">提交</button>
+            <a class="btn btn-primary" href="javascript:window.close();">取消</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(["app/partyGroup/workersProposal"]);
+</script>
+
+
+
+

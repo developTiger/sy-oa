@@ -1,0 +1,64 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+
+    <thead>
+    <tr class="headings">
+        <th class="column-title">序号 </th>
+        <th class="column-title">样品批号 </th>
+        <th class="column-title">井号 </th>
+        <th class="column-title">报出日期 </th>
+        <th class="column-title">检测项目 </th>
+        <th class="column-title">子项目 </th>
+        <th class="column-title">类别 </th>
+        <th class="column-title">参数名称 </th>
+        <th class="column-title">前期工序 </th>
+        <th class="column-title">项目组名称 </th>
+        <th class="column-title">地区 </th>
+        <th class="column-title">送样日期 </th>
+        <th class="column-title">委托单位 </th>
+        <th class="column-title">委托人 </th>
+        <th class="column-title">结算日期 </th>
+        <th class="column-title">样品数量 </th>
+        <th class="column-title">计划数量 </th>
+        <th class="column-title">加工数量 </th>
+        <th class="column-title no-link last"><span class="nobr">操作</span>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = (pageNumber-1) * pageSize%>
+    <%if(pagesCount > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr data-tt-id="<%=items[i].id%>">
+        <input type="hidden" class="checkBtn  fo<%=num+i+1%>" name="table_records" value="<%=items[i].id%>">
+        <td class=" "><%=num+i+1%></td>
+        <td class=" "><%=items[i].YPPH%></td>
+        <td class=" "><%=items[i].JH%></td>
+        <td class=" "><%=dateFormat2(items[i].BCRQ1)%></td>
+        <td class=" "><%=items[i].JCXM%></td>
+        <td class=" "><%=items[i].ZXM%></td>
+        <td class=" "><%=items[i].LB%></td>
+        <td class=" "><%=items[i].CSNAME%></td>
+        <td class=" "><%=items[i].QQGX%></td>
+        <td class=" "><%=items[i].XMZMC%></td>
+        <td class=" "><%=items[i].DQ%></td>
+        <td class=" "><%=dateFormat2(items[i].SYRQ1)%></td>
+        <td class=" "><%=items[i].WTDW%></td>
+        <td class=" "><%=items[i].WTR%></td>
+        <td class=" "><%=dateFormat2(items[i].JSRQ1)%></td>
+        <td class=" "><%=items[i].YPSL%></td>
+        <td class=" "><%=items[i].JHSL%></td>
+        <td class=" "><%=items[i].JGSL%></td>
+        <td class=" ">
+            <a class="i_modal"
+               data-title="详细信息" href="_detailProductionDate?id=<%=items[i].id%>">
+                <i class="blue fa fa-list-alt"></i>详细 </a>
+        </td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="20" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

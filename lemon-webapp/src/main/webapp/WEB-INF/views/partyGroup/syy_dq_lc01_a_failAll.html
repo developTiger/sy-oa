@@ -1,0 +1,178 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+
+<style>
+    .multiselect-container .multiselect-group{background-color: #337AB7;}
+    .multiselect-container .multiselect-group a{color: #ffffff}
+</style>
+
+<form id="approveForm">
+
+    <div class="x_panel">
+        <div class="x_content">
+
+            <div  style="text-align: center">
+                #if($!step == 2)
+                <a class=" btn btn-success" data-toggle="modal" data-target="#myModal_1">同意</a>
+                #else
+                <a class=" btn btn-success allApprove">同意</a>
+                #end
+                <a class=" btn btn-primary" id="allReject">退回</a>
+            </div>
+
+            <div>
+                <label>审核意见：</label>
+            </div>
+
+            <div>
+                <textarea class="form-control" style="margin: 0px -0.5px 0px 0px; width: 100%; height: 100px;" id="allContent"></textarea>
+            </div>
+
+            <div class="modal fade" id="myModal_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h2 class="modal-title" id="myModalLabel"><strong>项目评审</strong></h2>
+                        </div>
+                        <div class="">
+
+                            <div class="col-xs-12 form-group" style="margin-top: 15px">
+
+                                <div class="col-xs-12 form-group">
+                                    <label class="col-xs-3 control-label" style="margin-left: 25px">评审小组成员：</label>
+                                    <div class="col-xs-6" style="padding: 0px">
+                                        <select  id="example-dropUp_1" multiple="multiple" name="memberNames">
+                                            #foreach($dept in $list)
+                                            <optgroup label="$dept.deptName">
+                                                #foreach($emp in $dept.empDtos)
+                                                <option value="$emp.id">$emp.name</option>
+                                                #end
+                                            </optgroup>
+                                            #end
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 form-group">
+                                    <label class="col-xs-3 control-label" style="margin-left: 25px">评审小组组长：</label>
+                                    <div class="col-xs-6" style="padding: 0px">
+                                        <select  id="example-dropUp_2" multiple="multiple" name="memberLeader">
+                                            #foreach($dept in $list)
+                                            <optgroup label="$dept.deptName">
+                                                #foreach($emp in $dept.empDtos)
+                                                <option value="$emp.id">$emp.name</option>
+                                                #end
+                                            </optgroup>
+                                            #end
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!--<div class="col-xs-12">
+                                    <label class="control-label col-xs-3">评审意见：</label>
+                                    <div class="col-xs-6">
+                                        <textarea name="project_membersName" class="form-control"></textarea>
+
+                                    </div>
+                                </div>-->
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-primary allApprove">保存</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="position: relative;top: -0.2em">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+<div class="x_panel">
+
+    <div style="text-align: center;font-size: xx-small">
+        <h1>
+            #if($!step == 2 || $!step == 4)
+            劳动竞赛挖潜增效项目申报流程(党群科汇总审批)
+            #else
+            劳动竞赛挖潜增效项目申报流程(专业评审小组评审)
+            #end
+        </h1>
+    </div>
+
+    <form id="searchForm">
+        <div class="form-inline col-xs-8 col-xs-offset-4" >
+
+            <input type="hidden" name="step" value="$!step">
+
+            <label class="control-label">项目名称：</label>
+            <input type="text" class="form-control" name="proName">
+
+            <label class="control-label">竞赛负责人：</label>
+            <input type="text" class="form-control" name="comLeader">
+
+            <!--<label class="control-label">竞赛类别：</label>-->
+            <!--<select class="form-control" name="compeType">-->
+                <!--<option value="">请选择</option>-->
+                <!--<option value="钻井工程">钻井工程</option>-->
+                <!--<option value="地面工程">地面工程</option>-->
+                <!--<option value="一般建设项目">一般建设项目</option>-->
+                <!--<option value="设备购置">设备购置</option>-->
+                <!--<option value="材料">材料</option>-->
+                <!--<option value="水电">水电</option>-->
+                <!--<option value="运费">运费</option>-->
+                <!--<option value="蒸汽">蒸汽</option>-->
+                <!--<option value="燃料">燃料</option>-->
+                <!--<option value="井下作业">井下作业</option>-->
+                <!--<option value="测试">测试</option>-->
+                <!--<option value="维修">维修</option>-->
+                <!--<option value="其他">其他</option>-->
+            <!--</select>-->
+
+
+            <label class="control-label">竞赛单位：</label>
+            <select class="form-control" name="dept_name">
+
+                <option value="">请选择</option>
+                #if($depts)
+                #foreach($dept in $depts)
+                <option value="$dept.deptName">$dept.deptName</option>
+                #end
+                #else
+                <d>暂无数据</d>
+                #end
+
+            </select>
+
+
+            <div class="form-group">
+                <label class="control-label" >
+                </label>
+                <div class="control-label" style="position: relative;top: -0.5em">
+                    <input type="button" class="btn btn-default" id="failAllQueryBtn" value="查询">
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <div id="table"></div>
+    <div class="col-lg-10 dataTables_paginate  ">
+        <ul class="pagination "></ul>
+    </div>
+
+</div>
+
+<script>
+    require(["app/partyGroup/workProject_failAll"]);
+</script>
+
+
+
+

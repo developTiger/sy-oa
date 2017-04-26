@@ -1,0 +1,162 @@
+<form id="addBooksInfoForm" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">成果类型:
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;">
+        <!--    #if(1==$beans.awards_Type)科研#end
+            #if(2==$beans.awards_Type) 生产运行 #end
+            #if(3==$beans.awards_Type) 质量安全 #end
+            #if(4==$beans.awards_Type) 综治维稳 #end
+            #if(5==$beans.awards_Type) 工会共青团 #end
+            #if(6==$beans.awards_Type) 党务 #end-->
+            #if($beans.awards_Type)$beans.awards_Type#end
+        </label>
+    </div>
+
+
+<!--    <div class="form-group">
+        <label class="control-label  col-xs-3" >成果名称 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.treatise_Name #end</label>
+    </div>-->
+    <div class="form-group">
+        <label class="control-label  col-xs-3">
+            获奖成果名称：<!--<span class="required">*</span>-->
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;">
+            #if($beans.win_Result_Name)$beans.win_Result_Name#end
+        </label>
+    </div>
+    <div class="form-group" hidden>
+        <label class="control-label  col-xs-3">
+            获奖人：
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;">
+            <br/>#if($beans.people)
+            #set($i=1)
+            #foreach($a in $beans.people)
+            <!--#if($i>1)-->
+
+            <!--#end-->
+            第$i获奖人：$a.people_Name
+            #if($i<3)<br/>#end
+            #set($i=$i+1)
+            #end
+            #end
+        </label>
+<!--        <div style="display: none">
+              <textarea style="display:none" id="winner_Info" name="winner_Info"  disabled
+                        class="form-control col-md-7 col-xs-12" data-parsley-id="4639"
+                        data-value="获奖人">#if($beans) $beans.winner_Info #end</textarea>
+
+            &lt;!&ndash;提交数据&ndash;&gt;
+            <input id="hiden_in" type="hidden"  name="winner_Info1" #if($beans) value="$beans.info" #end>
+            &lt;!&ndash;jquery验证数据&ndash;&gt;
+            <input id="hiden_in_sb" name="winner_vali" type="text" style="width:0px;height: 0px;border: 0px;"
+                   #if($beans) value="$beans.info " #end>
+        </div>-->
+
+<!--        <div style="display:none">
+            <a id="add_p" href="javascript:void(0);"
+               class=" btn btn-default
+                    buttons-copy buttons-html5 btn-sm" data-title="成果人员">
+                    <span >
+                        <i class="green fa " ></i>
+                        添加
+                    </span>
+            </a>
+        </div>-->
+    </div>
+        <div class="form-group">
+            <label class="control-label  col-xs-3">
+                获奖人:<!-- <span class="required">*</span>-->
+            </label>
+            <label class="control-label col-xs-4" style="text-align: left;">
+                #if($beans.awards_Name)$beans.awards_Name#end
+            </label>
+        </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">
+            颁发单位： <!--<span class="required">*</span>-->
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;">
+            #if($beans.issuing_Unit)$beans.issuing_Unit#end
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">
+            证书编号：<!-- <span class="required">*</span>-->
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;">
+            #if($beans.certif_No)$beans.certif_No#end
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            获奖成果类型：
+            <!--<span class="required">*</span>-->
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;">
+            #if($beans.win_Result_Classify)$beans.win_Result_Classify&nbsp;&nbsp;&nbsp;&nbsp;$beans.win_Result_type#end
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">
+            获奖级别：<!--<span class="required">*</span>-->
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;">
+            #if ($beans.win_Level==1)国家级  #end
+            #if ($beans.win_Level==2)省部级  #end
+            #if ($beans.win_Level==3)油田公司级  #end
+            #if ($beans.win_Level==4)厂处级  #end
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">
+            获奖时间：<!--<span class="required">*</span>-->
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;">
+            #if($beans.win_Date_Str)$beans.win_Date_Str#end
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">是否合作：
+            <!--<span class="required">*</span>-->
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;">
+            #if ($beans.is_Cooperate_Result==true) 是 #end
+            #if ($beans.is_Cooperate_Result==false) 否 #end
+        </label>
+    </div>
+    #if($beans.files.size()!=0)
+    <div class="form-group" >
+        <div class="container">
+            <label class="control-label col-xs-3" style="font-size: larger">附件:
+            </label>
+            <div style="font-size: larger; text-align: left;" class="col-xs-6" >
+                #foreach($files in $$beans.files)
+                <a href="downloadFile?id=$files.fileId">$files.fileName</a></br>
+                #end
+            </div>
+
+        </div>
+    </div>
+    #end
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <!--<button type="submit" id="addOrUpdatebook" data-url="ajax_add_update_book" class="btn btn-success">提交</button>-->
+            <!--<button type="button" id="cancelModal" class="btn btn-primary"><a href="javascript:history.go(-1);">取消</a></button>-->
+            <a class="btn btn-primary" href="javascript:history.go(-1);">返回</a>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    require(['app/userAchievements/detailBooks']);
+</script>
+
+

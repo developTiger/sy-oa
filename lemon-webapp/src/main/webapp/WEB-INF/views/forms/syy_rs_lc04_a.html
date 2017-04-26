@@ -1,0 +1,70 @@
+<div style="min-width: 800px">
+
+    <input type="hidden" name="id" #if($appraise)value="$appraise.id" #end>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="reason">季度考核标题<span class="required">*</span>
+        </label>
+        <div class="col-xs-8">
+            <input type="text" id="reason" required="required" minlength="5"  #if($appraise)value="$appraise.appraisTitle" #end name="appraisTitle"
+                   class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+            <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">考核开始时间<span class="required">*</span></label>
+        <div class="col-xs-8">
+        <input type="text" class="form-control mini-width Wdate" id="beginTime"  #if($appraise)value="$appraise.startDate" #end
+               placeholder="开始时间" name="strStartDate" required="required">
+    </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">考核结束时间<span class="required">*</span></label>
+        <div class="col-xs-8">
+            <input type="text" class="form-control mini-width Wdate" id="endTime"  #if($appraise)value="$appraise.endDate" #end
+                   placeholder="结束时间" required="required"
+                   name="strEndDate">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="target">季度考核内容<span class="required">*</span>
+        </label>
+        <div class="col-xs-8">
+            <textarea id="target"  name="description" class="form-control  col-xs-7 " data-parsley-id="2038" minlength="5" maxlength="200" required="required"
+                    style="height: 200px;">
+                 #if($appraise.description)$appraise.description #end </textarea>
+            <!--<input type="hidden" id="tempKindEditor" name="tempKindEditors" value="">-->
+            <ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+        </div>
+    </div>
+
+    <!--<div class="form-group">-->
+        <!--<label class="control-label col-xs-2">内容：</label>-->
+
+        <!--<div class="col-xs-8">-->
+            <!--<textarea id="content" class="col-xs-12" name="content" >#if($noticeEdit.content) $noticeEdit.content #end</textarea>-->
+            <!--<input type="hidden" id="tempKindEditor1" name="tempKindEditors" value="">-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-7 col-xs-offset-5">
+            <button type="submit" id="qjSubmit" data-url="ajax_add_update_dept_appraise" class="btn btn-success">提交</button>
+            <a class="btn btn-primary" href="javascript:window.close();">取消</a>
+        </div>
+    </div>
+
+</div>
+<script>
+    require(["app/forms/deptAppraise"]);
+</script>
+
+
+
+

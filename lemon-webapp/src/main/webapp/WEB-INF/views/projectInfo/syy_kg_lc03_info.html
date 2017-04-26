@@ -1,0 +1,55 @@
+<form id="detailProjectInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" value="$proId" id="hidId">
+    <input type="hidden" name="formNo" value="$formNoEx" id="hidFormNo">
+
+
+    <div class="x_content">
+
+
+        <div role="tabpanel" data-example-id="togglable-tabs">
+            <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                <li class="active" role="presentation"><a id="home-tab" role="tab" aria-expanded="true" href="#tab_content1" data-toggle="tab" class="queryData" data-url="lc03_info">项目基本信息</a>
+                </li>
+                <li role="presentation"><a id="profile-tab" role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData" data-url="project_open_info">项目开题信息</a>
+                </li>
+                <li role="presentation"><a id="profile-tab1" role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData" data-url="ajax_query_technologyJudgementInfo">项目运行评测记录</a>
+                </li>
+                <li role="presentation"><a id="profile-tab2" role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData" data-url="ajax_query_technologyJudgementInfo">项目成果信息</a>
+                </li>
+
+            </ul>
+
+
+            <div id="displayData" class="x_panel">
+
+
+
+            </div>
+
+            <div id="table">
+
+            </div>
+
+            <div class="col-lg-10 dataTables_paginate  ">
+                <ul class="pagination "></ul>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 ">
+            <a href="javascript:history.go(-1)" class="btn btn-primary">返回</a>
+
+        </div>
+    </div>
+</form>
+<script>
+    require(["app/projectInfo/queryProjectOpen"]);
+</script>
+

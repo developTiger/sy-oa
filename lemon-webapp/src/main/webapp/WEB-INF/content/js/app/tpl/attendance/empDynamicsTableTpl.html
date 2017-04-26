@@ -1,0 +1,40 @@
+<style>
+    .weak_class{
+        background-color: #003399;
+    }
+</style>
+
+<!--<label class="control-label text-center text-danger col-xs-12"><h5><strong><%=month%>今日：出差(<%if(map.Z){%><%=map.Z%><%}else%><%=0%>)人/事假(<% if(map.S3){%><%=map.S3%><%}else%><%=0%>)人/婚丧(<% if(map.H){%><%=map.H%><%}else%><%=0%>)人/休假(<% if(map.S1){%><%=map.S1%><%}else%><%=0%>)人/补休(<% if(map.B2){%><%=map.B2%><%}else%><%=0%>)人/产假(<% if(map.C){%><%=map.C%><%}else%><%=0%>)人/探亲(<% if(map.T){%><%=map.T%><%}else%><%=0%>)人/疗养(<% if(map.L){%><%=map.L%><%}else%><%=0%>)人/病假(<% if(map.B){%><%=map.B%><%}else%><%=0%>)人</strong></h5>-->
+<!--</label>-->
+<div class="table-responsive">
+
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings text-center">
+        <th class="column-title text-center" >序号 </th>
+        <th class="column-title text-center" style="vertical-align: middle;min-width: 115px;">姓名 </th>
+        <% for(var i=0;i < dayModels.length;i++) {%>
+        <th class="column-title text-center  <%if(dayModels[i].weekCheck){%>weak_class<%}else{%> <%}%> <%if(dayModels[i].day<10){%> selectDay0<%=dayModels[i].day%><%}else{%>selectDay<%=dayModels[i].day%><%}%>" style="vertical-align: middle"><%=dayModels[i].day%></th>
+        <%}%>
+        <th class="column-title text-center" style="vertical-align: middle;min-width: 115px;">部门名称 </th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <%var num = (pageNumber-1) * pageSize%>
+       <% for(var i=0;i< resultList.length;i++){%>
+           <tr>
+               <td class="num"><%=num+i+1%></td>
+               <td class=" "><%=resultList[i].empName%></td>
+               <% var res=resultList[i].lists%>
+               <%for(var j=0;j< res.length;j++){%>
+                   <td class=""><%=res[j].cord%></td>
+               <%}%>
+               <td class="" style="min-width: 115px;"><%=resultList[i].deptName%></td>
+
+           </tr>
+       <%}%>
+    </tbody>
+</table>
+
+</div>

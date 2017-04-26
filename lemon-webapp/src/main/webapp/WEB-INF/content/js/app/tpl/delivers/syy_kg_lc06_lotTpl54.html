@@ -1,0 +1,69 @@
+
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th><input type="checkbox" id="check-all"  class="checkAll "></th>
+        <th class="column-title">专业分类</th>
+        <th class="column-title">成果名称 </th>
+        <th class="column-title">主要完成单位 </th>
+        <th class="column-title">主要完成人 </th>
+        <th class="column-title">专利类型及数量 </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num=0%>
+    <%if(deliver.length > 0){%>
+    <%for(var i = 0 ; i < deliver.length; i++) {%>
+    <tr class="sicentId"  data-tt-id="<%=deliver[i].id%>">
+        <td> <input type="checkbox" class="checkBtn"  name="table_records" value="<%=deliver[i].formNo%>"></td>
+        <td>
+            <%if(deliver[i].specialtyType !=null){%>
+            <%=deliver[i].specialtyType%>
+            <!--<%if(deliver[i].specialtyType=="01"){%>-->
+            <!--油气勘探-->
+            <!--<%}%>-->
+            <!--<%if(deliver[i].specialtyType=="02"){%>-->
+            <!--油气开发-->
+            <!--<%}%>-->
+            <!--<%if(deliver[i].specialtyType=="03"){%>-->
+            <!--炼油化工-->
+            <!--<%}%>-->
+            <!--<%if(deliver[i].specialtyType=="04"){%>-->
+            <!--油气集输-->
+            <!--<%}%>-->
+            <!--<%if(deliver[i].specialtyType=="05"){%>-->
+            <!--计 算 机-->
+            <!--<%}%>-->
+            <!--<%if(deliver[i].specialtyType=="06"){%>-->
+            <!--软 科 学-->
+            <!--<%}%>-->
+            <!--<%if(deliver[i].specialtyType=="07"){%>-->
+            <!--安全环保-->
+            <!--<%}%>-->
+            <%}%>
+        </td>
+        <td> <%=deliver[i].projectName%></td>
+        <td> <%=deliver[i].assumeCompany%></td>
+        <td> <%=deliver[i].leaderName%> </td>
+        <td> <%=deliver[i].zllxjsl%></td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="11" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>
+
+<div class="form-group col-xs-12 "  >
+    <input type="file"  id="fileId" name="fileName"/>
+    <!--<input type="button" id="upload" value="上传">-->
+</div>
+<div class="form_group">
+    <a class="btn btn-default left" id="daochu">导出</a>
+</div>
+<div class="form_group">
+    <input type="button" class="btn btn-default" style="float: right" id="upload" value="导入"><input  style="float: right;width: 200px"  id="upFile" form_no="<%=formNo%>" type="file" class="btn btn-default right"  name="myfiles" value="项目结束">
+</div>
+<div id="filesHtml"></div>

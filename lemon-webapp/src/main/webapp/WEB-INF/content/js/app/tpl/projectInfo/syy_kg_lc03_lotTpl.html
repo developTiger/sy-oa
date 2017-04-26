@@ -1,0 +1,128 @@
+
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th><input type="checkbox" id="check-all"  class="checkAll "></th>
+        <th style="width: 50px">序号 </th>
+        <th class="column-title">项目编号 </th>
+        <th class="column-title">项目名称 </th>
+        <th class="column-title">专业类别 </th>
+        <th class="column-title">承担单位 </th>
+        <th class="column-title">开始时间 </th>
+        <th class="column-title">截止时间 </th>
+        <th class="column-title">项目长 </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num=0%>
+    <%if(sicent.length > 0){%>
+    <%for(var i = 0 ; i < sicent.length; i++) {%>
+
+    <tr class="sicentId"  data-tt-id="<%=sicent[i].id%>">
+       <td> <input type="checkbox" class="checkBtn  fo<%=num+i+1%>" name="table_records" value="<%=sicent[i].formNo%>"></td>
+        <td> <%=num+i+1%></td>
+        <td> <%=sicent[i].projectNo%></td>
+        <td>
+            <% if(clStep < 5 ) {%>
+            <a href="/syy_kg_lc03_view<%=clStep%>?formNo=<%=sicent[i].formNo%>&formKind=SYY_KG_LC03&viewOnly=false"><font style="color: #0077b3"><%=sicent[i].projectName%></font></a>
+            <% } %>
+            <% if(clStep == 5 || clStep == 8 ) {%>
+            <a href="/syy_kg_lc03_view<%=clStep%>_kgk?formNo=<%=sicent[i].formNo%>&formKind=SYY_KG_LC03&viewOnly=false"><font style="color: #0077b3"><%=sicent[i].projectName%></font></a>
+            <%}%>
+            <% if(clStep == 6 ) {%>
+            <a href="/syy_kg_lc03_view5?formNo=<%=sicent[i].formNo%>&formKind=SYY_KG_LC03&viewOnly=false"><font style="color: #0077b3"><%=sicent[i].projectName%></font></a>
+            <% } %>
+            <% if(clStep == 7 ) {%>
+            <a href="/syy_kg_lc03_view6?formNo=<%=sicent[i].formNo%>&formKind=SYY_KG_LC03&viewOnly=false"><font style="color: #0077b3"><%=sicent[i].projectName%></font></a>
+            <% } %>
+            <% if(clStep == 9 ) {%>
+            <a href="/syy_kg_lc03_view7?formNo=<%=sicent[i].formNo%>&formKind=SYY_KG_LC03&viewOnly=false"><font style="color: #0077b3"><%=sicent[i].projectName%></font></a>
+            <% } %>
+            <% if(clStep == 10 ) {%>
+            <a href="/syy_kg_lc03_view8?formNo=<%=sicent[i].formNo%>&formKind=SYY_KG_LC03&viewOnly=false"><font style="color: #0077b3"><%=sicent[i].projectName%></font></a>
+            <% } %>
+            <% if(clStep == 11 ) {%>
+            <a href="/syy_kg_lc03_view9?formNo=<%=sicent[i].formNo%>&formKind=SYY_KG_LC03&viewOnly=false"><font style="color: #0077b3"><%=sicent[i].projectName%></font></a>
+            <% } %>
+        </td>
+        <td> <%=sicent[i].specialtyType%></td>
+        <td> <%=sicent[i].assumeCompany%></td>
+        <td> <%=sicent[i].beginTime%> </td>
+        <td> <%=sicent[i].endTime%> </td>
+        <td> <%=sicent[i].leaderName%></td>
+    </tr>
+
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="11" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>
+<input type="hidden" class="clStep" name="clStep" value="<%=clStep%>">
+
+<!--<%if(clStep==2){%>
+<label class="control-label" style="float: left" >批示 <span class="required">:</span>
+</label>
+<label class="control-label " >
+          <textarea type="text" id="instructions" placeholder="请统一填写批示" required="required" style="width: 300px;height: 100px"
+                    name="instructions"></textarea>
+</label>
+<%}%>-->
+
+<%if(clStep==4){%>
+<div class="form-group col-xs-12 " >
+    <div  class="form-group col-xs-2 ">
+        <label class="control-label"  >专家选择:</label>
+    </div>
+
+    <div  class="form-group col-xs-6">
+        <select required="required" class="select2_multiple form-control leaders"  multiple="true" tabindex="-1" style="display: none;" >
+            <option value="">请选择</option>
+            <%for(var a= 0 ; a < empInfos.length ; a++){%>
+            <optgroup label="<%=empInfos[a].deptName%>">
+                <%for(var j= 0 ; j < empInfos[a].empDtos.length ; j++){%>
+                <option value="<%=empInfos[a].empDtos[j].id%>"><%=empInfos[a].empDtos[j].name%></option>
+                <%}%>
+            </optgroup>
+            <%}%>
+        </select>
+        <input type="hidden" id="hidname" name="hidname" value=""/>
+        <input type="hidden" id="hidid" name="hidid" value=""/>
+    </div>
+</div>
+<%}%>
+
+<%if(clStep==6){%>
+<div class="form-group col-xs-12 " >
+    <label class="control-label" style="float: left" >专家意见 <span class="required">:</span>
+    </label>
+    <label class="control-label " >
+                   <textarea type="text" id="proficientOpinion" placeholder="请统一填写意见" required="required" style="width: 300px;height: 100px"
+                             name="proficientOpinion"></textarea>
+    </label>
+</div>
+<%}%>
+
+<%if(clStep==7){%>
+<div class="form-group col-xs-12 " >
+    <div  class="form-group col-xs-2">
+        <label class="control-label"  >主管领导选择：</label>
+    </div>
+    <div  class="form-group col-xs-5">
+        <select required="required"  class="select2_multiple form-control leaderss" >
+            <option value="">请选择</option>
+            <%for(var a= 0 ; a < empInfos.length ; a++){%>
+            <optgroup label="<%=empInfos[a].deptName%>">
+                <%for(var j= 0 ; j < empInfos[a].empDtos.length ; j++){%>
+                <option value="<%=empInfos[a].empDtos[j].id%>"><%=empInfos[a].empDtos[j].name%></option>
+                <%}%>
+            </optgroup>
+            <%}%>
+        </select>
+        <input type="hidden" id="hidnames" name="hidnames" value=""/>
+        <input type="hidden" id="hidids" name="hidids" value=""/>
+    </div>
+</div>
+<%}%>

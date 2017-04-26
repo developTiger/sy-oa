@@ -1,0 +1,543 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--<meta charset="UTF-8">-->
+<!--<title>流程申请</title>-->
+<!--<script data-main="js/rjs-config.js" src="js/require.js"></script>-->
+<!--<script src="js/jslib/jquery.min.js"></script>-->
+<!--$ui.loadCss("bootstrap.min.css")-->
+<!--$ui.loadCss("fonts/css/font-awesome.min.css")-->
+<!--$ui.loadCss("animate.min.css")-->
+<!--$ui.loadCss("custom.css")-->
+<!--$ui.loadCss("icheck/skins/minimal/minimal.css")-->
+
+<!--<script>-->
+<!--require(['app/init']);-->
+<!--</script>-->
+<!--</head>-->
+<!--<body class="nav-md">-->
+$ui.loadCss("select2/select2.min.css")
+<div class="container body" style="height: 800px;margin-left: 0px">
+    <div style="padding: 10px 20px 0;background:#F7F7F7 ;height: 100%;">
+        <div class=" x_panel " style="width: 100%;margin-left: -40px; margin-top: -11px;">
+            <div class="row">
+
+
+                <div style="margin: auto; width: 300px;text-align: center"><h3>设备基础信息编辑</h3></div>
+                <div class="x_title">
+                    <div class="row">
+                        <div class="col-xs-4">修改人： $userInfo.name</div>
+                        <div class="col-xs-4"> 部门： $userInfo.deptName</div>
+                        <div class="col-xs-4">修改时间：$date</div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="content">
+                    <form id="editEquipmentInfoForm" class="form-horizontal form-label-left">
+
+                        <div style="min-width: 800px">
+
+                            <input type="hidden" #if($beans)value="$beans.id" #end>
+
+                            <div class="form-group" hidden="hidden">
+                                <label class="control-label  col-xs-2" for="id">设备id<span class="required">*</span>
+                                </label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="id" required="required" name="id"
+                                           class="form-control  col-xs-7" data-parsley-id="2038" #if($equipmentDto.id)
+                                           value="$equipmentDto.id" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-1202"></ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="measuringName">设备名称<span
+                                        class="required">*</span>
+                                </label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="measuringName" required="required" name="measuringName"
+                                           class="form-control  col-xs-7" data-parsley-id="2038"
+                                           #if($equipmentDto.measuringName) value="$equipmentDto.measuringName" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-1203"></ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="propertyNum">资产编号</label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="propertyNum" name="propertyNum"
+                                           class="form-control  col-xs-7" data-parsley-id="2038"
+                                           #if($equipmentDto.propertyNum) value="$equipmentDto.propertyNum" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-12035"></ul>
+                                </div>
+                            </div>
+
+                            <!--<div class="form-group">
+                                <label class="control-label  col-xs-2" for="propertyType">资产类别名称<span class="required">*</span></label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="propertyType" name="propertyType"
+                                           class="form-control  col-xs-7" data-parsley-id="2038" required="required"
+                                           #if($equipmentDto.propertyType) value="$equipmentDto.propertyType" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-11035"></ul>
+                                </div>
+                            </div>-->
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="measurement">计量单位<span class="required">*</span></label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="measurement" name="measurement" required="required"
+                                           class="form-control  col-xs-7" data-parsley-id="2038"
+                                           #if($equipmentDto.measurement) value="$equipmentDto.measurement" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-11036"></ul>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="standard">规格型号</label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="standard" name="standard"
+                                           class="form-control  col-xs-7" data-parsley-id="2038"
+                                           #if($equipmentDto.standard) value="$equipmentDto.standard" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-1208"></ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="factoryName">制造厂家</label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="factoryName" name="factoryName" maxlength="50"
+                                           class="form-control  col-xs-7" data-parsley-id="2038"
+                                           #if($equipmentDto.factoryName) value="$equipmentDto.factoryName" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-1238"></ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="outFactoryNum">出厂编号</label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="outFactoryNum" name="outFactoryNum"
+                                           class="form-control  col-xs-7" data-parsley-id="2038"
+                                           #if($equipmentDto.outFactoryNum) value="$equipmentDto.outFactoryNum" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-1038"></ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="savePersonName">保管人<span
+                                        class="required">*</span>
+                                </label>
+
+                                <div class="col-xs-7">
+                                    <select type="text" id="savePersonName" required="required" name="savePerson"
+                                            class="form-control  col-xs-7" data-parsley-id="2038"
+                                            >
+
+                                        #foreach($dept in $deptAll)
+                                        <optgroup label="$!dept.deptName">
+                                            #foreach($sp in $empAll)
+                                            #if($sp.deptId==$dept.id)
+                                            <option value="$sp.id"
+                                                    #if($equipmentDto.savePersonName.contains($sp.name)) selected #end>$!sp.name
+                                            </option>
+                                            #end
+                                            #end
+                                        </optgroup>
+                                        #end
+                                    </select>
+                                    <ul class="parsley-errors-list" id="parsley-id-1039"></ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="unitName">使用单位<span
+                                        class="required">*</span>
+                                </label>
+
+                                <div class="col-xs-7">
+                                    <select type="text" id="unitName" required="required" name="unitName" maxlength="50"
+                                            class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+                                        <option value="">请选择单位</option>
+                                        #foreach($dept in $deptAll)
+                                        <option value="$dept.deptName" #if($equipmentDto.unitName=="$dept.deptName")
+                                                selected #end>$!dept.deptName
+                                        </option>
+                                        #end
+                                    </select>
+                                    <ul class="parsley-errors-list" id="parsley-id-2037"></ul>
+                                </div>
+                            </div>
+                           <!-- <div class="form-group">
+                                <label class="control-label  col-xs-2" for="unitName">所属单位<span
+                                        class="required">*</span>
+                                </label>
+
+                                <div class="col-xs-7">
+                                    <select type="text" id="institute" required="required" name="institute"
+                                            maxlength="50"
+                                            class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+                                        <option value="">请选择单位</option>
+                                        #foreach($dept in $deptAll)
+                                        <option value="$dept.deptName" #if($equipmentDto.institute=="$dept.deptName")
+                                                selected #end>$!dept.deptName
+                                        </option>
+                                        #end
+                                    </select>
+                                    <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+                                </div>
+                            </div>-->
+
+
+
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="type">设备类型<span class="required">*</span></label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="type" name="type" maxlength="100" required="required"
+                                           class="form-control  col-xs-7" data-parsley-id="2038"
+                                           #if($equipmentDto.type) value="$equipmentDto.type" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-2338"></ul>
+                                </div>
+                            </div>
+                            <!--<div class="form-group">
+                                <label class="control-label  col-xs-2" >存放地点<span class="required">*</span></label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="deposit" name="deposit" maxlength="100" required="required"
+                                           class="form-control  col-xs-7" data-parsley-id="2038"
+                                           #if($equipmentDto.deposit) value="$equipmentDto.deposit" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-2238"></ul>
+                                </div>
+                            </div>-->
+                           <!-- <div class="form-group">
+                                <label class="control-label  col-xs-2" for="address">使用地点</label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="address" name="address" maxlength="50"
+                                           class="form-control  col-xs-7" data-parsley-id="2038"
+                                           #if($equipmentDto.address) value="$equipmentDto.address" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-2138"></ul>
+                                </div>
+                            </div>-->
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="post">使用岗位<span class="required">*</span>
+                                </label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="post" required="required" name="post" maxlength="50"
+                                           class="form-control  col-xs-7" data-parsley-id="2038" required="required"
+                                           #if($equipmentDto.post) value="$equipmentDto.post" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2">当前状态<span class="required">*</span>
+                                </label>
+
+                                <div class="col-xs-7">
+                                    <select type="text" name="currentStation" maxlength="50"
+                                            class="form-control  col-xs-7" data-parsley-id="2038">
+                                        <option selected value="">请选择</option>
+                                        <option value="Normal" #if($equipmentDto.currentStation=="Normal") selected
+                                                #end>正常
+                                        </option>
+                                        <option value="applied" #if($equipmentDto.currentStation=="applied") selected
+                                                #end>
+                                            已申请维修
+                                        </option>
+                                        <option value="Repair" #if($equipmentDto.currentStation=="Repair") selected
+                                                #end>维修中
+                                        </option>
+                                        <option value="Scrap" #if($equipmentDto.currentStation=="Scrap") selected #end>
+                                            已报废
+                                        </option>
+                                    </select>
+                                    <ul class="parsley-errors-list" id="parsley-id-2041"></ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="original">原值<span class="required">*</span>
+                                </label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="original" required="required" name="original" min="0"
+                                           class="form-control  col-xs-7" data-parsley-id="2038"
+                                           #if($equipmentDto.original) value="$equipmentDto.original" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-12038"></ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="netValue">净值</label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="netValue" name="netValue" min="0"
+                                           class="form-control  col-xs-7" data-parsley-id="2038"
+                                           #if($equipmentDto.netValue) value="$equipmentDto.netValue" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-12039"></ul>
+                                </div>
+                            </div>
+
+                            <!--<div class="form-group">
+                                <label class="control-label  col-xs-2" for="wbuyTime">购进日期<span
+                                        class="required">*</span>
+                                </label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="wbuyTime" required="required" name="wbuyTime"
+                                           class="form-control  col-xs-7 Wdate" data-parsley-id="2038"
+                                           #if($equipmentDto.buyTime)
+                                           value="$help.formatDateToString($equipmentDto.buyTime,'yyyy-MM-dd')" #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-12057"></ul>
+                                </div>
+                            </div>-->
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="wproductTime">投产日期</label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="wproductTime" name="wproductTime"
+                                           class="form-control  col-xs-7 Wdate" data-parsley-id="2038"
+                                           #if($equipmentDto.productTime)
+                                           value="$help.formatDateToString($equipmentDto.productTime,'yyyy-MM-dd')"
+                                           #end>
+                                    <ul class="parsley-errors-list" id="parsley-id-12058"></ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="checkdate">检定周期(/月)</label>
+
+                                <div class="col-xs-7">
+                                    <select type="text" id="checkdate" required="required" name="checkdate"
+                                            maxlength="50"
+                                            class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+                                        <option value="">请选择</option>
+                                        #foreach($i in [1..36])
+                                        <option value="$i" #if($equipmentDto.checkdate==$i) selected #end>$i</option>
+                                        #end
+                                        <!--<option value="2" #if($equipmentDto.checkdate =="2") selected #end>2</option>-->
+                                        <!--<option value="3" #if($equipmentDto.checkdate =="3") selected #end>3</option>-->
+                                        <!--<option value="4" #if($equipmentDto.checkdate =="4") selected #end>4</option>-->
+                                        <!--<option value="5" #if($equipmentDto.checkdate =="5") selected #end>5</option>-->
+                                        <!--<option value="6" #if($equipmentDto.checkdate =="6") selected #end>6</option>-->
+                                        <!--<option value="7" #if($equipmentDto.checkdate =="7") selected #end>7</option>-->
+                                        <!--<option value="8" #if($equipmentDto.checkdate =="8") selected #end>8</option>-->
+                                        <!--<option value="9" #if($equipmentDto.checkdate =="9") selected #end>9</option>-->
+                                        <!--<option value="10" #if($equipmentDto.checkdate =="10") selected #end>10</option>-->
+                                        <!--<option value="11" #if($equipmentDto.checkdate =="11") selected #end>11</option>-->
+                                        <!--<option value="12" #if($equipmentDto.checkdate =="12") selected #end>12</option>-->
+                                        <!--<option value="13" #if($equipmentDto.checkdate =="13") selected #end>13</option>-->
+                                        <!--<option value="14" #if($equipmentDto.checkdate =="14") selected #end>14</option>-->
+                                        <!--<option value="15" #if($equipmentDto.checkdate =="15") selected #end>15</option>-->
+                                        <!--<option value="16" #if($equipmentDto.checkdate =="16") selected #end>16</option>-->
+                                        <!--<option value="17" #if($equipmentDto.checkdate =="17") selected #end>17</option>-->
+                                        <!--<option value="18" #if($equipmentDto.checkdate =="18") selected #end>18</option>-->
+                                        <!--<option value="19" #if($equipmentDto.checkdate =="19") selected #end>19</option>-->
+                                        <!--<option value="20" #if($equipmentDto.checkdate =="20") selected #end>20</option>-->
+                                        <!--<option value="21" #if($equipmentDto.checkdate =="21") selected #end>21</option>-->
+                                        <!--<option value="22" #if($equipmentDto.checkdate =="22") selected #end>22</option>-->
+                                        <!--<option value="23" #if($equipmentDto.checkdate =="23") selected #end>23</option>-->
+                                        <!--<option value="24" #if($equipmentDto.checkdate =="24") selected #end>24</option>-->
+                                        <!--<option value="25" #if($equipmentDto.checkdate =="25") selected #end>25</option>-->
+                                        <!--<option value="26" #if($equipmentDto.checkdate =="26") selected #end>26</option>-->
+                                        <!--<option value="27" #if($equipmentDto.checkdate =="27") selected #end>27</option>-->
+                                        <!--<option value="28" #if($equipmentDto.checkdate =="28") selected #end>28</option>-->
+                                        <!--<option value="29" #if($equipmentDto.checkdate =="29") selected #end>29</option>-->
+                                        <!--<option value="30" #if($equipmentDto.checkdate =="30") selected #end>30</option>-->
+                                        <!--<option value="31" #if($equipmentDto.checkdate =="31") selected #end>31</option>-->
+                                        <!--<option value="32" #if($equipmentDto.checkdate =="32") selected #end>32</option>-->
+                                        <!--<option value="33" #if($equipmentDto.checkdate =="33") selected #end>33</option>-->
+                                        <!--<option value="34" #if($equipmentDto.checkdate =="34") selected #end>34</option>-->
+                                        <!--<option value="35" #if($equipmentDto.checkdate =="35") selected #end>35</option>-->
+                                        <!--<option value="36" #if($equipmentDto.checkdate =="36") selected #end>36</option>-->
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="standardValue">技术参数标准值</label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="standardValue" name="standardValue"
+                                           class="form-control  col-xs-7" data-parsley-id="2039"
+                                           #if($equipmentDto.standardValue) value="$equipmentDto.standardValue" #end>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2">参数范围</label>
+
+                                <div class="col-xs-2">
+                                    <input type="text" id="minValue" name="minValue" placeholder="最小值" min="0"
+                                           class="form-control  col-xs-2" data-parsley-id="2040"
+                                           #if($equipmentDto.minValue) value="$equipmentDto.minValue" #end>
+                                </div>
+                                <label class="control-label  col-xs-1" style="margin-left: -64px">——</label>
+
+                                <div class="col-xs-2">
+                                    <input type="text" id="maxValue" name="maxValue" placeholder="最大值" min="0"
+                                           class="form-control  col-xs-6" data-parsley-id="2040"
+                                           #if($equipmentDto.maxValue) value="$equipmentDto.maxValue" #end>
+                                </div>
+                            </div>
+
+                            <!--<div class="form-group">
+                                <label class="control-label  col-xs-2" for="parts">配件清单</label>
+
+                                <div class="col-xs-7">
+            <textarea style="height: 80px;" id="parts" name="parts"
+                      class="form-control  col-xs-7" data-parsley-id="2038">$!equipmentDto.parts</textarea>
+
+                                </div>
+                            </div>-->
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2">符合检定或者校准结果<span class="required">*</span>
+                                </label>
+
+                                <div class="col-xs-7">
+                                    <input style="margin-left: 60px;width: 20px;height: 20px" type="radio"
+                                           data-parsley-id="2038" name="testResult" value=1
+                                           #if($equipmentDto.testResult) checked #end> <b
+                                        style="margin-left: 20px;font-size: 15px" v>符合</b>
+                                    <input style="margin-left: 60px;width: 20px;height: 20px" type="radio"
+                                           data-parsley-id="2039" name="testResult" value=0
+                                           #if(!$equipmentDto.testResult) checked #end><b
+                                        style="margin-left: 20px;font-size: 15px">不符合</b>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="testValue">检定或校准值</label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="testValue" class="form-control  col-xs-7"
+                                           data-parsley-id="2038" min="0" name="testValue" #if($equipmentDto.testValue)
+                                           value="$equipmentDto.testValue" #end>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2">检定校准时间</label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" class="form-control mini-width Wdate col-xs-7" id="wtestTime"
+                                           placeholder="检定校准时间"
+                                           name="wtestTime" #if($equipmentDto.testTime)
+                                           value="$help.formatDateToString($equipmentDto.testTime,'yyyy-MM-dd')" #end>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2">下次检定校准时间</label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" class="form-control mini-width  col-xs-7" id="wnextTestTime"
+                                           placeholder="下次检定校准时间"
+                                           name="wnextTestTime" readonly style="background-color: #d8d6e4"
+                                           #if($equipmentDto.nextTestTime)
+                                           value="$help.formatDateToString($equipmentDto.nextTestTime,'yyyy-MM-dd')"
+                                           #end>
+
+                                </div>
+                            </div>
+
+                            <!--<div class="form-group">
+                                <label class="control-label  col-xs-2" for="systemNumber">计量管理系统编号</label>
+
+                                <div class="col-xs-7">
+                                    <input type="text" id="systemNumber" name="systemNumber"
+                                           class="form-control  col-xs-7" data-parsley-id="2040"
+                                           #if($equipmentDto.systemNumber) value="$equipmentDto.systemNumber" #end>
+                                </div>
+                            </div>-->
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="useStation">使用状况
+                                </label>
+
+                                <div class="col-xs-7">
+
+            <textarea style="height: 80px;" id="useStation" name="useStation"
+                      class="form-control  col-xs-7" data-parsley-id="2038">$!equipmentDto.useStation</textarea>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2" for="remark">备注
+                                </label>
+
+                                <div class="col-xs-7">
+            <textarea style="height: 80px;" id="remark" name="remark"
+                      class="form-control  col-xs-7" data-parsley-id="2038">$!equipmentDto.remark</textarea>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2">附件：</label>
+
+                                <div class="col-xs-2">
+                                    <div class="form-group">
+                                        <div class="col-xs-8" style="margin-left: -10px">
+                                            <input type="file" id="fileId" class="btn btn-default" name="filename"/>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                            #if($equipmentDto.fileId)
+                            <div class="form-group">
+                                <label class="control-label  col-xs-2">已上传文件：</label>
+
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <a style="font-size: larger;text-decoration:underline" class="col-xs-offset-1"
+                                           href="/downloadFile?id=$equipmentDto.fileId">$!equipmentDto.fileName</a>
+                                    </div>
+                                </div>
+                            </div>
+                            #end
+
+
+
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class=" col-xs-8 col-xs-offset-5">
+                                    <button type="submit" id="equipmentUpdate" data-url="ajax_update_equipment"
+                                            class="btn btn-success">提交
+                                    </button>
+                                    <a class="btn btn-primary" href="javascript:window.close();">取消</a>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            require(["app/equipForms/equipApply"]);
+                        </script>
+
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--</body>-->
+<!--</html>-->
+

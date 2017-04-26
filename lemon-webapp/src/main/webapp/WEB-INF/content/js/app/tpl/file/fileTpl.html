@@ -1,0 +1,98 @@
+<div class="row" style="font-size: large">
+    <div style="width: 100px;float: left;padding-left: 15px">
+        <a id="goback" data-pid="<%=parentId%>" data-url="ajax_go_back">返回<i class="fa  fa-mail-reply-all"></i></a>
+    </div>
+    <div style="float: left">
+        <a id="homeBtn"><i class="fa fa-home"></i>网盘</a>:<i id="fullPath"><%=path%></i>
+    </div>
+</div>
+
+<br>
+<%if(canCreateFloder){%>
+<div class="col-sx-11">
+    <div class="thumbnail">
+        <div class="image view view-first">
+
+            <a class="i_modal" data-url="_addfloder?parentId=<%=parentId%>">
+                <img style="width: 100%; display: block;" src="images/addfloder.png" alt="image"/>
+            </a>
+        </div>
+        <div class="caption">
+            <strong><p style="color: green;">新建文件夹</p></strong>
+        </div>
+    </div>
+</div>
+<%}%>
+<%if(floders.length>0){%>
+<%for(var i = 0 ; i < floders.length; i++) {%>
+<div class="col-sx-11">
+    <div class="thumbnail">
+        <div class="image view view-first">
+
+            <a class="getFloder" data-id="<%=floders[i].id%>" data-fpath="<%=floders[i].pathName%>"
+               data-url="ajax_file_query">
+                <img style="width: 100%; display: block;" src="images/floder.png" alt="image"/>
+
+            </a>
+            <%if(canCreateFloder){%>
+            <div class="mask" style="background-color: white !important;">
+                <div class="dtools tools-bottom">
+                    <a class="i_modal" data-url="_addfloder?id=<%=floders[i].id%>"><i class="fa  fa-pencil"></i></a>
+
+                    <a class="delete" data-url="ajax_deleteFloder" data-id="<%=floders[i].id%>"
+                       style="padding-left: 50px"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+            <%}%>
+        </div>
+        <div class="caption">
+            <p><%=floders[i].pathName%></p>
+        </div>
+    </div>
+</div>
+<%}%>
+<%}%>
+
+<%var num =1%>
+<%if(files.length>0){%>
+<%for(var i = 0 ; i < files.length; i++) {%>
+<div class="col-sx-11">
+    <div class="thumbnail">
+        <div class="image view view-first">
+            <%if(files[i].extensions=="doc"||files[i].extensions=="docx" ){%>
+            <img style="width: 100%; display: block;" src="images/word.png" alt="image"/>
+            <%}else if(files[i].extensions=="xls"||files[i].extensions=="xlsx"){%>
+            <img style="width: 100%; display: block;" src="images/excel.png" alt="image"/>
+            <%}else if(files[i].extensions=="ppt"||files[i].extensions=="pptx"){%>
+            <img style="width: 100%; display: block;" src="images/ppt.png" alt="image"/>
+            <%}else if(files[i].extensions=="pdf"){%>
+            <img style="width: 100%; display: block;" src="images/pdf.png" alt="image"/>
+            <%}else if(files[i].extensions=="jpg"||files[i].extensions=="png"){%>
+            <img style="width: 100%; display: block;" src="images/img.png" alt="image"/>
+            <%}else{%>
+            <img style="width: 100%; display: block;" src="images/unkown.png" alt="image"/>
+            <%}%>
+            <div class="mask">
+               <!-- <p><%=files[i].userName%><br><%=files[i].createDate%></p>-->
+
+                <div class="tools tools-bottom">
+                    <a href="/downloadFile?id=<%=files[i].id%>"><i class="fa  fa-download"></i></a>
+                    <%if(canCreateFloder){%>
+
+                    <a class="delete" data-url="ajax_deleteFile" data-id="<%=files[i].id%>"
+                       style="padding-left: 30px"><i
+                            class="fa fa-times"></i></a>
+                    <%}%>
+                </div>
+
+            </div>
+        </div>
+        <div class="caption">
+            <p>
+
+            <p><%=files[i].fileName%></p></p>
+        </div>
+    </div>
+</div>
+<%}%>
+<%}%>

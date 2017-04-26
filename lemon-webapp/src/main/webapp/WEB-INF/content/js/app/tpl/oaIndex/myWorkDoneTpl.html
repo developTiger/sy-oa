@@ -1,0 +1,73 @@
+<div class="pull-right">
+    <a href="sra_fm_work_done"><strong>更多</strong></a>
+</div>
+<table class="table  dataTable no-footer">
+
+    <thead>
+    <tr class="headings">
+        <th class="column-title">单号</th>
+        <th class="column-title">表单名称</th>
+        <th class="column-title">状态</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = 0%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr data-tt-id="<%=items[i].id%>">
+
+        <td class=" "><%=items[i].id%></td>
+        <td class=" ">
+            <%if(items[i].currentViewAction&&items[i].currentViewAction!=""){%>
+
+            <a class="viewForm"
+               data-title="查看详情"
+               data-url="<%=items[i].currentViewAction%>?formNo=<%=items[i].id%>&formKind=<%=items[i].formKind%>&viewOnly=true">
+                <%=items[i].formKindName%> </a>
+            <%}else{%>
+
+            <a class="viewForm"
+               data-title="查看详情"
+               data-url="sra_fm_form_viewonly?formNo=<%=items[i].id%>&formKind=<%=items[i].formKind%>&viewurl=<%=items[i].viewUrl%>">
+                <%=items[i].formKindName%> </a>
+
+            <%}%>
+        </td>
+        <td class=" ">  <%if(items[i].formStatus=="WA"){%>
+            <%='待签核'%>
+            <%}else if(items[i].formStatus=="UA"){%>
+            <%='签核中'%>
+            <%}else if(items[i].formStatus=="WP"){%>
+            <%='待处理'%>
+            <%}else if(items[i].formStatus=="AP"){%>
+            <%='已完成'%>
+            <%}else if(items[i].formStatus=="RJ"){%>
+            <%='否决'%>
+            <%}else if(items[i].formStatus=="RC"){%>
+            <%='撤回'%>
+            <%}else if(items[i].formStatus=="UM"){%>
+            <%='修改中'%>
+            <%}else if(items[i].formStatus=="CL"){%>
+            <%='已结案'%>
+            <%}else if(items[i].formStatus=="SA"){%>
+            <%='储存'%>
+            <%}else if(items[i].formStatus=="DE"){%>
+            <%='删除'%>
+            <%}else if(items[i].formStatus=="NC"){%>
+            <%='未完成'%>
+            <%}else if(items[i].formStatus=="WD"){%>
+            <%='退回'%>
+            <%}%>
+        </td>
+
+
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="3" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

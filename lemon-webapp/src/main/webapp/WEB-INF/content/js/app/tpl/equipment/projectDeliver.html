@@ -1,0 +1,48 @@
+<form id="detailProjectInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >主题词 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">
+            <%if(ztc!=null){%>
+                 <%=ztc%>
+            <%}else{%>
+                 暂无数据
+            <%}%>
+
+        </label>
+
+        <label class="control-label  col-xs-2" >三新一性 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">
+            <%if(sxyx!=null){%>
+            <%=sxyx%>
+            <%}else{%>
+            暂无数据
+            <%}%>
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >内容摘要<span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">
+            <%if(nrzy!=null){%>
+            <%=nrzy%>
+            <%}else{%>
+            暂无数据
+            <%}%>
+        </label>
+
+        <label class="control-label  col-xs-2" >专利类型及数量<span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">
+            <%if(zllxjsl!=null){%>
+            <%=zllxjsl%>
+            <%}else{%>
+            暂无数据
+            <%}%>
+        </label>
+    </div>
+
+</form>
+

@@ -1,0 +1,98 @@
+
+    <form id="addDeptForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+        <input type="hidden" name="id" #if($bean)value="$bean.id"#end>
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="role-name">部门名称 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input type="text" id="role-name" required="required" #if($bean)value="$bean.deptName"#end name="deptName"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+            </div>
+        </div>
+
+        <!--<div class="form-group">-->
+            <!--<label class="control-label  col-xs-3" for="short-name">部门简称 <span class="required">*</span>-->
+            <!--</label>-->
+            <!--<div class="col-xs-6">-->
+                <!--<input type="text" id="short-name" required="required" #if($bean)value="$!bean.shortName"#end name="shortName"-->
+                       <!--class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4630"></ul>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="dept-no">部门编号 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input type="text" id="dept-no" required="required" #if($bean)value="$bean.deptNo"#end name="deptNo" #if($bean) readonly #end
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4640"></ul>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="role-name">部门等级 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+
+                <select id="deptType" required="required" name="deptType" class="form-control col-xs-7" data-parsley-id="0004">
+                    <option value="1" #if($bean.deptType =="1" )selected="selected"#end>科级</option>
+                    <option value="0" #if($bean.deptType =="0" )selected="selected"#end>院级</option>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="menu-name">直属上级部门 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                #if($permGroup)
+                       <select id="menu-name"   name="parentDeptId" class="form-control col-xs-7" data-parsley-id="0004">
+                           <option value="">请选择</option>
+                          #foreach($beanPG in $permGroup)
+                             <option value="$beanPG.id" #if($bean.parentDeptId == $beanPG.id )selected="selected"#end >$beanPG.deptName</option>
+                          #end
+                       </select>
+                 #else
+                       <dd>暂无数据</dd>
+                 #end
+             </div>
+        </div>
+
+        <input type="hidden" name="hidName" id="hiddenId">
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="menu-name">部门分管领导 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                #if($yuanLeader)
+                <select    name="chargeLeaderId" id="chargeLeaderId" class="form-control col-xs-7" data-parsley-id="0004" required="required">
+                    <option value="">请选择</option>
+                    #foreach($leader in $yuanLeader)
+                    <option value="$leader.id" #if($bean.chargeLeaderId == $leader.id) selected #end >$leader.name</option>
+                    #end
+                </select>
+                #else
+                <dd>暂无数据</dd>
+                #end
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="role-name">部门介绍 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <textarea id="brief" required="required"  name="brief"
+                       class="form-control col-md-7 col-xs-12" data-parsley-id="4639">$!bean.brief</textarea>
+            </div>
+        </div>
+
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class=" col-xs-6 col-xs-offset-3">
+
+                <button type="submit" id="addOrUpdateDept" data-url="ajax_add_update_dept"
+                        class="btn btn-success">提交</button>
+                <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+            </div>
+        </div>
+    </form>

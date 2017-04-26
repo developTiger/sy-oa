@@ -1,0 +1,51 @@
+<form id="addOrUpdate" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($bean)value="$bean.id"#end>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="role-name">缘由 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <input type="text" id="role-name" required="required" #if($bean)value="$bean.hname"#end name="hname"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="role-name">月份 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <input type="text" id="" required="required" #if($bean)value="$bean.hmonth"#end name="hmonth" max="12" min="1"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4640"></ul>
+        </div>
+    </div>
+
+    <!--<div class="form-group">-->
+        <!--<label class="control-label  col-xs-3" for="role-name">假期 <span class="required">*</span>-->
+        <!--</label>-->
+        <!--<div class="col-xs-6">-->
+            <!--<input type="text" id="brief" required="required" #if($bean)value="$bean.amount"#end name="amount"-->
+                   <!--class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-7641"></ul>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="role-name">状态 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+           <select class="form-control" name="holidayState" required="required">
+               <option value="休息" #if($bean.holidayState=="休息") selected #end>休息</option>
+               <option value="上班" #if($bean.holidayState=="上班") selected #end>上班</option>
+           </select>
+        </div>
+    </div>
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addUpdateInfo" data-url="add_update_Holiday"
+                    class="btn btn-success">提交</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+</form>

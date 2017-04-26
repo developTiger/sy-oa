@@ -1,0 +1,47 @@
+
+
+<div style="min-width: 800px">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="project">保养部位<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="project" required="required" name="project"
+                   class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+            <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="maintenanceDescription">更换情况<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="maintenanceDescription" required="required" name="maintenanceDescription"
+                   class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="standard">保养停机小时<span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" id="standard" required="required" name="standard"
+                   class="form-control  col-xs-7" data-parsley-id="2038">
+            <ul class="parsley-errors-list" id="parsley-id-1208"></ul>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+

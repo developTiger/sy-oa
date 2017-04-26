@@ -1,0 +1,125 @@
+
+    <form id="addform" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+        <input type="hidden" name="id" #if($f)value="$f.id"#end>
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="login-name">表单种类编号 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input type="text" id="login-name" required="required" #if($f)value="$f.formKind"#end name="formKind" class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="real-name">表单名称 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input type="text" id="real-name"  required="required" #if($f)value="$f.formName"#end name="formName"  class="form-control  col-xs-7" data-parsley-id="2038"><ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label  col-xs-3" for="real-name">表单描述 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input type="text" id="description"  required="required" #if($f)value="$f.description"#end name="description"  class="form-control  col-xs-7" data-parsley-id="2038"><ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-3">有无申请页 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <!--<input id="isBatchApproved" class=" form-control col-xs-7" required="required" type="text" #if($f)value="$f.isBatchApproved"#end name="isBatchApproved" data-parsley-id="0004"><ul class="parsley-errors-list" id="parsley-id-0008"></ul>-->
+                <select id="hasApplyView" name="hasApplyView" class=" form-control col-xs-7">
+                    <option value="true" #if(true==$f.hasApplyView) selected="selected" #end>有</option>
+                    <option value="false" #if(false==$f.hasApplyView) selected="selected" #end>无</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="formType" class="control-label  col-xs-3">表单签核人类型<span class="required">*</span></label>
+            <div class="col-xs-6">
+                <select id="formType" name="formType" class=" form-control col-xs-7">
+                    <option value="1" #if(1==$f.formType) selected="selected" #end>静态</option>
+                    <option value="0" #if(0==$f.formType) selected="selected" #end>动态</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-xs-3">版本号 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input id="email" class=" form-control col-xs-7" required="required" type="text" #if($f)value="$f.version"#end name="version" data-parsley-id="0004"><ul class="parsley-errors-list" id="parsley-id-0006"></ul>
+            </div>
+        </div>
+
+        <div class="form-group hidden">
+            <label class="control-label col-xs-3">有效期 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input id="limitTime" class=" form-control col-xs-7" required="required" type="text" #if($f)value="$f.limitTime"#end name="limitTime" data-parsley-id="0004" value="1"><ul class="parsley-errors-list" id="parsley-id-0005"></ul>
+            </div>
+        </div>
+
+        <!--<div class="form-group">
+            <label class="control-label col-xs-3">批量签核 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input id="isBatchApproved" class=" form-control col-xs-7" required="required" type="text" #if($f)value="$f.isBatchApproved"#end name="isBatchApproved" data-parsley-id="0004"><ul class="parsley-errors-list" id="parsley-id-0008"></ul>
+            </div>
+        </div>-->
+        <div class="form-group">
+            <label class="control-label col-xs-3">批量签核 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <!--<input id="isBatchApproved" class=" form-control col-xs-7" required="required" type="text" #if($f)value="$f.isBatchApproved"#end name="isBatchApproved" data-parsley-id="0004"><ul class="parsley-errors-list" id="parsley-id-0008"></ul>-->
+                <select id="isBatchApproved" name="isBatchApproved" class=" form-control col-xs-7">
+                    <option value="false" #if(false==$f.isBatchApproved) selected="selected" #end>禁止</option>
+                    <option value="true" #if(true==$f.isBatchApproved) selected="selected" #end>允许</option>
+
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-xs-3">表单状态 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <select id="formStatus" name="formStatus" class=" form-control col-xs-7">
+                    <option value="1" #if(1==$f.formStatus) selected="selected" #end>启用</option>
+                    <option value="0" #if(0==$f.formStatus) selected="selected" #end>禁用</option>
+                </select>
+                <!--<input id="formStatus" class=" form-control col-xs-7" required="required" type="text" #if($f)value="$f.formStatus"#end name="formStatus" data-parsley-id="0004"><ul class="parsley-errors-list" id="parsley-id-0004"></ul>-->
+            </div>
+        </div>
+
+        <!--<div class="form-group">
+            <label class="control-label col-xs-3">是否已结案 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <input id="closeForm" class=" form-control col-xs-7" required="required" type="text" #if($f)value="$f.closeForm"#end name="closeForm" data-parsley-id="0004"><ul class="parsley-errors-list" id="parsley-id-0007"></ul>
+            </div>
+        </div>-->
+        <div class="form-group">
+            <label class="control-label col-xs-3">需结案操作 <span class="required">*</span>
+            </label>
+            <div class="col-xs-6">
+                <!--<input id="closeForm" class=" form-control col-xs-7" required="required" type="text" #if($f)value="$f.closeForm"#end name="closeForm" data-parsley-id="0004"><ul class="parsley-errors-list" id="parsley-id-0007"></ul>-->
+                <select id="closeForm" name="closeForm" class=" form-control col-xs-7">
+                    <option value="true" #if(true==$f.closeForm) selected="selected" #end>是</option>
+                    <option value="false" #if(false==$f.closeForm) selected="selected" #end>否</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class=" col-xs-6 col-xs-offset-3">
+                <button type="submit" id="addOrUpdateForm" data-url="ajax_add_update_form" class="btn btn-success">提交</button>
+
+                <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+            </div>
+        </div>
+
+    </form>

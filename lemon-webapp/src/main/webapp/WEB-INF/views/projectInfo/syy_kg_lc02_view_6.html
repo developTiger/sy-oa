@@ -1,0 +1,137 @@
+<input type="hidden"  id="projectNo" name="projectNo" value="$beandto.projectNo">
+<input type="hidden"  name="projectName" value="$beandto.projectName">
+<input type="hidden"  name="projectPlanInfoTxt" value="$beandto.projectPlanInfoTxt">
+
+<div class="form-group col-xs-8">
+    <!-- <label class="control-label  col-xs-2">项目名称: <span class="required">：</span>
+     </label>-->
+    <div class="control-label">
+        <label id="projectNameview" name="projectName" class=" control-label  col-xs-8" >
+            项目名称: $beandto.projectName
+        </label>
+        <!--<div style="margin-left: 5px;float: left; width:15%;">-->
+        <div>
+            <input type="button" value="详情" class="btn detial" >
+        </div>
+    </div>
+</div>
+
+
+<div class="form-group col-xs-12" >
+    <label id="prospect_View" name="prospect" class=" control-label  col-xs-12" >
+        国内外现状、技术发展趋势、生产需求和市场前景: $beandto.prospect
+    </label>
+
+</div>
+
+<div class="form-group col-xs-12" >
+    <label id="projectPlanInfoTxt_View" name="projectPlanInfoTxt" class=" control-label  col-xs-12" >
+        研究目标和主要研究内容: $beandto.projectPlanInfoTxt
+    </label>
+
+</div>
+
+<div class="form-group col-xs-4" >
+    <label id="schemeOpt_view" name="schemeOpt" class=" control-label  col-xs-12" >
+        关键技术和技术研究路线（方案）比选: $beandto.schemeOpt
+    </label>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label id="examineTarget_view" name="examineTarget" class=" control-label  col-xs-12" >
+        主要技术经济考核指标: $beandto.examineTarget
+    </label>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label id="finalShape_view" name="finalShape" class=" control-label  col-xs-12" >
+        项目验收最终成果及成果形式: $beandto.finalShape
+    </label>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label id="proResearchProgress_view" name="proResearchProgress" class=" control-label  col-xs-12" >
+        项目研究进度计划: $beandto.proResearchProgress
+    </label>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label id="resourcePlan_view" name="resourcePlan" class=" control-label  col-xs-12" >
+        资源计划: $beandto.resourcePlan
+    </label>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label id="beforeStatusAnalyze_view" name="beforeStatusAnalyze" class=" control-label  col-xs-12" >
+        前期研究，支撑条件分析: $beandto.beforeStatusAnalyze
+    </label>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label id="lawAnalyze_view" name="lawAnalyze" class=" control-label  col-xs-12" >
+        与本项目有关专利: $beandto.lawAnalyze
+    </label>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label id="vistaAndBenefit_view" name="vistaAndBenefit" class=" control-label  col-xs-12" >
+        应用前景和经济效应: $beandto.vistaAndBenefit
+    </label>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label id="atherPeople_view" name="atherPeople" class=" control-label  col-xs-12" >
+        项目组其他成员: $beandto.atherPeople
+    </label>
+</div>
+
+#if($beandto.instruction)
+<div class="form-group col-xs-12" >
+    <label id="instruction" name="instruction" class=" control-label  col-xs-12" >
+        批示: $beandto.instruction
+    </label>
+</div>
+#end
+#if($beandto.review_Comments)
+<div class="form-group col-xs-12" >
+    <label id="review_Comments_view" name="review_Comments_view" class=" control-label  col-xs-12" >
+        审查意见: $beandto.review_Comments
+    </label>
+</div>
+#end
+
+#if($viewOnly=="false")
+<div class="form-group col-xs-8">
+    <div class="control-label">
+        <label id="review_Comments-label" name="review_Comments-label" class="control-label col-xs-2">
+            填写审查意见:
+        </label>
+        <div class="col-xs-6">
+         <textarea type="text" id="review_Comments" required="required" rows="3"
+                   name="review_Comments"
+                   class="form-control col-md-4 col-xs-4" ></textarea>
+        </div>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <input type="button" id="unit_Leadership_Summary" value="批量审批" style="float:right"/>
+</div>
+#end
+<input type="hidden" id="formNo_OpenFlow" name="formNo_OpenFlow"/>
+<input type="hidden" id="list_projectNo" name="list_projectNo"/>
+#if($beandto.fileList.size()!=0)
+<div class="container" style="float: left;padding-left:20px;">
+
+    <label class="control-label" style="font-size: larger;float: left ;">附件:
+    </label>
+    <div style="font-size: larger;float: left">
+        #foreach($files in $beandto.fileList)
+        <a href="downloadFile?id=$files.fileId">$files.fileName</a></br>
+        #end
+    </div>
+
+</div>
+#end
+<script>
+    require(['app/projectInfo/syy_kg_lc02']);
+</script>

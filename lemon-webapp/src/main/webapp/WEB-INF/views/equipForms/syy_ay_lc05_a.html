@@ -1,0 +1,220 @@
+<div style="min-width: 800px">
+
+    <div class="form-group">
+        <input type="hidden" id="hidFormNo" name="formNo"
+               value="$!formAssessment.formNo">
+    </div>
+
+
+        <div class="form-group">
+            <input type="hidden" name="hiddenName" id="hidName">
+            <label class="control-label  col-xs-2">设备名称<span class="required">*</span>
+            </label>
+
+            <div class="col-xs-3">
+                <select class="form-control  col-xs-7" id="measuringName" name="equipment_id">
+
+                    <option value="">请选择</option>
+                    #if($beans)
+                    #foreach($bean in $beans)
+                    <option value="$bean.id" #if($formAssessment.equipmentDto.id==$bean.id) selected #end >$!bean.measuringName</option>
+                    #end
+                    #else
+                    <d>暂无数据</d>
+                    #end
+
+                </select>
+                <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+            </div>
+
+
+            <label class="control-label  col-xs-2" >评估类型<span class="required">*</span>
+            </label>
+            <div class="col-xs-3">
+                <input type="radio"  id="check_1" name="assessType" value="1" #if($formAssessment.assessType=='1') checked #end>
+                <label for="check_1">报废前评估</label>
+                <input type="radio"  id="check_2" name="assessType" value="2" #if($formAssessment.assessType=='2') checked #end>
+                <label for="check_2">年度评估</label>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="control-label  col-xs-2">资产编号</label>
+            <div class=" col-xs-3">
+
+                <input type="text" class="form-control  col-xs-7" id="propertyNum"  name="propertyNum"  readonly
+                       >
+            </div>
+
+            <label class="control-label  col-xs-2" for="standard">规格型号
+            </label>
+
+            <div class="col-xs-3">
+                <input type="text"   readonly id="standard"
+                       class="form-control  col-xs-7" data-parsley-id="2038"  >
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label class="control-label  col-xs-2">厂家名称</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control mini-width  col-xs-7"  readonly
+                       id="factoryName" >
+
+            </div>
+
+            <label class="control-label  col-xs-2">出厂编号</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control mini-width  col-xs-7"  readonly
+                       id="outFactoryNum" >
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label class="control-label  col-xs-2">保管人
+            </label>
+            <div class="col-xs-3">
+                <input type="text"   readonly id="savePersonName"
+                       class="form-control  col-xs-7" data-parsley-id="2038" >
+                <ul class="parsley-errors-list" id="parsley-id-1238"></ul>
+            </div>
+
+            <label class="control-label  col-xs-2" >使用单位
+            </label>
+            <div class="col-xs-3">
+                <input type="text"   readonly id="unitName"
+                       class="form-control  col-xs-7" data-parsley-id="2038">
+                <ul class="parsley-errors-list" id="parsley-id-1203"></ul>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label  col-xs-2">当前状态
+            </label>
+            <div class="col-xs-3">
+                <input type="text"   readonly id="currentStation"
+                       class="form-control  col-xs-7" data-parsley-id="2038"
+
+                        >
+                <ul class="parsley-errors-list" id="parsley-id-1038"></ul>
+            </div>
+
+            <!--<label class="control-label  col-xs-2" >计量管理系统编号-->
+            <!--</label>-->
+            <!--<div class="col-xs-3">-->
+                <!--<input type="text"   readonly id="systemNumber"-->
+                       <!--class="form-control  col-xs-7" data-parsley-id="20348" >-->
+                <!--<ul class="parsley-errors-list" id="parsley-id-128"></ul>-->
+            <!--</div>-->
+
+            <label class="control-label  col-xs-2" >投产日期
+            </label>
+            <div class="col-xs-3">
+                <input type="text"   readonly id="productTime"
+                       class="form-control  col-xs-7" data-parsley-id="2038" >
+                <ul class="parsley-errors-list" id="parsley-id-038"></ul>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <!--<label class="control-label  col-xs-2" >购进日期-->
+            <!--</label>-->
+            <!--<div class="col-xs-3">-->
+                <!--<input type="text"  id="buyTime" readonly-->
+                       <!--class="form-control  col-xs-7" data-parsley-id="2038" >-->
+                <!--<ul class="parsley-errors-list" id="parsley-id-152038"></ul>-->
+            <!--</div>-->
+
+
+
+        </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >原值
+        </label>
+        <div class="col-xs-3">
+            <input type="text"  id="original" readonly
+                   class="form-control  col-xs-7" data-parsley-id="2038"  >
+            <ul class="parsley-errors-list" id="parsley-id-152037"></ul>
+        </div>
+
+        <label class="control-label  col-xs-2" >净值
+        </label>
+        <div class="col-xs-3">
+            <input type="text"   readonly id="netValue"
+                   class="form-control  col-xs-7" data-parsley-id="2038" >
+            <ul class="parsley-errors-list" id="parsley-id-039"></ul>
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >检定周期
+        </label>
+        <div class="col-xs-3">
+            <input type="text"  id="checkdate" readonly
+                   class="form-control  col-xs-7" data-parsley-id="2038" >
+            <ul class="parsley-errors-list" id="parsley-id-152036"></ul>
+        </div>
+
+        <label class="control-label  col-xs-2" >下次检定校准时间
+        </label>
+        <div class="col-xs-3">
+            <input type="text"   readonly id="nextTestTime"
+                   class="form-control  col-xs-7" data-parsley-id="2038" >
+            <ul class="parsley-errors-list" id="parsley-id-036"></ul>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >参数范围
+        </label>
+        <div class="col-xs-1">
+            <input type="text"  id="minValue" readonly
+                   class="form-control  col-xs-4" data-parsley-id="2038" >
+            <ul class="parsley-errors-list" id="parsley-id-1520354"></ul>
+        </div>
+
+        <label class="control-label  col-xs-1" style="width: 33px" ><span style="font-size: 20px">~</span>
+        </label>
+        <div class="col-xs-1">
+            <input type="text"   readonly id="maxValue"
+                   class="form-control  col-xs-4" data-parsley-id="2038" >
+            <ul class="parsley-errors-list" id="parsley-id-0336"></ul>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-3 col-xs-offset-4" style="font-size:large">设备技术评估内容</label>
+    </div>
+
+    <div id="judgementContent">
+
+    </div>
+
+    <div id="addJudCon">
+
+    </div>
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-7 col-xs-offset-6">
+            <button type="submit" id="technologyJudgementSubmit" data-url="ajax_submit_technologyJudgement" class="btn btn-success">提交</button>
+            <a class="btn btn-primary" href="javascript:history.go(0);">取消</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(["app/equipForms/technologyJudgement"]);
+</script>

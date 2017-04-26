@@ -1,0 +1,76 @@
+$ui.loadCss("select2/select2.min.css")
+<form id="addTypeTreatiseForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($bean)value="$bean.id"#end>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="role-name">论著类型<span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            <input type="text" id="role-name" required="required" #if($bean)value="$bean.Type_Treatise_Name"#end name="Type_Treatise_Name"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            论著管理部门<span class="required">*</span>
+        </label>
+        <div class="col-xs-6"  id="tests1">
+            <!-- select2_group 下拉框样式-->
+            <select class="form-control col-xs-6 select2_group" name="dept_Id" id="dept_Id">
+                #if($bean)
+                <option  value="$dept.id"> $bean.dept_Name</option>
+                #else
+                <option  value="">请选择</option>
+                #end
+                #foreach($item in $dept)
+                    <option  value="$item.id">$item.deptName
+                    </option>
+                #end
+            </select>
+        </div>
+    </div>
+
+<!--    <div class="form-group">
+        <label class="control-label  col-xs-3" for="menu-name">直属上级部门 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            #if($permGroup)
+            <select id="menu-name"   name="parentDeptId" class="form-control col-xs-7" data-parsley-id="0004">
+                <option value="">请选择</option>
+                #foreach($beanPG in $permGroup)
+                <option value="$beanPG.id" #if($bean.parentDeptId == $beanPG.id )selected="selected"#end >$beanPG.deptName</option>
+                #end
+            </select>
+            #else
+            <dd>暂无数据</dd>
+            #end
+        </div>
+    </div>-->
+
+    <input type="hidden" name="dept_Name" id="dept_Name">
+<!--    <div class="form-group">
+        <label class="control-label  col-xs-3" for="menu-name">部门分管领导 <span class="required">*</span>
+        </label>
+        <div class="col-xs-6">
+            #if($yuanLeader)
+            <select    name="chargeLeaderId" id="chargeLeaderId" class="form-control col-xs-7" data-parsley-id="0004" required="required">
+                <option value="">请选择</option>
+                #foreach($leader in $yuanLeader)
+                <option value="$leader.id" #if($bean.chargeLeaderId == $leader.id) selected #end >$leader.name</option>
+                #end
+            </select>
+            #else
+            <dd>暂无数据</dd>
+            #end
+        </div>
+    </div>-->
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdate" data-url="ajax_add_update_type_treatise"
+                    class="btn btn-success">提交</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+</form>

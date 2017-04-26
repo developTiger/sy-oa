@@ -1,0 +1,38 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th class="column-title" style="width: 45px">序号</th>
+        <th class="column-title">竞赛主题</th>
+        <th class="column-title">描述</th>
+        <th class="column-title" style="width: 150px">创建时间</th>
+
+        <th class="column-title no-link last" style="width: 170px;"><span class="nobr">操作</span>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = (pageNumber-1) * pageSize%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr>
+        <td class="num" style="width: 45px"><%=num+i+1%></td>
+        <td><%=items[i].name%></td>
+        <td><%=items[i].description%></td>
+        <td ><%=dateFormat2(items[i].createDateTime)%></td>
+        <td class=" last">
+            <a class="ssv-small-label i_modal " data-title="修改竞赛主题"
+               data-url="_addOrUpdateCompetitionTitleType?id=<%=items[i].id%>">
+                <span><i class="blue fa fa-edit"></i>修改</span></a>
+            <a class=" ssv-small-label deleteTitle"
+               data-url="deleteCompetitionTitleType?id=<%=items[i].id%>">
+                <span><i class="red fa fa-remove"></i>删除</span></a>
+        </td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="7" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

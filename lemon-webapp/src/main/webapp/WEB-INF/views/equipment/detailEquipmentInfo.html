@@ -1,0 +1,59 @@
+
+
+
+    <div class="x_content">
+
+
+        <div role="tabpanel" data-example-id="togglable-tabs">
+            <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist">
+                <li class="active" role="presentation"><a id="home-tab" role="tab" aria-expanded="true" href="#tab_content1" data-toggle="tab" class="queryData_1" data-url="ajax_query_equipment">设备详细信息</a>
+                </li>
+                <li role="presentation"><a id="profile-tab" role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData" data-url="ajax_query_equipmentMaintenance">设备维修记录</a>
+                </li>
+                <li role="presentation"><a id="profile-tab1" role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData" data-url="ajax_query_technologyJudgementInfo">设备评估记录</a>
+                </li>
+                <li role="presentation"><a id="home-tab" role="tab" aria-expanded="true" href="#tab_content1" data-toggle="tab" class="queryData" data-url="ajax_query_equipmentWorking">设备运行记录</a>
+                </li>
+                <li role="presentation"><a id="profile-tab" role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData" data-url="ajax_query_equipmentHealth">设备保养记录</a>
+                </li>
+                <li role="presentation"><a id="profile-tab5" role="tab" aria-expanded="false" data-toggle="tab" class="queryData" data-url="ajax_query_equipmentDateCheck">设备期间核查记录</a>
+                </li>
+
+            </ul>
+
+            <input type="hidden" name="hiddentId" value="$equipmentDto.id" id="hidId">
+            <input type="hidden" name="hiddentSave" value="$canOpera" id="save">
+            <!--<input type="text" value="$equipmentDto.formNo">-->
+
+            <div class="x_panel">
+                <div id="displayData" class="">
+
+
+
+                </div>
+
+                <div id="table">
+
+                </div>
+
+                <div class="col-lg-10 dataTables_paginate  ">
+                    <ul class="pagination "></ul>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+
+    </div>
+
+<script>
+    require(["app/equipment/queryEquipment"]);
+</script>
+

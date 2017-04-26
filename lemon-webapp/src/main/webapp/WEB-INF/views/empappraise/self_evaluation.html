@@ -1,0 +1,116 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>员工考核自评/员工考核自评
+            <small>- 员工考核自评</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 员工考核自评.
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>员工自评 <small></small></h2>
+                        <ul class="nav navbar-right panel_toolbox">
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content" style="display: block;">
+
+                        <form class="form-horizontal form_self_evaluation" data-url="add_emp_self_evaluation" id="form_self_evaluation" name="form_self_evaluation">
+
+                            <span class="section text-center" >员工自评</span>
+
+
+                            <!--<input type="hidden" value="$formNo" id="formNo" name="formNo">
+                            <input type="hidden" value="$formId" id="id" name="formId">-->
+                            <input type="hidden" value="$empAppraiseDetailDto.id" name="detailid">
+
+                            <div class="item form-group ">
+                                <label class="control-label  col-xs-3" for="name">姓名 <span class="required">*</span>
+                                </label>
+                                <div class=" col-xs-6">
+                                    <input id="name"  class="form-control   col-xs-6" type="text" value="$empSessionDto.name" readonly>
+                                </div>
+                            </div>
+
+
+                            <div class="item form-group ">
+                                <label class="control-label col-xs-3" for="name">部门 <span class="required">*</span>
+                                </label>
+                                <div class=" col-xs-6">
+                                    <input id="deptName" class="form-control col-xs-6" value="$empSessionDto.deptName" type="text" readonly>
+                                </div>
+
+                            </div>
+
+                            <!--<div class="item form-group ">
+                                <label class="control-label   col-xs-3" for="empSelfLevel">自评档次 <span class="required">*</span>
+                                </label>
+                                <div class="col-xs-6">
+                                    <input id="empSelfLevel" #if($empAppraiseDetailDto&&$empAppraiseDetailDto.appStatus!=0) disabled #end   class="form-control col-xs-3"   value="$!empAppraiseDetailDto.empSelfLevel" name="empSelfLevel" type="text">
+                                </div>
+
+                            </div>
+
+                            <div class="item form-group ">
+                                <label class="control-label col-xs-3" for="empSelfScores">自评分数 <span class="required">*</span>
+                                </label>
+                                <div class=" col-xs-6">
+                                    <input type="text" id="empSelfScores"  #if($empAppraiseDetailDto&&$empAppraiseDetailDto.appStatus!=0) disabled  #end   name="empSelfScores"  value="$!empAppraiseDetailDto.empSelfScores"  class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>-->
+
+                            <div class="item form-group ">
+                                <label class="control-label   col-xs-3" for="empSelfGrade">自评等级 <span class="required">*</span>
+                                </label>
+                                <div class="  col-xs-6">
+                                    <!--<input type="text" id="empSelfGrade" name="empSelfGrade"  #if($empAppraiseDetailDto&&$empAppraiseDetailDto.appStatus!=0) disabled #end    value="$!empAppraiseDetailDto.empSelfGrade"  class="form-control   col-xs-7">-->
+
+                                    <select class="form-control   col-xs-7" id="empSelfGrade" name="empSelfGrade" required="required">
+                                        <option value="">请选择</option>
+                                        <option value="优秀">优秀</option>
+                                        <option value="称职">称职</option>
+                                        <option value="不称职">不称职</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <!--<div class="item form-group ">
+                                <label class="control-label   col-xs-3" for="empSelfRemark">自评备注 <span class="required">*</span>
+                                </label>
+                                <div class=" col-xs-6">
+                                    <input type="text" id="empSelfRemark" name="empSelfRemark"  #if($empAppraiseDetailDto&&$empAppraiseDetailDto.appStatus!=0) disabled  #end  value="$!empAppraiseDetailDto.empSelfRemark"  class="form-control   col-xs-7">
+                                </div>
+                            </div>-->
+
+                            <div class="ln_solid"></div>
+                            #if($empAppraiseDetailDto&&$empAppraiseDetailDto.appStatus==0)
+                            <div class="form-group">
+                                <div class="col-xs-6 col-xs-offset-3">
+
+                                    <button id="form_send" type="submit" class="btn btn-success">提交</button>
+                                    <a href="/sra_index"><button type="button" class="btn btn-primary">取消</button></a>
+                                </div>
+                            </div>
+                            #end
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script>
+    require(["app/forms/empappraise"]);
+</script>

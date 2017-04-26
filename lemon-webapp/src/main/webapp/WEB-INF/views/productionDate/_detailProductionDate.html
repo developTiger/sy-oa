@@ -1,0 +1,243 @@
+<style>
+    .col-xs-3 {
+        width:110px;
+    }
+</style>
+<form id="detailProjectResultInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans) value="$beans.id" #end>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >样品批号 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.YPPH)$beans.YPPH #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >井号 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.JH)$beans.JH #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >报出日期 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.BCRQ2)$beans.BCRQ2 #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >检测项目 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.JCXM)$beans.JCXM #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >子项目 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.ZXM)$beans.ZXM #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >类别 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.LB)$beans.LB #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >参数名称 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.CSNAME)$beans.CSNAME #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >前期工序 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.QQGX)$beans.QQGX #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >项目组名称 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.XMZMC)$beans.XMZMC #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >项目组名称 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.XMZMC)$beans.XMZMC #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >地区 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.DQ )$beans.DQ #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >送样日期 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.SYRQ2)$beans.SYRQ2 #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >委托单位 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.WTDW)$beans.WTDW #end</label>
+    </div>
+
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >委托人 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.WTR)$beans.WTR #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >结算日期 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.JSRQ2)$beans.JSRQ2 #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >样品数量 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.YPSL)$beans.YPSL #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >计划数量 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.JHSL)$beans.JHSL #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >加工数量 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.JGSL )$beans.JGSL #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >原始单价 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.YSDJ)$beans.YSDJ #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >单价 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.DJ )$beans.DJ #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >金额 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.JE)$beans.JE #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >实收金额 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.SSJE)$beans.SSJE #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >核算岗 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.HSG)$beans.HSG #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >院内 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.YN)$beans.YN #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >院外 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.YW)$beans.YW #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >实验中心 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.SYZX)$beans.SYZX #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >报告发送时间 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.BGFSSJ2)$beans.BGFSSJ2 #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >报告份数 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.BGFS)$beans.BGFS #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >备注 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.BZ)$beans.BZ #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >单位属性 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.DWSX)$beans.DWSX #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >课题名称 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.KTMC)$beans.KTMC #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >任务名称 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.RWMC)$beans.RWMC #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >课题负责人 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.KTFZR)$beans.KTFZR #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >产值说明 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.CZSM)$beans.CZSM #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >手工录入 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.SGLR)$beans.SGLR #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >二级单位 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.EJDW)$beans.EJDW #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >结算状态 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.JSZT)$beans.JSZT #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >结算标识码 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.JSBSM)$beans.JSBSM #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >基层审核码 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.JCSHM)$beans.JCSHM #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >委托单位名称 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.WTDWMC)$beans.WTDWMC #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >委托单位编码 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.WTDWBM)$beans.WTDWBM #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >委托部门编码 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.WTBMBM)$beans.WTBMBM #end</label>
+    </div>
+
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >井号编码 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.JHBM)$beans.JHBM #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >科研项目编码 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.KTBM)$beans.KTBM #end</label>
+    </div>
+    <div class="form-group col-xs-4">
+        <label class="control-label  col-xs-3" >二级单位编码 <span class="required">:</span>
+        </label>
+        <label class="control-label"  style="text-align: left;"> #if($beans.EJDWBM)$beans.EJDWBM #end</label>
+    </div>
+
+</form>
+<div class="ln_solid"></div>
+<div class="form-group">
+    <div class=" col-xs-6 ">
+        <a href="javascript:history.go(-1)" class="btn btn-primary">返回</a>
+    </div>
+</div>

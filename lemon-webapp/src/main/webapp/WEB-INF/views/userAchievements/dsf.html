@@ -1,0 +1,151 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/论著信息管理
+            <small>- 论著信息管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 论著信息管理.
+        </div>
+        <div class="row">
+            <div class=" btn-group  col-xs-5">
+                <a class=" btn btn-default buttons-copy buttons-html5 btn-sm" data-title="添加论著信息"
+                   href="_addbooksForm"><span><i class="green fa fa-plus"></i>新增</span></a>
+
+                <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="deleteBooks" tabindex="0"
+                   aria-controls="datatable-buttons"><span><i
+                        class="red fa fa-remove"></i>删除</span></a>
+
+            </div>
+            <div class="form-inline col-xs-7">
+                <form id="searchForm" data-url="ajax_book_query_list">
+
+                    <div class="form-group">
+
+                        <label class="control-label"> 发表/出版时间：
+                        </label>
+
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control  Wdate" id="begin_Date"
+                                   style="background-color: lightgray" readonly
+                                   placeholder="开始时间" name="begin_Date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">
+                        </label>
+
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control Wdate" style="background-color: lightgray" readonly
+                                   id="end_Date"
+                                   placeholder="截止时间"
+                                   name="end_Date">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">论著名称：
+                        </label>
+
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control " style="margin-bottom: 5px" name="treatise_Name">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-3">论著级别 <span class="required">*</span>
+                        </label>
+
+                        <div class="col-xs-6">
+                            <select id="treatise_Level" required="required" name="treatise_Level"
+                                    class="form-control col-xs-7"
+                                    data-parsley-id="0004">
+                                <option value="">请选择</option>
+                                <option value="1">国家级</option>
+                                <option value="2">省部级</option>
+                                <option value="3">油田公司级</option>
+                                <option value="4">厂处级</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label">出版社/刊物名称：
+                        </label>
+
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control " style="margin-bottom: 5px"
+                                   name="treatise_Press">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">是否核心：
+                        </label>
+
+                        <div class="col-xs-6">
+                            <select id="is_Core" name="is_Core" class="form-control"
+                                    data-parsley-id="0004">
+                                <option value="">请选择</option>
+                                <option value="1">yes</option>
+                                <option value="0">no</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">书/期刊号：
+                        </label>
+
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control " style="margin-bottom: 5px"
+                                   name="make_No">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">是否合著：
+                        </label>
+
+                        <div class="col-xs-6">
+                            <select id="is_cooperate" name="is_cooperate" class="form-control"
+                                    data-parsley-id="0004">
+                                <option value="">请选择</option>
+                                <option value="1">yes</option>
+                                <option value="0">no</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">发表/出版单位：&nbsp;&nbsp;&nbsp;&nbsp;
+                        </label>
+
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control " style="margin-bottom: 5px"
+                                   name="unit">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <input type="button" class="btn btn-primary" id="booksQueryBtn" value="查询">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/userAchievements/books"]);
+</script>

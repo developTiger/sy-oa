@@ -1,0 +1,257 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+$ui.loadCss("select2/select2.min.css")
+<style>
+    .multiselect-container .multiselect-group{background-color: #337AB7;}
+    .multiselect-container .multiselect-group a{color: #ffffff}
+</style>
+<div style="min-width: 800px">
+
+    <input type="hidden" name="id" value="$!achievementDto.id">
+    <!--<input type="hidden" name="formNo" value="$!achievementDto.formNo">-->
+
+    <!--<div class="form-group">
+        <label class="control-label  col-xs-2" for="applyUnit">申报单位 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="applyUnit" required="required" name="applyUnit" maxlength="50" readonly
+                   class="form-control  col-xs-7" data-parsley-id="2038" >
+
+        </div>
+    </div>-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="projectName">项目名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="projectName" required="required" name="projectName" maxlength="50"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!achievementDto.projectName">
+
+        </div>
+    </div>
+
+    <!--<input type="hidden" id="hiddenEmpName" name="hidEmpName">-->
+    <div class="form-group Js_attendPeople">
+        <label class="control-label  col-xs-2">参与者 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5 ">
+
+            <select  class="form-control col-xs-7 select2_multiple" id="creatorName" name="mainPeople">
+                #if($depts)
+                #foreach($dept in $depts)
+                <optgroup label="$dept.deptName">
+
+                    <!--<option value="">请选择</option>-->
+                    #if($beans)
+                    #foreach($bean in $beans)
+                    #if($dept.id == $bean.deptId)
+                    <option value="$bean.name" >$bean.name</option>
+
+
+
+                    #end
+                    #end
+                    #end
+
+                </optgroup>
+                #end
+                #end
+
+            </select>
+        </div>
+        <div class="col-xs-2" style="margin-bottom: 15px;">
+            <button type="button" class="btn btn-defalut Js_addPeople">新增</button>
+        </div>
+    </div>
+
+    #if($achievementDto.mainPeople)
+    #foreach($person in $achievementDto.mainPeople)
+    <div class="form-group ">
+
+        <div class="col-xs-5 col-xs-offset-2">
+            <select  class="select2_multiple"  name="mainPeople" required="required"  >
+
+                #if($depts)
+                #foreach($dept in $depts)
+                <optgroup label="$dept.deptName">
+
+                    <!--<option value="">请选择</option>-->
+                    #if($beans)
+                    #foreach($bean in $beans)
+                    #if($dept.id == $bean.deptId)
+                    <option value="$bean.name" #if($person == $bean.name) selected #end>$bean.name</option>
+
+                    #end
+                    #end
+                    #end
+
+                </optgroup>
+                #end
+                #end
+
+            </select>
+            <!--<input type="hidden" id="hiddenEmp" name="hidEmpNames" >-->
+            <!--<input type="hidden" id="hiddenId" name="hidId" >-->
+        </div>
+        <div class="col-xs-2" style="margin-bottom: 15px;">
+            <button type="button" class="btn btn-danger Js_mainPeople_delete">删除</button>
+        </div>
+
+    </div>
+    #end
+    #end
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >性别 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5 col-xs-offset-1">
+            <input type="radio" id="1"  name="innoSex" value="1" #if($empDto.sex=="1") checked #end  readonly>
+            <label for=1>男</label>
+            <input type="radio" id="2"  name="innoSex" value="0" #if($empDto.sex=="0") checked #end  readonly>
+            <label for="2">女</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="innoAge">年龄 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="innoAge" name="innoAge"  readonly
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!empDto.age" >
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >文化程度 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+
+            <input type="text" id="educa_degree"  name="educationDegree" readonly
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!empDto.highestEdu" >
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="position">岗位 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="position"  name="position"  readonly
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!empDto.position" >
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="title">专业技术职务<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="title"  name="title"  readonly
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!empDto.workKind" >
+
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="time">成果创造时间 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="time" required="required" name="time" class="form-control  col-xs-7 Wdate" data-parsley-id="2038"
+                   #if($!achievementDto.achiCreateTime) value="$helper.formatDateToString($!achievementDto.achiCreateTime,'yyyy-MM-dd')" #end>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >成果是否转换 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5 col-xs-offset-1">
+            <input type="radio" id="3"  name="transformation" value="3" #if($achievementDto.achiTransformation =="yes") checked #end>
+            <label for="3">是</label>
+            <input type="radio" id="4"  name="transformation" value="4" #if($achievementDto.achiTransformation =="no") checked #end>
+            <label for="4">否</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >成果有无专利 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5 col-xs-offset-1">
+            <input type="radio" id="5"  name="patent" value="5" #if($achievementDto.achiPatent =="yes") checked #end>
+            <label for="5">有</label>
+            <input type="radio" id="6"  name="patent" value="6" #if($achievementDto.achiPatent =="no") checked #end>
+            <label for="6">无</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="achiIntroduce">成果简介 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <textarea id="achiIntroduce" required="required" name="achiIntroduce"
+                      class="form-control  col-xs-7" data-parsley-id="2038" >$!achievementDto.achiIntroduce</textarea>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="achiIntroduce">成果申报说明 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="file"  id="fileId" name="file_name" />
+
+        </div>
+    </div>
+
+    #if($achievementDto.fileName)
+    <div class="form-group">
+
+        <label class="control-label col-xs-2">已上传附件</label>
+        <input type="hidden" name="oldFileId" value="$achievementDto.fileId">
+        <input type="hidden" name="oldFileName" value="$achievementDto.fileName">
+        <a style="position: relative;top: 8px;" href="/downloadFile?id=$achievementDto.fileId">$achievementDto.fileName</a>
+    </div>
+    #end
+
+
+
+
+
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <button type="submit" id="innovationAchiSubmit" data-url="ajax_add_update_innovationAchi" class="btn btn-success">提交</button>
+            <a class="btn btn-primary" href="javascript:window.close();">取消</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(["app/partyGroup/innovationAchievement"]);
+</script>
+
+
+
+

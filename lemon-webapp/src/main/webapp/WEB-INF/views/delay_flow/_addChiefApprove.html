@@ -1,0 +1,82 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+<form id="addFormApproveListForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="text" id="formNo" value="$formDelayApplyDto.formNo"/>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">延期项目名称 <span class="required">:</span>
+        </label>
+        <div class="col-xs-6">
+            $formDelayApplyDto.delayNamesel
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">延期时间 <span class="required">:</span>
+        </label>
+        <div class="col-xs-6">
+            $formDelayApplyDto.delayTimes
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">延期理由 <span class="required">:</span>
+        </label>
+        <div class="col-xs-6">
+            $formDelayApplyDto.delayReason
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">部门名称 <span class="required">:</span>
+        </label>
+        <div class="col-xs-6">
+            $formDelayApplyDto.deptName
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">申请人 <span class="required">:</span>
+        </label>
+        <div class="col-xs-6">
+            $formDelayApplyDto.applyerName
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3">延期文件 <span class="required">:</span>
+        </label>
+        <div class="col-xs-6">
+            <a href="/downloadFile?id=$formDelayApplyDto.fileId">$formDelayApplyDto.fileName</a>
+
+        </div>
+    </div>
+
+    <div class="form-group chooseLeader">
+        <label class="control-label  col-xs-3">
+            审批领导选择：
+        </label>
+        <!--<div class="col-xs-7 " >
+            <select required="required" id="leaders" multiple="multiple" class="form-control col-xs-7"
+                    data-parsley-id="0004">
+                #foreach($cop in $listEmpDto)
+                <option value="$cop.id">$cop.name</option>
+                #end
+            </select>
+            <input type="hidden" name="leaders" id="hidLeader">
+        </div>-->
+        <div class="col-xs-7 " id="select_chief">
+            #foreach($cop in $listEmpDto)
+                <input type="checkbox" name="leader" value="$cop.id"/>$cop.name<br/>
+            #end
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addChief" data-url="_add_Update_formAppList" class="btn btn-success">提交</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+
+</form>

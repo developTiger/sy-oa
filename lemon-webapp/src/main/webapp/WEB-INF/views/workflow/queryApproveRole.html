@@ -1,0 +1,41 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>流程管理/签核角色管理
+            <small>- 签核角色</small>
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 签核角色.
+        </div>
+        <div class="row">
+            <div class=" btn-group  col-xs-4">
+                <a class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="添加用户"
+                   data-url="/_addOrUpdateAppRole"><span><i class="green fa fa-plus"></i>新增</span></a>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="form-inline" >
+                <form id="searchForm"  class="pull-right" data-url="ajax_queryApproveRole">
+
+                    <div class="form-group">
+                        <label class="control-label" >角色名称
+                        </label>  <input type="text" class="form-control " style="margin-bottom: 5px" name="roleName">
+                        <input type="button" class="btn btn-default" id="appRoleQueryBtn" value="查询">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/workflow/approveRole"]);
+</script>

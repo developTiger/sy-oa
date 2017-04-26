@@ -1,0 +1,71 @@
+
+<div class=" " style="text-align: left;">
+    <div class="col-xs-offset-3">
+        <div><label class="" style="font-size: larger;margin-top: 5px;">项目名称：$!beans.projectName</label></div>
+        <div><label style="font-size:larger;margin-top: 5px;">参与者：$!beans.creatorName</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">竞赛单位：$!beans.applyUnit</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">创造时间：$help.formatDateToString($!beans.achiCreateTime,"yyyy-MM-dd")</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">性别：#if($!beans.sex=="boy")男 #else 女 #end</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">年龄：$!beans.age</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">文化程度：$!beans.educationDegree</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">岗位：$!beans.position</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">职称：$!beans.title</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">是否转换：#if($!beans.achiTransformation=="yes")是 #else 否 #end</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">有无专利：#if($!beans.achiPatent=="yes")有 #else 否 #end</label></div>
+
+        <div><label style="font-size: larger;margin-top: 5px;">成果得分：$!beans.approveScore</label></div>
+        <div><label style="font-size: larger;margin-top: 5px;">获奖等级：
+            #if($!beans.prizeLeval == "first")
+            一等奖
+            #end
+            #if($!beans.prizeLeval == "second")
+            二等奖
+            #end
+            #if($!beans.prizeLeval == "third")
+            三等奖
+            #end
+            #if($!beans.prizeLeval == "excellent")
+            优秀奖
+            #end
+            #if($!beans.prizeLeval == "no")
+            未获奖
+            #end
+        </label></div>
+
+        #if($beans.innoOnlyScores)
+        <div><label style="font-size: larger;margin-top: 5px;">成员评分：</label></div>
+        <div class="col-xs-offset-2" style="font-size: larger;font-weight: bolder">
+
+            #foreach($bean in $beans.innoOnlyScores)
+            <p>$bean</p>
+            #end
+
+        </div>
+        #end
+
+
+        #if($beans.innoOnlyAdvise)
+        <div><label style="font-size: larger;margin-top: 5px;">成员意见：</label></div>
+        <div class="col-xs-offset-2" style="font-size: larger;font-weight: bolder">
+
+            #foreach($bean in $beans.innoOnlyAdvise)
+            <p>$bean</p>
+            #end
+
+        </div>
+        #end
+
+        <div><label style="font-size: larger;margin-top: 5px;">附件：<a href="downloadFile?id=$!beans.fileId">$!beans.fileName</a></label></div>
+
+        <div >
+            <label style="font-size: larger;margin-top: 5px;table-layout:fixed; word-break: break-all;" class="">成果简介：$!beans.achiIntroduce   </label>
+
+        </div>
+        <!--<div><label style="font-size: larger;margin-top: 5px;width: 500px">成果简介：假发票惹我金佛给大家搜符合我佛，想了解佛尔文件哈佛独角兽破飞机而无法信佛了我和你简欧风景搜附近偶尔玩电视剧佛我就饿哦发及偶尔玩家新疆佛为奇偶发金额我发</label></div>-->
+
+
+    </div>
+</div>
+
+
+

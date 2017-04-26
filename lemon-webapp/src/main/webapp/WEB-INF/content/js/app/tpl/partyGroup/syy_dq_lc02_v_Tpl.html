@@ -1,0 +1,309 @@
+
+<div id="qjApplyForm" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+    <input type="hidden" name="id"  value="<%=id%>" />
+    <input type="hidden" name="workAchiFormNo" value="<%=formNo%>">
+    <input type="hidden" name="workAchiStep" value="<%=clStep%>">
+    <input type="hidden" name="workAchiIsViewOnly" value="<%if(isViewOnly==true){%>1<%}else{%>0<%}%>">
+    <input type="hidden" name="workAchiIsComplete" value="<%if(isComplete==true){%>1<%}else{%>0<%}%>">
+
+
+    <table  width="100%">
+        <tr>
+            <td width="15%">
+                <label class="" style="font-size: larger">项目名称：</label>
+            </td>
+            <td width="35%">
+                <label class="" style="font-size: larger"><%=projectName%></label>
+            </td>
+            <td width="15%">
+                <label class=" " style="font-size: larger">项目申报类别：</label>
+            </td>
+            <td width="35%">
+                <label class=" " style="font-size: larger"><%=competitionType%></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="" style="font-size: larger">竞赛负责人：</label>
+            </td>
+            <td>
+                <label class="" style="font-size: larger"><%=leader%></label>
+            </td>
+            <td>
+                <label class=" " style="font-size: larger">实施时间：</label>
+            </td>
+            <td>
+                <label class=" " style="font-size: larger"><%=dateFormat2(cpmpetitionTime)%></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class=" " style="font-size: larger">主要参加人：</label>
+            </td>
+            <td>
+                <label class=" " style="font-size: larger"><%=joinPeople%></label>
+            </td>
+            <td>
+                <label class=" " style="font-size: larger">专业主管部门：</label>
+            </td>
+            <td>
+                <label class=" " style="font-size: larger"><%=competitionUnit%></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="" style="font-size: larger">取得净效益：</label>
+            </td>
+            <td colspan="3">
+                <label class="" style="font-size: larger"><%=netBenefit%></label>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <label class="" style="font-size: larger">附件：</label>
+            </td>
+            <td colspan="3">
+                <label class="" style="font-size: larger"><a href="downloadFile?id=<%=fileId%>"><%=fileName%></a></label>
+            </td>
+        </tr>
+    </table>
+
+<!--第二步操作-->
+    <%if(clStep == "2" && isViewOnly == false && isComplete == false){%>
+    <hr style="border: solid 1px #E6E9ED">
+
+    <div class="col-xs-12 form-group">
+        <label class="control-label col-xs-3" style="font-size: larger">成果评审小组成员：</label>
+        <div class="col-xs-4">
+            <select multiple="multiple" class="example-dropUp_d" name="achiGroupMembersIds">
+                <%if(project_empDtos && project_empDtos.length>0){%>
+                <%for(var i=0;i < project_empDtos.length;i++){%>
+                <optgroup label="<%=project_empDtos[i].deptName%>">
+                    <%if(project_empDtos[i].empDtos && project_empDtos[i].empDtos.length>0){%>
+                        <%for(var j=0;j < project_empDtos[i].empDtos.length;j++){%>
+                            <option value="<%=project_empDtos[i].empDtos[j].id%>" <%if(achiGroupMembersIds && achiGroupMembersIds.indexOf(project_empDtos[i].empDtos[j].id)>=0){%> selected <%}%> ><%=project_empDtos[i].empDtos[j].name%></option>
+                        <%}%>
+                    <%}%>
+                </optgroup>
+                <%}%>
+                <%}%>
+            </select>
+            <input type="hidden" name="hiddenJudgeMembers" >
+            <input type="hidden" name="hidJudgeMemberids">
+        </div>
+    </div>
+
+    <div class="col-xs-12 form-group">
+        <label class="control-label col-xs-3" style="font-size: larger">成果评审小组组长：</label>
+        <div class="col-xs-4">
+            <select  class="example-dropUp_d" name="achi_leader_id">
+                <%if(project_empDtos && project_empDtos.length>0){%>
+                <%for(var i=0;i < project_empDtos.length;i++){%>
+                <optgroup label="<%=project_empDtos[i].deptName%>">
+                    <%if(project_empDtos[i].empDtos && project_empDtos[i].empDtos.length>0){%>
+                    <%for(var j=0;j < project_empDtos[i].empDtos.length;j++){%>
+                    <option value="<%=project_empDtos[i].empDtos[j].id%>" <%if(achi_leader_id && achi_leader_id.indexOf(project_empDtos[i].empDtos[j].id)>=0){%> selected <%}%> ><%=project_empDtos[i].empDtos[j].name%></option>
+                    <%}%>
+                    <%}%>
+                </optgroup>
+                <%}%>
+                <%}%>
+            </select>
+            <input type="hidden" name="hiddenMembersLeader" >
+        </div>
+    </div>
+
+    <div class="form-group col-xs-12" >
+        <label class="pull-right checkAll" style="margin-right: 20px;font-size: larger" ><a  target="_blank" style="color: blue" href="/sra_workAch_fail_all?step=<%=clStep%>">查看全部未审批申请</a> </label>
+    </div>
+    <%}%>
+
+    <!--第三步展示-->
+    <%if(clStep >= 3 ){%>
+        <hr style="border: solid 1px #E6E9ED">
+
+    <table  width="100%">
+        <tr>
+            <td width="20%">
+                <label class="" style="font-size: larger">成果评审小组组员：</label>
+            </td>
+            <td width="80%">
+                <label class="" style="font-size: larger"><%=reviewGroupMembers%></label>
+            </td>
+
+        </tr>
+        <tr>
+            <td >
+                <label class="" style="font-size: larger">成果评审小组组长：</label>
+            </td>
+            <td >
+                <label class="" style="font-size: larger"><%=achi_judgeMemberLeader%> </label>
+            </td>
+        </tr>
+    </table>
+
+    <%}%>
+
+    <!--第三步操作-->
+    <%if(clStep == "3" && isViewOnly == false && isComplete == false){%>
+    <hr style="border: solid 1px #E6E9ED">
+
+    <div class="col-xs-12 form-group">
+        <label class="control-label col-xs-2" style="font-size: larger">成果评分：</label>
+        <input type="text" class="form-control col-xs-3" style="width: 200px" name="approveScore" required="required" value="<%=approveScore%>" >
+
+    </div>
+    <div class="form-group col-xs-12">
+        <label class="control-label col-xs-2" style="font-size: larger">评审意见：</label>
+        <div class="col-xs-9" style="padding: 0px">
+            <textarea class="form-control" rows="5" name="achievementJudgeSuggestions"><%=achievementJudgeSuggestions%></textarea>
+        </div>
+    </div>
+
+    <div class="form-group col-xs-12" >
+        <label class="pull-right checkAll" style="margin-right: 20px;font-size: larger" ><a  target="_blank" style="color: blue" href="/sra_workAch_fail_all?step=<%=clStep%>">查看全部未审批申请</a> </label>
+    </div>
+    <%}%>
+
+    <!--第三步及以后展示-->
+    <%if(clStep >= "3"){%>
+
+    <table  width="100%">
+        <%if(achiOnlyScores && achiOnlyScores.length >0){%>
+        <tr>
+            <td width="20%">
+                <label class="" style="font-size: larger">小组成员评分：</label>
+            </td>
+            <td width="80%">
+                <label class="" style="font-size: larger;padding-top: 8px"><%for(var i=0;i< achiOnlyScores.length;i++){%>
+                    <%=achiOnlyScores[i]%> <br/>
+                    <%}%>
+
+                </label>
+            </td>
+
+        </tr>
+        <%}%>
+        <%if(achiOnlyAdvise && achiOnlyAdvise.length >0){%>
+        <tr>
+            <td>
+                <label style="font-size: larger">小组成员意见：</label>
+            </td>
+            <td>
+                <label class="" style="font-size: larger;padding-top: 8px">
+                    <%for(var i=0;i< achiOnlyAdvise.length;i++){%>
+                    <%=achiOnlyAdvise[i]%> <br/>
+                    <%}%>
+                </label>
+            </td>
+        </tr>
+        <%}%>
+    </table>
+    <%}%>
+
+    <!--第四步及以上展示-->
+    <%if(clStep > "3" || isComplete == true){%>
+        <!--<hr style="border: solid 1px #E6E9ED">-->
+        <hr style="border: solid 1px #E6E9ED">
+        <table  width="100%">
+            <tr>
+                <td width="20%">
+                    <label class="" style="font-size: larger">成果评分：</label>
+                </td>
+                <td width="80%">
+                    <label class="" style="font-size: larger"><%=approveScore%></label>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <label style="font-size: larger">评审意见：</label>
+                </td>
+                <td>
+                    <label class="" style="font-size: larger"><%=achievementJudgeSuggestions%> </label>
+                </td>
+            </tr>
+        </table>
+
+
+    <%}%>
+
+    <%if(clStep == "4" && isComplete == false  && isViewOnly == false){%>
+    <hr style="border: solid 1px #E6E9ED">
+    <div class="col-xs-12 form-group">
+        <label class="control-label col-xs-2" style="font-size: larger">颁发机构：</label>
+        <div class="col-xs-4">
+            <input type="text" class="form-control" name="awardAgency">
+        </div>
+        <label class="control-label col-xs-2" style="font-size: larger">荣誉级别：</label>
+        <div class="col-xs-4">
+            <select class="form-control" name="prizeLevel">
+                <option value="">请选择</option>
+                <option value="国家级">国家级</option>
+                <option value="省部级">省部级</option>
+                <option value="市级">市级</option>
+                <option value="厂处级">厂处级</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-xs-12 form-group">
+        <label class="control-label col-xs-2" style="font-size: larger">荣誉名称：</label>
+        <div class="col-xs-4">
+            <input type="text" class="form-control" name="prizeName">
+        </div>
+        <label class="control-label col-xs-2" style="font-size: larger">获得时间：</label>
+        <div class="col-xs-4">
+            <input type="text" class="form-control Wdate" name="achiGetTime">
+        </div>
+    </div>
+
+    <br>
+    <div class="form-group col-xs-12" >
+        <label class="pull-right checkAll" style="margin-right: 20px;font-size: larger" ><a  target="_blank" style="color: blue" href="/sra_workAch_fail_all?step=<%=clStep%>">查看全部未审批申请</a> </label>
+    </div>
+
+    <%}%>
+
+    <%if(isComplete == true){%>
+    <hr style="border: solid 1px #E6E9ED">
+    <table  width="100%">
+        <tr>
+            <td width="20%">
+                <label class="" style="font-size: larger">颁发机构：</label>
+            </td>
+            <td width="30%">
+                <label class="" style="font-size: larger"><%=awardAgency%></label>
+            </td>
+            <td width="15%">
+                <label class=" " style="font-size: larger">荣誉级别：</label>
+            </td>
+            <td width="35%">
+                <label class="" style="font-size: larger"><%=prizeLeval%></label>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <label class="" style="font-size: larger">荣誉名称：</label>
+            </td>
+            <td  >
+                <label class="" style="font-size: larger"><%=prizeName%> </label>
+            </td>
+            <td >
+                <label class="" style="font-size: larger">获得时间：</label>
+            </td>
+            <td  >
+                <label class="" style="font-size: larger"><%=dateFormat2(achiGetTime)%> </label>
+            </td>
+        </tr>
+
+    </table>
+    <%}%>
+
+
+
+
+
+
+</div>

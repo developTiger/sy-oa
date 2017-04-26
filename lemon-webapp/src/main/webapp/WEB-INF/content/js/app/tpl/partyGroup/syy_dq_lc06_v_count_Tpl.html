@@ -1,0 +1,59 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+
+    <thead>
+    <tr class="headings">
+        <th><input type="checkbox" id="check-all"  class="checkAll "></th>
+        <th class="column-title">序号</th>
+        <th class="column-title">文章标题</th>
+        <th class="column-title">作者</th>
+        <th class="column-title">单位</th>
+        <th class="column-title">新闻类别</th>
+        <th class="column-title">发表时间</th>
+        <th class="column-title">审核结果</th>
+        <!-- <th class="column-title" hidden>companyid</th>-->
+        <th class="column-title Js_operation"><span class="nobr">操作</span></th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = 0%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr data-tt-id="<%=items[i].id%>">
+        <td class=" " > <input type="checkbox" class="checkBtn" name="table_records" value="<%=items[i].id%>"></td>
+        <td class="num"><%=num+i+1%></td>
+        <td class=" "><%=items[i].title%></td>
+        <td class=" "><%=items[i].author%></td>
+        <td class=" "><%=items[i].unit%></td>
+        <td class=" "><%=items[i].newsType%></td>
+        <td class=" "><%=dateFormat(items[i].time).substring(0,10)%></td>
+        <td class=" ">
+            <%if(items[i].formStatus == "UA"){%>
+            未通过
+            <%}%>
+            <%if(items[i].formStatus == "AP"){%>
+            通过
+            <%}%>
+
+        </td>
+
+        <td class="last Js_operation">
+
+            <!--<a class="i_modal label label-default "
+               data-title="修改司机信息" data-url="_repaireDriverInfoForm?id=<%=items[i].id%>">
+                <i class="green fa fa-plus"></i>修改 </a>-->
+
+            <a class="i_modal" data-title="编辑宣传报道统计信息" data-url="ajax_edit_proManage_count?id=<%=items[i].id%>">
+                <i class="green fa fa-edit"></i>编辑 </a>
+            <a class="deleteProManagement" data-url="ajax_delete_proManage_count?id=<%=items[i].id%>">
+            <i class="red fa fa-remove"></i>删除 </a>
+        </td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="10" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

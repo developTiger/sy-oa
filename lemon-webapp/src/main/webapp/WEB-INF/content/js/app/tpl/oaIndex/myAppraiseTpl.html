@@ -1,0 +1,28 @@
+
+<table class="table   dataTable no-footer" border="0">
+
+    <thead>
+    <tr class="headings">
+        <th class="column-title"></th>
+        <th class="column-title">考核列表</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = 0%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr data-tt-id="<%=items[i].id%>">
+        <td class=" "><%=num+1+i%></td>
+        <td class=" ">
+            <a  href="/sra_s_selfevaluation?id=<%=items[i].id%>&appStatus=<%=items[i].appStatus%>" > <%=items[i].appName%> </a>
+        </td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="3" align="center">暂无考核信息</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

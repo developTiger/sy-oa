@@ -1,0 +1,55 @@
+
+<style>
+    .view .tools{margin: 90px;}
+</style>
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3> 文件管理器 </h3>
+            </div>
+
+            <div class="title_right">
+                <div class=" form-group pull-left top_search">
+                    <div class="input-group">
+                        <form id="searchForm" data-url="ajax_file_query">
+                            <input type="hidden" name="id" id="fid">
+                            <input type="hidden" name="path" id="path">
+                        <!--<input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <a   class="i_modal btn btn-success btn-lg" data-url="_uploadFile"><i class="fa fa-plus"></i>上传文件</a>
+
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="fileContent" class="row">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        require(['app/files/fileUpload']);
+    </script>

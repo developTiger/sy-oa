@@ -1,0 +1,500 @@
+<style>
+    body {
+        background: #F7F7F7;
+    }
+</style>
+<input id="beans_back_judge" #if($beandto) value="$beandto"#end type="hidden"/>
+<input  id= "special_Type"name="special_Type" #if($beandto) value="$beandto.special_Type"#end type="hidden"/>
+<input type="hidden" name="id" #if($beandto)value="$beandto.id" #end>
+#if($beandto)
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2">项目名称 <span class="required">：</span>
+    </label>
+    <input type="hidden" name="projectName" id="projectName_back" >
+    <div class="col-xs-4">
+        <div style="float: left;width:80%;"     >
+            <select id="projectNamesel_back" name="projectName" class="form-control" required="required">
+               #if($beandto.projectNo) <option value="$beandto.projectNo">$beandto.projectName</option>#end
+                #if($projectName)
+                #foreach($pname in $projectName)
+                <option value="$pname.projectNo">$pname.projectName</option>
+                #end
+            </select>
+            #else
+            <dd>没有数据</dd>
+            #end
+            </select>
+        </div>
+        #if($beandto.projectNo)
+        <div style="margin-left: 5px;float: left; width:15%;">
+            <input type="button" id="project_detial_back" value="详情" class="btn detial" >
+        </div>
+        #end
+    </div>
+    <label class="control-label  col-xs-2">项目长 <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="leaderName_back"  name="measuringName"  readonly
+      #if($rpkuDto) value="$rpkuDto.leaderName"#end >
+    </div>
+</div>
+
+
+<!--<div class="form-group col-xs-12">-->
+<!--<label class="control-label  col-xs-2">项目名称: <span class="required">：</span>-->
+<!--</label>-->
+<!--<div class="control-label col-xs-6">-->
+<!--<input type="text" id="projectName" required="required"-->
+<!--name="projectName" value="$beandto.projectName"-->
+<!--class="form-control col-md-7 col-xs-12" data-parsley-id="4639">-->
+<!--</div>-->
+<!--</div>-->
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">项目计划编号<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="projectNo_back"  name="projectNo"
+             #if($beandto.projectNo)  value="$beandto.projectNo" #end
+               readonly>
+    </div>
+
+    <label class="control-label  col-xs-2">项目计划年度<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="niandu_back"  name="measuringName"
+              #if($rpkuDto) value="$rpkuDto.year_Str" #end readonly>
+    </div>
+</div>
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">承担单位<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="assumeCompany_back"  name="measuringName"
+              #if($rpkuDto) value="$rpkuDto.assumeCompany" #end readonly>
+    </div>
+
+    <label class="control-label  col-xs-2">参加单位<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="joinComopany_back"  name="measuringName"
+              #if($rpkuDto) value="$rpkuDto.joinComopany" #end readonly>
+    </div>
+</div>
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">开始时间<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="beginTime_back"  name="measuringName"
+              #if($rpkuDto) value="$rpkuDto.beginTime1" #end readonly>
+    </div>
+
+    <label class="control-label  col-xs-2">结束时间<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="endTime_back"  name="measuringName"
+              #if($rpkuDto) value="$rpkuDto.endTime1" #end readonly>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2">项目组其他成员 <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="atherPeople_back" required="required" rows="3"
+                  name="atherPeople"readonly
+                  class="form-control col-md-4 col-xs-4" >
+            #if($beandto.atherPeople)
+            $beandto.atherPeople
+            #end
+        </textarea>
+        <ul class="parsley-errors-list" id="parsley-id-2039_back"></ul>
+    </div>
+    <label class="control-label  col-xs-2">
+        研究目标和主要研究内容
+        <span class="required">:</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="projectPlanInfoTxt_back" required="required" rows="3"
+                  name="projectPlanInfoTxt"
+                  class="form-control col-md-4 col-xs-4" >$beandto.projectPlanInfoTxt</textarea>
+        <ul class="parsley-errors-list" id="parsley-id_back"></ul>
+    </div>
+</div>
+
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">
+        关键技术和技术研究路线(方案)比选
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="schemeOpt_back" required="required" rows="3"
+                  name="schemeOpt"
+                  class="form-control col-md-4 col-xs-4" >$beandto.schemeOpt</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-122_back"></ul>
+    </div>
+
+    <label class="control-label  col-xs-2">
+        主要技术经济考核指标
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="examineTarget_back" required="required" rows="3"
+                  name="examineTarget"
+                  class="form-control col-md-4 col-xs-4" >$beandto.examineTarget</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-120_back"></ul>
+    </div>
+</div>
+
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">
+        项目验收最终成功及成果形式
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="finalShape_back" required="required" rows="3"
+                  name="finalShape"
+                  class="form-control col-md-4 col-xs-4" >$beandto.finalShape</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-1_back"></ul>
+    </div>
+
+    <label class="control-label  col-xs-2">
+        项目研究进度计划
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="proResearchProgress_back" required="required" rows="3"
+                  name="proResearchProgress"
+                  class="form-control col-md-4 col-xs-4" >$beandto.proResearchProgress</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-121-_back"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">
+        资源计划
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="resourcePlan_back" required="required" rows="3"
+                  name="resourcePlan"
+                  class="form-control col-md-4 col-xs-4" >$beandto.resourcePlan</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-22_back"></ul>
+    </div>
+
+    <label class="control-label  col-xs-2">
+        前期研究基础情况和支撑条件分析
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="beforeStatusAnalyze_back" required="required" rows="3"
+                  name="beforeStatusAnalyze"
+                  class="form-control col-md-4 col-xs-4" >$beandto.beforeStatusAnalyze</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-121-1_back"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">
+        与本项目有关的专利检索及其法律状况分析
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="lawAnalyze_back" required="required" rows="3"
+                  name="lawAnalyze"
+                  class="form-control col-md-4 col-xs-4" >$beandto.lawAnalyze</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-12_back"></ul>
+    </div>
+
+    <label class="control-label  col-xs-2">
+        应用前景和经济效益预测
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="vistaAndBenefit_back" required="required" rows="3"
+                  name="vistaAndBenefit"
+                  class="form-control col-md-4 col-xs-4" >$beandto.vistaAndBenefit</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-121_back"></ul>
+    </div>
+</div>
+
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">国内外现状、技术发展趋势、
+        生产需求和市场前景<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="prospect_back" required="required" rows="3"
+                  name="prospect"
+                  class="form-control col-md-4 col-xs-4" >$beandto.prospect</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-203_back"></ul>
+    </div>
+</div>
+#else
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2">项目名称 <span class="required">：</span>
+    </label>
+    <input type="hidden" name="projectName" id="projectName">
+    <div class="col-xs-4">
+        <div style="float: left;width:80%;"     >
+        <select id="projectNamesel" name="projectNamesel"required="required" class="form-control" >
+            <option value="">请选择</option>
+            #if($projectName)
+            #foreach($pname in $projectName)
+            <option value="$pname.projectNo">$pname.projectName</option>
+            #end
+        </select>
+        #else
+        <dd>没有数据</dd>
+        #end
+        </select>
+    </div>
+    <div style="margin-left: 5px;float: left; width:15%;">
+        <input type="button"id="project_detial" value="详情" class="btn detial" >
+    </div>
+</div>
+    <label class="control-label  col-xs-2">项目长 <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="leaderName"  name="measuringName"  readonly
+                >
+    </div>
+</div>
+
+
+<!--<div class="form-group col-xs-12">-->
+<!--<label class="control-label  col-xs-2">项目名称: <span class="required">：</span>-->
+<!--</label>-->
+<!--<div class="control-label col-xs-6">-->
+<!--<input type="text" id="projectName" required="required"-->
+<!--name="projectName" value="$beandto.projectName"-->
+<!--class="form-control col-md-7 col-xs-12" data-parsley-id="4639">-->
+<!--</div>-->
+<!--</div>-->
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">项目计划编号<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="projectNo"  name="projectNo"  readonly>
+    </div>
+
+    <label class="control-label  col-xs-2">项目计划年度<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="niandu"  name="measuringName"  readonly>
+    </div>
+</div>
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">承担单位<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="assumeCompany"  name="measuringName"  readonly>
+    </div>
+
+    <label class="control-label  col-xs-2">参加单位<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="joinComopany"  name="measuringName"  readonly>
+    </div>
+</div>
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">开始时间<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="beginTime"  name="measuringName"  readonly>
+    </div>
+
+    <label class="control-label  col-xs-2">结束时间<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <input type="text" class="form-control" id="endTime"  name="measuringName"  readonly>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+
+    <label class="control-label  col-xs-2">项目组其他成员 <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="atherPeople"  rows="3"
+                  name="atherPeople" readonly
+                  class="form-control col-md-4 col-xs-4" ></textarea>
+        <ul class="parsley-errors-list" id="parsley-id-2039"></ul>
+    </div>
+
+    <label class="control-label  col-xs-2">
+        研究目标和主要研究内容
+        <span class="required">:</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="projectPlanInfoTxt" required="required" rows="3"
+                  name="projectPlanInfoTxt"
+                  class="form-control col-md-4 col-xs-4" ></textarea>
+        <ul class="parsley-errors-list" id="parsley-id"></ul>
+    </div>
+</div>
+
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">
+        关键技术和技术研究路线(方案)比选
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="schemeOpt" required="required" rows="3"
+                  name="schemeOpt"
+                  class="form-control col-md-4 col-xs-4" ></textarea>
+        <ul class="parsley-errors-list" id="parsley-id-122"></ul>
+    </div>
+
+    <label class="control-label  col-xs-2">
+        主要技术经济考核指标
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="examineTarget" required="required" rows="3"
+                  name="examineTarget"
+                  class="form-control col-md-4 col-xs-4" ></textarea>
+        <ul class="parsley-errors-list" id="parsley-id-121"></ul>
+    </div>
+</div>
+
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">
+        项目验收最终成功及成果形式
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="finalShape" required="required" rows="3"
+                  name="finalShape"
+                  class="form-control col-md-4 col-xs-4" ></textarea>
+        <ul class="parsley-errors-list" id="parsley-id-1"></ul>
+    </div>
+
+    <label class="control-label  col-xs-2">
+        项目研究进度计划
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="proResearchProgress" required="required" rows="3"
+                  name="proResearchProgress"
+                  class="form-control col-md-4 col-xs-4" ></textarea>
+        <ul class="parsley-errors-list" id="parsley-id-121-"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">
+        资源计划
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="resourcePlan" required="required" rows="3"
+                  name="resourcePlan"
+                  class="form-control col-md-4 col-xs-4" ></textarea>
+        <ul class="parsley-errors-list" id="parsley-id-22"></ul>
+    </div>
+
+    <label class="control-label  col-xs-2">
+        前期研究基础情况和支撑条件分析
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="beforeStatusAnalyze" required="required" rows="3"
+                  name="beforeStatusAnalyze"
+                  class="form-control col-md-4 col-xs-4" ></textarea>
+        <ul class="parsley-errors-list" id="parsley-id-121-1"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">
+        与本项目有关的专利检索及其法律状况分析
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="lawAnalyze" required="required" rows="3"
+                  name="lawAnalyze"
+                  class="form-control col-md-4 col-xs-4" ></textarea>
+        <ul class="parsley-errors-list" id="parsley-id-12"></ul>
+    </div>
+
+    <label class="control-label  col-xs-2">
+        应用前景和经济效益预测
+        <span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="vistaAndBenefit" required="required" rows="3"
+                  name="vistaAndBenefit"
+                  class="form-control col-md-4 col-xs-4" ></textarea>
+        <ul class="parsley-errors-list" id="parsley-id-121="></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">国内外现状、技术发展趋势、
+        生产需求和市场前景<span class="required">：</span>
+    </label>
+    <div class="col-xs-4">
+        <textarea type="text" id="prospect" required="required" rows="3"
+                  name="prospect"
+                  class="form-control col-md-4 col-xs-4" ></textarea>
+        <ul class="parsley-errors-list" id="parsley-id-203"></ul>
+    </div>
+
+</div>
+#end
+
+<!--<div style="margin-left: 16%">
+<input type="file" name="projFile" id="upFile">
+</div>-->
+#if($beandto&&$beandto.fileList.size()!=0)
+<div class="form-group col-xs-12">
+
+    <label class="control-label  col-xs-2" style="font-size: larger;float: left ;">已上传附件:
+    </label>
+    <div class="col-xs-6" style="padding-top: 5px;font-size: larger;float: left">
+        #foreach($files in $beandto.fileList)
+        <div class="form-group">
+        <input type="hidden" value="$files.fileId" name="already_upFileId"/>
+        <input type="hidden" value="$files.fileName" name="already_upFileName">
+        <a href="downloadFile?id=$files.fileId">$files.fileName</a>
+            <input type="button" value="删除" class="btn btn-danger deleteupFileBtn">
+            </div>
+       </br>
+        #end
+    </div>
+
+</div>
+#end
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2" >附件：
+    </label>
+    <!--<div class="col-xs-4 col-xs-offset-1" style="padding-top: 5px">
+        <input type="file"  id="fileId" name="fileName"/>
+    </div>
+
+    <div>
+        <input type="button" value="新增" class="btn btn-group addFileBtn">
+    </div>-->
+</div>
+<div class="form-group">
+    <div class="col-xs-4 col-xs-offset-2" style="padding-top: 5px">
+        <input type="file"  id="fileId" name="fileName"/>
+    </div>
+    <div>
+        <input type="button" value="新增" class="btn btn-group addFileBtn">
+    </div>
+</div>
+<div id="filesHtml"></div>
+<div class="form-group">
+    <div class=" col-xs-6 col-xs-offset-5">
+        <input  type="submit" id="addOrUpdateProjectInfo" data-url="ajax_add_update_lc02_apply" class="btn btn-success" value="申请">
+        <!--<a class="btn btn-primary" href="javascript:window.close()">返回</a>-->
+        <a class="btn btn-primary" #if($beandto) href="javascript:history.go(-1);"#else href="javascript:window.close()" #end>返回</a>
+    </div>
+    </div>
+</div>
+<script>
+    require(['app/projectInfo/syy_kg_lc04']);
+</script>

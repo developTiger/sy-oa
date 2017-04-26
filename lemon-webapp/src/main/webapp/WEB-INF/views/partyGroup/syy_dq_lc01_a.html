@@ -1,0 +1,242 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+$ui.loadCss("select2/select2.min.css")
+
+<style>
+    .multiselect-container .multiselect-group{background-color: #337AB7;}
+    .multiselect-container .multiselect-group a{color: #ffffff}
+</style>
+
+
+<div style="min-width: 800px">
+
+    <input type="hidden" name="id" value="$!projectDto.id">
+    <!--<input type="hidden" name="formNo" value="$!projectDto.formNo">-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="projectName">项目名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <input type="text" id="projectName" required="required" name="projectName" maxlength="50"
+                   class="form-control  col-xs-7" data-parsley-id="2038" required="required" value="$!projectDto.projectName">
+            <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >竞赛主题 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <select class="form-control " required="required" name="competitionTitle">
+                <option value="">请选择</option>
+                #if($titleTypes)
+                #foreach($type in $titleTypes)
+                <option value="$type.name" #if($projectDto.competitionTitle==$type.name) selected #end>$type.name</option>
+                #end
+                #else
+                <d>暂无数据</d>
+                #end
+            </select>
+        </div>
+    </div>
+
+
+    <input type="hidden" id="leader" required="required" name="leader" maxlength="50" readonly
+           class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+    <input type="hidden" id="competitionUnit" required="required" name="competitionUnit" maxlength="50" readonly
+           class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+
+
+    <div class="form-group Js_attendPeople">
+        <label class="control-label  col-xs-2" >主要参加人 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <select  class="select2_multiple"  name="mainPeople" required="required"  >
+
+                #if($depts)
+                #foreach($dept in $depts)
+                <optgroup label="$dept.deptName">
+
+                    <!--<option value="">请选择</option>-->
+                    #if($beans)
+                    #foreach($bean in $beans)
+                    #if($dept.id == $bean.deptId)
+                    <option value="$bean.name" >$bean.name</option>
+
+                    #end
+                    #end
+                    #end
+
+                </optgroup>
+                #end
+                #end
+
+            </select>
+            <!--<input type="hidden" id="hiddenEmp" name="hidEmpNames" >-->
+            <!--<input type="hidden" id="hiddenId" name="hidId" >-->
+        </div>
+        <div class="col-xs-2" style="margin-bottom: 15px;">
+            <button type="button" class="btn btn-defalut Js_addPeople">新增</button>
+        </div>
+
+    </div>
+
+    #if($projectDto.mainPeople)
+    #foreach($person in $projectDto.mainPeople)
+    <div class="form-group ">
+
+        <div class="col-xs-7 col-xs-offset-2">
+            <select  class="select2_multiple"  name="mainPeople" required="required"  >
+
+                #if($depts)
+                #foreach($dept in $depts)
+                <optgroup label="$dept.deptName">
+
+                    <!--<option value="">请选择</option>-->
+                    #if($beans)
+                    #foreach($bean in $beans)
+                    #if($dept.id == $bean.deptId)
+                    <option value="$bean.name" #if($person == $bean.name) selected #end>$bean.name</option>
+
+                    #end
+                    #end
+                    #end
+
+                </optgroup>
+                #end
+                #end
+
+            </select>
+            <!--<input type="hidden" id="hiddenEmp" name="hidEmpNames" >-->
+            <!--<input type="hidden" id="hiddenId" name="hidId" >-->
+        </div>
+        <div class="col-xs-2" style="margin-bottom: 15px;">
+            <button type="button" class="btn btn-danger Js_mainPeople_delete">删除</button>
+        </div>
+
+    </div>
+    #end
+    #end
+
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-2">竞赛类别 <span class="required">*</span></label>
+        <div class="col-xs-10">
+            <select class="example-dropUp"   multiple="multiple"  name="competitionType" required="required" >
+                #if($competitionTypes)
+                #foreach($type in $competitionTypes)
+                <option value="$type.name" #if($projectDto.competitionType && $projectDto.competitionType.indexOf($type.name)>=0) selected #end >$type.name</option>
+                #end
+                #else
+                <d>暂无数据</d>
+                #end
+            </select>
+            <!--<input type="hidden" id="competType" name="hiddenComType">-->
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="situationExplain">现状说明 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <textarea id="situationExplain" required="required" name="situationExplain"
+                      class="form-control  col-xs-7" data-parsley-id="2038" required="required">$!projectDto.situationExplain</textarea>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="projectBasis">立项依据 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <textarea id="projectBasis" required="required" name="projectBasis"
+                      class="form-control  col-xs-7" data-parsley-id="2038" required="required">$!projectDto.projectBasis</textarea>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="controlAction">控制措施 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <textarea id="controlAction" required="required" name="controlAction"
+                      class="form-control  col-xs-7" data-parsley-id="2038" required="required">$!projectDto.controlAction</textarea>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="scheduleArrange">进度安排 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <textarea id="scheduleArrange" required="required" name="scheduleArrange"
+                      class="form-control  col-xs-7" data-parsley-id="2038" required="required">$!projectDto.scheduleArrange</textarea>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="scheduleArrange">预期效果 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-7">
+            <textarea id="expectResult" required="required" name="expectResult"
+                      class="form-control  col-xs-7" data-parsley-id="2038" required="required">$!projectDto.expectResult</textarea>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-2">附件</label>
+        <div class="col-xs-7">
+            <input type="file" id="fileName1"  name="fileName1" style="position: relative;top: 0.2em"
+                   class="  col-xs-7" data-parsley-id="2038" >
+
+        </div>
+    </div>
+
+    #if($projectDto.fileName)
+    <div class="form-group">
+
+        <label class="control-label col-xs-2">已上传附件</label>
+        <input type="hidden" name="oldFileName" value="$projectDto.fileName">
+        <input type="hidden" name="oldFileId" value="$projectDto.fileId">
+         <a style="position: relative;top: 8px;" href="/downloadFile?id=$projectDto.fileId">$projectDto.fileName</a>
+    </div>
+    #end
+
+
+
+
+
+
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-5">
+            <button type="submit" id="workProjectSubmit" data-url="ajax_add_update_workProject" class="btn btn-success">提交</button>
+            <a class="btn btn-primary" href="javascript:window.close();">取消</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    require(["app/partyGroup/workProject"]);
+</script>
+
+
+
+

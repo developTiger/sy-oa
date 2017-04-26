@@ -1,0 +1,47 @@
+<div id="qjApplyForm" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+    <input type="hidden" name="id"  value="<%=id%>" />
+
+
+    <div class="form-group" >
+        <label class="control-label" style="font-size: larger">请假人：<%=leavePerson%></label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label" style="font-size: larger">请假开始时间：<%=dateFormat(startTime)%></label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label" style="font-size: larger">请假结束时间：<%=dateFormat(endTime)%></label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label" style="font-size: larger">部门：<%=leaveDept%></label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label" style="font-size: larger">
+            请假类别：<%if(leaveType == "birth"){%>
+                        生育假
+                        <%}%>
+                    <%if(leaveType == "abortion"){%>
+                    流产休假
+                    <%}%>
+                    <%if(leaveType == "escort"){%>
+                    陪护假
+                    <%}%>
+                    <%if(leaveType == "marry"){%>
+                    婚假
+                    <%}%>
+                    <%if(leaveType == "recuperation"){%>
+                    疗养假
+                    <%}%>
+        </label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label" style="font-size: larger">请假事由：<%=reson%></label>
+    </div>
+
+
+</div>

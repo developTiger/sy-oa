@@ -1,0 +1,70 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>司机出车情况
+            <small>- 司机出车情况</small>
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 出车明细情况
+        </div>
+        <div class="row">
+            <div class="form-inline   col-xs-12" style="padding-bottom: 15px;">
+                <form id="searchDrivering"   data-url="ajax_drivering_query_list">
+                        <div class="form_group">
+                            <a class="btn btn-default left" id="daochu">导出</a>
+                        </div>
+                        <label class="control-label" >申请人：</label>
+                        <input type="text" class="form-control " style="margin-bottom: 5px;width: 191px" name="applyerName" >
+                        <label class="control-label" >前往地点：</label>
+                        <input type="text" class="form-control " style="margin-bottom: 5px" name="address" >
+                        <label class="control-label" >申请单位：</label>
+                        <input type="text" class="form-control " style="margin-bottom: 5px" name="deptName" >
+                        <label class="control-label" >司机名称：</label>
+                        <input type="text" class="form-control " style="margin-bottom: 5px" name="driverName"
+                               #if($driverName)  value="$driverName"  #end>
+                    <br/>
+                       <!-- <label class="control-label" >调度中心：</label>
+                        <input type="text" class="form-control " style="margin-bottom: 5px" name="companyName"
+                        #if($company) value="$company" #end>-->
+                    &nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp;
+                      <label class="control-label" >服务评价：</label>
+                        <select class="form-control" name="evaluate" style="width: 177px">
+                            <option value="0" selected>请选择</option>
+                            <option value="1" >优秀</option>
+                            <option value="2">良好</option>
+                            <option value="3">一般</option>
+                            <option value="4">差</option>
+                        </select>
+                    <label class="control-label"  >前往出发时间：</label>
+                    <label class="control-label" >
+                        <input type="text" class="form-control mini-width Wdate" id="driver-bgtime1"  style="float: left;width: 160px" placeholder="开始时间"
+                               name="beginDate" #if($bgtime) value="$bgtime" #end>
+                    </label>
+                    <label class="control-label" >
+                        ~
+                    </label>
+                    <label class="control-label" >
+                        <input type="text" class="form-control mini-width Wdate" id="driver-edtime2"  style="float: left;width: 160px" placeholder="结束时间"
+                               name="endDate" #if($edtime) value="$edtime" #end>
+                    </label>
+                        <input type="button" class="btn btn-default buttons-copy buttons-html5 btn-sm" id="driveringListQueryBtn" value="查询" style="margin-bottom: -1px;margin-left: 32px;">
+
+
+                </form>
+
+        </div>
+
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+    </div>
+<script>
+    require(["app/car_driver_flow/car_drivering_flowTpl"]);
+</script>

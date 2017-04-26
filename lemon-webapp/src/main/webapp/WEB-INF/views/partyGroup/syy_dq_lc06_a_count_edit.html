@@ -1,0 +1,62 @@
+<style>
+    .col-xs-6{text-align: left}
+</style>
+<form class="form-horizontal  editPropagandaManagement">
+    <input type="hidden" value="$!beans.id" name="id">
+    <div class=" form-group">
+        <label class="control-label col-xs-3"> 文章标题：</label>
+        <div class="col-xs-6">
+            <input type="text" class="form-control" value="$!beans.title" name="pr_title">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3">作者：</label>
+
+        <div class="col-xs-6">
+            <input type="text" class="form-control" value="$!beans.author" name="pr_author">
+        </div>
+    </div>
+    <div class=" form-group">
+        <label class="control-label col-xs-3">单位：</label>
+
+        <div class="col-xs-6 ">
+            <label class="control-label">$!beans.unit</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3">新闻类别：</label>
+
+        <div class="col-xs-6">
+            <select class="form-control" name="pr_type">
+                <option value="">请选择</option>
+                <option value="新闻简讯" #if($beans.newsType =="新增简讯") selected #end>新闻简讯</option>
+                <option value="院内动态" #if($beans.newsType =="院内动态") selected #end>院内动态</option>
+                <option value="员工风采" #if($beans.newsType =="员工风采") selected #end>员工风采</option>
+                <option value="油田公司动态" #if($beans.newsType =="油田公司动态") selected #end>油田公司动态</option>
+                <option value="地市级媒体" #if($beans.newsType =="地市级媒体") selected #end>地市级媒体</option>
+                <option value="省部级媒体" #if($beans.newsType =="省部级媒体") selected #end>省部级媒体</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-3">发表时间：</label>
+
+        <div class="col-xs-6 ">
+            <label class="control-label">$helper.formatDateToString($!beans.time,"yyyy-MM-dd")</label>
+        </div>
+    </div>
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="updateCountDetail" data-url="ajax_update_propaManagement_countDetail" class="btn btn-success">保存</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+
+</form>
+<script>
+    require(["app/partyGroup/propagandaManagement"]);
+</script>

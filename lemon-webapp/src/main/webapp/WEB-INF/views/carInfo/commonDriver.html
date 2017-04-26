@@ -1,0 +1,68 @@
+
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/常用司机信息管理
+            <small>- 常用司机信息管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 常用司机信息管理.
+        </div>
+        <div class="row">
+            <div class="form-inline col-xs-12" >
+                <form id="searchForm"  data-url="ajax_commonDriver_query_list">
+                    <a class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="添加常用司机信息"
+                       data-url="_addCommonDriverForm"><span><i class="green fa fa-plus" ></i>新增</span></a>
+                    <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="deleteCommonDriver"  tabindex="0"
+                       aria-controls="datatable-buttons"><span><i
+                            class="red fa fa-remove"></i>删除</span></a>
+                        <div class="form-group" style="margin-bottom: 5px;margin-top: 0px">
+
+                        <label class="control-label" for="carId">车牌号码:
+                        </label>
+                        <label class="control-label" >
+                            #if($cars)
+                            <select id="carId" required="required" name="carId" class="form-control col-xs-7"
+                                    data-parsley-id="0004">
+                                <option value=""  >请选择</option>
+                                #foreach($car in $cars)
+                                <option value="$car.id" #if($car.id==$commonDriver.car.id) selected="selected" #end>$car.carNo</option>
+                                #end
+                            </select>
+                            #else
+                            <dd>暂无数据</dd>
+                            #end
+                        </label>
+
+                        <label class="control-label" for="driverId">司机名称 <span class="required"></span>
+                        </label>
+                        <label class="control-label" >
+                            #if($drivers)
+                            <select id="driverId" required="required" name="driverId" class="form-control col-xs-7"
+                                    data-parsley-id="0004">
+                                <option value=""  >请选择</option>
+                                #foreach($driver in $drivers)
+                                <option value="$driver.id" #if($driver.id==$commonDriver.driver.id) selected="selected" #end>$driver.driverName</option>
+                                #end
+                            </select>
+                            #else
+                            <dd>暂无数据</dd>
+                            #end
+                        </label>
+                       </div>
+                        <input type="button" class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" id="commonDriverQueryBtn" value="查询">
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/carInfo/commonDriver"]);
+</script>

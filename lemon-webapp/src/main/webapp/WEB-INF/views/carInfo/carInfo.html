@@ -1,0 +1,91 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/车辆信息管理
+            <small>- 车辆信息管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 车辆信息管理.
+        </div>
+        <div class="row">
+            <div class="form-inline col-xs-12">
+                <form id="searchForm" data-url="ajax_car_query_list">
+                    <a class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="添加车辆信息"
+                       data-url="_addCarInfoForm"><span><i class="green fa fa-plus"></i>新增</span></a>
+                    <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="deleteCar" tabindex="0"
+                       aria-controls="datatable-buttons"><span><i
+                            class="red fa fa-remove"></i>删除</span></a>
+                    <div class="form-group " style="margin-bottom: 5px;margin-top: 0px">
+                        <label class="control-label">
+                            调度中心
+                        </label>
+                        <label class="control-label">
+                            #if($beans)
+                            <select id="companyId" required="required" name="companyId" class="form-control col-xs-3"
+                                    style="width: 150px;"
+                                    data-parsley-id="0004">
+                                <option value="">请选择</option>
+                                #foreach($bean in $beans.companys)
+                                <option value="$bean.id">$bean.name</option>
+                                #end
+                            </select>
+                            #else
+                            <dd>暂无数据</dd>
+                            #end
+                        </label>
+                    &nbsp;&nbsp;
+                        <label class="control-label">车辆类型
+                        </label>
+                        <label class="control-label">
+                            #if($beans)
+                            <select id="carType" required="required" name="carType" class="form-control col-xs-3"
+                                    style="width: 150px;"
+                                    data-parsley-id="0004">
+                                <option value="">请选择</option>
+                                #foreach($bean in $beans.carTypeList)
+                                <option value="$bean.CAR_TYPE">$bean.CAR_TYPE</option>
+                                #end
+                            </select>
+                            #else
+                            <dd>暂无数据</dd>
+                            #end
+                        </label>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+                        <label class="control-label">车辆状态
+                        </label>
+                        <label class="control-label">
+                            #if($beans)
+                            <select id="status" required="required" name="status" class="form-control col-xs-3"
+                                    style="width: 150px;"
+                                    data-parsley-id="0004">
+                                <option value="">请选择</option>
+                                #foreach($bean in $beans.statusList)
+                                <option value="$bean.key">$bean.value</option>
+                                #end
+                            </select>
+                            #else
+                            <dd>暂无数据</dd>
+                            #end
+
+                        </label>
+
+                    </div>
+                    <input type="button" class="btn btn-default buttons-copy buttons-html5 btn-sm" id="carQueryBtn" value="查询">
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/carInfo/carInfo"]);
+</script>

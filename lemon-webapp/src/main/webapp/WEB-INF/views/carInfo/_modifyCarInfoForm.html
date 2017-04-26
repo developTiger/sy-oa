@@ -1,0 +1,122 @@
+<form id="addCarInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+
+   <div class="form-group">
+        <label class="control-label  col-xs-3" for="companyId">调度中心 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+
+            #if($company)
+            <select id="companyId" required="required" name="companyId" class="form-control col-xs-7"
+                    data-parsley-id="0004">
+                <option value=""  >请选择</option>
+                #foreach($cop in $company)
+                <option value="$cop.id" #if($cop.id=="$beans.companyId") selected #end>$cop.name</option>
+                #end
+            </select>
+            #else
+            <dd>暂无数据</dd>
+            #end
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="carType">车型 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="carType" required="required"
+                   name="carType" #if($beans)value="$beans.carType" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="carNo">车牌号 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="carNo" required="required" name="carNo" #if($beans)value="$beans.carNo" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="status">状态 <span class="required">*</span>
+        </label>
+
+
+        <div class="col-xs-6">
+            <select id="status" required="required" name="status" class="form-control col-xs-7"
+                    data-parsley-id="0004"  >
+
+                <option value="1" #if(1==$beans.status) selected="selected" #end>待命</option>
+                <option value="2" #if(2==$beans.status) selected="selected" #end>出车</option>
+                <option value="3" #if(3==$beans.status) selected="selected" #end>维护保养</option>
+                <option value="4" #if(4==$beans.status) selected="selected" #end>停运</option>
+
+            </select>
+        </div>
+
+    </div>
+
+    <div class="form-group"  id="historyRecord" >
+
+
+        <label class="control-label  col-xs-3" for="repairLogOld">历史维护记录 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <textarea type="text" id="repairLogOld"
+                      name="repairLogOld"  class="repairLog form-control col-md-7 col-xs-12" data-parsley-id="4640" readonly style="background-color:lightgray">#if($beans.repairLogOld) $beans.repairLogOld #end</textarea>
+        </div>
+    </div>
+
+    <div class="form-group"   id="record">
+
+
+        <label class="control-label  col-xs-3" for="repairLog">追加维护记录 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <textarea type="text" id="repairLog"
+                      name="repairLog"  class="repairLog form-control col-md-7 col-xs-12" data-parsley-id="4639"></textarea>
+        </div>
+    </div>
+
+    <!--<div class="form-group">
+        <label class="control-label  col-xs-3" >部门名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select  id="controlName" required="required" name="controlName" class="form-control col-xs-7"
+                     data-parsley-id="0004">
+                <option value="">请选择</option>
+                #if($deptName)
+                #foreach($dname in $deptName)
+                <option value="$dname.id" #if($dname.id==$beans.controlName)  selected #end >$dname.deptName</option>
+                #end
+                #else
+                <dd>暂无数据</dd>
+                #end
+            </select>
+        </div>
+    </div>-->
+
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdateCar" data-url="ajax_add_update_car" class="btn btn-success">提交</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">返回</button>
+        </div>
+    </div>
+</form>
+

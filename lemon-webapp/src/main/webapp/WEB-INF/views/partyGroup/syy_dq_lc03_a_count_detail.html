@@ -1,0 +1,126 @@
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/党群科信息管理
+            <small>- 创新成果信息管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 五小创新成果数据统计.
+        </div>
+        <div class="row">
+            <div class=" btn-group  ">
+                <!--<a class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="添加车辆信息"
+                   data-url="_addCarInfoForm"><span><i class="green fa fa-plus" ></i>新增</span></a>
+
+                <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="deleteCar"  tabindex="0"
+                   aria-controls="datatable-buttons"><span><i
+                        class="red fa fa-remove"></i>删除</span></a>-->
+
+            </div>
+            <div class="form-inline col-xs-12" >
+                <div class="">
+                    <div>
+                        <label class="col-xs-6" style="font-size: larger;margin-top: 5px;">项目名称：$!beans.projectName  </label>
+                        <label style="font-size:larger;margin-top: 5px;" class="col-xs-6">参与者：$!beans.creatorName</label>
+                    </div>
+                    <div>
+                        <label style="font-size: larger;margin-top: 5px;" class="col-xs-6">竞赛单位：$!beans.applyUnit</label>
+                        <label style="font-size: larger;margin-top: 5px;" class="col-xs-6">成果创造时间：$help.formatDateToString($!beans.achiCreateTime,"yyyy-MM-dd")</label>
+                    </div>
+                    <div>
+                        <label style="font-size: larger;margin-top: 5px;" class="col-xs-6">性别：#if($!beans.sex=="boy")男 #else 女 #end</label>
+                        <label style="font-size: larger;margin-top: 5px;" class="col-xs-6">年龄：$!beans.age</label>
+                    </div>
+                    <div>
+                        <label style="font-size: larger;margin-top: 5px;" class="col-xs-6">文化程度：$!beans.educationDegree
+                        </label>
+                        <label style="font-size: larger;margin-top: 5px;" class="col-xs-6">岗位：$!beans.position</label>
+                    </div>
+                    <div>
+                        <label style="font-size: larger;margin-top: 5px;" class="col-xs-6">职称：$!beans.title</label>
+                        <label style="font-size: larger;margin-top: 5px;" class="col-xs-6">成果是否转换：#if($!beans.achiTransformation=="yes")是 #else 否 #end</label>
+                    </div>
+                    <div>
+                        <label style="font-size: larger;margin-top: 5px;" class="col-xs-6">成果有无专利：#if($!beans.achiPatent=="yes")有 #else 否 #end</label>
+                        <label style="font-size: larger;margin-top: 5px;" class="col-xs-6">成果得分：$!beans.approveScore</label>
+                    </div>
+                    <div>
+                        <label style="font-size: larger;margin-top: 5px;" class="col-xs-12">获奖等级：
+                            #if($!beans.prizeLeval == "first")
+                            一等奖
+                            #end
+                            #if($!beans.prizeLeval == "second")
+                            二等奖
+                            #end
+                            #if($!beans.prizeLeval == "third")
+                            三等奖
+                            #end
+                            #if($!beans.prizeLeval == "excellent")
+                            优秀奖
+                            #end
+                            #if($!beans.prizeLeval == "no")
+                            未获奖
+                            #end
+                        </label>
+
+                    </div>
+
+                    #if($beans.innoOnlyScores)
+                    <div class="col-xs-12">
+                        <div class="col-xs-1" style="padding: 0px"><label style="font-size: larger;margin-top: 5px;">成员评分：</label></div>
+                        <div class="col-xs-11" style="font-size: larger;font-weight: bolder;margin-left: -60px;padding-top: 8px">
+
+                            #foreach($bean in $beans.innoOnlyScores)
+                            <p>$bean</p>
+                            #end
+
+                        </div>
+                    </div>
+
+                    #end
+
+                    #if($beans.innoOnlyAdvise)
+                    <div class="col-xs-12">
+                        <div class="col-xs-1" style="padding: 0px"><label style="font-size: larger;margin-top: 5px;">成员意见：</label></div>
+                        <div class="col-xs-11" style="font-size: larger;font-weight: bolder;margin-left: -60px;padding-top: 8px">
+
+                            #foreach($bean in $beans.innoOnlyAdvise)
+                            <p>$bean</p>
+                            #end
+
+                        </div>
+                    </div>
+
+                    #end
+
+
+                    <!--文件下载还有点问题-->
+                    <div >
+                        <label style="font-size: larger;margin-top: 5px;table-layout:fixed; word-break: break-all;" class="col-xs-12">成果简介：$!beans.achiIntroduce  </label>
+                    </div>
+
+                    <div >
+                        <label style="font-size: larger;margin-top: 5px;" class="col-xs-12">附件：<a href="downloadFile?id=$!beans.fileId">$!beans.fileName</a></label>
+                    </div>
+
+                    #if($beans.imageStatus=="已生成")
+                    <div >
+                        <label style="font-size: larger;margin-top: 5px;margin-left: 10px" class="">成果证书：</label>
+                        <label style="font-size: larger;margin-top: 5px;" class=""><a href="downloadImage?formNo=$!beans.formNo">下载</a></label>
+                    </div>
+                    #end
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,224 @@
+$ui.loadCss("select2/select2.min.css")
+<input type="hidden" id="formDeliverApplyDto" value="$formDeliverApplyDto.formNo">
+
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <input type="hidden"  name="projectName" value="$formDeliverApplyDto.projectName">
+        <label class=" col-xs-12" >
+            项目名称: #if($scId)<a href="/detailInfo?id=$scId&projectID=$projectID"><font style="color: #0077b3">#end$formDeliverApplyDto.projectName#if($scId)</font></a>#end
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <input type="hidden"  name="assumeCompany" value="$formDeliverApplyDto.assumeCompany">
+        <label class="col-xs-12" >
+            主要完成单位: $formDeliverApplyDto.assumeCompany
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <input type="hidden"  name="leader" value="$formDeliverApplyDto.leader">
+        <label class=" col-xs-12" >
+            项目长:
+            #if($formDeliverApplyDto.leaderName)
+            $formDeliverApplyDto.leaderName
+            #end
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <input type="hidden"  name="groupMembers" value="$formDeliverApplyDto.groupMembers">
+        <label  class=" col-xs-12" >
+            主要完成人员:
+            #if($formDeliverApplyDto.groupMembers)
+            $formDeliverApplyDto.groupMembers
+            #end
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <input type="hidden"  name="specialtyType" value="$formDelayApplyDto.specialtyType">
+        <label class=" col-xs-12" >
+            专业分类:
+            #if($formDeliverApplyDto.specialtyType)
+            $formDeliverApplyDto.specialtyType
+
+            #end
+        </label>
+    </div>
+</div>
+
+
+
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <input type="hidden"  name="joinComopany" value="$formDeliverApplyDto.joinComopany">
+        <label class="col-xs-12" >
+            主要协作单位:
+            #if($formDeliverApplyDto.joinComopany)
+            $formDeliverApplyDto.joinComopany
+            #end
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <input type="hidden"  name="beginTime" value="$formDeliverApplyDto.beginTime">
+        <label class="col-xs-12" >
+            开始时间:
+            #if($formDeliverApplyDto.beginTime)
+            $formDeliverApplyDto.beginTime
+            #end
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <input type="hidden"  name="endTime" value="$formDeliverApplyDto.endTime">
+        <label class="col-xs-12" >
+            结束时间:
+            #if($formDeliverApplyDto.endTime)
+            $formDeliverApplyDto.endTime
+            #end
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+    <input type="hidden"  name="ztc" value="$formDeliverApplyDto.ztc">
+    <label class="col-xs-12" >
+        主题词:
+        #if($formDeliverApplyDto.ztc)
+        $formDeliverApplyDto.ztc
+        #end
+    </label>
+        </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+    <input type="hidden"  name="sxyx" value="$formDeliverApplyDto.sxyx">
+    <label class="col-xs-12">
+        三新一性:
+        #if($formDeliverApplyDto.sxyx)
+        $formDeliverApplyDto.sxyx
+        #end
+    </label>
+        </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+    <input type="hidden"  name="nrzy" value="$formDeliverApplyDto.nrzy">
+    <label  class="col-xs-12">
+        内容摘要:
+        #if($formDeliverApplyDto.nrzy)
+        $formDeliverApplyDto.nrzy
+        #end
+    </label>
+        </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+    <input type="hidden"  name="zllxjsl" value="$formDeliverApplyDto.zllxjsl">
+    <label  class="col-xs-12"  >
+        专利类型及数量:
+        #if($formDeliverApplyDto.zllxjsl)
+        $formDeliverApplyDto.zllxjsl
+        #end
+    </label>
+        </div>
+</div>
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <input type="hidden"  name="instructions" value="$formDeliverApplyDto.instructions">
+        <label  class="col-xs-12"  >
+            专家审查意见:
+            #if($formDeliverApplyDto.instructions)
+            $formDeliverApplyDto.instructions
+            #end
+        </label>
+    </div>
+</div>
+<input  id="deliverId" value="$formDeliverApplyDto.formNo" type="hidden"/>
+
+#if(!$viewOnly)
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <label class="control-label  col-xs-3" for="rank">级别 <span class="required">*</span>
+        </label>
+        <div class="control-label col-xs-8">
+            <select id="rank"  required="required" name="rank" class="form-control col-xs-7" data-parsley-id="0007">
+                <option value="" >--请选择--</option>
+                <option value="1" #if (1==$formDeliverApplyDto.rank) selected #end >国家级</option>
+                <option value="2" #if (2==$formDeliverApplyDto.rank) selected #end>省部级</option>
+                <option value="3" #if (3==$formDeliverApplyDto.rank) selected #end>市级</option>
+                <option value="4" #if (4==$formDeliverApplyDto.rank) selected #end>油田公司级</option>
+                <option value="5" #if (5==$formDeliverApplyDto.rank) selected #end>院级</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <label class="control-label  col-xs-3" for="grade">等级 <span class="required">*</span>
+        </label>
+        <div class="control-label col-xs-8">
+            <select id="grade"  required="required" name="grade" class="form-control col-xs-7" data-parsley-id="0007">
+                <option value="" >--请选择--</option>
+                <option value="1" #if (1==$formDeliverApplyDto.grade) selected #end >特等奖</option>
+                <option value="2" #if (2==$formDeliverApplyDto.grade) selected #end>一等奖</option>
+                <option value="3" #if (3==$formDeliverApplyDto.grade) selected #end>二等奖</option>
+                <option value="4" #if (4==$formDeliverApplyDto.grade) selected #end>三等奖</option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <div class="control-label col-xs-12">
+        <label class="control-label  col-xs-3" for="issuing_unit">颁发单位<span class="required">*</span>
+        </label>
+        <div class="control-label col-xs-8">
+
+            <input type="text" class="form-control mini-width"  id="issuing_unit" required="required"
+                   style="float: left;width: 100%" placeholder="颁发单位"
+                   #if($formDeliverApplyDto.issuing_unit)value="$formDeliverApplyDto.issuing_unit"#end
+                   name="issuing_unit">
+        </div>
+    </div>
+</div>
+
+<div class="form-group col-xs-7">
+        <label class="control-label col-xs-3" style="text-align: right; padding-top: 10px;margin-left: 0px;">选择主管领导:</label>
+        <div class="col-xs-6">
+            <input id="zgld" hidden />
+            <label class="control-label">
+                <select multiple="multiple" class=" select2_multiple form-control txtValue1 col-xs-5 leaders" tabindex="-1" style="display: none;" name="groupMemberList1" required="required">
+                    #if($emp)
+                    #foreach($people in $emp)
+                    <option   data-value="$people.id" value="$people.id">$people.name</option>
+                    #end
+                    #end
+                </select>
+            </label>
+        </div>
+</div>
+<div class="col-lg-1  pull-right">
+    <a class="label label-default" data-title="批量审核" href="syy_kg06_pl6?formNo=$formDeliverApplyDto.formNo"><i class="green fa "></i>批量审核项目</a>
+</div>
+#end
+<script>
+    require(['app/deliverables_flow/syy_kg_lc06_v6']);
+</script>

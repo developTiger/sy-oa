@@ -1,0 +1,64 @@
+<div class="col-xs-6">
+    <div><label style="font-size: larger;margin-top: 5px;">设备名称：<%if(measuringName){%><%=measuringName%><%}%></label></div>
+    <!--<div><label style="font-size: larger;margin-top: 5px;">资产类别名称：<%if(propertyType){%><%=propertyType%><%}%></label></div>-->
+    <div><label style="font-size: larger;margin-top: 5px;">计量单位：<%if(measurement){%><%=measurement%><%}%></label></div>
+    <div><label style="font-size: larger;margin-top: 5px;">规格型号：<%if(standard){%><%=standard%><%}%></label></div>
+    <div><label style="font-size:larger;">出厂编号：<%if(outFactoryNum){%><%=outFactoryNum%><%}%></label></div>
+    <div><label style="font-size: larger;margin-top: 5px;">使用单位：<%if(unitName){%><%=unitName%><%}%></label></div>
+    <div><label style="font-size: larger;margin-top: 5px;">使用岗位：<%if(post){%><%=post%><%}%></label></div>
+    <div><label style="font-size: larger;margin-top: 5px;">原值：<%if(original){%><%=original%><%}%></label></div>
+    <!--<div><label style="font-size: larger;margin-top: 5px;">购进日期：<%if(buyTime){%><%=dateFormat2(buyTime)%><%}%></label></div>-->
+    <div><label style="font-size: larger;margin-top: 5px;">检定周期：<%if(checkdate){%><%=checkdate%><%}%></label></div>
+
+    <div><label style="font-size: larger;margin-top: 5px;">参数范围：<%if(minValue){%><%=minValue%><%}%>
+        <label>&nbsp; ~ &nbsp;</label>
+        <%if(maxValue){%><%=maxValue%><%}%>
+    </label></div>
+    <div><label style="font-size: larger;margin-top: 5px;">检定或校准值：<%if(testValue){%><%=testValue%><%}%></label></div>
+    <div><label style="font-size: larger;margin-top: 5px;">下次检定校准时间：<%if(nextTestTime){%><%=dateFormat2(nextTestTime)%><%}%></label></div>
+
+
+    <!--<div>-->
+        <!--<label style="font-size: larger;margin-top: 5px;">配件清单：</label>-->
+        <!--<label style="font-size: larger;" class="col-xs-offset-1"><%if(parts){%><%=parts%><%}%></label>-->
+    <!--</div>-->
+    <div>
+        <label style="font-size: larger;margin-top: 5px;">使用情况：</label>
+        <label style="font-size: larger;" class="col-xs-offset-1"><%if(useStation){%><%=useStation%><%}%></label>
+    </div>
+
+    <div>
+        <label class="" style="font-size: larger">附件：</label>
+        &nbsp;
+        <%if(fileName){%>
+        <a style="font-size: larger;text-decoration:underline" class="col-xs-offset-1" href="/downloadFile?id=<%=fileId%>"><%=fileName%></a>
+        <%}else{%>
+        <span style="font-size: larger">无附件</span>
+        <%}%>
+    </div>
+</div>
+
+<div class="col-xs-6">
+    <div><label style="font-size: larger;margin-top: 5px;">资产编号：<%if(propertyNum){%><%=propertyNum%><%}%></label></div>
+    <div><label style="font-size: larger">设备类型：<%if(type){%><%=type%><%}%></label></div>
+    <div><label style="font-size: larger">厂家名称：<%if(factoryName){%><%=factoryName%><%}%></label></div>
+    <div><label style="font-size: larger;margin-top: 5px;">保管人：<%if(savePersonName){%><%=savePersonName%><%}%></label></div>
+    <!--<div><label style="font-size: larger;margin-top: 5px;">所属单位：<%if(institute){%><%=institute%><%}%></label></div>-->
+    <!--<div><label style="font-size: larger;margin-top: 5px;">存放地点：<%if(deposit){%><%=deposit%><%}%></label></div>-->
+    <!--<div><label style="font-size: larger;margin-top: 5px;">使用地址：<%if(address){%><%=address%><%}%></label></div>-->
+    <div><label style="font-size: larger;margin-top: 5px;">当前状态：<%if(currentStation){if(currentStation=="Normal"){%>正常<%}if(currentStation=="Repair"){%>维修中<%}if(currentStation=="Scrap"){%>已报废<%} if(currentStation=="applied"){%>已申请维修<%} }%></label></div>
+    <div><label style="font-size: larger;margin-top: 5px;">净值：<%if(netValue){%><%=netValue%><%}%></label></div>
+    <div><label style="font-size: larger">投产日期：<%if(productTime){%><%=dateFormat2(productTime)%><%}%></label></div>
+    <div><label style="font-size: larger;margin-top: 5px;">技术参数标准值：<%if(standardValue){%><%=standardValue%><%}%></label></div>
+    <div><label style="font-size: larger;margin-top: 5px;">符合检定或者校准结果：<%if(testResult){if(testResult==1){%>符合<%}else{%>不符合<%} }%></label></div>
+    <div><label style="font-size: larger;margin-top: 5px;">检定校准时间：<%if(testTime){%><%=dateFormat2(testTime)%><%}%></label></div>
+    <!--<div><label style="font-size: larger;margin-top: 5px;">计量管理系统编号：<%if(systemNumber){%><%=systemNumber%><%}%></label></div>-->
+
+    <div>
+        <label style="font-size: larger;margin-top: 5px;">备注：</label>
+        <label style="font-size: larger;" class="col-xs-offset-1"><%if(remark){%><%=remark%><%}%></label>
+    </div>
+</div>
+
+
+

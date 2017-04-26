@@ -1,0 +1,172 @@
+
+
+<div style="min-width: 800px">
+
+    <input type="hidden" id="hidEquipmentNum" name="hiddenEquipmentNumber" >
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >设备名称<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select class="form-control  col-xs-7" id="name" name="name">
+                <option value="">请选择</option>
+                #if($beans)
+                #foreach($bean in $beans)
+                <option value="$bean.id" #if($formEquiMain.equipmentDto.id==$bean.id) selected #end>#if($bean.measuringName) $bean.measuringName #else 无 #end</option>
+                #end
+                #else
+                <d>暂无数据</d>
+                #end
+
+            </select>
+            <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+        </div>
+    </div>
+
+            <input type="hidden" id="resId"  name="resId" readonly
+                   class="form-control  col-xs-8" data-parsley-id="2038" >
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="propertyNum">资产编号
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="propertyNum"  name="propertyNum" readonly
+                   class="form-control  col-xs-8" data-parsley-id="2038" >
+            <ul class="parsley-errors-list" id="parsley-id-20836"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="standard">规格型号
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="standard" name="standard" readonly
+                   class="form-control  col-xs-8" data-parsley-id="2038" >
+            <ul class="parsley-errors-list" id="parsley-id-20356"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="factory">生产厂家
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="factory"  name="factory" readonly
+                   class="form-control  col-xs-8" data-parsley-id="2038" >
+            <ul class="parsley-errors-list" id="parsley-id-20336"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="outFactoryNum">出厂编号
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="outFactoryNum"  name="outFactoryNum" readonly
+                   class="form-control  col-xs-8" data-parsley-id="2038" >
+            <ul class="parsley-errors-list" id="parsley-id-20366"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="wproductTime">投产日期
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="wproductTime"  name="wproductTime" readonly
+                   class="form-control  col-xs-8" data-parsley-id="2038" >
+            <ul class="parsley-errors-list" id="parsley-id-20386"></ul>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="original">原值
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="original"  name="original" readonly
+                   class="form-control  col-xs-8" data-parsley-id="2038">
+            <ul class="parsley-errors-list" id="parsley-id-20736"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="applyUnit">申请单位<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select type="text" id="applyUnit" required="required" name="applyUnit"
+                   class="form-control  col-xs-8" data-parsley-id="2038">
+                <option value="" style="color: #36d22d">选择单位</option>
+                #foreach($d in $depats)
+                <option #if($d.deptName==$formEquiMain.applyUnit) selected #end>$!d.deptName</option>
+                #end
+            </select>
+            <ul class="parsley-errors-list" id="parsley-id-20936"></ul>
+        </div>
+    </div>
+
+    <!--<div class="form-group">
+        <label class="control-label  col-xs-2" for="wexpectDate">预定收回时间：<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="wexpectDate" required="required" name="wexpectDate"
+                   class="form-control  col-xs-8 Wdate" data-parsley-id="2038" required="required" #if($formEquiMain.expectDate) value="$helper.formatDateToString($formEquiMain.expectDate,'yyyy-MM-dd')" #end>
+            <ul class="parsley-errors-list" id="parsley-id-206"></ul>
+        </div>
+    </div>-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="num">数量(台、套)<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="num" required="required" name="num" min="0"
+                   class="form-control  col-xs-8" data-parsley-id="2038" required="required" value="$!formEquiMain.num">
+            <ul class="parsley-errors-list" id="parsley-id-207"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="cost">预算费用
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="cost" name="cost" min="0"
+                   class="form-control  col-xs-8" data-parsley-id="2038" value="$!formEquiMain.cost">
+            <ul class="parsley-errors-list" id="parsley-id-20346"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="applyReason">申请理由
+        </label>
+
+        <div class="col-xs-6">
+            <textarea  id="applyReason" name="applyReason"
+                       class="form-control  col-xs-8" data-parsley-id="2038">$!formEquiMain.applyReason</textarea>
+        </div>
+    </div>
+
+    <div id="equipmentStatus"></div>
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-7 col-xs-offset-4">
+            <button type="submit" id="equipmentMaintenanceSubmit" data-url="ajax_add_update_equipmentMaintenance" class="btn btn-success">提交</button>
+            <a class="btn btn-primary" href="javascript:window.close();">取消</a>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/equipForms/equipmentMaintenance"]);
+</script>
+
+
+
+

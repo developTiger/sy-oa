@@ -1,0 +1,45 @@
+
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/调度中心信息管理
+            <small>- 调度中心信息管理</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 调度中心信息管理.
+        </div>
+        <div class="row">
+            <div class="form-inline col-xs-10">
+                <form id="searchForm"  data-url="ajax_company_query_list">
+                    <a class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" data-title="添加调度中心信息"
+                       data-url="_addCompanyInfoForm"><span><i class="green fa fa-plus" ></i>新增</span></a>
+
+                    <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="deleteCompany"  tabindex="0"
+                       aria-controls="datatable-buttons"><span><i
+                            class="red fa fa-remove"></i>删除</span></a>
+                    <div class="form-group " style="margin-bottom: 5px;margin-top: 0px">
+                        <label class="control-label" >
+                            调度中心
+                        </label>
+                        <label class="control-label" >
+                            <input type="text" class="form-control " style="" name="name">
+                       </label>
+                    </div>
+                    <label class="control-label">
+                        <input type="button" class="i_modal btn btn-default buttons-copy buttons-html5 btn-sm" id="companyQueryBtn" value="查询">
+                    </label>
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/carInfo/rentCompany"]);
+</script>

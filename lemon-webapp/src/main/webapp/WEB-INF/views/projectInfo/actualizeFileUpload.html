@@ -1,0 +1,10 @@
+#if($beandto.size()>0)
+<div  class="form-group col-xs-12">
+    <label class=" col-md-7 col-xs-12" >
+        实施运行附件汇总: <br/>
+        #foreach($ss in $beandto)
+        <a href="downloadFile?id=$ss.fileId1">$ss.fileName1</a></br>
+        #end
+    </label>
+</div>
+#end

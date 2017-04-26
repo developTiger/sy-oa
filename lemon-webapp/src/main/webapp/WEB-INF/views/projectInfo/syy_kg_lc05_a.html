@@ -1,0 +1,220 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+<input type="hidden" name="projectNo" id="projectNo" >
+<input type="hidden" name="type_zy" id="type_zy" #if($majorType) value="$majorType" #end/>
+<input type="hidden" name="id" id="id" #if($beans) value="$beans.id" #end/>
+
+<div class="form-group col-xs-12">
+<label class="control-label  col-xs-3">项目名称 <span class="required">：</span>
+</label>
+    <input type="hidden" name="projectName" id="projectName" #if($pname) value="$pname" #end />
+      <div class="col-xs-6">
+
+          <select id="projectNamesel" required="required" name="projectNamesel" class="form-control col-xs-12" #if($pname) disabled  #end>
+              <option value="">请选择</option>
+              #if($projectName)
+              #foreach($pname in $projectName)
+              <option value="$pname.projectNo" #if($pname.projectNo=="$scientificRPKU.projectNo") selected #end>$pname.projectName</option>
+              #end
+          </select>
+          #else
+          <dd>没有数据</dd>
+          #end
+          </select>
+
+          <!--#if($beans)
+          <input type="text" required="required" readonly
+                 name="projectName" #if($beans)value="$beans.projectName" #end
+                 class="form-control col-md-7 col-xs-12" >
+          #else
+          <select id="projectNamesel" required="required" name="projectNamesel" class="form-control col-xs-12">
+              <option value="">请选择</option>
+              #if($projectName)
+              #foreach($pname in $projectName)
+              <option value="$pname.projectNo">$pname.projectName</option>
+              #end
+          </select>
+          #else
+          <dd>没有数据</dd>
+          #end
+          </select>
+          #end-->
+
+
+      </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-3">项目编号 <span class="required"></span>
+    </label>
+
+    <div class="col-xs-6">
+        <input type="text" id="projectNo1" readonly
+               name="projectNo" #if($beans)value="$beans.projectNo" #end
+               class="form-control col-md-7 col-xs-12" >
+
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-3">研究内容 <span class="required">：</span>
+    </label>
+
+    <div class="col-xs-6">
+
+        <textarea type="text" id="projectPlanInfoTxt" required="required" rows="4"
+                  name="projectPlanInfoTxt"
+                  class="form-control col-md-7 col-xs-12" >#if($beans) $beans.projectPlanInfoTxt #end</textarea>
+        <ul class="parsley-errors-list" id="parsley-id-2039"></ul>
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-3">承担单位 <span class="required">：</span>
+    </label>
+
+   <div class="col-xs-6">
+        <input type="text" id="assumeCompany" required="required" readonly
+                  name="assumeCompany" #if($beans)value="$beans.assumeCompany" #end
+                  class="form-control col-md-7 col-xs-12" >
+
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-3">合作单位 <span class="required">：</span>
+    </label>
+
+    <div class="col-xs-6">
+        <input type="text" id="joinComopany" required="required"readonly
+               name="joinComopany" #if($beans)value="$beans.joinComopany" #end
+               class="form-control col-md-7 col-xs-12" >
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-3">开始时间 <span class="required">：</span>
+    </label>
+
+    <div class="col-xs-6">
+        <input type="text" id="beginTime" required="required"readonly
+               name="beginTime" #if($beans)value="$beans.beginTime" #end
+               class="form-control col-md-7 col-xs-12" >
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-3 ">结束时间 <span class="required">：</span>
+    </label>
+
+    <div class="col-xs-6">
+        <input type="text" id="endTime" required="required"readonly
+               name="endTime" #if($beans)value="$beans.endTime" #end
+               class="form-control col-md-7 col-xs-12" >
+    </div>
+</div>
+<!--<div class="form-group col-xs-12" >-->
+    <!--<label class="control-label  col-xs-3 ">验收申请时间<span class="required">：</span>-->
+    <!--</label>-->
+
+    <!--<div class="col-xs-6">-->
+        <!--<input type="text" id="acceptanceTime" required="required"-->
+               <!--name="acceptanceTime"-->
+               <!--class="form-control col-md-7 col-xs-12 Wdate" >-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="form-group col-xs-12" >-->
+    <!--<label class="control-label  col-xs-3 ">联系人<span class="required">：</span>-->
+    <!--</label>-->
+
+    <!--<div class="col-xs-6">-->
+        <!--<input type="text" id="acceptancerName" required="required"-->
+               <!--name="acceptancerName"-->
+               <!--class="form-control col-md-7 col-xs-12" >-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="form-group col-xs-12" >-->
+    <!--<label class="control-label  col-xs-3 ">联系人电话<span class="required">：</span>-->
+    <!--</label>-->
+
+    <!--<div class="col-xs-6">-->
+        <!--<input type="text" id="acceptanceIphone" required="required"-->
+               <!--name="acceptanceIphone"-->
+               <!--class="form-control col-md-7 col-xs-12" >-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="form-group col-xs-12" >-->
+    <!--<label class="control-label  col-xs-3 ">验收清单<span class="required">：</span>-->
+    <!--</label>-->
+
+    <!--<div class="col-xs-6">-->
+        <!--<select required="required" id="acceptanceList" multiple="multiple" class="form-control col-xs-7"-->
+                <!--data-parsley-id="0004">-->
+            <!--<option selected disabled value="验收申请表">验收申请表</option>-->
+            <!--<option selected disabled value="计划任务书（专项合同）及任务、经费调整的相关文件">计划任务书（专项合同）及任务、经费调整的相关文件</option>-->
+            <!--<option selected disabled value="验收评价报告">验收评价报告</option>-->
+            <!--<option selected disabled value="项目总结报告">项目总结报告</option>-->
+            <!--<option value="财务决算报告">财务决算报告</option>-->
+            <!--<option value="自验收意见">自验收意见</option>-->
+            <!--<option value="中期检查专家意见 ">中期检查专家意见</option>-->
+            <!--<option value="对外合作合同、验收专家意见及技术报告">对外合作合同、验收专家意见及技术报告</option>-->
+            <!--<option value="产品检测报告（包括装置、样机、软件等）">产品检测报告（包括装置、样机、软件等）</option>-->
+            <!--<option value="成果应用证明">成果应用证明</option>-->
+            <!--<option value="技术有形化资料">技术有形化资料</option>-->
+            <!--<option value="其它附件 ">其它附件 </option>-->
+        <!--</select>-->
+        <!--<input type="hidden" name="acceptanceList" id="hidAcceptanceList">-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="form-group col-xs-12" >-->
+    <!--<label class="control-label  col-xs-3">承担单位科技管理部门意见<span class="required">：</span>-->
+    <!--</label>-->
+
+    <!--<div class="col-xs-6">-->
+
+        <!--<textarea type="text" id="assumeComValue" required="required" rows="4"-->
+                  <!--name="assumeComValue"-->
+                  <!--class="form-control col-md-7 col-xs-12" ></textarea>-->
+        <!--<ul class="parsley-errors-list"></ul>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+<!--<div class="form-group col-xs-12" >-->
+    <!--<label class="control-label  col-xs-3">专业管理部门意见<span class="required">：</span>-->
+    <!--</label>-->
+
+    <!--<div class="col-xs-6">-->
+
+        <!--<textarea type="text" id="specialtyDeptValue" required="required" rows="4"-->
+                  <!--name="specialtyDeptValue"-->
+                  <!--class="form-control col-md-7 col-xs-12" ></textarea>-->
+        <!--<ul class="parsley-errors-list"></ul>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="form-group col-xs-12" >-->
+    <!--<label class="control-label  col-xs-3">科技信息处意见<span class="required">：</span>-->
+    <!--</label>-->
+
+    <!--<div class="col-xs-6">-->
+
+        <!--<textarea type="text" id="sciencerValue" required="required" rows="4"-->
+                  <!--name="sciencerValue"-->
+                  <!--class="form-control col-md-7 col-xs-12" ></textarea>-->
+        <!--<ul class="parsley-errors-list"></ul>-->
+    <!--</div>-->
+<!--</div>-->
+
+<div class="form-group">
+    <div class=" col-xs-6 col-xs-offset-3">
+        <input  type="submit" id="addOrUpdateProjectInfo" data-url="ajax_add_update_lc05_apply" class="btn btn-success" value="申请">
+        <a class="btn btn-primary" href="javascript:window.close();">返回</a>
+    </div>
+</div>
+<script>
+    require(['app/projectInfo/syy_kg_lc05']);
+</script>

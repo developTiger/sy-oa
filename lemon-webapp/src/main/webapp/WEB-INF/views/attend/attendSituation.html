@@ -1,0 +1,36 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/考勤情况
+            <small>- 考勤情况</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 考勤情况.
+            <input type="hidden" value="adSituation" id="ajax_attend">
+        </div>
+
+        <h2 class="col-xs-12 text-center text-info" style="font-family:Courier"><strong>近七日部门考勤情况</strong></h2>
+        <div class="row">
+            <div class=" btn-group  col-xs-4">
+                <div class="form-group">
+                    <a id="DowLoadSevenDays" style="border: 1px solid #E1E1E1;padding: 6px 8px;background-color: #E1E1E1;">下载</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="tableSevenDays">
+
+        </div>
+
+        <div class="">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/attend/empAttend"]);
+</script>

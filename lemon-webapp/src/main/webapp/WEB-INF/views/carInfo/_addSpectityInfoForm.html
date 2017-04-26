@@ -1,0 +1,27 @@
+<form id="addSpectityInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="specialtyType">专业类别 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="specialtyType" required="required"
+                   name="specialtyType" #if($beans)value="$beans.specialtyType" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+        </div>
+    </div>
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdateType" data-url="ajax_add_update_type" class="btn btn-success">提交</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">返回</button>
+        </div>
+    </div>
+</form>
+

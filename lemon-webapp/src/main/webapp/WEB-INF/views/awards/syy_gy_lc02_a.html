@@ -1,0 +1,211 @@
+
+    <!--<input type="hidden" name="id" #if($beans) value="$beans.id" #end >-->
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="zhuanlimingcheng">
+            专利名称  <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" id="zhuanlimingcheng"  name="patent_Name"
+                   class="form-control col-md-7 col-xs-12 " data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+        </div>
+        <!--#if($beans)value="$beans.patent_Name"#end-->
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="zhuanlimingcheng">
+            专利申请号  <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" id="zhuanlishenqinghao"    name="app_No"
+                   class="form-control col-md-7 col-xs-12" ><ul class="parsley-errors-list" id="parsley-id-20304"></ul>
+            <!--#if($beans)value="$beans.app_No"#end-->
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="car-status">
+            项目类型 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <select id="car-status"   name="patent_Type" class="form-control col-xs-7" data-parsley-id="0004">
+                <option value="" >--请选择--</option>
+                <option value="1"  #if (1==$beans.patent_Type) selected #end >发明</option>
+                <option value="2"  #if (2==$beans.patent_Type) selected #end >实用新型</option>
+                <option value="3"  #if (3==$beans.patent_Type) selected #end >外观</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group" >
+        <label class="control-label  col-xs-3" >
+            专利申请日期 <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control mini-width Wdate" id="driver-pytime"  style="float: left;width: 100%" placeholder="专利申请日期"
+                   name="apply_Date" >
+        </div>
+      <!--  #if($beans)value="$beans.apply_Date_Str"#end-->
+    </div>
+    <div class="form-group" >
+        <label class="control-label  col-xs-3" >
+            专利有效期 <span class="required">*</span>
+        </label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control mini-width Wdate"     style="float: left;width: 100%" placeholder="专利有效期"
+                   name="valid_Date" >
+        </div>
+        <!--#if($beans)value="$beans.valid_Date_Str" #end-->
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="zhuanlimingcheng">
+            专利发明人  <span class="required">*</span>
+        </label>
+        <div class="col-xs-4">
+            <input id="winner_vali" type="text" class="tags form-control col-md-7 col-xs-12" name="winner_Info"  value="" />
+           <!-- <textarea type="text" id="winner_Info" name="winner_Info"  disabled
+                        class="form-control col-md-7 col-xs-12" data-parsley-id="4639"
+                        data-value="获奖人">#if($beans) $beans.winner_info #end</textarea>-->
+            <!--&lt;!&ndash;提交数据&ndash;&gt;-->
+            <!--<input id="hiden_in" type="hidden"  name="winner_Info" >-->
+            <!--#if($beans) value="$beans.info" #end-->
+            <!--&lt;!&ndash;jquery验证数据&ndash;&gt;-->
+          <!--<input id="hiden_in_sb"  name="winner_vali" type="text" style="width:0px;height: 0px;border: 0px;">-->
+            <!--#if($beans) value="$beans.info " #end-->
+        </div>
+        <div class="col-xs-1">
+            <a id="add_p" href="javascript:void(0);"
+               class=" btn btn-default
+                    buttons-copy buttons-html5 btn-sm" data-title="专利人员">
+                    <span>
+                        <i class="green fa " ></i>
+                        选择
+                    </span>
+            </a>
+        </div>
+    </div>
+    <div class="form-group">
+    <!-- <div class="col-xs-6">
+         <div style=" padding-left: 52%" >
+             <input id="hiden_in" type="hidden" name="winner_Info1" #if($beans) value="$beans.winner_info " #end>
+         </div>
+     </div>-->
+     </div>
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <button type="submit" id="addOrUpdatePatent" data-url="ajax_gy_lc02_data" class="btn btn-success" >提交</button>
+            <a class="btn btn-primary" href="javascript:history.go(-1);">返回</a>
+        </div>
+    </div>
+<!--摸态框-->
+<div class="modal fade Js_modal text-center" id="myModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!--<div class="modal-dialog" style="width: auto;min-width:200px;display: inline-block;">-->
+    <div class="modal-dialog" style="display: inline-block;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    专利人员
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <input type="hidden" id="sa" value='$emp_fb'>
+                    <div class="row">
+                        <div class="col-md-12">
+                           <!-- <a class=" btn btn-default buttons-copy buttons-html5 btn-sm pull-left"
+                               data-title="添加项目详细信息" id="addStaff"
+                               href="javascript:void(0);">
+                                    <span>
+                                        <i class="green fa fa-plus"></i>
+                                        新增
+                                    </span>
+                            </a>-->
+                        </div>
+                        <div class="col-md-12 staff-rows">
+                            <div class="control-group staff-row">
+                                <div class="controls controls-row doc-input-size">
+                                   <!-- <label class="control-label col-sm-3">
+                                        第<span class="staff-num">1</span>获奖人
+                                        <span class="required">*</span>
+                                    </label>
+
+                                    #if($emp)
+                                    <select   required="required"  class="span3 col-sm-3 special-sele"  data-parsley-id="0004">
+                                       <option  value="98" data-value="">请选择</option>
+                                        #foreach($key in $emp)
+                                        <option  value="$key.id" data-value="">$key.name</option>
+                                        #end
+                                       <option  value="99" data-value="">其他</option>
+                                    </select>
+                                    #else
+                                    <dd>暂无数据</dd>
+                                    #end
+
+
+                                    <input type="text" id="inputfirst" class="input_outname col-sm-3 col-md-offset-1" disabled  >
+                                    <a class="btn-sm col-sm-2 delStaff" style="height: 28px;"
+                                       href="javascript:void(0);"></a>-->
+
+                                    <div class="form-inline" style="">
+                                        <div class="form-group  col-xs-offset-3">
+                                            <label class="control-label">姓名</label>
+                                            <label class="control-label">
+                                                <input type="text" class="form-control"  name="empName" id="empName">
+                                            </label>
+                                        </div>
+                                        <div class="form-group  col-xs-offset-3">
+                                        <label class="control-label">部门</label>
+                                        <label class="control-label">
+                                            <select  class="form-control"  name="deptName" id="deptName">
+                                                <option value="">请选择</option>
+                                                #foreach($dept in $deptment)
+                                                <option value="$dept.id">$dept.deptName</option>
+                                                #end
+                                            </select>
+                                        </label>
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label">
+                                            <input type="button" id="queryEmps" class="btn btn-default" value="查询" style="position: relative;top: 0.2em">
+                                        </label>
+                                    </div>
+                                    <input type="hidden" value="$fKind" id="emp_formKind">
+                                    <input type="hidden" value="$deptId" id="emp_deptId">
+
+                                    <div id="table">
+                                    </div>
+                                    <div class="col-lg-10 dataTables_paginate  ">
+                                        <ul class="pagination "></ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="ln_solid"></div>
+                        <div class=" col-xs-6 col-xs-offset-3">
+                           <!-- <button type="button" id="getval" class="btn btn-success" >提交</button>
+                            <button type="button" class="btn btn-primary" id="cancelModal_1">返回</button>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    require(['app/awards/syy_gy_lc02_a']);
+</script>

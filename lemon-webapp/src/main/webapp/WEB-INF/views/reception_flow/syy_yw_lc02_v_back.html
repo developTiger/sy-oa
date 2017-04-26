@@ -1,0 +1,377 @@
+<div id="syy_yw_lc02_v" data-url="ajax_syy_yw_lc02_data" form-no ="$header.id" form-kind="$header.formKind">
+    <div class="modal fade check-modal text-center" >
+        <div class="modal-dialog" style="display: inline-block;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" >
+                        X
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        选择审核人员
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group text-right">
+                        <input type="button" class="btn tn-default sure_Btn" value="确定" />
+                    </div>
+                    <div class="content main" style="overflow: hidden">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="viewOnly" value="$viewOnly" >
+    <input type="hidden" name="appSerial" id="appSerial" value="" />
+    <input type="hidden" name="nextAppUserId" id="nextAppUserId" value="" />
+</div>
+
+<script>
+    //require(["app/common/form"]);
+require(['jquery','app/common/form'],function($,exports){
+    $(function(){
+        //触发事件
+        getData();
+        //绑定下拉选项框
+        $("body").delegate('.checkLead','change',function(){
+            var current = $(this).find("option:selected");
+            var num = Number($.trim(current.val()));
+            render_checkLead(num,current);
+        });
+
+        //选择按钮
+        $("body").delegate('#checkuserBtn','click',function(){
+            //清空域值
+            $("#textarea_user").html("");
+            $(".checkuser").val("");
+            //访问后台获取数据;所有分管领导数据;
+            ajax_get_employ();
+            $(".check-modal").modal({backdrop: 'static', keyboard: false});
+        });
+
+        //关闭对话框
+        $("body").delegate(".close",'click',function(){
+            $(".check-modal").modal('hide');
+        });
+
+        //确定按钮
+        $("body").delegate(".sure_Btn",'click',function(){
+            //确定后人员放入textarea;
+            sure_btn_data();
+            $(".check-modal").modal('hide');
+        });
+    });
+
+//AJAX访问后台数据;
+        function getData() {
+            var formNo = $("#syy_yw_lc02_v").attr("form-no");
+            var _url = $("#syy_yw_lc02_v").attr("data-url");
+            $.ajax({
+                url: _url + "?formNo=" + formNo + "&t=" + new Date().getMilliseconds(),
+                type: 'get',
+                success: function (data) {
+                    if (data) {
+                        render_header(data);
+                    }
+
+                }
+            })
+        }
+
+        //渲染页面详情，同时判断是否有车辆，供审批人选择车辆和司机
+        function render_header(data){
+            var jdApplyForm = $("#jdApplyForm");
+            if(jdApplyForm.length == 0){
+                var html_form = '<div id="jdApplyForm" ' +
+                        'data-parsley-validate="" class="form-horizontal ' +
+                        'form-label-left " novalidate=""></div>';
+                $("#syy_yw_lc02_v").append(html_form);
+            }
+            var html = "";
+            jdApplyForm = $("#jdApplyForm");
+
+            //第一步显示
+            if ( data.clStep == 1 ){
+                //隐藏按钮；
+                hiden_btn();
+                //设置clStep为2；
+                $("input[name='clStep']").val(2);
+                //渲染公用信息；
+                html += render_info(data);
+                //渲染步骤1信息；
+                render_clstep1(data,html,jdApplyForm);
+                exports.bindBtn(function(){
+                    if(vail_1()){
+                        exports.doSubmit();
+                    }
+                });
+            }
+
+            //第二步显示
+            if ( data.clStep == 2 ){
+                //hiden_btn();
+                html += render_info(data);
+                html += render_clstep2(data);
+                jdApplyForm.html(html);
+            }
+
+            //第三步填写内容
+            if (data.clStep == 3 ){
+
+            }
+
+
+        }
+
+        /**
+         * 渲染中间信息
+         */
+    function render_info(data){
+        var viewOnly = $.trim($("#viewOnly").val());
+        var html = "";
+        html += '<input type="hidden" name="id"  value="' + data.id + '" />' +
+        ' <div class="form-group" >' +
+        '<label class=" col-xs-12 text-left" style="font-size:larger">' +
+        '申请单位:' + data.deptName +
+        '</label>' +
+        ' </div>' +
+        '<div class="form-group" >' +
+        '<label class=" col-xs-12 text-left" style="font-size: larger">' +
+        '联系人:' + data.linkman +
+        '</label>' +
+        '</div>' +
+
+        '<div class="form-group" >' +
+        '<label class=" col-xs-12 text-left" style="font-size: larger">' +
+        '电话:' + data.mobile +
+        '</label>' +
+        '</div>' +
+
+        '<div class="form-group" >' +
+        '<label class=" col-xs-12 text-left" style="font-size: larger">' +
+        '来宾单位:' + data.foreignGuest +
+        '</label>' +
+        '</div>' +
+
+        '<div class="form-group" >' +
+        '<label class=" col-xs-12 text-left" style="font-size: larger">' +
+        '事由:' + data.reasons +
+        '</label>' +
+        '</div>';
+
+        return html;
+    }
+
+
+    function render_clstep1(data,html,jdApplyForm){
+        var viewOnly = $.trim($("#viewOnly").val());
+        $.ajax({
+            url: "approveApply_data" + "?formNo=" +
+                $("#syy_yw_lc02_v").attr("form-no") +
+                "&nextClstep=2&t=" + new Date().getMilliseconds(),
+            async:false,
+            type: 'get',
+            success: function (data) {
+                if (!data || data.length == 0){
+                    alert("没有审核人，请联系管理员");
+                    return;
+                }
+                console.log(data);
+                var jdApplyForm = $("#jdApplyForm");
+                if ( viewOnly == 'false' ){
+                     html += '<div class="form-group" >' +
+                               '<label class=" col-xs-12 text-left" style="font-size: larger">' +
+                               '选择审核领导:' +
+                               '<select name="checkLead" class="checkLead"><option value="0">请选择</option>';
+                    for (var i in data){
+                        html += '<option value="' + data[i].appUserId + '" ' +
+                                'appSerial="' + data[i].appSerial + '" nextApproverId="' + data[i].nextApproverId +'" >' +
+                                '主管领导--' + data[i].appName +
+                                '</option>';
+                    }
+                    html +='<option value="-1">分管领导</option></select></label></div>';
+                }
+                jdApplyForm.append(html);
+            }
+        });
+    }
+
+    /**
+     * 渲染审核领导信息；1是主管领导，-1是分管领导;
+     */
+    function render_checkLead(num,obj){
+        $(".checkuser").closest(".form-group").remove();
+        var jdApplyForm = $("#jdApplyForm");
+        if (num == -1){
+            var html = '';
+            html += '<div class="form-group" >' +
+                    '<label class=" col-xs-12 text-left" style="font-size: larger">选择分管领导审核:' +
+                    '<textarea style="resize: none;width:250px;height: 80px;" id="textarea_user" readonly></textarea>'+
+                    '<input type="hidden" class="checkuser" />'+
+                    '<input type="button" style="margin-left: 10px;" class="btn btn-default" value="选择" id="checkuserBtn" />'
+            jdApplyForm.append(html);
+        }
+        if (num != -1 && num != 0){
+            $("#appSerial").val(obj.attr("appSerial"));
+            $("#nextAppUserId").val(obj.attr("nextApproverId"));
+        }
+    }
+
+    /**
+     * 步骤2
+     */
+    function render_clstep2(data){
+
+    }
+
+    /**
+     * 步骤3
+     */
+    function render_clstep3(data){
+        var html ="";
+        html+='<div class="form-group">'+
+            '<table border="1">'+
+            '<tr>'+
+            '<td>序号</td>'+
+            '<td colspan="6">接待项目</td>'+
+
+            '<td>费用预算(元)</td>'+
+            '</tr>'+
+            '<tr>'+
+            '<td rowspan="2">1</td>'+
+            '<td rowspan="2">住宿</td>'+
+            '<td>房间型号</td>'+
+            '<td>套间</td>'+
+            '<td>单间</td>'+
+            '<td>标准间</td>'+
+            '<td>其他</td>'+
+            '<td rowspan="2"><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end'+
+            'name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>'+
+            '</tr>'+
+            '<tr>'+
+
+
+            '<td>数量</td>'+
+            '<td><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end'+
+            'name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>'+
+            '<td><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end'+
+            'name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>'+
+            '<td><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end'+
+            'name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>'+
+            '<td><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end'+
+            'name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>'+
+
+            '</tr>'+
+            '<tr>'+
+            '<td>2</td>'+
+            '<td>工作餐</td>'+
+            '<td colspan="2">人/次</td>'+
+
+            '<td colspan="3"><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end'+
+            'name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>'+
+
+
+            '<td><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end'+
+            'name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>'+
+            '</tr>'+
+
+            '<tr>'+
+            '<td rowspan="">3</td>'+
+            '<td rowspan="">宴会</td>'+
+            '<td colspan="2">时间</td>'+
+
+            '<td>人数</td>'+
+            '<td colspan="2">标准(元/人)</td>'+
+
+            '<td>3</td>'+
+            '</tr>'+
+
+
+            '<tr id="tr_list">'+
+
+            '<td colspan="2"><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end'+
+            'name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>'+
+
+            '<td><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end'+
+            'name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>'+
+            '<td colspan="2"><input type="text" #if($beans)value="$beans.goStartDate" #else value="" #end'+
+            'name="guest_unit" class="form-control col-md-7 col-xs-12" ></td>'+
+
+            '<td></td>'+
+            '</tr>'+
+
+            '</table>'+
+            '</div>';
+        return html;
+    }
+
+
+    /**
+     * 获取分管领导数据
+     */
+    function ajax_get_employ(){
+        $.ajax({
+            url: "ajax_employ_data?t="+new Date().getMilliseconds(),
+            type: 'get',
+            success: function (data) {
+                if ( !data || data.length == 0 ){
+                    alert("没有分管领导数据，请联系管理员");
+                    return;
+                }
+                var main = $(".main");
+                var html = '';
+                for (var i = 0 ; i < data.length ; ++i ){
+                    html += '<div class="col-xs-2">'+
+                                '<input class="seletedUser" type="checkbox" ' +
+                                'value="' + data[i].id +'" key="' +data[i].name +'" />' + data[i].name +'' +
+                           '</div>';
+
+                }
+                main.html(html);
+            }
+        });
+    };
+
+    /**
+     * 选中人员放入textarea
+     */
+    function sure_btn_data(){
+        var seletedUser = $(".seletedUser");
+        var arr_name = "";
+        var arr_id = "";
+        if (seletedUser.length > 0){
+            seletedUser.each(function(i,e){
+                if($(e).is(":checked")){
+                    arr_name += $(e).attr("key") + ",";
+                    arr_id += $(e).attr("value") + ",";
+                }
+            });
+        }
+
+        arr_name = arr_name.substring(0,(arr_name.length - 1));
+        arr_id = arr_id.substring(0,(arr_id.length - 1));
+        $("#textarea_user").html(arr_name);
+        $(".checkuser").val(arr_id);
+    }
+
+    /**
+     * 验证1；提交
+     */
+    function vail_1(){
+
+        return true;
+    }
+
+    /**
+     *隐藏按钮
+     */
+    function hiden_btn(){
+        $("#reject").hide();
+        $("#goBack").hide();
+    }
+});
+
+
+
+</script>

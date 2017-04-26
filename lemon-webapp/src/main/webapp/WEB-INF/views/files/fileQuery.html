@@ -1,0 +1,59 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>文件管理/
+            <small>- 全文检索</small>
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 文档全文检索
+        </div>
+        <div class="row">
+
+            <div class="form-inline col-xs-12"  >
+                <form id="searchForm"  class="pull-right " style="margin-bottom: 15px" data-url="ajax_file_keyword_search">
+
+                    <div class="form-group">
+                        <input type="hidden" name="type" value="apply">
+                        <input type="hidden" name="applyer" value="$userInfo.id">
+
+                        <label class="control-label" >文件类型</label>
+                        <select  class="form-control " style="margin-bottom: 0px" name="extensions">
+                            <option value="">请选择</option>
+                            <option value="xls">excel</option>
+                            <option value="doc">word</option>
+                            <option value="pdf">pdf</option>
+                            <option value="txt">txt</option>
+                        </select>
+                        &nbsp;
+                        <label class="control-label" >文件名:  </label>
+                        <label class="control-label" >
+                            <input type="text" class="form-control mini-width Wdate" id="filename"  style="float: left;width: 160px" placeholder="输入文件名"
+                                   name="fileName" >
+                        </label>
+                        &nbsp;
+                        <label class="control-label" >关键词:  </label>
+                        <label class="control-label" >
+                            <input type="text" class="form-control mini-width Wdate" id="keyword"  style="float: left;width: 160px" placeholder="输入查询关键词"
+                                   name="keywords" >
+                        </label>
+
+                        <label style="padding-right: 5px;">
+                            <input type="button" class="btn btn-default" id="filequery" value="查询" style="position: relative;top:0.2em;">
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(['app/files/fileSearch']);
+</script>

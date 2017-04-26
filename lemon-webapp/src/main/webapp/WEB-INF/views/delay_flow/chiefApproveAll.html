@@ -1,0 +1,37 @@
+</br>科管科汇总
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>系统管理/(科管科汇总审批)
+            <small>- 表单管理</small>
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="row">
+
+            <div class="form-inline" >
+                <form id="searchForm"  class="pull-right" data-url="ajax_delayChief_query">
+
+                    <div class="form-group">
+                        <label class="control-label" >流程类型
+                        </label>  <input type="text" class="form-control " style="margin-bottom: 5px" name="formKind">
+                        <input type="button" class="btn btn-default" id="formQueryBtn" value="查询">
+                        <!--<input type="button" class="btn btn-default" id="approveAllBtn" value="批量审核">-->
+                        <a type="button" class="appbtn btn btn-default" id="approveChiefBtn" btn-type="approver"><i
+                                class="fa fa-check-square-o"></i>审核同意</a>
+                        <a type="button" class="appbtn btn btn-default" id="goBackChief" btn-type="goBack"><i
+                                class="fa  fa-mail-reply-all"></i>退回</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/delay_flow/syy_kg_lc04_approveAll01"]);
+</script>

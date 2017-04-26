@@ -1,0 +1,57 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>流程管理/
+            <small>- 已完成的流程</small>
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 已经签核完毕的流程
+        </div>
+        <div class="row">
+
+
+            <div class="form-inline   col-xs-12" style="margin-bottom: 15px;" >
+                <form id="searchForm"  data-url="ajax_queryFormHeader">
+
+                    <div class="form-group">
+                        <label class="control-label" >流程类型</label>
+                        <select class="form-control" name="formTypeName">
+                            <option value="">请选择</option>
+                            #if($beans)
+                            #foreach($bean in $beans.items)
+                            <option value="$bean.formKind">$bean.formName</option>
+                            #end
+                            #end
+                        </select>
+                        <input type="hidden" name="type" value="apply">
+                        <input type="hidden" name="applyer" value="$userInfo.id">
+
+                        <input type="hidden" name="formStatus" value="AP,RJ,LW">
+                         <label class="control-label" >时间:  </label>
+                        <label class="control-label" >
+                            <input type="text" class="form-control mini-width Wdate" id="driver-bgtime"  style="float: left;width: 160px" placeholder="开始时间"
+                                   name="beginDate" >
+                        </label>~
+                        <label class="control-label" >
+                            <input type="text" class="form-control mini-width Wdate" id="driver-edtime"  style="float: left;width: 160px" placeholder="结束时间"
+                                   name="endDate" >
+                        </label>
+
+                        <input type="button" class="btn btn-default" id="formHeaderQueryBtn" value="查询" style="position: relative;top: 0.2em">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/workflow/formHeaderApply"]);
+</script>

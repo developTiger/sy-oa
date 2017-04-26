@@ -1,0 +1,334 @@
+
+<form id="addProjectResultInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans) value="$beans.id" #end>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="win_Result_Name">
+                获奖成果名称 <span class="required">*</span>
+        </label>
+        <div class="col-xs-4">
+            <input type="text" id="win_Result_Name" required="required" #if($beans)value="$beans.win_Result_Name"#end   name="win_Result_Name"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-3001"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="winner_Info">
+               获奖人 <span class="required">*</span>
+        </label>
+        <div class="col-xs-4">
+            <input id="winner_Info" type="text" class="tags form-control col-md-7 col-xs-12" name="winner_Info"  value="" />
+        </div>
+        <div class="col-xs-1">
+            <a id="add_p" href="javascript:void(0);"
+               class=" btn btn-default
+                buttons-copy buttons-html5 btn-sm" data-title="成果人员">
+                <span>
+                    <i class="green fa " ></i>
+                    添加
+                </span>
+            </a>
+        </div>
+    </div>
+    <div>
+        <input id="abc" type="text" name="abc" class="tags form-control col-md-7 col-xs-12" style="display: none;" />
+        <input id="def" type="text" name="winner_Info1" class="tags form-control col-md-7 col-xs-12"  style="display: none;" />
+        <input id="info" #if($beans.info) value="$beans.info" #end style="display: none;"/>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="issuing_Unit">
+            颁发单位 <span class="required">*</span>
+        </label>
+        <div class="col-xs-4">
+            <input type="text" id="issuing_Unit" required="required"  name="issuing_Unit" #if($beans)value="$beans.issuing_Unit"#end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-3002"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="certif_No">
+            证书编号 <span class="required">*</span>
+        </label>
+        <div class="col-xs-4">
+            <input type="text" id="certif_No" required="required"  name="certif_No"  #if($beans)value="$beans.certif_No" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-3003"></ul>
+        </div>
+    </div>
+
+   <!-- <div class="form-group">
+        <label class="control-label  col-xs-3" for="win_Project">
+            获奖项目 <span class="required">*</span>
+        </label>
+        <div class="col-xs-4">
+            <input type="text" id="win_Project" required="required"  name="win_Project"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639"><ul class="parsley-errors-list" id="parsley-id-3004"></ul>
+        </div>
+    </div>-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >
+            获奖成果类型 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-4" >
+            <div class="col-xs-6"  style=" padding-left: 0%">
+
+                #if($winresultclassify)
+                <select id="mark"  class="form-control" required="required" name="win_Result_Classify">
+                    <option value="">--请选择--</option>
+                  #foreach($a in $winresultclassify.keySet() )
+
+                    <option value="$a"  #if ($a==$beans.win_Result_Classify) selected #end>$a</option>
+
+                    <!--<option value="1">Ⅰ类</option>
+                    <option value="2">Ⅱ类</option>
+                    <option value="3">Ⅲ类</option>-->
+                    #end
+                </select>
+                #else
+                <dd>aaa</dd>
+                #end
+            </div>
+
+            <div class="col-xs-6" style=" padding-left: 0%; padding-right: 0%">
+              #if($winresultclassify)
+                <select id="series" class="form-control col-xs-2" required="required" name="win_Result_type" >
+                    <option value="">--请选择--</option>
+                   #foreach($a in $winresultclassify.get("Ⅰ") )
+                   <option value="$a"  class="Ⅰ"  #if ($a==$beans.win_Result_type) selected #end>$a</option>
+                   #end
+                    #foreach($b in $winresultclassify.get("Ⅱ") )
+                   <option value="$b"  class="Ⅱ" #if ($b==$beans.win_Result_type) selected #end>$b</option>
+                    #end
+                  #foreach($c in $winresultclassify.get("Ⅲ") )
+                  <option value="$c"  class="Ⅲ" #if ($c==$beans.win_Result_type) selected #end>$c</option>
+                    #end
+               #end
+
+
+
+                  <!--  <option value="1" class="Ⅰ">国家最高科学技术奖</option>
+                    <option value="2" class="Ⅰ">自然科学奖</option>
+                    <option value="3" class="Ⅰ">技术发明奖</option>
+                    <option value="4" class="Ⅰ">科技进步奖</option
+                    <option value="5" class="Ⅰ">股份公司及油田公司科技进步奖</option>
+                    <option value="5" class="Ⅰ">股份公司及油田公司科技术创新奖</option>-->
+
+                   <!-- <option value="1" class="Ⅱ">规划奖</option>
+                    <option value="2" class="Ⅱ">设计奖</option>
+                    <option value="3" class="Ⅱ">成果奖</option>
+                    <option value="4" class="Ⅱ">储量奖</option>
+                    <option value="5" class="Ⅱ">技术革新奖</option>
+                    <option value="6" class="Ⅱ">技术改进奖</option>
+
+                    <option value="1" class="Ⅲ">现代化管理成果奖</option>
+                    <option value="2" class="Ⅲ">QC成果奖</option>
+                    <option value="3" class="Ⅲ">五小成果奖</option>
+                    <option value="4" class="Ⅲ">青年创新创效奖</option>-->
+                </select>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="win_Level">
+            获奖级别 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-4">
+
+            <select id="win_Level"  required="required" name="win_Level" class="form-control col-xs-7" data-parsley-id="0004">
+                <option value="" >--请选择--</option>
+                <option value="1" #if (1==$beans.win_Level) selected #end  >国家级</option>
+                <option value="2" #if (2==$beans.win_Level) selected #end  >省部级</option>
+                <option value="3" #if (3==$beans.win_Level) selected #end  >油田公司级</option>
+                <option value="4" #if (4==$beans.win_Level) selected #end  >厂处级</option>
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="win_Grade">获奖等级 <span class="required">*</span>
+        </label>
+        <div class="col-xs-4">
+            <select id="win_Grade"  required="required" name="win_Grade" class="form-control col-xs-7" data-parsley-id="0007">
+                <option value="" >--请选择--</option>
+                <option value="1" #if (1==$beans.win_Grade) selected #end >一等奖</option>
+                <option value="2" #if (2==$beans.win_Grade) selected #end>二等奖</option>
+                <option value="3" #if (3==$beans.win_Grade) selected #end>三等奖</option>
+                <option value="4" #if (4==$beans.win_Grade) selected #end>其他</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="win_Date">
+            获奖时间 <span class="required">*</span>
+        </label>
+        <div class="col-xs-4">
+            <input type="text" class="form-control mini-width Wdate"  id="win_Date"  style="float: left;width: 100%" placeholder="获奖时间" #if($beans)value="$beans.win_Date_Str"#end
+                    name="win_Date">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="is_Cooperate_Result_Str">是否合作 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-2">
+            <select id="is_Cooperate_Result_Str"  required="required" name="is_Cooperate_Result" class="form-control col-xs-7" data-parsley-id="0007">
+                <option value="" >--请选择--</option>
+                <option value="true" #if ($beans.is_Cooperate_Result==true) selected #end  >合作</option>
+                <option value="false" #if($beans.is_Cooperate_Result==false) selected #end  >不合作</option>
+
+            </select>
+        </div>
+    </div>
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdateProjectResult" data-url="ajax_add_update_projectResult" class="btn btn-success">提交</button>
+            <a class="btn btn-primary cancel" href="javascript:history.go(-1);">返回</a>
+        </div>
+    </div>
+
+
+<!--<div class="modal fade Js_modal text-center" id="myModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+    <!--&lt;!&ndash;<div class="modal-dialog" style="width: auto;min-width:200px;display: inline-block;">&ndash;&gt;-->
+    <!--<div class="modal-dialog" style="display: inline-block;">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<button type="button" class="close"-->
+                        <!--data-dismiss="modal" aria-hidden="true">-->
+                    <!--&times;-->
+                <!--</button>-->
+                <!--<h4 class="modal-title" id="myModalLabel">-->
+                    <!--成果人员-->
+                <!--</h4>-->
+            <!--</div>-->
+           <!--<form>-->
+            <!--<div class="modal-body">-->
+                <!--<div class="container">-->
+                    <!--<input type="hidden" id="sa" value='$emp_fb'>-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-12">-->
+                                <!--<a class=" btn btn-default buttons-copy buttons-html5 btn-sm pull-left"-->
+                                   <!--data-title="添加项目详细信息" id="addStaff"-->
+                                   <!--href="javascript:void(0);">-->
+                                    <!--<span>-->
+                                        <!--<i class="green fa fa-plus"></i>-->
+                                        <!--新增-->
+                                    <!--</span>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-5 staff-rows">-->
+                                <!--<div class="control-group staff-row">-->
+                                    <!--<div class="controls controls-row doc-input-size">-->
+                                        <!--<label class="control-label col-sm-3">-->
+                                            <!--第1获奖人-->
+                                            <!--<span class="required">*</span>-->
+                                        <!--</label>-->
+
+                                        <!--#if($emp)-->
+                                        <!--<select id="selfirst" required="required"  class="span3 col-sm-3 special-sele"  data-parsley-id="0004">-->
+                                            <!--<option  value="98" data-value="">请选择</option>-->
+                                            <!--#foreach($key in $emp)-->
+                                            <!--<option  value="$key.id" data-value="">$key.name</option>-->
+                                            <!--#end-->
+                                            <!--<option  value="99" data-value="">其他</option>-->
+                                        <!--</select>-->
+                                        <!--#else-->
+                                        <!--<dd>暂无数据</dd>-->
+                                        <!--#end-->
+<!--&lt;!&ndash;                                        <label class="control-label col-sm-3">-->
+                                        <!--</label>&ndash;&gt;-->
+                                        <!--<input type="text" id="inputfirst" class="input_outname col-sm-3 col-md-offset-1" disabled  >-->
+                                        <!--<a class="btn-sm col-sm-2 delStaff" style="height: 28px;"-->
+                                           <!--href="javascript:void(0);">删除</a>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--<div class="form-group col-md-5">-->
+                        <!--<div class="ln_solid"></div>-->
+                        <!--<div class=" col-xs-6 col-xs-offset-3">-->
+                            <!--<button type="button" id="getval" class="btn btn-success">提交</button>-->
+                            <!--<button type="button" class="btn btn-primary" id="cancelModal_1">返回</button>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="modal fade Js_modal text-center" id="myModal2"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    获奖人员
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <input type="hidden" id="sa" value='$emp_fb'>
+                    <div class="row">
+                        <div class="col-md-6 staff-rows" style="width: 600px;">
+                            <div class="control-group staff-row">
+                                <div class="controls controls-row doc-input-size">
+                                    <div class="form-inline" style="">
+                                        <div class="form-group  col-xs-offset-12 pull-left" style="margin-bottom: 5px;">
+                                            <label class="control-label">姓名：</label>
+                                            <label class="control-label">
+                                                <input type="text" class="form-control"  name="empName" id="empName">
+                                            </label>
+                                            <label class="control-label">部门：</label>
+                                            <label class="control-label">
+                                                <select  class="form-control"   id="deptName">
+                                                    <option value="">请选择</option>
+                                                    #foreach($dept in $deptment)
+                                                    <option value="$dept.id">$dept.deptName</option>
+                                                    #end
+                                                </select>
+                                            </label>
+                                            <label class="control-label">
+                                                <input type="button" id="queryEmps" class="btn btn-default" value="查询" style="position: relative;top: 0.2em">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" value="$fKind" id="emp_formKind">
+                                    <input type="hidden" value="$deptId" id="emp_deptId">
+
+                                    <div id="table">
+                                    </div>
+                                    <div class="col-lg-10 dataTables_paginate  ">
+                                        <ul class="pagination "></ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="width: 0px;">
+                        <div class="ln_solid"></div>
+                        <div class=" col-xs-6 col-xs-offset-3">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</form>
+<script>
+   require(['app/awards/addProjectResult']);
+</script>

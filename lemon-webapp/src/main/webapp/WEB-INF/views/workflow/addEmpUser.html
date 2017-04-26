@@ -1,0 +1,54 @@
+
+<form id="empRoleForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="roleId" #if($roleId)value="$roleId"#end>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-3">角色用户 <span class="required">*</span>
+        </label>
+
+
+        <div class="col-xs-5">
+            <select multiple="multiple" class="example-dropUp JS_emp_select" name="joinPeople">
+                #foreach($bean in $empInfos)
+                <optgroup label="$bean.deptName">
+                    #foreach($emp in $bean.empDtos)
+                    <option value="$emp.id">$emp.name</option>
+                    #end
+                </optgroup>
+                #end
+            </select>
+            <input type="hidden" name="empIds" id ="empIds">
+        </div>
+        <!--<div class="col-xs-6">-->
+            <!--#if($empInfos)-->
+            <!--<select id="empId" class="select2_single form-control" name="empId">-->
+                <!--#foreach($item in $empInfos)-->
+                <!--<optgroup label="$item.deptName">-->
+
+                    <!--#foreach($e in $item.empDtos)-->
+                    <!--<option value="$e.id">$e.name-->
+
+                    <!--</option>-->
+                    <!--#end-->
+                <!--</optgroup>-->
+                <!--#end-->
+
+            <!--</select>-->
+            <!--#else-->
+            <!--<dd>暂无数据</dd>-->
+            <!--#end-->
+        <!--</div>-->
+    </div>
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="addOrUpdateEmpRole" data-url="ajax_add_emp_appRole" class="btn btn-success">提交</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+
+</form>

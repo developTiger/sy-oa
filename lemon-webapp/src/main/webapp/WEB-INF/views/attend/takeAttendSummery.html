@@ -1,0 +1,77 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>员工考勤管理/
+            <small>- 员工考勤统计</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 员工休假、加班、补休信息统计
+            <input type="hidden" value="takeOrOverTimeStatistics" id="ajax_attend">
+        </div>
+
+        <label class="control-label text-center text-danger col-md-12"><h3><strong>休假、加班、补休统计表</strong></h3>
+        </label>
+
+        <form id="sHidden" class="hidden" action="ajax_download_tots" method="post">
+            <input name="deptId1">
+            <input name="mh">
+            <input name="LName">
+        </form>
+
+
+        <div class="pull-right">
+            <div class="form-inline col-xs-12" style="padding-bottom: 15px;">
+                <form  id="attendSumForm"  class=" " data-url="ajax_attendSum_Query_list">
+
+                    <div class="form-group">
+                        <a id="DowLoadSum" style="border: 1px solid #E1E1E1;padding: 6px 8px;background-color: #E1E1E1;">下载</a>
+                    </div>
+
+                    <!--#if(!$isDept)-->
+                    <!--<div class="form-group">-->
+                        <!--<label class="control-label">部门</label>-->
+
+                        <!--<select id="dpt" class="form-control" name="deptId">-->
+                            <!--<option value="0">请选择</option>-->
+                            <!--#if($deptAll)-->
+                            <!--#foreach($bean in $deptAll)-->
+                            <!--<option value="$bean.id" >$bean.deptName</option>-->
+                            <!--#end-->
+                            <!--#end-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--#end-->
+                    <div class="form-group">
+                        <label for="beginTime">开始时间</label>
+                        <input type="text" id="beginTime" class="form-control Wdate "  name="beginTime" value="$!beginTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="endTime">结束时间</label>
+                        <input type="text" id="endTime" class="form-control Wdate"  name="endTime"  value="$!endTime">
+                    </div>
+                    &nbsp;&nbsp;
+                    <div class="form-group">
+                        <label class="control-label" >用户名
+                        </label>  <input type="text" id="loginName" class="form-control "  name="empName">
+                        <input type="button" class="btn btn-default" id="empQueryBtn" value="查询" style="position: relative;top: 0.2em;">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+    <div id="table">
+    </div>
+    <div class="col-xs-10 dataTables_paginate  ">
+        <ul class="pagination "></ul>
+    </div>
+</div>
+
+<script>
+    require(["app/attend/empAttend"]);
+</script>

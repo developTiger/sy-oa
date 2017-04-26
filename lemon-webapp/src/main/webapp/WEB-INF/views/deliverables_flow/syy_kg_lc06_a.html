@@ -1,0 +1,121 @@
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2">项目类别<span class="required"></span>
+    </label>
+    <div class="control-label col-xs-3 required">
+        <input type="radio" name="categoryPro" value="院级" checked/>院级
+        <input type="radio" name="categoryPro" value="油田公司级"/>油田公司级
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2">项目名称 <span class="required">：</span>
+    </label>
+    <input type="hidden" name="projectName" id="projectName" >
+    <div class="col-xs-6">
+        <select id="projectNamesel" required="required" name="projectNamesel" class="form-control col-xs-12">
+            <option value="">请选择</option>
+            #if($sproject)
+            #foreach($pname in $sproject)
+            <option value="$pname.formNo">$pname.projectName</option>
+            #end
+        </select>
+        #else
+        <dd>没有数据</dd>
+        #end
+    </div>
+</div>
+
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">完成单位 <span class="required">：</span>
+    </label>
+
+    <div class="col-xs-6">
+        <input type="text" id="assumeCompany" required="required" readonly
+               name="assumeCompany"
+               class="form-control col-md-7 col-xs-12" >
+
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">合作单位 <span class="required">：</span>
+    </label>
+
+    <div class="col-xs-6">
+        <input type="text" id="joinComopany" required="required"readonly
+               name="joinComopany"
+               class="form-control col-md-7 col-xs-12" >
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2">开始时间 <span class="required">：</span>
+    </label>
+
+    <div class="col-xs-6">
+        <input type="text" id="beginTime" required="required"readonly
+               name="beginTime"
+               class="form-control col-md-7 col-xs-12 Wdate" >
+    </div>
+</div>
+
+<div class="form-group col-xs-12" >
+    <label class="control-label  col-xs-2 ">结束时间 <span class="required">：</span>
+    </label>
+
+    <div class="control-label col-xs-6">
+        <input type="text" id="endTime" required="required"readonly
+               name="endTime"
+               class="form-control col-md-7 col-xs-12 Wdate"  data-parsley-id="4639">
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2">内容摘要<span class="required"></span>
+    </label>
+    <div class="control-label col-xs-6">
+        <textarea type="text" id="summery" rows="4" style="resize: none;"
+                  name="summery"
+                  class="form-control col-md-7 col-xs-12 _character" >五百字以内</textarea>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2">主题词<span class="required"></span>
+    </label>
+    <div class="control-label col-xs-6">
+        <textarea type="text" id="subWords" rows="4" style="resize: none;"
+                  name="subWords"
+                  class="form-control col-md-7 col-xs-12 _character" >限22字</textarea>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2">三新一性<span class="required"></span>
+    </label>
+    <div class="control-label col-xs-6">
+        <textarea type="text" id="briefly" rows="4" style="resize: none;"
+                  name="briefly"
+                  class="form-control col-md-7 col-xs-12 _character" >新认识、新发现、新方法、实用性，300字以内</textarea>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2">主要研究人员排序(用','将人员隔开)<span class="required"></span>
+    </label>
+    <div class="control-label col-xs-6">
+        <textarea type="text" id="researchOrder" rows="4" style="resize: none;"
+                  name="researchOrder"
+                  class="form-control col-md-7 col-xs-12 _character" ></textarea>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class=" col-xs-6 col-xs-offset-3">
+
+        <input  type="submit" id="addOrUpdateDeliverInfo" data-url="ajax_add_update_lc06_apply" class="btn btn-success" value="申请">
+        <a class="btn btn-primary" href="javascript:history.go(-1);">返回</a>
+    </div>
+</div>
+<script>
+    require(['app/deliverables_flow/syy_kg_lc06']);
+</script>

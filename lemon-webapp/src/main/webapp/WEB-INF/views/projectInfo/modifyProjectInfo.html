@@ -1,0 +1,263 @@
+
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+<form id="modifyProjectInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >项目编号 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="projectNo" required="required" readonly #if($beans)value="$beans.projectNo" #end name="projectNo"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">项目名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="projectName" required="required" #if($beans)value="$beans.projectName" #end
+                   name="projectName"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2032"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">专业类别 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select id="specialtyType" required="required" name="specialtyType" class="form-control col-xs-7"
+                    data-parsley-id="0004">
+                <option value="">请选择</option>
+                <option value="01" #if($beans.specialtyType.equals('01')) selected #end>油气勘探</option>
+                <option value="02" #if($beans.specialtyType.equals('02')) selected #end>油气开发</option>
+                <option value="03" #if($beans.specialtyType.equals('03')) selected #end>炼油化工</option>
+                <option value="04" #if($beans.specialtyType.equals('04')) selected #end>油气集输</option>
+                <option value="05" #if($beans.specialtyType.equals('05')) selected #end>计算机</option>
+                <option value="06" #if($beans.specialtyType.equals('06')) selected #end>软科学</option>
+                <option value="07" #if($beans.specialtyType.equals('07')) selected #end>安全环保</option>
+
+
+
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >研究内容 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <textarea type="text" id="projectPlanInfo" required="required"
+                   name="projectPlanInfo"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">#if($beans) $beans.projectPlanInfo #end</textarea>
+            <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >承担单位 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="assumeCompany" required="required" #if($beans)value="$beans.assumeCompany" #end
+                   name="assumeCompany"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-206"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >参加单位 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="joinComopany" required="required" #if($beans)value="$beans.joinComopany" #end
+                   name="joinComopany"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2039"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >开始时间 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" class="form-control col-md-7 col-xs-12 mini-width Wdate" id="beginTime1"  style="background-color: lightgray" readonly placeholder="开始时间"
+                   name="beginTime1" #if($beans)value="$beans.beginTime1" #end >
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >截止时间 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+                <input type="text" class="form-control col-md-7 col-xs-12 mini-width Wdate" id="endTime1"  style="background-color: lightgray" readonly placeholder="截止时间"
+                       name="endTime1"  #if($beans)value="$beans.endTime1" #end >
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >备注 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <textarea type="text" id="remark" required="required"
+                   name="remark"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">#if($beans) $beans.remark #end</textarea>
+            <ul class="parsley-errors-list" id="parsley-id-2156"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >项目类型 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select id="projectType" required="required" name="projectType" class="form-control col-xs-7"
+                    data-parsley-id="0004">
+                <option value="">请选择</option>
+                <option value="1" #if(1 == $beans.projectType) selected="selected" #end>项目</option>
+                <option value="2" #if(2 == $beans.projectType) selected="selected" #end>课题</option>
+                <option value="3" #if(3 == $beans.projectType) selected="selected" #end>专题</option>
+
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">项目长 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+
+            <select id="leader" name="leader" class="form-control" data-parsley-id="0004">
+                <option value="">请选择</option>
+                #if($emp)
+                #foreach($bean in $emp)
+                <option value="$bean.id" #if($bean.id == $beans.leader) selected #end>$bean.name</option>
+                #end
+                #else
+                <dd>没有数据</dd>
+                #end
+            </select>
+
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >副项目长 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select id="deputy" required="required" name="deputy" class="form-control col-xs-7"
+                    data-parsley-id="0004">
+                <option value="">请选择</option>
+                #if($emp)
+                #foreach($bean in $emp)
+                <option value="$bean.id" #if($bean.id == $beans.deputy) selected #end>$bean.name</option>
+                #end
+                #else
+                <dd>没有数据</dd>
+                #end
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >所属部门 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select  id="trainDepts" required="required" name="trainDepts" class="form-control col-xs-7"
+                     data-parsley-id="0004">
+                <option value="">请选择</option>
+                #foreach($dname in $deptInfos)
+                <option value="$dname.id" #if($dname.id == $beans.trainDepts) selected #end>$dname.deptName</option>
+                #end
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="container">
+            <label class="control-label  col-xs-3">组员 <span class="required">*</span>
+            </label>
+
+            <div class="col-xs-5" >
+                <textarea class="txtValue form-control col-md-7 col-xs-10 "  type="text" name="groupMemberList1"   rows="5" cols="10" readonly>$sb
+                    </textarea>
+                <input type="hidden" id="txtData" />
+            </div>
+            <div>
+                <input type="button" class="btnSelect btn" data-toggle="modal" data-target="#myModal_1" value="选择" />
+            </div>
+            <div class="modal fade" id="myModal_1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h3 class="modal-title" id="myModalLabel">组员选择</h3>
+                        </div>
+                        <div class="modal-body">
+
+                            <input type="checkbox" data-type="checkall" />全选</td>
+                            #if($emp)
+                            #foreach($em in $emp)
+                            <input type="checkbox" class="emptxt" data-value="$em.name"  data-type="checkbox" value="$em.id"    />$em.name
+                            #end
+                            #else
+                            <dd>暂无数据</dd>
+                            #end
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class=" col-xs-6 col-xs-offset-3">
+                                <button type="submit" class="btn btn-success" data-dismiss="modal">提交</button>
+                                <button type="button" class="btn btn-primary" id="cancelModal">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="modifyOrupdateProjectInfo" data-url="ajax_modify_update_project" class="btn btn-success">提交</button>
+            <!--<button type="button" id="cancelModal" class="btn btn-primary">取消</button>-->
+            <a href="javascript:history.go(-1);" class="btn btn-primary">取消</a>
+
+        </div>
+    </div>
+
+</form>
+
+
+
+<script>
+    require(["app/projectInfo/modifyProjectInfo"]);
+</script>
+
+

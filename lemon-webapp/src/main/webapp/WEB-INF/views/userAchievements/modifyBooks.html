@@ -1,0 +1,235 @@
+<form id="modifyBooksInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >论著名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="ctreatise_Name" required="required" #if($beans)value="$beans.treatise_Name" #end
+                   name="treatise_Name"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3">发表/出版时间 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" class="form-control col-md-7 col-xs-12 mini-width Wdate" id="publish_Time_"  style="background-color: lightgray" readonly placeholder="截止时间"
+                   name="publish_Time_" #if($beans)value = "$beans.publish_Time_" #end>
+            <ul class="parsley-errors-list" id="parsley-id-2139"></ul>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="treatise_Level">论著级别 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select id="treatise_Level" required="required" name="treatise_Level" class="form-control col-xs-7"
+                    data-parsley-id="0004" >
+                <option value="">请选择</option>
+                <option value="1" #if(1==$beans.treatise_Level) selected="selected" #end>国家级</option>
+                <option value="2" #if(2==$beans.treatise_Level) selected="selected" #end>省部级</option>
+                <option value="3" #if(3==$beans.treatise_Level) selected="selected" #end>油田公司级</option>
+                <option value="4" #if(4==$beans.treatise_Level) selected="selected" #end>厂处级</option>
+            </select>
+        </div>
+
+
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label  col-xs-3" for="treatise_Press">出版社/刊物名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="treatise_Press" required="required" #if($beans)value="$beans.treatise_Press" #end
+                   name="treatise_Press"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="is_Core">是否核心 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select id="is_Core" required="required" name="is_Core" class="form-control col-xs-7"
+                    data-parsley-id="0004">
+                <option value="">请选择</option>
+                <option value="true" #if(true==$beans.is_Core) selected="selected" #end>是</option>
+                <option value="false" #if(false==$beans.is_Core) selected="selected" #end>否</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label  col-xs-3" for="unit">发表/出版单位 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="unit" required="required" #if($beans)value="$beans.unit" #end
+                   name="unit"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        </div>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label  col-xs-3" for="make_No">书/期刊号 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="make_No" required="required" #if($beans)value="$beans.make_No" #end
+                   name="make_No"
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="is_cooperate">是否合著 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select id="is_cooperate" required="required" name="is_cooperate" class="form-control col-xs-7"
+                    data-parsley-id="0004">
+                <option value="">请选择</option>
+                <option value="true" #if(true==$beans.is_cooperate) selected="selected" #end>是</option>
+                <option value="false" #if(false==$beans.is_cooperate) selected="selected" #end>否</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+        <div class="container">
+            <label class="control-label  col-xs-3">论著人集合 <span class="required">*</span>
+            </label>
+
+            <div class="col-xs-5" >
+               <!-- #if($beans)
+                #foreach($p in $beans.listPrizes)
+                <input hidden="hidden" value="$p.winnerInfos" class="prizes">
+                #end
+                #else
+                <dd>暂无数据</dd>
+                #end-->
+                <textarea class="txtValue form-control col-md-7 col-xs-10 "  id="winner_Info"
+                          data-value="" name="winner_info"
+                          style="background-color: lightgray" readonly cols="30" rows="10" >#if($beans.winner_info) $beans.winner_info  #end
+                    </textarea>
+                <!--<input id="hiddenInput" type="hidden" value="" name="info">-->
+                <!--提交数据-->
+                <input id="hiden_in" type="hidden"  name="info" #if($beans) value="$beans.info" #end>
+                <!--jquery验证数据-->
+                <input id="hiden_in_sb"  name="winner_vali" type="text" style="width:0px;height: 0px;border: 0px;"
+                       #if($beans) value="$beans.info " #end>
+            </div>
+
+            <div>
+                <a id="add_p" href="javascript:void(0);"
+                   class=" btn btn-default
+                    buttons-copy buttons-html5 btn-sm" data-title="论著人员">
+                    <span>
+                        <i class="green fa " ></i>
+                        选择
+                    </span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="submit" id="modifyBook" data-url="ajax_modify_book" class="btn btn-success">提交</button>
+            <!--<button type="button" id="cancelModal" class="btn btn-primary"><a href="javascript:history.go(-1);">取消</a></button>-->
+            <a class="btn btn-primary" href="javascript:history.go(-1);">取消</a>
+        </div>
+    </div>
+</form>
+
+
+<div class="modal fade Js_modal text-center" id="myModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="display: inline-block;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    论著人员
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <input type="hidden" id="sa" value='$emp_fb'>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class=" btn btn-default buttons-copy buttons-html5 btn-sm pull-left"
+                               data-title="添加项目详细信息" id="addStaff"
+                               href="javascript:void(0);">
+                                    <span>
+                                        <i class="green fa fa-plus"></i>
+                                        新增
+                                    </span>
+                            </a>
+                        </div>
+                        <div class="col-md-12 staff-rows">
+                            <div class="control-group staff-row">
+                                <div class="controls controls-row doc-input-size">
+                                    <label class="control-label col-sm-3">
+                                        第<span class="staff-num">1</span>获奖人
+                                        <span class="required">*</span>
+                                    </label>
+
+                                    #if($people)
+                                    <select required="required"  class="span3 col-sm-3 special-sele"  data-parsley-id="0004">
+                                        <option value="98" data-value="">请选择</option>
+                                        #foreach($person in $people)
+                                        <option value="$person.id" data-value="" >$person.name</option>
+                                        #end
+                                        <option value="99">其他</option>
+                                    </select>
+                                    #else
+                                    <dd>暂无数据</dd>
+                                    #end
+                                    <input type="text" class="input_outname col-sm-3 col-md-offset-1" disabled  >
+                                    <a class="btn-sm col-sm-2 delStaff" style="height: 28px;"
+                                       href="javascript:void(0);"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="ln_solid"></div>
+                        <div class=" col-xs-6 col-xs-offset-3">
+                            <button type="button" id="getval" class="btn btn-success" >提交</button>
+                            <button type="button" class="btn btn-primary" id="cancelModal_1">返回</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    require(['app/userAchievements/modifyBooks']);
+</script>
+
+

@@ -1,0 +1,16 @@
+
+<form id="deleteForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+    <input type="hidden" name="id" #if($idTemp)value="$idTemp.id"#end>
+    <div class="form-group">
+        <label class="control-label " >确定要删除编号为：【 $idTemp 】的信息吗</span>
+        </label>
+    </div>
+    <div class="ln_solid"></div>
+        <div class=" col-xs-6 col-xs-offset-3">
+                <div class="form-group">
+
+            <button type="button" id="deleteFormId" data-url="ajax_delete_id?&id=$idTemp" class="btn btn-success">提交</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+            </div>
+    </div>
+</form>

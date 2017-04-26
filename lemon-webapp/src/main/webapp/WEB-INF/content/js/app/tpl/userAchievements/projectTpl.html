@@ -1,0 +1,72 @@
+
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th class="column-title">获奖级别 </th>
+        <th class="column-title">获奖等级 </th>
+        <th class="column-title">是否合作成果 </th>
+        <th class="column-title">项目成果数量 </th>
+        <th class="column-title no-link last"><span class="nobr">操作</span>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = 0%>
+    <%if(project.length > 0){%>
+    <%for(var i = 0 ; i < project.length; i++) {%>
+    <tr data-tt-id="1">
+
+        <td><%if(project[i].WIN_LEVEL == "1"){%>
+            国家级
+            <%}%>
+            <%if(project[i].WIN_LEVEL == "2"){%>
+            省部级
+            <%}%>
+            <%if(project[i].WIN_LEVEL == "3"){%>
+            油田公司级
+            <%}%>
+            <%if(project[i].WIN_LEVEL == "4"){%>
+            厂处级
+            <%}%>
+
+        </td>
+
+        <td><%if(project[i].WIN_GRADE == "1"){%>
+            一等奖
+            <%}%>
+            <%if(project[i].WIN_GRADE == "2"){%>
+            二等奖
+            <%}%>
+            <%if(project[i].WIN_GRADE == "3"){%>
+            三等奖
+            <%}%>
+            <%if(project[i].WIN_GRADE == "4"){%>
+            其他
+            <%}%>
+
+        </td>
+
+        <td><%if(project[i].IS_COOPERATE_RESULT == true){%>
+            是
+            <%}%>
+            <%if(project[i].IS_COOPERATE_RESULT == false){%>
+            否
+            <%}%>
+        </td>
+
+
+        <td><%=project[i].PROJECT_RESULT_NUM%></td>
+        <td><a class="i_modal label label-default "
+               data-title="详细信息" href="ajax_treatise_query_list3?win_level=<%=project[i].WIN_LEVEL%>&win_grade=<%=project[i].WIN_GRADE%>&is_cooperate_result=<%=project[i].is_cooperate_result?'true':'false'%>">
+            <i class="green fa fa-plus"></i>查看 </a>
+        </td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="4" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>
+
+

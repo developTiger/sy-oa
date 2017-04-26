@@ -1,0 +1,41 @@
+<form id="addfloder" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+    <div class="form-group">
+        <input type="hidden" name="id" #if($bean)value="$bean.id" #end>
+        <input type="hidden" name="parentId" #if($parentId)value="$parentId" #end>
+        <label class="control-label  col-xs-3" for="name">文件夹名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <input type="text" id="name" required="required" name="pathName" #if($bean)value="$bean.pathName" #end
+                   class="form-control col-md-7 col-xs-12" data-parsley-id="4639">
+            <ul class="parsley-errors-list" id="parsley-id-4639"></ul>
+        </div>
+    </div>
+    #if(!$parentId)
+    <div class="form-group">
+        <label class="control-label  col-xs-3" for="name">使用部门 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-6">
+            <select class="form-control " name="belongDept">
+                <option value="">公用</option>
+                #if($depts)
+                #foreach($dept in $depts)
+                <option value="$dept.id" #if($bean.belongDept==$dept.id) selected #end>$dept.deptName</option>
+                #end
+                #end
+            </select>
+        </div>
+    </div>
+    #end
+
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <button type="button" id="addOrUpdatefloder" data-url="ajax_add_update_floder" class="btn btn-success">提交
+            </button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+
+</form>

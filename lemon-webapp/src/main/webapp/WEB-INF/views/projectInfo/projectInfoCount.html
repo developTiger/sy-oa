@@ -1,0 +1,31 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>项目管理/项目汇总
+            <small>- 项目汇总</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+
+        <div class="row">
+            <div class=" btn-group  col-xs-12"  >
+                <div class="form-inline col-xs-offset-2 col-xs-4">
+                    <form id="searchForm1"  data-url="ajax_projectCount_query_list">
+                        <!--<div class="form-group">-->
+                            <!--<input hidden="hidden" type="text"   name="s">-->
+                            <!--<input hidden="hidden" type="button"  id="QueryBtn" value="查询">-->
+                        <!--</div>-->
+                    </form>
+                </div>
+            </div>
+            <div id="table1"></div>
+            <div class="col-lg-10 dataTables_paginate  ">
+                <ul class="pagination "></ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/projectInfo/projectInfoCount"]);
+</script>

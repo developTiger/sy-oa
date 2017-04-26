@@ -1,0 +1,62 @@
+
+        <table class="table table-striped table-bordered dataTable no-footer">
+            <thead>
+            <tr class="headings">
+                <th class="column-title">论著级别 </th>
+                <th class="column-title">是否核心 </th>
+                <th class="column-title">是否合著 </th>
+                <th class="column-title">论著数量 </th>
+                <th class="column-title">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%var num = 0%>
+            <%if(testname.length > 0){%>
+            <%for(var i = 0 ; i < testname.length; i++) {%>
+            <tr data-tt-id="1">
+
+                <td><%if(testname[i].TREATISE_LEVEL == "1"){%>
+                    国家级
+                    <%}%>
+                    <%if(testname[i].TREATISE_LEVEL == "2"){%>
+                    省部级
+                    <%}%>
+                    <%if(testname[i].TREATISE_LEVEL == "3"){%>
+                    油田公司级
+                    <%}%>
+                    <%if(testname[i].TREATISE_LEVEL == "4"){%>
+                    厂处级
+                    <%}%>
+                </td>
+
+                <td><%if(testname[i].IS_CORE == true){%>
+                    是
+                    <%}%>
+                    <%if(testname[i].IS_CORE == false){%>
+                    否
+                    <%}%>
+                </td>
+                <td><%if(testname[i].IS_COOPERATE == true){%>
+                    是
+                    <%}%>
+                    <%if(testname[i].IS_COOPERATE == false){%>
+                    否
+                    <%}%>
+                </td>
+                <td><%=testname[i].TREATISE_NUM%></td>
+                <td><a class="i_modal label label-default "
+                       data-title="详细信息" href="ajax_treatise_query_list1?treatise_level=<%=testname[i].TREATISE_LEVEL%>&is_core=<%=testname[i].IS_CORE?'true':'false'%>&is_cooperate=<%=testname[i].IS_COOPERATE?'true':'false'%>">
+
+                    <i class="green fa fa-plus"></i>查看 </a>
+                </td>
+            </tr>
+            <%}%>
+            <%}else{%>
+            <tr>
+                <td colspan="4" align="center">暂无数据</td>
+            </tr>
+            <%}%>
+            </tbody>
+        </table>
+
+

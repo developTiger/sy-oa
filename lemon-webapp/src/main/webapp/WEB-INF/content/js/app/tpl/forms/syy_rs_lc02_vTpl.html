@@ -1,0 +1,108 @@
+
+
+<div id="qjApplyForm"   data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id"  value="<%=id%>" />
+
+    <div class="form-group" >
+        <label class="control-label " style="font-size:larger">培训名称：<%=trainName%></label>
+        <label class="control-label col-xs-offset-3" style="font-size: larger">地点：<%=trainPlace%></label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label " style="font-size: larger">培训时间：<%=dateFormat(trainBeginTime).substring(0,10)%>——<%=dateFormat(trainEndTime).substring(0,10)%></label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label " style="font-size: larger">培训内容：</label>
+    </div>
+
+    <div class="form-group" >
+        <label class=" col-xs-offset-1" style="font-size: larger"><%=trainContent%></label>
+    </div>
+
+
+
+
+
+    <div class="form-group" >
+        <label class="control-label " style="font-size: larger">你认为：</label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label col-xs-offset-1" style="font-size: larger">1、培训内容的针对性或实用性：
+            <%if(practical == "Prefect"){%>
+            很强
+            <%}%>
+            <%if(practical == "Good"){%>
+            强
+            <%}%>
+            <%if(practical == "Nomal"){%>
+            一般
+            <%}%>
+            <%if(practical == "Bad"){%>
+            差
+            <%}%>
+        </label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label col-xs-offset-1" style="font-size: larger">2、对授课人授课满意度：
+            <%if(satisfied == "Prefect"){%>
+            很满意
+            <%}%>
+            <%if(satisfied == "Good"){%>
+            满意
+            <%}%>
+            <%if(satisfied == "Nomal"){%>
+            一般
+            <%}%>
+            <%if(satisfied == "Bad"){%>
+            差
+            <%}%>
+        </label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label col-xs-offset-1" style="font-size: larger">3、此次培训对您工作的直接帮助：
+            <%if(help == "Prefect"){%>
+            很强
+            <%}%>
+            <%if(help == "Good"){%>
+            强
+            <%}%>
+            <%if(help == "Nomal"){%>
+            一般
+            <%}%>
+            <%if(help == "Bad"){%>
+            差
+            <%}%>
+        </label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label" style="font-size: larger">建议：</label>
+    </div>
+
+    <div class="form-group" >
+        <label class=" col-xs-offset-1" style="font-size: larger"><%=suggest%></label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label" style="font-size: larger">附件:
+
+            <%if(filesDto.length > 0 ){%>
+            <%for(var i=0;i < filesDto.length;i++){%>
+            <a href="downloadFile?id=<%=filesDto[i].fileId%>"><%=filesDto[i].fileName%></a></br>
+            <%}%>
+            <%}else{%>
+            暂无数据
+            <%}%>
+
+
+        </label>
+    </div>
+
+
+</div>
+

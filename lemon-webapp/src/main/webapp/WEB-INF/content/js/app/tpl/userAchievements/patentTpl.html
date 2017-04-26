@@ -1,0 +1,46 @@
+
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th class="column-title">专利类型 </th>
+        <th class="column-title">专利数量 </th>
+        <th class="column-title no-link last"><span class="nobr">操作</span>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = 0%>
+    <%if(patent.length > 0){%>
+    <%for(var i = 0 ; i < patent.length; i++) {%>
+    <tr data-tt-id="1">
+
+        <td><%if(patent[i].PATENT_TYPE == "1"){%>
+            发明
+            <%}%>
+            <%if(patent[i].PATENT_TYPE == "2"){%>
+            实用新型
+            <%}%>
+            <%if(patent[i].PATENT_TYPE == "3"){%>
+            外观
+            <%}%>
+        </td>
+
+        <td><%=patent[i].PATENTNUM%></td>
+        <td><a class="i_modal label label-default "
+               data-title="详细信息"
+               href="ajax_treatise_query_list2?patent_type=<%=patent[i].PATENT_TYPE%>">
+
+            <i class="green fa fa-plus"></i>查看</a>
+
+
+        </td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="4" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>
+
+

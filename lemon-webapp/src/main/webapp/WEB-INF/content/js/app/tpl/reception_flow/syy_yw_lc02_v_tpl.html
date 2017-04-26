@@ -1,0 +1,1074 @@
+
+
+
+<input type="hidden" value="<%=recept.formNo%>" id="formNo_01" name="formNo">
+<input type="hidden" value="<%=recept.formKindName%>" name="formKindName" >
+
+<input type="hidden" name="id" value="<%=recept.id%>"/>
+
+<div class="form-group">
+    <label class=" col-xs-12 text-left" style="font-size: larger">
+        来宾单位:<%=recept.foreignGuest%>
+    </label>
+    <label class="control-label col-xs-4" style="text-align: left;"> </label>
+</div>
+
+<div class="form-group">
+    <label class=" col-xs-12 text-left" style="font-size: larger">
+        来访联系人:<%=recept.linkman%>
+    </label>
+
+</div>
+
+<div class="form-group">
+    <label class=" col-xs-12 text-left" style="font-size: larger">
+        <!--来访联系人电话:<%=recept.mobile%>-->
+        来访联系人电话:
+        <%if(recept.mobile!=null){%>
+            <%=recept.mobile%>
+        <%}%>
+        <%if(recept.mobile==null){%>
+            暂无
+        <%}%>
+    </label>
+    <label class="control-label col-xs-4" style="text-align: left;"> </label>
+</div>
+
+<div class="form-group" id="reason">
+    <label class=" col-xs-12 text-left" style="font-size: larger">
+        来访事由:<%=recept.reasons%>
+    </label>
+    <label class="control-label col-xs-4" style="text-align: left;"> </label>
+</div>
+
+<div class="form-group" id="file">
+    <label class=" col-xs-12 text-left" style="font-size: larger">
+        邀请函附件:<!--<a href="/downloadFile?id=<%=recept.fileId%>"><%=recept.fileName%></a>-->
+            <%if(recept.fileName!=null){%>
+                <a href="/downloadFile?id=<%=recept.fileId%>"><%=recept.fileName%></a>
+            <%}else{%>
+                暂无
+            <%}%>
+    </label>
+    <label class="control-label col-xs-4" style="text-align: left;"> </label>
+</div>
+
+<%if(viewOnly=="false"&&recept.clStep==1&&recept.isComplete==false){%>
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+
+<div class="form-group chooseLeader" >
+    <label class="control-label  col-xs-3">
+        选择陪同人员：
+    </label>
+    <div class="col-xs-7 " >
+        <select required="required" id="deptName" multiple="multiple" class="form-control col-xs-7 leaders"
+                data-parsley-id="0004" >
+            <%for(var i=0;i< empInfos.length; i++){%>
+                <optgroup label="<%=empInfos[i].deptName%>">
+                    <%for(var j=0;j < empInfos[i].empDtos.length;j++){%>
+                    <option  value="<%=empInfos[i].empDtos[j].id%>" ><%=empInfos[i].empDtos[j].name%> </option>
+                    <%}%>
+                </optgroup>
+            <%}%>
+        </select>
+        <input type="hidden" name="coopDept" id="hid_dept" value="<%=recept.processId%>"/>
+        <input type="hidden" id="hidname" name="hidname"/>
+        <input type="hidden" id="hidid" name="hidid"/>
+    </div>
+</div>
+
+<script>
+    var empid=$("#hid_dept").val();
+    var empids
+    if ($.contains(empid,",")) {
+        empids = empid.split(",");
+
+    }else{
+        empids = empid.split(" ");
+    }
+    $("#deptName").val(empids).trigger('change')
+</script>
+
+
+
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+
+    </div>
+</div>
+
+<div class="form-group">
+    <label class="control-label  col-xs-3" style="text-align: left" >
+        接待细节安排 <span class="required">*</span>
+    </label>
+    <div class="col-xs-7">
+                <textarea id="receptionWork" required="required"   name="receptionWork" style="resize: none;"
+                          rows="3"  class="form-control col-md-7 col-xs-12" ><%=recept.receptionWork%></textarea>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+
+<div class="form-group" id="banquet">
+    <table border="1">
+        <tr>
+            <td width="50px" height="30px" align="middle" >序号</td>
+            <td colspan="6" width="" align="middle">接待项目</td>
+
+            <td align="middle">费用预算(元)</td>
+        </tr>
+        <tr>
+            <td rowspan="2" align="middle">1</td>
+            <td rowspan="2" align="middle" width="50px">住  宿</td>
+            <td width="100px" align="middle" height="30px">房间型号</td>
+            <td align="middle">套间</td>
+            <td align="middle">单间</td>
+            <td align="middle">标准间</td>
+            <td align="middle">其他</td>
+            <td rowspan="2"><input type="text" value="<%=recept.feiyongyusuan1%>" id="feiyongyusuan1" style="border: none"
+                                   name="feiyongyusuan1" class="form-control col-md-7 col-xs-12" ></td>
+        </tr>
+        <tr>
+
+
+            <td align="middle">数量</td>
+            <td><input type="text" value="<%=recept.taojian%>" id="taojian" style="border: none"
+                       name="taojian" class="form-control col-md-7 col-xs-12" ></td>
+            <td><input type="text" value="<%=recept.danjian%>" id="danjian" style="border: none"
+                       name="danjian" class="form-control col-md-7 col-xs-12" ></td>
+            <td><input type="text" value="<%=recept.biaozhunjian%>" id="biaozhunjian" style="border: none"
+                       name="biaozhunjian" class="form-control col-md-7 col-xs-12" ></td>
+            <td><input type="text" value="<%=recept.qitajian%>" id="qitajian" style="border: none"
+                       name="qitajian" class="form-control col-md-7 col-xs-12" ></td>
+
+        </tr>
+        <tr>
+            <td align="middle">2</td>
+            <td align="middle" width="50px">工作餐</td>
+            <td colspan="1" align="middle">人/次</td>
+            <td colspan="1" align="middle">
+                <input type="text" value="<%=recept.rence1%>" id="rence1" style="border: none"
+                       name="rence1" class="form-control col-md-7 col-xs-12" >
+            </td>
+            </td>
+            <td colspan="1"><input type="text" value="<%=recept.rence2%>" style="border: none" id="rence2"
+                                   name="rence2" class="form-control col-md-7 col-xs-12" ></td>
+            <td colspan="2"><input type="text" value="<%=recept.rence3%>" id="rence3" style="border: none"
+                                   name="rence3" class="form-control col-md-7 col-xs-12" ></td>
+
+            <td><input type="text" value="<%=recept.feiyongyusuan2%>" style="border: none" id="feiyongyusuan2"
+                       name="feiyongyusuan2" class="form-control col-md-7 col-xs-12" ></td>
+        </tr>
+
+
+            <td rowspan="3" align="middle">3</td>
+            <td rowspan="3" align="middle" width="50px">宴  会</td>
+            <td colspan="1" width="50px" height="30px" align="middle">时间</td>
+
+            <td colspan="2" align="middle">人数</td>
+            <td colspan="2" align="middle">标准(元/人)</td>
+
+            <td rowspan="3"> <input type="text" value="<%=recept.feiyongyusuan3%>" id="feiyongyusuan3" style="border: none"
+                                    name="feiyongyusuan3" class="form-control col-md-7 col-xs-12" ></td>
+
+
+        </tr>
+
+
+        <tr >
+            <td><input type="text" value="<%=recept.yanhuisj1%>" id="yanhuisj1" style="border: none"
+                       name="yanhuisj1" class="form-control col-md-7 col-xs-12" >
+            </td>
+            <td colspan="2"><input type="text" value="<%=recept.yanhuirs1%>" id="yanhuirs1" style="border: none"
+                                   name="yanhuirs1" class="form-control col-md-7 col-xs-12" ></td>
+
+            <td colspan="2"><input type="text" value="<%=recept.yanhuibz1%>" id="yanhuibz1" style="border: none"
+                       name="yanhuibz1" class="form-control col-md-7 col-xs-12" ></td>
+        </tr>
+
+        <tr>
+            <td><input type="text" value="<%=recept.yanhuisj2%>" id="yanhuisj2" style="border: none"
+                       name="yanhuisj2" class="form-control col-md-7 col-xs-12" >
+            </td>
+            <td colspan="2"><input type="text" value="<%=recept.yanhuirs2%>" id="yanhuirs2" style="border: none"
+                                   name="yanhuirs2" class="form-control col-md-7 col-xs-12" ></td>
+
+            <td colspan="2"> <input type="text" value="<%=recept.yanhuibz2%>" id="yanhuibz2" style="border: none"
+                       name="yanhuibz2" class="form-control col-md-7 col-xs-12" ></td>
+
+        </tr>
+
+
+        <tr >
+
+            <td colspan="1" align="middle"> 合计</td>
+            <!--  大小写转换方法（ToolBymoney.change）-->
+            <td colspan="8"  >
+                <div class="col-xs-12"  style=" width: 100%;height: 30px ;float: left">
+                <label class="control-label"  > 小写:</label><label class="control-label"  >
+                <input type="text" id="xiaoxie" name="xiaoxie" style="width: 50%;border: none" value="<%=recept.xiaoxie%>" /></label>
+                <div style="text-align: right"  class=" col-xs-3" ></div>
+                <label class="control-label"  > 大写:</label><label class="control-label"  >
+                <input type="text" id="daxie" name="daxie" style="width:100%;border: none" value="<%=recept.daxie%>" /></label>
+
+            </div>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+<%}%>
+
+<%if(viewOnly=="false"&&recept.clStep==2&&recept.isComplete==false){%>
+
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+
+<div class="form-group chooseLeader" >
+
+    <label class=" col-xs-12 text-left" style="font-size: larger">
+        陪同人员:<%=recept.personComp%>
+    </label>
+</div>
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+
+    </div>
+</div>
+
+<div class="form-group">
+    <label class=" col-xs-12 text-left" style="font-size: larger">
+        接待细节安排:<%=recept.receptionWork%>
+    </label>
+</div>
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+
+
+<div class="form-group" id="banquet1">
+    <table border="1">
+        <tr>
+            <td width="50px" height="30px" align="middle" >序号</td>
+            <td colspan="6" align="middle">接待项目</td>
+
+            <td align="middle">费用预算(元)</td>
+        </tr>
+        <tr>
+            <td rowspan="2" align="middle">1</td>
+            <td rowspan="2" align="middle" width="50px">住  宿</td>
+            <td width="100px" align="middle" height="30px">房间型号</td>
+            <td align="middle">套间</td>
+            <td align="middle">单间</td>
+            <td align="middle">标准间</td>
+            <td align="middle">其他</td>
+            <td rowspan="2" ><input type="text" value="<%=recept.feiyongyusuan1%>" readonlyid="feiyongyusuan11" style="border: none" readonly
+                                   name="feiyongyusuan1" class=" col-md-7 col-xs-12" ></td>
+        </tr>
+        <tr>
+
+
+            <td align="middle">数量</td>
+            <td><input type="text" value="<%=recept.taojian%>" readonly id="taojian1" style="border: none"
+                       name="taojian" class=" col-md-7 col-xs-12" ></td>
+            <td><input type="text" value="<%=recept.danjian%>" readonly id="danjian1" style="border: none"
+                       name="danjian" class=" col-md-7 col-xs-12" ></td>
+            <td><input type="text" value="<%=recept.biaozhunjian%>" readonly id="biaozhunjian1" style="border: none"
+                       name="biaozhunjian" class=" col-md-7 col-xs-12" ></td>
+            <td><input type="text" value="<%=recept.qitajian%>" readonly id="qitajian1" style="border: none"
+                       name="qitajian" class=" col-md-7 col-xs-12" ></td>
+
+        </tr>
+        <tr>
+            <td align="middle">2</td>
+            <td align="middle" width="50px">工作餐</td>
+            <td colspan="1" align="middle">人/次</td>
+            <td colspan="1" align="middle">
+                <input type="text" value="<%=recept.rence1%>" readonly id="rence11" style="border: none"
+                       name="rence1" class=" col-md-7 col-xs-12" >
+            </td>
+            </td>
+            <td colspan="1"><input type="text" value="<%=recept.rence2%>" readonly style="border: none" id="rence21"
+                                   name="rence2" class=" col-md-7 col-xs-12" ></td>
+            <td colspan="2"><input type="text" value="<%=recept.rence3%>" readonly id="rence31" style="border: none"
+                                   name="rence3" class=" col-md-7 col-xs-12" ></td>
+
+            <td><input type="text" value="<%=recept.feiyongyusuan2%>" readonly style="border: none" id="feiyongyusuan21"
+                       name="feiyongyusuan2" class=" col-md-7 col-xs-12" ></td>
+        </tr>
+
+
+        <td rowspan="3" align="middle">3</td>
+        <td rowspan="3" align="middle" width="50px">宴  会</td>
+        <td colspan="1" width="50px" height="30px" align="middle">时间</td>
+
+        <td colspan="2" align="middle">人数</td>
+        <td colspan="2" align="middle">标准(元/人)</td>
+
+        <td rowspan="3"> <input type="text" value="<%=recept.feiyongyusuan3%>" id="feiyongyusuan31" readonly style="border: none"
+                                name="feiyongyusuan3" class=" col-md-7 col-xs-12" ></td>
+
+
+        </tr>
+
+
+        <tr >
+            <td><input type="text" value="<%=recept.yanhuisj1%>" readonly id="yanhuisj11" style="border: none"
+                       name="yanhuisj1" class=" col-md-7 col-xs-12" >
+            </td>
+            <td colspan="2"><input type="text" value="<%=recept.yanhuirs1%>" readonly id="yanhuirs11" style="border: none"
+                                   name="yanhuirs1" class="col-md-7 col-xs-12" ></td>
+
+            <td colspan="2"><input type="text" value="<%=recept.yanhuibz1%>"  readonly id="yanhuibz11" style="border: none"
+                                   name="yanhuibz1" class=" col-md-7 col-xs-12" ></td>
+        </tr>
+
+        <tr>
+            <td><input type="text" value="<%=recept.yanhuisj2%>" readonly id="yanhuisj21" style="border: none"
+                       name="yanhuisj2" class=" col-md-7 col-xs-12" >
+            </td>
+            <td colspan="2"><input type="text" value="<%=recept.yanhuirs2%>" readonly id="yanhuirs21" style="border: none"
+                                   name="yanhuirs2" class=" col-md-7 col-xs-12" ></td>
+
+            <td colspan="2"> <input type="text" value="<%=recept.yanhuibz2%>" readonly id="yanhuibz21" style="border: none"
+                                    name="yanhuibz2" class=" col-md-7 col-xs-12" ></td>
+
+        </tr>
+
+
+        <tr >
+
+            <td colspan="1" align="middle"> 合计</td>
+            <!--  大小写转换方法（ToolBymoney.change）-->
+            <td colspan="8"  >
+                <div class="col-xs-12"  style=" width: 100%;height: 30px ;float: left">
+                    <label class="control-label"  > 小写:</label><label class="control-label"  >
+                    <input type="text" id="xiaoxie1" name="xiaoxie" style="width: 50%;border: none" value="<%=recept.xiaoxie%>" readonly /></label>
+                    <div style="text-align: right"  class=" col-xs-3" ></div>
+                    <label class="control-label"  > 大写:</label><label class="control-label"  >
+                    <input type="text" id="daxie1" name="daxie" style="width: 100%;border: none" value="<%=recept.daxie%>" readonly /></label>
+
+                </div>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+
+
+
+<%}%>
+
+<%if(recept.clStep>2||(recept.clStep==1&&recept.isComplete==true)){%>
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+
+<div class="form-group chooseLeader" >
+    <div class="form-group">
+        <label class=" col-xs-12 text-left" style="font-size: larger">
+            接待细节安排:<%=recept.receptionWork%>
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;"> </label>
+    </div>
+</div>
+
+<%}%>
+
+<!--*********3***********-->
+<%if(recept.clStep==3&&recept.isComplete==false&&viewOnly=="false"){%>
+
+<!--<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>-->
+
+
+<!--<div class="form-group">
+    <label class="control-label  col-xs-2" style="text-align: left" >
+        接待细节安排 <span class="required">*</span>
+    </label>
+    <div class="col-xs-10">
+                <textarea id="receptionWork" required="required"   name="receptionWork" style="resize: none;"
+                          rows="3"  class="form-control col-md-7 col-xs-12" ></textarea>
+    </div>
+</div>-->
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+
+<div class="form-group" >
+<table border="1">
+    <tr>
+        <td width="50px" height="30px" align="middle" >序号</td>
+        <td colspan="6" align="middle">接待项目</td>
+
+        <td align="middle">费用预算(元)</td>
+    </tr>
+    <tr>
+        <td rowspan="2" align="middle">1</td>
+        <td rowspan="2" align="middle" width="50px">住  宿</td>
+        <td width="100px" align="middle" height="30px">房间型号</td>
+        <td align="middle">套间</td>
+        <td align="middle">单间</td>
+        <td align="middle">标准间</td>
+        <td align="middle">其他</td>
+        <td rowspan="2" ><input type="text" value="<%=recept.feiyongyusuan1%>" readonlyid="feiyongyusuan11" style="border: none" readonly
+                                name="feiyongyusuan1" class=" col-md-7 col-xs-12" ></td>
+    </tr>
+    <tr>
+
+
+        <td align="middle">数量</td>
+        <td><input type="text" value="<%=recept.taojian%>" readonly  style="border: none"
+                   name="taojian" class=" col-md-7 col-xs-12" ></td>
+        <td><input type="text" value="<%=recept.danjian%>" readonly  style="border: none"
+                   name="danjian" class=" col-md-7 col-xs-12" ></td>
+        <td><input type="text" value="<%=recept.biaozhunjian%>" readonly  style="border: none"
+                   name="biaozhunjian" class=" col-md-7 col-xs-12" ></td>
+        <td><input type="text" value="<%=recept.qitajian%>" readonly  style="border: none"
+                   name="qitajian" class=" col-md-7 col-xs-12" ></td>
+
+    </tr>
+    <tr>
+        <td align="middle">2</td>
+        <td align="middle" width="50px">工作餐</td>
+        <td colspan="1" align="middle">人/次</td>
+        <td colspan="1" align="middle">
+            <input type="text" value="<%=recept.rence1%>" readonly  style="border: none"
+                   name="rence1" class=" col-md-7 col-xs-12" >
+        </td>
+        </td>
+        <td colspan="1"><input type="text" value="<%=recept.rence2%>" readonly style="border: none"
+                               name="rence2" class=" col-md-7 col-xs-12" ></td>
+        <td colspan="2"><input type="text" value="<%=recept.rence3%>" readonly  style="border: none"
+                               name="rence3" class=" col-md-7 col-xs-12" ></td>
+
+        <td><input type="text" value="<%=recept.feiyongyusuan2%>" readonly style="border: none"
+                   name="feiyongyusuan2" class=" col-md-7 col-xs-12" ></td>
+    </tr>
+
+
+    <td rowspan="3" align="middle">3</td>
+    <td rowspan="3" align="middle" width="50px">宴  会</td>
+    <td colspan="1" width="50px" height="30px" align="middle">时间</td>
+
+    <td colspan="2" align="middle">人数</td>
+    <td colspan="2" align="middle">标准(元/人)</td>
+
+    <td rowspan="3"> <input type="text" value="<%=recept.feiyongyusuan3%>"  readonly style="border: none"
+                            name="feiyongyusuan3" class=" col-md-7 col-xs-12" ></td>
+
+
+    </tr>
+
+
+    <tr >
+        <td><input type="text" value="<%=recept.yanhuisj1%>" readonly  style="border: none"
+                   name="yanhuisj1" class=" col-md-7 col-xs-12" >
+        </td>
+        <td colspan="2"><input type="text" value="<%=recept.yanhuirs1%>" readonly  style="border: none"
+                               name="yanhuirs1" class="col-md-7 col-xs-12" ></td>
+
+        <td colspan="2"><input type="text" value="<%=recept.yanhuibz1%>"  readonly  style="border: none"
+                               name="yanhuibz1" class=" col-md-7 col-xs-12" ></td>
+    </tr>
+
+    <tr>
+        <td><input type="text" value="<%=recept.yanhuisj2%>" readonly  style="border: none"
+                   name="yanhuisj2" class=" col-md-7 col-xs-12" >
+        </td>
+        <td colspan="2"><input type="text" value="<%=recept.yanhuirs2%>" readonly  style="border: none"
+                               name="yanhuirs2" class=" col-md-7 col-xs-12" ></td>
+
+        <td colspan="2"> <input type="text" value="<%=recept.yanhuibz2%>" readonly  style="border: none"
+                                name="yanhuibz2" class=" col-md-7 col-xs-12" ></td>
+
+    </tr>
+
+
+    <tr >
+
+        <td colspan="1" align="middle"> 合计</td>
+        <!--  大小写转换方法（ToolBymoney.change）-->
+        <td colspan="8"  >
+            <div class="col-xs-12"  style=" width: 100%;height: 30px ;float: left">
+                <label class="control-label"  > 小写:</label><label class="control-label"  >
+                <input type="text"  name="xiaoxie" style="width: 50%;border: none" value="<%=recept.xiaoxie%>" readonly /></label>
+                <div style="text-align: right"  class=" col-xs-3" ></div>
+                <label class="control-label"  > 大写:</label><label class="control-label"  >
+                <input type="text" name="daxie" style="width: 100%;border: none" value="<%=recept.daxie%>" readonly /></label>
+
+            </div>
+        </td>
+    </tr>
+
+</table>
+</div>
+
+
+
+<%}%>
+
+<%if(recept.clStep>3||(recept.clStep==3&&recept.isComplete==true)){%>
+
+<!--<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+
+<div class="form-group chooseLeader" >
+    <div class="form-group">
+        <label class=" col-xs-12 text-left" style="font-size: larger">
+            接待细节安排:<%=recept.receptionWork%>
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;"> </label>
+    </div>
+</div>-->
+
+<%}%>
+
+<%if(recept.clStep==4&&recept.isComplete==false&&viewOnly=="false"){%>
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+<!--填写实际接待信息-->
+<div class="form-group  col-xs-12">
+    <label class="control-label  col-xs-2" style="text-align: right;font-size: larger" >
+        实际接待人(来访人员名单) <span class="required">*</span>
+    </label>
+    <div class="col-xs-10">
+                <textarea id="receptionPerson" required="required"   name="receptionPerson" style="resize: none;"
+                          rows="3"  class="form-control col-md-7 col-xs-12" ></textarea>
+    </div>
+</div>
+
+<!--<div class="form-group" style="margin-bottom: 10px;padding-left: 8px;">
+    <label class="control-label  col-xs-2" style="text-align: right;font-size: larger" >
+        陪同人员 <span class="required">*</span>
+    </label>
+
+    <div class="col-xs-10 " >
+
+
+            <select required="required" id="selEmp" multiple="multiple" class="form-control col-xs-7"
+                    data-parsley-id="0004">
+                <%for(var i = 0 ; i < empAll.length; i++) {%>
+                <option value="<%=empAll[i].id%>"><%=empAll[i].name%></option>
+                <%}%>
+            </select>
+
+        <input type="hidden" name="personComp" id="personComp"/>
+    </div>
+</div>-->
+
+<div class="form-group col-xs-12" style="padding-top: 10px;">
+    <label class="control-label  col-xs-2" style="text-align: right;font-size: larger" >
+        实际接待费用 <span class="required"></span>
+    </label>
+    <div class="col-xs-10">
+        <input type="text" id="actualCost"
+               name="actualCost" class="form-control col-md-7 col-xs-12" >
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2" style="text-align: right;font-size: larger" >
+        实际接待时间 <span class="required">*</span>
+    </label>
+    <div class="col-xs-10">
+        <input type="text" class="form-control col-md-3 col-xs-3 mini-width Wdate compareDate required" id="actualBeginTime"  readonly placeholder="开始时间"
+               name="actualBeginTime" >~
+        <input type="text" class="form-control col-md-3 col-xs-3 mini-width Wdate compareDate required" id="actualEndTime"   readonly placeholder="截止时间"
+               name="actualEndTime" >
+    </div>
+</div>
+
+
+
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2" style="text-align: right;font-size: larger" >
+        接待过程概述 <span class="required">*</span>
+    </label>
+    <div class="col-xs-10">
+                <textarea id="receptionProcess" required="required"   name="receptionProcess" style="resize: none;"
+                          rows="3"  class="form-control col-md-7 col-xs-12" ></textarea>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+<!--打印-->
+<div class="form-group col-xs-12">
+    <label class="control-label col-xs-12">
+        <a class="printBusiness"  style="border: 1px solid #E1E1E1;padding: 6px 8px;background-color: #E1E1E1;"> 打印申请单</a>
+    </label>
+</div>
+
+
+
+
+
+
+
+<div class="form-group">
+    <table border="1" >
+        <tr>
+            <td width="50px" height="30px" align="middle" >序号</td>
+            <td colspan="6" align="middle">接待项目</td>
+
+            <td align="middle">费用预算(元)</td>
+        </tr>
+        <tr>
+            <td rowspan="2" align="middle">1</td>
+            <td rowspan="2" align="middle" width="50px">住  宿</td>
+            <td width="100px" align="middle" height="30px">房间型号</td>
+            <td align="middle">套间</td>
+            <td align="middle">单间</td>
+            <td align="middle">标准间</td>
+            <td align="middle">其他</td>
+            <td rowspan="2" ><input type="text" value="<%=recept.feiyongyusuan1%>" readonlyid="feiyongyusuan11" style="border: none" readonly
+                                    name="feiyongyusuan1" class=" col-md-7 col-xs-12" ></td>
+        </tr>
+        <tr>
+
+
+            <td align="middle">数量</td>
+            <td><input type="text" value="<%=recept.taojian%>" readonly  style="border: none"
+                       name="taojian" class=" col-md-7 col-xs-12" ></td>
+            <td><input type="text" value="<%=recept.danjian%>" readonly  style="border: none"
+                       name="danjian" class=" col-md-7 col-xs-12" ></td>
+            <td><input type="text" value="<%=recept.biaozhunjian%>" readonly  style="border: none"
+                       name="biaozhunjian" class=" col-md-7 col-xs-12" ></td>
+            <td><input type="text" value="<%=recept.qitajian%>" readonly  style="border: none"
+                       name="qitajian" class=" col-md-7 col-xs-12" ></td>
+
+        </tr>
+        <tr>
+            <td align="middle">2</td>
+            <td align="middle" width="50px">工作餐</td>
+            <td colspan="1" align="middle">人/次</td>
+            <td colspan="1" align="middle">
+                <input type="text" value="<%=recept.rence1%>" readonly  style="border: none"
+                       name="rence1" class=" col-md-7 col-xs-12" >
+            </td>
+            </td>
+            <td colspan="1"><input type="text" value="<%=recept.rence2%>" readonly style="border: none"
+                                   name="rence2" class=" col-md-7 col-xs-12" ></td>
+            <td colspan="2"><input type="text" value="<%=recept.rence3%>" readonly  style="border: none"
+                                   name="rence3" class=" col-md-7 col-xs-12" ></td>
+
+            <td><input type="text" value="<%=recept.feiyongyusuan2%>" readonly style="border: none"
+                       name="feiyongyusuan2" class=" col-md-7 col-xs-12" ></td>
+        </tr>
+
+
+        <td rowspan="3" align="middle">3</td>
+        <td rowspan="3" align="middle" width="50px">宴  会</td>
+        <td colspan="1" width="50px" height="30px" align="middle">时间</td>
+
+        <td colspan="2" align="middle">人数</td>
+        <td colspan="2" align="middle">标准(元/人)</td>
+
+        <td rowspan="3"> <input type="text" value="<%=recept.feiyongyusuan3%>"  readonly style="border: none"
+                                name="feiyongyusuan3" class=" col-md-7 col-xs-12" ></td>
+
+
+        </tr>
+
+
+        <tr >
+            <td><input type="text" value="<%=recept.yanhuisj1%>" readonly  style="border: none"
+                       name="yanhuisj1" class=" col-md-7 col-xs-12" >
+            </td>
+            <td colspan="2"><input type="text" value="<%=recept.yanhuirs1%>" readonly  style="border: none"
+                                   name="yanhuirs1" class="col-md-7 col-xs-12" ></td>
+
+            <td colspan="2"><input type="text" value="<%=recept.yanhuibz1%>"  readonly  style="border: none"
+                                   name="yanhuibz1" class=" col-md-7 col-xs-12" ></td>
+        </tr>
+
+        <tr>
+            <td><input type="text" value="<%=recept.yanhuisj2%>" readonly  style="border: none"
+                       name="yanhuisj2" class=" col-md-7 col-xs-12" >
+            </td>
+            <td colspan="2"><input type="text" value="<%=recept.yanhuirs2%>" readonly  style="border: none"
+                                   name="yanhuirs2" class=" col-md-7 col-xs-12" ></td>
+
+            <td colspan="2"> <input type="text" value="<%=recept.yanhuibz2%>" readonly  style="border: none"
+                                    name="yanhuibz2" class=" col-md-7 col-xs-12" ></td>
+
+        </tr>
+
+
+        <tr >
+
+            <td colspan="1" align="middle"> 合计</td>
+            <!--  大小写转换方法（ToolBymoney.change）-->
+            <td colspan="8"  >
+                <div class="col-xs-12"  style=" width: 100%;height: 30px ;float: left">
+                    <label class="control-label"  > 小写:</label><label class="control-label"  >
+                    <input type="text"  name="xiaoxie" style="width: 50%;border: none" value="<%=recept.xiaoxie%>" readonly /></label>
+                    <div style="text-align: right"  class=" col-xs-3" ></div>
+                    <label class="control-label"  > 大写:</label><label class="control-label"  >
+                    <input type="text" name="daxie" style="width: 100%;border: none" value="<%=recept.daxie%>" readonly /></label>
+
+                </div>
+            </td>
+        </tr>
+
+    </table>
+</div>
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+
+
+<div class="form-group col-xs-12">
+    <label class="control-label  col-xs-2" style="text-align: right;font-size: larger" >
+        接待费用清单 <span class="required">*</span>
+    </label>
+    <div class="col-xs-10">
+        <input type="file" name="costCostFile" id="upFile"> <input type="button" id="uploadCostList" value="上传">
+    </div>
+</div>
+
+<%}%>
+
+<%if(recept.clStep>4||(recept.clStep==4&&recept.isComplete==true)){%>
+    <div class="form-group col-xs-12">
+        <div class="control-label col-xs-12">
+            <hr style="border: 1px solid silver;width: 100%"/>
+        </div>
+    </div>
+    <!--填写实际接待信息-->
+
+<div class="form-group chooseLeader" >
+    <div class="form-group">
+        <label class=" col-xs-12 text-left" style="font-size: larger">
+            实际接待人(来访人员名单):<%=recept.receptionPerson%>
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;"> </label>
+    </div>
+</div>
+
+<!--<div class="form-group chooseLeader" >
+    <div class="form-group">
+        <label class=" col-xs-12 text-left" style="font-size: larger">
+            &lt;!&ndash;陪同人员:<%=recept.personComp%>&ndash;&gt;
+            陪同人员:<%=personComp%>
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;"> </label>
+    </div>
+</div>-->
+
+<div class="form-group chooseLeader" >
+    <div class="form-group">
+        <label class=" col-xs-12 text-left" style="font-size: larger">
+            实际接待费用:
+            <%if(recept.actualCost!=null){%>
+            <%=recept.actualCost%>
+            <%}%>
+            <%if(recept.actualCost==null){%>
+            暂无
+            <%}%>
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;"> </label>
+    </div>
+</div>
+
+<div class="form-group chooseLeader" >
+    <div class="form-group">
+        <label class=" col-xs-12 text-left" style="font-size: larger">
+            实际接待时间:<%=recept.actualBeginTime%>~<%=recept.actualEndTime%>
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;"> </label>
+    </div>
+</div>
+
+<div class="form-group chooseLeader" >
+    <div class="form-group">
+        <label class=" col-xs-12 text-left" style="font-size: larger">
+            接待过程概述:<%=recept.receptionProcess%>
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;"> </label>
+    </div>
+</div>
+
+
+<div class="form-group chooseLeader" >
+    <div class="form-group">
+        <label class=" col-xs-12 text-left" style="font-size: larger">
+            <!--接待费用清单:<a href="/downloadFile?id=<%=recept.fileId1%>"><%=recept.fileName1%></a>-->
+            接待费用清单:
+            <%if(recept.fileName1!=null){%>
+                <a href="/downloadFile?id=<%=recept.fileId1%>"><%=recept.fileName1%></a>
+            <%}%>
+            <%if(recept.fileName1==null){%>
+                无
+            <%}%>
+        </label>
+        <label class="control-label col-xs-4" style="text-align: left;"> </label>
+    </div>
+</div>
+
+
+<div class="form_group">
+    <div class="form_group">
+        <a class="btn btn-default left" id="daochu" style="background-color: orange">本申请导出(公务接待)</a><input type="hidden" value="<%=recept.formNo%>" id="t_formNo"/>
+    </div>
+    <div class="form_group">
+        <a class="btn btn-default left" id="daochuAll" style="background-color: orangered">汇总导出(公务接待)</a><input type="hidden" value="<%=recept.formKind%>" id="t_formKind"/>
+    </div>
+</div>
+
+
+<%}%>
+
+<%if (recept.clStep > 1 && viewOnly=="true"){%>
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+<%if (recept.clStep == 4){%>
+<!--打印-->
+<div class="form-group col-xs-12">
+    <label class="control-label col-xs-12">
+        <a class="printBusiness"  style="border: 1px solid #E1E1E1;padding: 6px 8px;background-color: #E1E1E1;"> 打印申请单</a>
+    </label>
+</div>
+<%}%>
+
+<div class="form-group" >
+    <table border="1">
+        <tr>
+            <td width="50px" height="30px" align="middle" >序号</td>
+            <td colspan="6" align="middle">接待项目</td>
+
+            <td align="middle">费用预算(元)</td>
+        </tr>
+        <tr>
+            <td rowspan="2" align="middle">1</td>
+            <td rowspan="2" align="middle" width="50px">住  宿</td>
+            <td width="100px" align="middle" height="30px">房间型号</td>
+            <td align="middle">套间</td>
+            <td align="middle">单间</td>
+            <td align="middle">标准间</td>
+            <td align="middle">其他</td>
+            <td rowspan="2" ><input type="text" value="<%=recept.feiyongyusuan1%>" readonlyid="feiyongyusuan11" style="border: none" readonly
+                                    name="feiyongyusuan1" class=" col-md-7 col-xs-12" ></td>
+        </tr>
+        <tr>
+
+
+            <td align="middle">数量</td>
+            <td><input type="text" value="<%=recept.taojian%>" readonly  style="border: none"
+                       name="taojian" class=" col-md-7 col-xs-12" ></td>
+            <td><input type="text" value="<%=recept.danjian%>" readonly  style="border: none"
+                       name="danjian" class=" col-md-7 col-xs-12" ></td>
+            <td><input type="text" value="<%=recept.biaozhunjian%>" readonly  style="border: none"
+                       name="biaozhunjian" class=" col-md-7 col-xs-12" ></td>
+            <td><input type="text" value="<%=recept.qitajian%>" readonly  style="border: none"
+                       name="qitajian" class=" col-md-7 col-xs-12" ></td>
+
+        </tr>
+        <tr>
+            <td align="middle">2</td>
+            <td align="middle" width="50px">工作餐</td>
+            <td colspan="1" align="middle">人/次</td>
+            <td colspan="1" align="middle">
+                <input type="text" value="<%=recept.rence1%>" readonly  style="border: none"
+                       name="rence1" class=" col-md-7 col-xs-12" >
+            </td>
+            </td>
+            <td colspan="1"><input type="text" value="<%=recept.rence2%>" readonly style="border: none"
+                                   name="rence2" class=" col-md-7 col-xs-12" ></td>
+            <td colspan="2"><input type="text" value="<%=recept.rence3%>" readonly  style="border: none"
+                                   name="rence3" class=" col-md-7 col-xs-12" ></td>
+
+            <td><input type="text" value="<%=recept.feiyongyusuan2%>" readonly style="border: none"
+                       name="feiyongyusuan2" class=" col-md-7 col-xs-12" ></td>
+        </tr>
+
+
+        <td rowspan="3" align="middle">3</td>
+        <td rowspan="3" align="middle" width="50px">宴  会</td>
+        <td colspan="1" width="50px" height="30px" align="middle">时间</td>
+
+        <td colspan="2" align="middle">人数</td>
+        <td colspan="2" align="middle">标准(元/人)</td>
+
+        <td rowspan="3"> <input type="text" value="<%=recept.feiyongyusuan3%>"  readonly style="border: none"
+                                name="feiyongyusuan3" class=" col-md-7 col-xs-12" ></td>
+
+
+        </tr>
+
+
+        <tr >
+            <td><input type="text" value="<%=recept.yanhuisj1%>" readonly  style="border: none"
+                       name="yanhuisj1" class=" col-md-7 col-xs-12" >
+            </td>
+            <td colspan="2"><input type="text" value="<%=recept.yanhuirs1%>" readonly  style="border: none"
+                                   name="yanhuirs1" class="col-md-7 col-xs-12" ></td>
+
+            <td colspan="2"><input type="text" value="<%=recept.yanhuibz1%>"  readonly  style="border: none"
+                                   name="yanhuibz1" class=" col-md-7 col-xs-12" ></td>
+        </tr>
+
+        <tr>
+            <td><input type="text" value="<%=recept.yanhuisj2%>" readonly  style="border: none"
+                       name="yanhuisj2" class=" col-md-7 col-xs-12" >
+            </td>
+            <td colspan="2"><input type="text" value="<%=recept.yanhuirs2%>" readonly  style="border: none"
+                                   name="yanhuirs2" class=" col-md-7 col-xs-12" ></td>
+
+            <td colspan="2"> <input type="text" value="<%=recept.yanhuibz2%>" readonly  style="border: none"
+                                    name="yanhuibz2" class=" col-md-7 col-xs-12" ></td>
+
+        </tr>
+
+
+        <tr >
+
+            <td colspan="1" align="middle"> 合计</td>
+            <!--  大小写转换方法（ToolBymoney.change）-->
+            <td colspan="8"  >
+                <div class="col-xs-12"  style=" width: 100%;height: 30px ;float: left">
+                    <label class="control-label"  > 小写:</label><label class="control-label"  >
+                    <input type="text"  name="xiaoxie" style="width: 50%;border: none" value="<%=recept.xiaoxie%>" readonly /></label>
+                    <div style="text-align: right"  class=" col-xs-3" ></div>
+                    <label class="control-label"  > 大写:</label><label class="control-label"  >
+                    <input type="text" name="daxie" style="width: 100%;border: none" value="<%=recept.daxie%>" readonly /></label>
+
+                </div>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+
+<%}%>
+<div id="divPrint" class="table-d" style="display: none" >
+
+    <style>
+        .table-d table{border:1px solid #000000;border-collapse: collapse}
+        .table-d table td{border:1px solid #000000;}
+    </style>
+
+    <table width="800" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td width="50px" height="30px" align="middle" >序号</td>
+            <td colspan="6" align="middle">接待项目</td>
+
+            <td align="middle">费用预算(元)</td>
+        </tr>
+        <tr>
+            <td rowspan="2" align="middle">1</td>
+            <td rowspan="2" align="middle" width="50px">住  宿</td>
+            <td width="100px" align="middle" height="30px">房间型号</td>
+            <td align="middle">套间</td>
+            <td align="middle">单间</td>
+            <td align="middle">标准间</td>
+            <td align="middle">其他</td>
+            <td rowspan="2" align="middle" ><%=recept.feiyongyusuan1%></td>
+        </tr>
+        <tr>
+
+
+            <td align="middle">数量</td>
+            <td align="middle"><%=recept.taojian%></td>
+            <td align="middle"><%=recept.danjian%></td>
+            <td align="middle"><%=recept.biaozhunjian%></td>
+            <td align="middle"><%=recept.qitajian%></td>
+
+        </tr>
+        <tr>
+            <td align="middle">2</td>
+            <td align="middle" width="50px">工作餐</td>
+            <td colspan="1" align="middle">人/次</td>
+            <td colspan="1" align="middle">
+                <%=recept.rence1%>
+            </td>
+            </td>
+            <td colspan="1"align="middle"><%=recept.rence2%></td>
+            <td colspan="2"align="middle"><%=recept.rence3%></td>
+
+            <td align="middle"><%=recept.feiyongyusuan2%></td>
+        </tr>
+
+
+        <td rowspan="3" align="middle">3</td>
+        <td rowspan="3" align="middle" width="50px">宴  会</td>
+        <td colspan="1" width="50px" height="30px" align="middle">时间</td>
+
+        <td colspan="2" align="middle">人数</td>
+        <td colspan="2" align="middle">标准(元/人)</td>
+
+        <td rowspan="3" align="middle"> <%=recept.feiyongyusuan3%></td>
+        </tr>
+        <tr >
+            <td align="middle"><%=recept.yanhuisj1%>
+            </td>
+            <td colspan="2" align="middle"><%=recept.yanhuirs1%></td>
+
+            <td colspan="2" align="middle"><%=recept.yanhuibz1%></td>
+        </tr>
+        <tr>
+            <td align="middle"><%=recept.yanhuisj2%>
+            </td>
+            <td colspan="2" align="middle"><%=recept.yanhuirs2%></td>
+
+            <td colspan="2" align="middle"> <%=recept.yanhuibz2%></td>
+
+        </tr>
+
+
+        <tr >
+
+            <td colspan="1" align="middle"> 合计</td>
+            <!--  大小写转换方法（ToolBymoney.change）-->
+            <td colspan="8" align="middle" >
+
+                小写:<%=recept.xiaoxie%>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                大写:<%=recept.daxie%>
+            </td>
+        </tr>
+
+    </table>
+</div>

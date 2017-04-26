@@ -1,0 +1,102 @@
+<!--requirejs加载js文件，指定网页程序的主模块rjs-config.js-->
+<script data-main="js/rjs-config.js" src="js/require.js"></script>
+<!--<script data-main="js/rjs-config.js" src="js/require.js" async="true" defer></script>-->
+<style>
+
+    .hiddenStyle{display: none}
+
+    .dq_lc03_certificate{width: 980px;height: 540px;position: relative;top: -545px;left: 150px;}
+    .certi_section_1{font: 22px 微软雅黑;letter-spacing: 5px;text-indent: 50px;width: 420px;height: 220px;line-height: 40px;display: inline-block;}
+    .certi_section_2{display: inline-block;width: 320px;height: 200px;float: right;position: relative;top: -20px}
+    table{font:  bolder 20px 微软雅黑}
+    tr{width: 320px;}
+    .certi_section_3{display: inline-block;height: 200px;font:bolder 20px 微软雅黑;float: right;width: 440px}
+    .certi_section_4{display: inline-block;width: 500px;height: 150px;float: left}
+    .certi_section_4 span:nth-child(1){position: relative;top: 110px;left: 28px;}
+    .certi_section_4 span:nth-child(2){top: 110px;position: relative;left: 210px;}
+
+</style>
+
+<div>
+    <input type="button" class="btn btn-default image_generare" id="image_generare" value="图片生成">
+    <!--<a>图片下载</a>-->
+    <input type="hidden" class="" value="$formNo" id="formNo">
+
+
+
+</div>
+<div id="imageHolder" style="width: 1250px;margin: 0 auto;height: 900px;overflow: hidden">
+    <img src="images/dq_lc03.jpg"  style="width: 1250px;">
+    <div class="dq_lc03_certificate">
+        <div>
+            <div class="certi_section_1">
+                <span>为表彰在促进新疆油田公司实验检测研究院<span class="js_projectName">$!name</span>活动中做出重要贡献者，特颁发此证书，以资鼓励。</span>
+            </div>
+            <div class="certi_section_2">
+                <table>
+                    <tr>
+                        <td height="90px">
+                            $dto.projectName
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="70px">
+                            #if($dto.image_awardLevel=="first")
+                            一等奖
+                            #end
+                            #if($dto.image_awardLevel=="second")
+                            二等奖
+                            #end
+                            #if($dto.image_awardLevel=="third")
+                            三等奖
+                            #end
+                            #if($dto.image_awardLevel=="excellent")
+                            优秀奖
+                            #end
+                            #if($dto.image_awardLevel=="no")
+                            未获奖
+                            #end
+
+
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+        <div>
+            <div class="certi_section_4">
+                <span>$!currentTime</span>
+                <span>$!currentTime</span>
+
+            </div>
+            <div class="certi_section_3">
+                <div style="margin-top: 20px">
+                    #set($i=0)
+                    #if($dto.mainPeople)
+                        #foreach($person in $dto.mainPeople)
+                        #set($i=$i+1)
+                        <span style="width: 170px;display: inline-block;margin-bottom: 15px">$i、$person</span>
+                            #if($i==2)
+                            <br/>
+                            #end
+                        #end
+                    #end
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+<script>
+    require(["app/partyGroup/innovationAchievement_image"]);
+</script>

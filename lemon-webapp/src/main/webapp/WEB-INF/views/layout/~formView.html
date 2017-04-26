@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>流程查看</title>
+    <script data-main="js/rjs-config.js" src="js/require.js"></script>
+    <script src="js/jslib/jquery.min.js"></script>
+    $ui.loadCss("bootstrap.min.css")
+    $ui.loadCss("fonts/css/font-awesome.min.css")
+    $ui.loadCss("animate.min.css")
+    $ui.loadCss("custom.css")
+    $ui.loadCss("icheck/skins/minimal/minimal.css")
+
+    <script>
+        require(['app/init']);
+    </script>
+</head>
+<body class="nav-md"  style=" background: #fff;">
+<div class="container body">
+    <div style="padding: 10px 20px 0;background:#F7F7F7 ;height: 100%;">
+        <div class=" x_panel " style="width: 100%;">
+            #parse("/common/formbody.html")
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

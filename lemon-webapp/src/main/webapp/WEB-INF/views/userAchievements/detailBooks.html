@@ -1,0 +1,90 @@
+<form id="addBooksInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >论著名称 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.treatise_Name #end</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >发表/出版时间 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.publish_Time_ #end</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >论著级别 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">
+            #if($beans)
+            #if ($beans.treatise_Level==1)国家级  #end
+            #if ($beans.treatise_Level==2)省部级  #end
+            #if ($beans.treatise_Level==3)油田公司级  #end
+            #if ($beans.treatise_Level==4)厂处级  #end
+            #end
+        </label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >出版社/刊名称 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.treatise_Press #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >是否核心 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">
+            #if($beans.is_Core) 是 #else 否 #end
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >发表/出版单位 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.unit #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >书/期刊号 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.make_No #end</label>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >作者<span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans.first_Author)$beans.first_Author #end</label>
+    </div>
+<!--    <div class="form-group">
+        <label class="control-label  col-xs-3" >其他合著人<span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.winner_info #end</label>
+    </div>-->
+    <div class="form-group">
+        <label class="control-label col-xs-3">第几作者<span class="required">:</span></label>
+        <label class="control-label col-xs-4" style="text-align: left;">#if($beans.level_Author)$beans.level_Author #end</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-3" >是否合著 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans.is_cooperate) 是 #else 否 #end</label>
+    </div>
+
+
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+
+            <!--<button type="submit" id="addOrUpdatebook" data-url="ajax_add_update_book" class="btn btn-success">提交</button>-->
+            <!--<button type="button" id="cancelModal" class="btn btn-primary"><a href="javascript:history.go(-1);">取消</a></button>-->
+            <a class="btn btn-primary" href="javascript:history.go(-1);">返回</a>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    require(['app/userAchievements/detailBooks']);
+</script>
+
+

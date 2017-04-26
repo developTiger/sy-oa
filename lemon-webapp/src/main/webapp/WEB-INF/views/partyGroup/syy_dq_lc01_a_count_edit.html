@@ -1,0 +1,195 @@
+
+<style>
+    .col-xs-6{text-align: left}
+    .div_style{text-align: left}
+</style>
+<form id="updateWorkProject" class="form-horizontal form-left  " style="width: 800px">
+    <input type="hidden" name="id" value="$!beans.id">
+    <input type="hidden" name="hidScore" id="hiddenScore" value="$!beans.approveScore">
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >项目名称 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-4 div_style">
+            <label class="control-label">$!beans.projectName</label>
+        </div>
+
+        <label class="control-label  col-xs-2" >竞赛类别 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-4 div_style">
+            <label class="control-label">$!beans.competitionType</label>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >竞赛主题 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-4 div_style">
+            <label class="control-label">$!beans.competitionTitle</label>
+        </div>
+
+        <label class="control-label  col-xs-2" >项目负责人 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-4 div_style">
+            <label class="control-label">$!beans.leader</label>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">主要参加人 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-4 div_style">
+            <select id="example-dropUp" multiple="multiple">
+                #if($list)
+                #foreach($bean in $list)
+                <option value="$bean.name" #if($beans.joinPeople.contains($bean.name)) selected #end>$bean.name</option>
+                #end
+                #else
+                <d>暂无数据</d>
+                #end
+            </select>
+            <input type="hidden" id="hidJoinPeople" name="hiddenJoinPeople">
+        </div>
+
+        <label class="control-label  col-xs-2" >竞赛单位 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-4 div_style">
+            <label class="control-label">$!beans.competitionUnit</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">申报时间 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-4 div_style">
+            <label class="control-label">$help.formatDateToString($!beans.cpmpetitionTime,"yyyy-MM-dd")</label>
+        </div>
+
+        <label class="control-label  col-xs-2" >项目状态 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-4 div_style">
+            <label class="control-label">#if($!beans.formStatus == "UA") 未通过 #else 通过 #end</label>
+        </div>
+    </div>
+
+    <!--<div class="form-group">-->
+        <!--<label class="control-label  col-xs-2">获奖等级 <span class="required">*</span>-->
+        <!--</label>-->
+
+        <!--<div class="col-xs-4 div_style">-->
+            <!--<label class="control-label">-->
+                <!--$!beans.prizeLeval-->
+            <!--</label>-->
+        <!--</div>-->
+
+        <!--<label class="control-label  col-xs-2" >成果得分 <span class="required">*</span>-->
+        <!--</label>-->
+
+        <!--<div class="col-xs-4 div_style">-->
+            <!--<label class="control-label">$!beans.approveScore</label>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+        <!--<label class="control-label  col-xs-2" >成果评审小组成员 <span class="required">*</span>-->
+        <!--</label>-->
+
+        <!--<div class="col-xs-4 div_style">-->
+            <!--<label class="control-label">$!beans.reviewGroupMembers</label>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">现状说明 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <textarea type="text" id="situationExplain" required="required"
+                   name="situationExplain"
+                   class="form-control ">$!beans.situationExplain</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">立项依据 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <textarea type="text" id="projectBasis" required="required"
+                   name="projectBasis"
+                   class="form-control ">$!beans.projectBasis</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">控制措施 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <textarea type="text" id="controlAction" required="required"
+                      name="controlAction"
+                      class="form-control ">$!beans.controlAction</textarea>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">进度安排 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <textarea type="text" id="scheduleArrange" required="required"
+                      name="scheduleArrange"
+                      class="form-control ">$!beans.scheduleArrange</textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">预期效果 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-10">
+            <textarea type="text" id="expectResult" required="required"
+                      name="expectResult"
+                      class="form-control ">$!beans.expectResult</textarea>
+        </div>
+    </div>
+
+    <!--<div class="form-group">-->
+        <!--<label class="control-label  col-xs-2">附件 <span class="required">*</span>-->
+        <!--</label>-->
+
+        <!--<div class="col-xs-10">-->
+            <!--<label class="control-label"><a href="downloadFile?id=$!beans.fileId">$!beans.fileName</a></label>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-5">
+
+            <button type="button" id="updateCountDetail" data-url="ajax_update_workProject_countDetail" class="btn btn-success">保存</button>
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+        </div>
+    </div>
+
+</form>
+
+
+
+<script>
+    require(["app/partyGroup/workProject"]);
+</script>

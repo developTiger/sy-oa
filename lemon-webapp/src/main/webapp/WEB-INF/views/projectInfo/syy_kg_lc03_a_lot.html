@@ -1,0 +1,110 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+$ui.loadCss("select2/select2.min.css")
+    <form id="approveFormLot">
+
+        <div class="x_panel">
+            <div class="x_content">
+
+             <div  style="text-align: center">
+                  <a class=" btn btn-success" id="lotApprove">同意</a>
+                    <a class=" btn btn-primary" id="lotReject"> #if($clStep==2)打回#else否决#end</a>
+                </div>
+
+                <div>
+                    <label>审核意见：</label>
+                </div>
+
+                <div>
+                    <textarea class="form-control" style="margin: 0px -0.5px 0px 0px; width: 100%; height: 100px;" id="allContent"></textarea>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+<div class="x_panel">
+    <div style="text-align: center;font-size: xx-small">
+        #if($clStep==2)
+        <h2>基层领导审查</h2>
+        #end
+        #if($clStep==3)
+        <h2>中心科管人员汇总审批</h2>
+        #end
+        #if($clStep==4)
+        <h2>科管科审查</h2>
+        #end
+        #if($clStep==5)
+        <h2>科管科科长审批</h2>
+        #end
+        #if($clStep==6)
+        <h2>专家评测</h2>
+        #end
+        #if($clStep==7)
+        <h2>科管科审核</h2>
+        #end
+        #if($clStep==8)
+        <h2> 科管科科长审查</h2>
+        #end
+        #if($clStep==9)
+        <h2>主管领导</h2>
+        #end
+        #if($clStep==10)
+        <h2>科委会主任</h2>
+        #end
+        #if($clStep==11)
+        <h2>科管科汇总归档</h2>
+        #end
+    </div>
+
+    <form id="searchForm">
+        <div class="form-inline col-xs-10 col-xs-offset-8" >
+            <input type="hidden"name="clStep"value="$clStep">
+            <label class="control-label">专业类别：</label>
+                <div class="form-group" >
+                        <input type="text" class="form-control" name="specialtyType">
+                </div>
+                <div class="form-group" style="margin-top: 5px" >
+                    <input class="btn btn-default " type="button"  id="failAllQueryBtn" value="查询">
+                </div>
+        </div>
+    </form>
+
+    <div id="table1"></div>
+    <div class="col-lg-10 dataTables_paginate  ">
+        <ul class="pagination "></ul>
+    </div>
+
+    <!--<div id="file_List">
+        #if($beandto.executionFileList.size()>0)
+        <div  class="form-group col-xs-12">
+            <label class=" col-md-7 col-xs-12" >
+
+                实施运行附件汇总: <br/>
+                #foreach($ss in $beandto.executionFileList)
+                <a href="downloadFile?id=$ss.fileId1">$ss.fileName1</a></br>
+                #end
+            </label>
+        </div>
+        #end
+    </div>-->
+    #if($clStep==11)
+    <div class="form-group col-xs-12">
+
+        <label class=" col-md-7 col-xs-12" >
+            <input type="file"  id="fileId" name="fileName"/>
+            <input type="button" id="upload" value="上传">
+        </label>
+
+    </div>
+    #end
+ </div>
+<input type="hidden" id="hidname" name="hidname"/>
+<input type="hidden" id="hidid" name="hidid"/>
+<input type="hidden" id="projectNo" name="projectNo" value="$main.projectNo"/>
+<script>
+    require(["app/projectInfo/syy_kg_lc03_a_lot"]);
+</script>
+
+
+
+

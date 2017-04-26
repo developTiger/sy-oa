@@ -1,0 +1,172 @@
+
+    <!-- top tiles -->
+
+
+    <div class="row" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+
+
+        <div class="col-xs-4">
+            <div class="x_panel tile fixed_height_320">
+                <div class="">
+
+                    <div role="tabpanel" data-example-id="togglable-tabs" >
+                        <ul class="nav nav-tabs bar_tabs" id="myTab" role="tablist" >
+                            <li class="active" role="presentation" ><a id="home-tab" role="tab" aria-expanded="true" href="#tab_content1" data-toggle="tab" class="queryData" data-url="ajax_query_myApply">我的申请</a>
+                            </li>
+                            <li role="presentation"><a id="profile-tab" role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData" data-url="ajax_query_applyWorkDone">已完成的申请</a>
+                            </li>
+                        </ul>
+
+
+                    </div>
+                </div>
+                <div class="x_content">
+
+                    <div id="firstTable">
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div class="x_panel tile fixed_height_320 overflow_hidden">
+                <div class="">
+                    <ul class="nav nav-tabs bar_tabs"  role="tablist" >
+                        <li class="active" role="presentation" ><a id="secondForm" role="tab" aria-expanded="true" href="#tab_content1" data-toggle="tab" class="queryData2" data-url="ajax_query_myWorkToDo">待办工作</a>
+                        </li>
+                        <li role="presentation"><a  role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData2" data-url="ajax_query_myWorkDone">已办工作</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="x_content">
+
+                    <div id="secondTable">
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xs-4">
+            <div class="x_panel tile fixed_height_320">
+                <div class="">
+                    <h2><strong>常用表单</strong></h2>
+                </div></br>
+                <div class="x_content " >
+                    <div class="pull-right">
+                        <a href="sra_f_userApply"><strong>更多</strong></a>
+                    </div>
+                    <table class="table  dataTable no-footer">
+                        <thead>
+                        <tr class="headings">
+                            <th class="column-title">序号</th>
+                            <th class="column-title">表单名称</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr >
+                            <td class=" ">1</td>
+                            <td class=" "><a class="viewForm" data-url="syy_rs_lc06_a?formKind=SYY_RS_LC06">请假申请单</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><a  class="viewForm" data-url="syy_rs_lc05_a?formKind=SYY_RS_LC05">出差申请单</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-xs-8" style="padding-left: 0px !important;">
+
+
+
+        <div class="row">
+
+            <div class="col-xs-12">
+                <div class="x_panel">
+                    <div class="">
+                        <h2><strong>新闻</strong></h2>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="fourthTable">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+
+
+            <!-- Start to do list -->
+            <div class="col-xs-6 ">
+                <div class="x_panel">
+                    <div class="">
+                        <ul class="nav nav-tabs bar_tabs"  role="tablist" >
+                            <li class="active" role="presentation" ><a  id="default5" role="tab" aria-expanded="true" href="#tab_content1" data-toggle="tab" class="queryData5" data-url="ajax_get_appraiseDate?appStatus=0">我的考评</a>
+                            </li>
+                            <li role="presentation"><a  role="tab" aria-expanded="false" href="#tab_content2" data-toggle="tab" class="queryData5" data-url="ajax_get_appraiseDate?appStatus=1">考评历史</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="appraiseTable">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End to do list -->
+
+
+            <!-- start of weather widget -->
+            <div class="col-xs-6">
+                <div class="x_panel">
+                    
+                </div>
+
+            </div>
+            <!-- end of weather widget -->
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="x_panel">
+                <div class="">
+                    <h2><strong>通知</strong></h2>
+                </div>
+                <div class="x_content">
+                    <div class="">
+
+                        <div id="thirdTable">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+<script>
+    require(["app/index"]);
+</script>

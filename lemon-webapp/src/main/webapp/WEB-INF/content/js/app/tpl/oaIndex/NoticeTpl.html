@@ -1,0 +1,48 @@
+<div class="pull-right">
+    <a href="sra_p_showNewsList"><strong>更多</strong></a>
+</div>
+<table class="table   dataTable no-footer" border="0">
+
+    <thead>
+    <tr class="headings">
+
+        <th class="column-title">通知类型</th>
+        <th class="column-title">通知名称</th>
+        <th class="column-title">时间</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <%var num = 0%>
+    <%if(items.length > 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr >
+
+        <td><%if(items[i].noticeType == "Train"){%>
+            [培训]
+            <%}%>
+            <%if(items[i].noticeType == "Institution"){%>
+            [制度]
+            <%}%>
+            <%if(items[i].noticeType == "DeptExamine"){%>
+            [考核]
+            <%}%>
+            <%if(items[i].noticeType == "EmpExaming"){%>
+            [考核]
+            <%}%>
+        </td>
+        <td><a href="/sra_p_showNews?id=<%=items[i].id%>"><%=items[i].noticeName%></a></td>
+        <td><%if(items[i].sDate){%>
+            <%=dateFormat(items[i].createDateTime)%>
+            <%}%>
+        </td>
+
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="3" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+<div class="form-group">
+    <label class="control-label  col-xs-3"><span class="required"></span>
+    </label>
+    <div class="col-xs-6 " >
+        <select name="mainPeople" id="" class="form-control select2_group  txtValue" >
+
+            <%if(items && items.length>0){%>
+            <option value="">请选择</option>
+            <%for(var i=0;i < items.length;i++){%>
+            <optgroup label="<%=items[i].deptName%>">
+                <%for(var j=0;j < items[i].empDtos.length;j++){%>
+                <option value="<%=items[i].empDtos[j].name%>"><%=items[i].empDtos[j].name%></option>
+                <%}%>
+            </optgroup>
+            <%}%>
+            <%}%>
+
+        </select>
+    </div>
+    <div class="col-xs-2" style="margin: 5px;">
+        <button type="button" class="btn btn-danger Js_mainPeople_delete">删除</button>
+    </div>
+</div>

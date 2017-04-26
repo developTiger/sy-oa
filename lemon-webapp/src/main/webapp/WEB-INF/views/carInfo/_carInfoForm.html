@@ -1,0 +1,53 @@
+
+<form id="deleteCarForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($beans)value="$beans.id"#end>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >调度中心 <span class="required">:</span>
+        </label>
+            <label  class="control-label col-xs-4" style="text-align: left;"> #if($beans)$beans.companyName #end </label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >车型 <span class="required">:</span>
+        </label>
+            <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.carType #end </label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >车牌号 <span class="required">:</span>
+        </label>
+            <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans)$beans.carNo #end</label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >状态 <span class="required">:</span>
+        </label>
+        #if($beans)
+        <label class="control-label col-xs-4"  style="text-align: left;"> #if($beans.status==1)待岗 #end #if($beans.status==2)出车 #end #if($beans.status==3)维护 #end #if($beans.status==4)停运 #end</label>
+        #end
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >维护记录 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">#if($beans.repairLogOld) $beans.repairLogOld #else 无 #end</label>
+    </div>
+
+<!--
+    <div class="form-group">
+        <label class="control-label  col-xs-5" >部门名称 <span class="required">:</span>
+        </label>
+        <label class="control-label col-xs-4"  style="text-align: left;">#if($beans)$beans.controlName #end</label>
+    </div>-->
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <!--<button type="submit" id="addOrUpdateCompany" data-url="ajax_add_update_company" class="btn btn-success">提交</button>-->
+            <button type="button" id="cancelModal" class="btn btn-primary">返回</button>
+        </div>
+    </div>
+</form>

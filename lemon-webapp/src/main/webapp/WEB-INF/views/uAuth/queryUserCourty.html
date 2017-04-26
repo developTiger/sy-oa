@@ -1,0 +1,144 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")</br>
+<style>
+
+    .form-inline .form-control {
+        display: inline-block;
+        vertical-align: middle;
+        width: 117px;
+    }
+
+</style>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>院级管理/
+            <small>- 院级管理</small>
+        </h2>
+
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+      <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 院级员工管理.
+        </div>
+        <div class="row">
+            <div class=" btn-group  col-xs-2">
+                <!--&lt;!&ndash; <a id="toAddUser" class=" i_modal btn btn-default buttons-copy buttons-html5 btn-sm"-->
+                    <!--data-url="_addUserForm" ><span><i class="green fa fa-plus"></i>新增</span></a>&ndash;&gt;-->
+
+                <a id="toAddUser" class=" btn btn-default buttons-copy buttons-html5 btn-sm"
+                   href="sra_u_userInfo" ><span><i class="green fa fa-plus"></i>新增</span></a>
+
+                <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="disableUser"  tabindex="0"
+                   aria-controls="datatable-buttons"><span><i
+                        class="red fa fa-remove"></i>禁用</span></a>
+                <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="enableUser"  tabindex="0"
+                   aria-controls="datatable-buttons"><span><i
+                        class="green fa fa-check"></i>启用</span></a>
+            </div>
+            <div class="row">
+                <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="reset-holiday"  tabindex="0"
+                   aria-controls="datatable-buttons" data-url="ajax_resetHoliday"><span><i
+                        class="green fa fa-refresh"></i>重置员工假日</span></a>
+            </div>
+            <!--<div class="btn-group col-xs-2">-->
+                <!--<a class="btn btn-default buttons-copy buttons-html5 btn-sm downloadCanRestYearAndSpa"  tabindex="0"-->
+                   <!--aria-controls="datatable-buttons" data-id="0"><span><i-->
+                        <!--class="green fa fa-download"></i>下载可休疗养假人员表</span></a>-->
+                <!--<a class="btn btn-default buttons-copy buttons-html5 btn-sm downloadCanRestYearAndSpa"  tabindex="0"-->
+                   <!--aria-controls="datatable-buttons" data-id="1"><span><i-->
+                        <!--class="green fa fa-download"></i>下载可休带薪年假人员表</span></a>-->
+            <!--</div>-->
+
+            <div class="form-inline " >
+                <form  id="searchForm"  class="pull-right" data-url="ajax_userQuery_list" style="margin-bottom: 15px;margin-right: 7px">
+                    <div class="form-group">
+                        <label class="control-label">部门</label>
+                            <select class="form-control " name="deptId">
+                                <option value="0">请选择</option>
+                                #if($permGroup)
+                                  #foreach($beanPG in $permGroup)
+                                <!--#if($bean.deptName == $beanPG.deptName )selected="selected"#end-->
+                                    <option value="$beanPG.id" >$beanPG.deptName</option>
+                                  #end
+                                #end
+                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label ">文化程度
+                        </label>
+
+                        <select  name="highestEdu" class="form-control ">
+                            <option value="">请选择</option>
+
+                            <option value="博士" >博士</option>
+                            <option value="硕士" >硕士</option>
+                            <option value="本科" >本科</option>
+                            <option value="大专" >大专</option>
+                            <option value="高职" >高职</option>
+                            <option value="中专" >中专</option>
+                            <option value="高中" >高中</option>
+                            <option value="初中" >初中</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">专业技术职务</label>
+                        <select class="form-control "  name="workKind">
+                            <option value="">请选择</option>
+                            <option value="教授级高工">教授级高工</option>
+                            <option value="高级工程师">高级工程师</option>
+                            <option value="工程师">工程师</option>
+                            <option value="助理工程师">助理工程师</option>
+                            <option value="技术员">技术员</option>
+
+                            <option value="高级政工师">高级政工师</option>
+                            <option value="政工师">政工师</option>
+                            <option value="助理政工师">助理政工师</option>
+                            <option value="高级会计师">高级会计师</option>
+                            <option value="会计师">会计师</option>
+                            <option value="助理会计师">助理会计师</option>
+                            <option value="高级经济师">高级经济师</option>
+                            <option value="经济师">经济师</option>
+                            <option value="助理会计师">助理会计师</option>
+
+                            <option value="高级技师">高级技师</option>
+                            <option value="技师">技师</option>
+                            <option value="高级工">高级工</option>
+                            <option value="中级工">中级工</option>
+                            <option value="初级工">初级工</option>
+
+                            <option value="未评聘">未评聘</option>
+                        </select>
+
+                    </div>
+
+                    <!--<div class="form-group">-->
+                        <!--<label class="control-label">资质</label>-->
+                        <!--<input type="text" class="form-control mini-width small "-->
+                               <!--name="qualificationName" >-->
+                    <!--</div>-->
+
+                    <div class="form-group">
+                        <label class="control-label" >姓名
+                        </label>
+                        <input type="text" id="loginName" class="form-control "  name="loginName">
+                        <input type="button" class="btn btn-default" id="empQueryBtn" value="查询" style="position: relative;top: 0.2em">
+                    </div>
+                </form>
+            </div>
+
+
+
+
+
+        </div>
+        <div id="table"></div>
+        <div class="col-lg-10 dataTables_paginate  ">
+            <ul class="pagination "></ul>
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/user/user"]);
+</script>

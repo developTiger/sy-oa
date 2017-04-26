@@ -1,0 +1,195 @@
+
+<ul id="myTab" class="nav nav-tabs">
+    <li class="active">
+        <a href="#home" data-toggle="tab">
+            项目实时运行状态统计
+        </a>
+    </li>
+    <li><a href="#a1" data-toggle="tab">
+            项目类型统计
+        </a>
+    </li>
+    <li><a href="#a2" data-toggle="tab">
+        项目单位分布统计
+         </a>
+    </li>
+    <li><a href="#a3" data-toggle="tab">
+        历年项目状态统计
+        </a>
+    </li>
+
+
+</ul>
+ <div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="home">
+      <p>
+            <div class=" btn-group" style=" width: 80%" >
+                <strong>-项目实时运行状态统计</strong>
+                <table class="table table-striped table-bordered dataTable no-footer">
+                    <thead>
+                    <tr class="headings">
+                        <th class="column-title">序号 </th>
+                        <th class="column-title">运行状态 </th>
+                        <th class="column-title">项目数量 </th>
+                        <th class="column-title">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <%var num = 0%>
+                    <%if(projectRptByStatus.length > 0){%>
+                    <%for(var i = 0 ; i < projectRptByStatus.length; i++) {%>
+                    <input id="incount" type="hidden" value="<%=projectRptByStatus[i].PROJECT_YXSTATUS%>">
+                    <input id="innum" type="hidden" value="<%=num+i+1%>">
+                    <tr data-tt-id="1">
+                        <td class="num"><%=num+i+1%></td>
+                        <td>
+                            <%if(projectRptByStatus[i].PROJECT_YXSTATUS==1){%>
+                            运行
+                            <%}%>
+                            <%if(projectRptByStatus[i].PROJECT_YXSTATUS==2){%>
+                            完成
+                             <%}%>
+                        </td>
+                        <td><%=projectRptByStatus[i].PROJECT_NUM%></td>
+                        <td><a id="tp<%=num+i+1%>"  class="i_modal"
+                               href="ajax_project_query_list1?projectStatus=<%=projectRptByStatus[i].PROJECT_YXSTATUS%>"
+                              data-value="<%=projectRptByStatus[i].PROJECT_YXSTATUS%>" data-title="详细信息">
+                            <i class="blue fa fa-list-alt"></i>查看 </a>
+                        </td>
+                    </tr>
+                    <%}%>
+                    <%}else{%>
+                    <tr>
+                        <td colspan="4" align="center">暂无数据</td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+
+        </p>
+    </div>
+
+
+    <div class="tab-pane fade" id="a1">
+        <div class=" btn-group" style="width: 80% " >
+            <strong>-项目类型统计</strong>
+            <table class="table table-striped table-bordered dataTable no-footer">
+                <thead>
+                <tr class="headings">
+                    <th class="column-title">序号 </th>
+                    <th class="column-title">项目类型 </th>
+                    <th class="column-title">项目数量 </th>
+                    <th class="column-title">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%var num = 0%>
+                <%if(projectRptByType.length > 0){%>
+                <%for(var i = 0 ; i < projectRptByType.length; i++) {%>
+                <tr data-tt-id="2">
+                    <td class="num"><%=num+i+1%></td>
+                    <td><%=projectRptByType[i].PROJECT_TYPE%></td>
+                    <td><%=projectRptByType[i].PROJECT_NUM%></td>
+                    <td><a class="i_modal  "
+                           data-value="<%=projectRptByType[i].PROJECT_TYPE%>"
+                           href="JavaScript:location.href='ajax_project_query_list2?projectType='+encodeURI(encodeURI('<%=projectRptByType[i].PROJECT_TYPE%>'))"
+                           data-title="详细信息" >
+                        <i class="blue fa fa-list-alt"></i>查看 </a>
+                    </td>
+                </tr>
+                <%}%>
+                <%}else{%>
+                <tr>
+                    <td colspan="3" align="center">暂无数据</td>
+                </tr>
+                <%}%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="tab-pane fade" id="a2">
+        <div class=" btn-group" style="width: 80%" >
+            <strong>-项目单位分布统计</strong>
+            <table class="table table-striped table-bordered dataTable no-footer">
+                <thead>
+                <tr class="headings">
+                    <th class="column-title">序号 </th>
+                    <th class="column-title">单位名称 </th>
+                    <th class="column-title">项目数量 </th>
+                    <th class="column-title">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%var num = 0%>
+                <%if(projectRptByDept.length > 0){%>
+                <%for(var i = 0 ; i < projectRptByDept.length; i++) {%>
+                <tr data-tt-id="3">
+                    <td class="num"><%=num+i+1%></td>
+                    <td><%=projectRptByDept[i].DEPTNAME%></td>
+                    <td><%=projectRptByDept[i].PROJECT_NUM%></td>
+                    <td><a class="i_modal  "
+                           href="ajax_project_query_list3?DEPTNAME=<%=projectRptByDept[i].DEPARTMENT%>"
+                           data-title="详细信息" >
+                        <i class="blue fa fa-list-alt"></i></i>查看 </a>
+                    </td>
+                </tr>
+                <%}%>
+                <%}else{%>
+                <tr>
+                    <td colspan="3" align="center">暂无数据</td>
+                </tr>
+                <%}%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="tab-pane fade" id="a3">
+
+        <div class=" btn-group" style="width: 80%  " >
+            <strong>-历年项目状态统计</strong>
+            <table class="table table-striped table-bordered dataTable no-footer">
+                <thead>
+                <tr class="headings">
+                    <th class="column-title">序号 </th>
+                    <th class="column-title">年份/月份 </th>
+                    <!-- <th class="column-title">项目状态 </th>-->
+                    <th class="column-title">项目数量 </th>
+                    <th class="column-title">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%var num = 0%>
+                <%if(projectRptByYear.length > 0){%>
+                <%for(var i = 0 ; i < projectRptByYear.length; i++) {%>
+
+                <tr data-tt-id="4">
+                    <td class="num"><%=num+i+1%></td>
+                    <td><%=projectRptByYear[i].YEAR%></td>
+                    <td><%=projectRptByYear[i].PROJECT_NUM%></td>
+                    <td><a class="i_modal"
+                           data-title="详细信息" href="ajax_project_query_list4?niandu_Str=<%=projectRptByYear[i].YEAR%>">
+                        <i class="blue fa fa-list-alt"></i>查看 </a>
+                    </td>
+                </tr>
+                <%}%>
+                <%}else{%>
+                <tr>
+                    <td colspan="3" align="center">暂无数据</td>
+                </tr>
+                <%}%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+

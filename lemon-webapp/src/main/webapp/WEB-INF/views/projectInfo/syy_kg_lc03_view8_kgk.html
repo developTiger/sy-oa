@@ -1,0 +1,286 @@
+<input type="hidden" name="clStep" id="clStep" value="$clStep" >
+<input type="hidden" name="projectNo" id="projectNo" value="$projectNo">
+#if($viewOnly=="false")
+
+
+<div class="form-group col-xs-4">
+    <input type="hidden"  name="projectName" value="$beandto.projectName">
+    <label id="projectName" name="projectName" class=" col-md-7 col-xs-12" >
+        <!--项目名称:<a href="#"> $projectName </a>-->
+        项目名称:<a href="/detailInfo?id=$scId&projectID=$projectID">$projectName</a>
+    </label>
+</div>
+
+<div class="form-group col-xs-4">
+    <input type="hidden"  name="projectNo" value="$beandto.projectName">
+    <label id="pro" name="projectNo" class=" col-md-7 col-xs-12" >
+        项目编号: $projectNo
+    </label>
+</div>
+
+<div class="form-group col-xs-4">
+    <input type="hidden"  name="specialtyType" value="$beandto.specialtyType">
+    <label id="" name="specialtyType" class=" col-md-7 col-xs-12" >
+        <!--专业类别: $beandto.specialtyType-->
+        专业类别:$beandto.specialtyType
+    </label>
+</div>
+
+<div class="form-group col-xs-4">
+    <input type="hidden"  name="assumeCompany" value="$beandto.assumeCompany">
+    <label id="assumeCompany" name="assumeCompany" class=" col-md-7 col-xs-12" >
+        承担单位: $assumeCompany
+    </label>
+</div>
+
+<div class="form-group col-xs-4">
+    <input type="hidden"  name="beginTime" value="$beandto.beginTime">
+    <label id="beginTime" name="beginTime" class=" col-md-7 col-xs-12" >
+        开始时间: $beginTime
+    </label>
+</div>
+
+<div class="form-group col-xs-4">
+    <input type="hidden"  name="endTime" value="$beandto.endTime">
+    <label id="endTime" name="endTime" class=" col-md-7 col-xs-12" >
+        结束时间: $endTime
+    </label>
+</div>
+
+<div class="form-group col-xs-4">
+    <input type="hidden"  name="leaderName" value="$beandto.leaderName">
+    <label id="leaderName" name="leaderName" class=" col-md-7 col-xs-12" >
+        主项目长: #if($leaderName) $leaderName #else 暂无 #end
+    </label>
+</div>
+
+<div class="form-group col-xs-12" >
+    <div class="ln_solid"></div>
+</div>
+
+<div class="form-group col-xs-12">
+
+        <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+        <label class=" col-md-7 col-xs-12" >
+            课题进展程度: $beandto.projectEvaluate
+        </label>
+
+</div>
+
+<div class="form-group col-xs-12">
+
+        <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+        <label class=" col-md-7 col-xs-12" >
+            项目进展情况: $beandto.projectActualComplete
+        </label>
+
+</div>
+
+<div class="form-group col-xs-12">
+
+        <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+        <label class=" col-md-7 col-xs-12" >
+            取得阶段性成果: $beandto.chieveResult
+        </label>
+
+</div>
+
+<div class="form-group col-xs-12">
+
+        <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+        <label class=" col-md-7 col-xs-12" >
+            项目经济效益分析: $beandto.economicAnalysis
+        </label>
+
+</div>
+
+<div class="form-group col-xs-12">
+
+        <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+        <label class=" col-md-7 col-xs-12" >
+            存在问题及下步安排: $beandto.projectProblem
+        </label>
+
+</div>
+
+#if($beandto.fileName)
+<div class="form-group col-xs-12" >
+    <div class="ln_solid"></div>
+</div>
+
+<div class="form-group col-xs-12">
+    <!--<div class="control-label col-xs-12">-->
+    <label class=" col-md-7 col-xs-12" >
+        实施运行附件: <a href="/downloadFile?id=$beandto.fileId">$beandto.fileName</a>
+    </label>
+    <!--</div>-->
+</div>
+
+<div class="form-group col-xs-12" >
+    <div class="ln_solid"></div>
+</div>
+#end
+
+<!--<div class="form-group col-xs-12">
+
+    <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+    <label class=" col-md-7 col-xs-12" >
+        批示: #if($beandto.instructions) $beandto.instructions #else 暂无 #end
+    </label>
+
+</div>-->
+
+<div class="col-lg-1  pull-right">
+    <a class=" label label-default " data-title="批量审核" href="syy_kg03_lot?id=$beandto.id&clStep=$clStep">
+        <i class="green fa "></i>批量审核项目
+    </a>
+</div>
+#end
+
+#if($viewOnly=="true")
+<input type="hidden" name="projectNo" id="projectNo1" >
+<div class="form-group col-xs-4">
+    <label name="projectName" class=" col-md-7 col-xs-12" >
+        <!--项目名称:<a href="#"> $projectName </a>-->
+        项目名称:<a href="/detailInfo?id=$scId&projectID=$projectID">$projectName</a>
+    </label>
+</div>
+
+<div class="form-group col-xs-4">
+    <label id="specialtyType" name="specialtyType" class=" col-md-7 col-xs-12" >
+        <!--专业类别: $beandto.specialtyType-->
+        专业类别:$beandto.specialtyType
+    </label>
+</div>
+
+<div class="form-group col-xs-4">
+    <label name="projectNo" class=" col-md-7 col-xs-12" >
+        项目编号: $projectNo
+    </label>
+</div>
+
+<div class="form-group col-xs-4">
+    <label name="assumeCompany" class=" col-md-7 col-xs-12" >
+        承担单位: $assumeCompany
+    </label>
+</div>
+
+<div class="form-group col-xs-4">
+    <label name="beginTime" class=" col-md-7 col-xs-12" >
+        开始时间: $beginTime
+    </label>
+</div>
+
+<div class="form-group col-xs-4">
+    <label name="endTime" class=" col-md-7 col-xs-12" >
+        结束时间: $endTime
+    </label>
+</div>
+
+<div class="form-group col-xs-4">
+    <label name="leaderName" class=" col-md-7 col-xs-12" >
+        主项目长: #if($leaderName) $leaderName #else 暂无 #end
+    </label>
+</div>
+
+<div class="form-group col-xs-12" >
+    <div class="ln_solid"></div>
+</div>
+
+<div class="form-group col-xs-12">
+
+        <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+        <label class=" col-md-7 col-xs-12" >
+            课题进展程度: $beandto.projectEvaluate
+        </label>
+
+</div>
+
+<div class="form-group col-xs-12">
+
+        <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+        <label class=" col-md-7 col-xs-12" >
+            项目进展情况: $beandto.projectActualComplete
+        </label>
+
+</div>
+
+<div class="form-group col-xs-12">
+
+        <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+        <label class=" col-md-7 col-xs-12" >
+            取得阶段性成果: $beandto.chieveResult
+        </label>
+
+</div>
+
+<div class="form-group col-xs-12">
+
+        <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+        <label class=" col-md-7 col-xs-12" >
+            项目经济效益分析: $beandto.economicAnalysis
+        </label>
+
+</div>
+
+<div class="form-group col-xs-12">
+
+        <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+        <label class=" col-md-7 col-xs-12" >
+            存在问题及下步安排: $beandto.projectProblem
+        </label>
+
+</div>
+
+#if($beandto.fileName)
+<div class="form-group col-xs-12" >
+    <div class="ln_solid"></div>
+</div>
+
+<div class="form-group col-xs-12">
+    <!--<div class="control-label col-xs-12">-->
+    <label class=" col-md-7 col-xs-12" >
+        实施运行附件: <a href="/downloadFile?id=$beandto.fileId">$beandto.fileName</a>
+    </label>
+    <!--</div>-->
+</div>
+
+<div class="form-group col-xs-12" >
+    <div class="ln_solid"></div>
+</div>
+#end
+
+<!--<div class="form-group col-xs-12">
+
+    <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+    <label class=" col-md-7 col-xs-12" >
+        批示: #if($beandto.instructions) $beandto.instructions #else 暂无 #end
+    </label>
+
+</div>-->
+
+<div class="form-group col-xs-12">
+
+    <input type="hidden"  name="delayReason" value="$formDelayApplyDto.delayReason">
+    <label class=" col-md-7 col-xs-12" >
+        专家意见: #if($beandto.proficientOpinion) $beandto.proficientOpinion #else 暂无 #end
+    </label>
+
+</div>
+#end
+
+
+
+<div class="form-group">
+    <div class=" col-xs-6 col-xs-offset-3">
+
+        <!--<input  type="submit" id="addOrUpdateProjectInfo" data-url="ajax_add_update_lc03_apply" class="btn btn-success" value="申请">-->
+        <!--<a class="btn btn-primary" href="javascript:history.go(-1);">返回</a>-->
+    </div>
+</div>
+
+
+
+<script>
+    require(['app/projectInfo/syy_kg_lc03']);
+</script>

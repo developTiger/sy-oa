@@ -1,0 +1,262 @@
+#if($viewOnly=="false")
+<input type="hidden" name="projectNo" id="projectNo" value="$projectNo">
+<input type="hidden" id="projformNo" value="$beans.formNo">
+<input type="hidden" name="clstep" id="clstep" value="$beans.clstep">
+<div class="form-group col-xs-4">
+    <div class="control-label ">
+        <input type="hidden" name="projectName" value="$beans.projectName">
+        <label id="projectName"  class=" col-md-7 col-xs-12" >
+            项目名称:<a href="/detailInfo?id=$scId&projectID=$projectID">$beans.projectName</a>
+        </label>
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <div class="control-label ">
+        <input type="hidden" name="projectPlanInfoTxt" value="$beans.projectPlanInfoTxt">
+        <label id="projectPlanInfoTxt" class=" col-md-7 col-xs-12" >
+            研究内容: $beans.projectPlanInfoTxt
+        </label>
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <div class="control-label ">
+        <input type="hidden" name="assumeCompany" value="$beans.assumeCompany">
+        <label id="assumeCompany" class=" col-md-7 col-xs-12" >
+            承担单位: $beans.assumeCompany
+        </label>
+    </div>
+</div>
+<div class="form-group col-xs-4">
+    <div class="control-label ">
+        <input type="hidden" name="joinComopany" value="$beans.joinComopany">
+        <label id="joinComopany"  class=" col-md-7 col-xs-12" >
+            合作单位: $beans.joinComopany
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <div class="control-label ">
+        <input type="hidden" name="beginTime" value="$beans.beginTime">
+        <label id="beginTime"  class=" col-md-7 col-xs-12" >
+            开始时间: $beans.beginTime
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-4">
+    <div class="control-label ">
+        <input type="hidden" name="endTime" value="$beans.endTime">
+        <label id="endTime"  class=" col-md-7 col-xs-12" >
+            截至时间: $beans.endTime
+        </label>
+    </div>
+</div>
+
+<!--<div class="form-group col-xs-6">
+    <div class="control-label ">
+        <label class=" col-md-7 col-xs-12" >
+            项目详细信息:<a href="#">项目详细信息</a>
+        </label>
+    </div>
+</div>-->
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+
+<div class="form-group col-xs-6">
+    <div class="control-label ">
+        <label class=" col-md-7 col-xs-4" >
+            验收意见附件：
+        </label>
+        <div class=" col-md-7 col-xs-8">
+            #if($beans)
+            #foreach($bean in $beans.formAcceptanceProjectFileDto)
+            <a href="downloadFile?id=$bean.fileId">$bean.fileName</a>
+            #end
+            #else
+            <dd>没有文件</dd>
+            #end
+        </div>
+    </div>
+</div>
+<!--<input type="file" name="projFile" id="upFile"> <input type="button" id="upload" value="上传">-->
+#end
+
+#if($viewOnly=="true")
+<div class="form-group col-xs-12">
+
+    <div class="control-label col-xs-4">
+        <label id="projectNameview" name="projectName" class=" col-md-7 col-xs-12" >
+            项目名称:<a href="/detailInfo?id=$scId&projectID=$projectID">$beans.projectName</a>
+        </label>
+    </div>
+
+    <div class="control-label col-xs-4">
+        <label class=" col-md-7 col-xs-12" >
+            研究内容: $beans.projectPlanInfoTxt
+        </label>
+    </div>
+
+    <div class="control-label col-xs-4">
+        <label class=" col-md-7 col-xs-12" >
+            承担单位: $beans.assumeCompany
+        </label>
+    </div>
+</div>
+
+<!--<div class="form-group col-xs-12">
+
+    <div class="control-label col-xs-6">
+        <label id="projectPlanInfoTxt1" name="projectPlanInfoTxt" class=" col-md-7 col-xs-12" >
+            研究内容: $beans.projectPlanInfoTxt
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-6">
+        <label id="assumeCompany1" name="assumeCompany" class=" col-md-7 col-xs-12" >
+            承担单位: $beans.assumeCompany
+        </label>
+    </div>
+</div>-->
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-4">
+        <label id="joinComopany1" name="joinComopany" class=" col-md-7 col-xs-12" >
+            合作单位: $beans.joinComopany
+        </label>
+    </div>
+
+    <div class="control-label col-xs-4">
+        <label id="beginTime1" name="beginTime" class=" col-md-7 col-xs-12" >
+            开始时间: $beans.beginTime
+        </label>
+    </div>
+
+    <div class="control-label col-xs-4">
+        <label id="endTime1" name="endTime" class=" col-md-7 col-xs-12" >
+            截至时间: $beans.endTime
+        </label>
+    </div>
+</div>
+<!--<div class="form-group col-xs-6">
+    <div class="control-label ">
+        <label class=" col-md-7 col-xs-12" >
+            项目详细信息:<a href="#">项目详细信息</a>
+        </label>
+    </div>
+</div>-->
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-12">
+        <hr style="border: 1px solid silver;width: 100%"/>
+    </div>
+</div>
+
+<div class="form-group col-xs-6">
+    <div class="control-label ">
+        <label class=" col-md-7 col-xs-4" >
+            验收意见附件：
+        </label>
+        <div class=" col-md-7 col-xs-8">
+            #if($beans)
+            #foreach($bean in $beans.formAcceptanceProjectFileDto)
+            <a href="downloadFile?id=$bean.fileId">$bean.fileName</a>
+            #end
+            #else
+            <dd>没有文件</dd>
+            #end
+        </div>
+    </div>
+</div>
+
+<!--<div class="form-group col-xs-12">
+    <div class="control-label col-xs-6">
+        <label id="beginTime1" name="beginTime" class=" col-md-7 col-xs-12" >
+            开始时间: $beans.beginTime
+        </label>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-6">
+        <label id="endTime1" name="endTime" class=" col-md-7 col-xs-12" >
+            截至时间: $beans.endTime
+        </label>
+    </div>
+</div>-->
+
+<!--<div class="form-group col-xs-12">
+    <div class="control-label col-xs-6">
+        <label id="selfEvaluate1" name="selfEvaluate" class=" col-md-7 col-xs-12" >
+            单位自评: $beans.selfEvaluate
+        </label>
+    </div>
+</div>
+
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-6">
+        <label id="keGuanEvaluate1" name="keGuanEvaluate1" class=" col-md-7 col-xs-12" >
+            科管科评价: $beans.keGuanEvaluate
+        </label>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-6">
+        <label id="acceptanceTime1" name="acceptanceTime1" class=" col-md-7 col-xs-12" >
+            验收申请时间: $beans.endTime
+        </label>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-6">
+        <label id="acceptancerName1" name="acceptancerName1" class=" col-md-7 col-xs-12" >
+            联系人: $beans.acceptancerName
+        </label>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-6">
+        <label id="acceptanceIphone1" name="acceptanceIphone1" class=" col-md-7 col-xs-12" >
+            联系人电话: $beans.acceptanceIphone
+        </label>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-6">
+        <label id="acceptanceList11" name="acceptanceList1" class=" col-md-7 col-xs-12" >
+            验收清单: $beans.acceptanceList
+        </label>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-6">
+        <label id="assumeComValue1" name="assumeComValue1" class=" col-md-7 col-xs-12" >
+            承担单位科技管理部门意见: $beans.assumeComValue
+        </label>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-6">
+        <label id="specialtyDeptValue1" name="specialtyDeptValue1" class=" col-md-7 col-xs-12" >
+            专业管理部门意见: $beans.specialtyDeptValue
+        </label>
+    </div>
+</div>
+<div class="form-group col-xs-12">
+    <div class="control-label col-xs-6">
+        <label id="sciencerValue1" name="sciencerValue1" class=" col-md-7 col-xs-12" >
+            科技信息处意见: $beans.sciencerValue
+        </label>
+    </div>
+</div>-->
+
+#end
+
+<script>
+    require(['app/projectInfo/syy_kg_lc05']);
+</script>

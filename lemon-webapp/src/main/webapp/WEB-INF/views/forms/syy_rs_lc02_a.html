@@ -1,0 +1,178 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+
+<div style="min-width: 800px">
+    <input type="hidden" name="id" #if($fdto)value="$!fdto.id" #end>
+    <input type="hidden" id="ftrainName" #if($fdto)value="$!fdto.trainName" #end>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >培训名称 <span class="required">*</span>
+        </label>
+        <input type="hidden" id="hidTxt" name="tName">
+        <div class="col-xs-6">
+            <select class="form-control" id="form_kind_name" name="formNo_1">
+                <option value="">请选择</option>
+                #if($beans)
+                #foreach($bean in $beans)
+                <option value="$bean.formNo" text="$bean.trainName"   >$bean.trainName</option>
+                #end
+                #else
+                <d>暂无数据</d>
+                #end
+            </select>
+        </div>
+    </div>
+
+    <div id="otherData">
+
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >你认为：
+        </label>
+
+    </div>
+
+    <div class="form-group">
+
+        <label class="control-label col-xs-8 col-xs-offset-1" >
+            <table    align="left" width="100%">
+                <tr>
+                    <td  height="30px" align="left">
+                        1、培训内容的针对性或实用性：
+                    </td>
+                    <td align="left">
+                        <label for="9">
+                            <input type="radio" name="practical" value="Prefect" #if($fdto.practical=="Prefect") checked #end id="9">很强
+                        </label>
+                    </td>
+                    <td align="left">
+                        <label for="10">
+                            <input type="radio" name="practical" value="Good" #if($fdto.practical=="Good") checked #end  id="10">强
+                        </label>
+                    </td>
+                    <td align="left">
+                        <label for="11">
+                            <input type="radio" name="practical" value="Nomal" #if($fdto.practical=="Nomal") checked #end  id="11">一般
+                        </label>
+                    </td>
+                    <td align="left">
+                        <label for="12">
+                            <input type="radio"name="practical" value="Bad" #if($fdto.practical=="Bad") checked #end  id="12">差
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td  width="35%" height="30px" align="left">
+                        2、对授课人授课满意度：
+                    </td>
+                    <td width="12%" align="left">
+                        <label for="1"  >
+                            <input type="radio" name="satisfied" value="Prefect"  #if($fdto.satisfied=="Prefect") checked #end  id="1">很满意
+                        </label>
+                    </td>
+                    <td width="12%" align="left">
+                        <label for="2">
+                            <input type="radio" name="satisfied" value="Good"  #if($fdto.satisfied=="Good") checked #end  id="2">满意
+                        </label>
+                    </td>
+                    <td width="12%" align="left">
+                        <label for="3">
+                            <input type="radio" name="satisfied" value="Nomal"  #if($fdto.satisfied=="Nomal") checked #end  id="3">一般
+                        </label>
+                    </td>
+                    <td width="12%" align="left">
+                        <label for="4">
+                            <input type="radio" name="satisfied" value="Bad"  #if($fdto.satisfied=="Bad") checked #end  id="4">差
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="30px" align="left">
+                        3、此次培训对您工作的直接帮助：
+                    </td>
+                    <td align="left">
+                        <label for="5">
+                            <input type="radio" name="help" value="Prefect"  #if($fdto.help=="Prefect") checked #end  id="5">很大
+                        </label>
+                    </td>
+                    <td align="left">
+                        <label for="6">
+                            <input type="radio" name="help" value="Good"  #if($fdto.help=="Good") checked #end  id="6">大
+                        </label>
+                    </td>
+                    <td align="left">
+                        <label for="7">
+                            <input type="radio" name="help" value="Nomal"  #if($fdto.help=="Nomal") checked #end  id="7">一般
+                        </label>
+                    </td>
+                    <td align="left">
+                        <label for="8">
+                            <input type="radio" name="help" value="Bad"  #if($fdto.help=="Bad") checked #end  id="8">差
+                        </label>
+                    </td>
+                </tr>
+
+            </table>
+
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-8" style="margin-left: 20px;"  >此次培训的收获是什么，如果对该培训不满意，主要问题是什么，你有何建议：
+        </label>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-7  col-xs-offset-1">
+            <textarea id="suggest" required="required" name="suggest"
+                   class="form-control  col-xs-6" data-parsley-id="2038" cols="9" rows="8">$!fdto.suggest</textarea>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-1" >附件：
+        </label>
+    </div>
+
+    <div class="form-group">
+                <div class="col-xs-4 col-xs-offset-1" style="padding-top: 5px">
+                    <input type="file"  id="fileId" name="fileName"/>
+                </div>
+
+                <div>
+                    <input type="button" value="继续上传" class="btn btn-group addFileBtn">
+                </div>
+    </div>
+
+    <div id="filesHtml">
+
+    </div>
+    <!--<div class="form-group ">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+        <div class="col-md-4" style="text-align: center">
+            <input type="button" class="btn btn-default" id="submitPublish" value="提交">
+        </div>
+    </div>-->
+
+
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <button type="submit" id="trainEffectSubmit" data-url="ajax_add_update_trainEffect" class="btn btn-success">提交</button>
+            <a class="btn btn-primary" href="javascript:window.close();">取消</a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    require(["app/forms/trainEffect"]);
+</script>
+
+
+
+

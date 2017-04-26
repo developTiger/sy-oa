@@ -1,0 +1,46 @@
+
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th><input type="checkbox" id="check-all"  class="checkAll "></th>
+        <th style="width: 50px">序号 </th>
+        <!--<th class="column-title">项目编号</th>-->
+        <th class="column-title">项目名称 </th>
+        <th class="column-title">专业类别 </th>
+        <th class="column-title">延期理由 </th>
+        <!--<th class="column-title">文件 </th>-->
+        <th class="column-title">申请人 </th>
+        <th class="column-title">所属部门 </th>
+        <th class="column-title">延期时间 </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num=0%>
+    <%if(sicent.length > 0){%>
+    <%for(var i = 0 ; i < sicent.length; i++) {%>
+
+
+    <tr class="sicentId"  data-tt-id="<%=sicent[i].id%>">
+        <td> <input type="checkbox" class="checkBtn  fo<%=num+i+1%>" name="table_records" value="<%=sicent[i].formNo%>"></td>
+        <td> <%=num+i+1%></td>
+        <!--<td> <%=sicent[i].projectNo%></td>-->
+        <td> <a href="/syy_kg_lc04_v2All?formNo=<%=sicent[i].formNo%>&formKind=SYY_KG_LC04&viewOnly=false"> <font style="color: #0077b3"><%=sicent[i].delayname2%></font></a></td>
+        <td> <%=sicent[i].majorType%></td>
+        <td> <%=sicent[i].delayReason%></td>
+        <!--<td> <%=sicent[i].fileName%></td>-->
+        <td> <%=sicent[i].applyerName%></td>
+        <td> <%=sicent[i].deptName%></td>
+        <td> <%=dateFormat2(sicent[i].delayTimes)%></td>
+    </tr>
+
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="11" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>
+<script>
+    /*require(["app/projectInfo/syy_kg_lc01_a_lot0"]);*/
+</script>

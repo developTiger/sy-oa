@@ -1,0 +1,133 @@
+
+<div style="min-width: 800px">
+    <input type="hidden" name="id" value="$!dto.id">
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="target">前往地点<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="target" required="required" #if($dto)value="$dto.target" #end name="target"
+                   class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+            <ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+        </div>
+
+        <div class="col-xs-3">
+            <select class="form-control" style="width: 20%;min-width: 80px;" id="targets" name="targets">
+                <option value="疆内">疆内</option>
+                <option value="疆外">疆外</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="target">任务来源<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="taskSource" required="required" #if($dto)value="$dto.taskSource" #end name="taskSource"
+                   class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+            <ul class="parsley-errors-list" id="parsley-id-9138"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="target">任务内容<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="taskContent" required="required" #if($dto)value="$dto.taskContent" #end name="taskContent"
+                   class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+            <ul class="parsley-errors-list" id="parsley-id-2138"></ul>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >类别 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <select class="form-control" id="category" name="category">
+                <option value="">请选择</option>
+                <!--#if($beans)
+                #foreach($bean in $beans)
+                <option value="$bean.formNo" text="$bean.trainName"   >$bean.trainName</option>
+                #end
+                #else
+                <d>暂无数据</d>
+                #end-->
+                <option value="行政" #if($dto.category=="行政") selected #end>行政</option>
+                <option value="党务" #if($dto.category=="党务") selected #end>党务</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" >属性 <span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <select class="form-control" id="evecAttr" name="evecAttr">
+                <option value="">请选择</option>
+                <!--#if($beans)
+                #foreach($bean in $beans)
+                <option value="$bean.formNo" text="$bean.trainName"   >$bean.trainName</option>
+                #end
+                #else
+                <d>暂无数据</d>
+                #end-->
+                <option value="学习" #if($dto.evecAttr=="学习") selected #end>学习</option>
+                <option value="开会" #if($dto.evecAttr=="开会") selected #end>开会</option>
+                <option value="科研生产" #if($dto.evecAttr=="科研生产") selected #end>科研生产</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">开始时间<span class="required">*</span></label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control mini-width Wdate Wdate1 col-xs-7" id="strFromTime"
+                   placeholder="开始时间" #if($dto.evectionTime) value="$helper.formatDateToString($!dto.evectionTime,"yyyy-MM-dd")" #end
+                   name="strFromTime" required="required">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">结束时间<span class="required">*</span></label>
+        <div class=" col-xs-5">
+
+            <input type="text" class="form-control mini-width Wdate Wdate2 col-xs-5" id="strToTime" #if($dto.toTime) value="$helper.formatDateToString($!dto.toTime,"yyyy-MM-dd")" #end
+                   placeholder="结束时间"   required="required"
+                   name="strToTime">
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="reason">出差理由<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <textarea id="reason" required="required"  name="reason"
+                      class="form-control  col-xs-7" data-parsley-id="2038" required="required">$!dto.reason</textarea>
+            <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+        </div>
+    </div>
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <button type="submit" id="businessSubmit" data-url="ajax_add_update_eve" class="btn btn-success">提交</button>
+            <a class="btn btn-primary" href="javascript:window.close();">取消</a>
+        </div>
+    </div>
+
+</div>
+<script>
+    require(["app/forms/business"]);
+</script>
+
+
+
+

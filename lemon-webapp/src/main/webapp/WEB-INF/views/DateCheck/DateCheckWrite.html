@@ -1,0 +1,226 @@
+</br>
+<div class=" x_panel  ">
+    <div class="x_title">
+        <h2>期间核查记录/
+            <small>- 期间核查记录</small>
+        </h2>
+        <div class="clearfix"></div>
+    </div>
+    <div class="content">
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <strong>描述!</strong> 期间核查记录填写.
+        </div>
+        <div style="min-width: 1000px">
+            <div><span style="margin-left: 30px"><span>操作人：</span>$!emp.name</span><span style="margin-left: 270px"><span
+                    >所属部门：</span>$!emp.deptName</span><span
+                    style="margin-left: 300px"><span>操作时间：</span>$!time</span></div>
+            <hr style="border: solid 0.5px #9b99a3;width: 1100px"/>
+            <form id="submitForm">
+
+                <div class="form-group">
+                    <div class="col-xs-1">
+                        <input type="hidden" id="id" required="required" #if($leave)value="$leave.id" #end
+                               name="id"
+                               class="form-control  col-xs-3" data-parsley-id="2038" required="required">
+                        <ul class="parsley-errors-list" id="parsley-id-2000"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label  col-xs-1" for="equipName" style="width: 81px">设备名称<span class="required">*</span>
+                    </label>
+
+                    <div class="col-xs-3">
+                        <input type="text" id="equipName" required="required" #if($leave)value="$leave.equipName" #end
+                               name="equipName"
+                               class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+                        <ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+                    </div>
+                <!--</div>-->
+
+                <!--<div class="form-group">-->
+                    <label class="control-label col-xs-1" for="factoryName">生产厂家<span class="required">*</span>
+                    </label>
+
+                    <div class="col-xs-3">
+                        <input type="text" id="factoryName" required="required" #if($leave)value="$leave.factoryName"
+                               #end
+                               name="factoryName"
+                               class="form-control  col-xs-6" data-parsley-id="2038" required="required">
+                        <ul class="parsley-errors-list" id="parsley-id-2039"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label  col-xs-2" for="outFactoryNum">出厂编号<span class="required">*</span>
+                    </label>
+
+                    <div class="col-xs-5">
+                        <input type="text" id="outFactoryNum" required="required"
+                               #if($leave)value="$leave.outFactoryNum"
+                               #end name="outFactoryNum"
+                               class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+                        <ul class="parsley-errors-list" id="parsley-id-2040"></ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label  col-xs-2" for="standard">型号：<span class="required">*</span>
+                    </label>
+
+                    <div class="col-xs-5">
+                        <input type="text" id="standard" required="required" #if($leave)value="$leave.standard" #end
+                               name="standard"
+                               class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+                        <ul class="parsley-errors-list" id="parsley-id-2041"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label  col-xs-2">启用日期<span class="required">*</span></label>
+
+                    <div class="col-xs-5">
+                        <input type="text" class="form-control mini-width Wdate col-xs-7" id="suseTime"
+                               placeholder="启用日期"
+                               name="suseTime" required="required">
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label  col-xs-2">核查日期<span class="required">*</span></label>
+
+                    <div class=" col-xs-5">
+
+                        <input type="text" class="form-control mini-width Wdate col-xs-5" id="strToTime"
+                               placeholder="核查日期" required="required"
+                               name="scheckTime">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label  col-xs-2" for="checkWay">核查方法<span class="required">*</span>
+                    </label>
+
+                    <div class="col-xs-5">
+                        <input type="text" id="checkWay" required="required" #if($leave)value="$leave.checkWay" #end
+                               name="checkWay"
+                               class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+                        <ul class="parsley-errors-list" id="parsley-id-2042"></ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label  col-xs-2" for="days">间隔<span class="required">*</span>
+                    </label>
+
+                    <div class="col-xs-5">
+                        <input type="text" id="days" required="required" #if($leave)value="$leave.days" #end name="days"
+                               class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+                        <ul class="parsley-errors-list" id="parsley-id-2043"></ul>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label  col-xs-2" for="content">核查<span class="required">*</span>
+                    </label>
+
+                    <div class="col-xs-5">
+            <textarea id="content" required="required" #if($leave)value="$leave.content" #end name="content"
+                      class="form-control  col-xs-7" data-parsley-id="2038" required="required"></textarea>
+                        <ul class="parsley-errors-list" id="parsley-id-2030"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label  col-xs-2" for="checkDate">核查数据<span class="required">*</span>
+                    </label>
+
+                    <div class="col-xs-5">
+            <textarea id="checkDate" required="required" #if($leave)value="$leave.checkDate" #end name="checkDate"
+                      class="form-control  col-xs-7" data-parsley-id="2038" required="required"></textarea>
+                        <ul class="parsley-errors-list" id="parsley-id-2031"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label  col-xs-2" for="date1">数据处理<span class="required">*</span>
+                    </label>
+
+                    <div class="col-xs-5">
+            <textarea id="date1" required="required" #if($leave)value="$leave.date" #end name="date"
+                      class="form-control  col-xs-7" data-parsley-id="2038" required="required"></textarea>
+                        <ul class="parsley-errors-list" id="parsley-id-2033"></ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label  col-xs-2" for="checkPerson">核查人：<span class="required">*</span>
+                    </label>
+
+                    <div class="col-xs-5">
+                        <input type="text" id="checkPerson" required="required" #if($leave)value="$leave.checkPerson"
+                               #end
+                               name="checkPerson"
+                               class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+                        <ul class="parsley-errors-list" id="parsley-id-20219"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label  col-xs-2">日期<span class="required">*</span></label>
+
+                    <div class="col-xs-5">
+                        <input type="text" class="form-control mini-width Wdate col-xs-7" id="spersonTime"
+                               placeholder="日期"
+                               name="spersonTime" required="required">
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label  col-xs-2" for="headContent">负责人填写内容<span class="required">*</span>
+                    </label>
+
+                    <div class="col-xs-5">
+            <textarea id="headContent" required="required" #if($leave)value="$leave.headContent" #end name="headContent"
+                      class="form-control  col-xs-7" data-parsley-id="2038" required="required"></textarea>
+                        <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label  col-xs-2" for="standard">负责人<span class="required">*</span>
+                    </label>
+
+                    <div class="col-xs-5">
+                        <input type="text" id="headPerson" required="required" #if($leave)value="$leave.headPerson" #end
+                               name="headPerson"
+                               class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+                        <ul class="parsley-errors-list" id="parsley-id-2020"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label  col-xs-2">时间<span class="required">*</span></label>
+
+                    <div class="col-xs-5">
+                        <input type="text" class="form-control mini-width Wdate col-xs-7" id="sheadTime"
+                               placeholder="时间"
+                               name="sheadTime" required="required">
+
+                    </div>
+                </div>
+            </form>
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <div class=" col-xs-6 col-xs-offset-3">
+                    <button type="submit" id="dateCheckSubmit" data-url="ajax_add_update_datacheck"
+                            class="btn btn-success">
+                        提交
+                    </button>
+                    <a class="btn btn-primary" href="javascript:history.go(-2);">取消</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    require(["app/equipment/dateCheck"]);
+</script>

@@ -1,0 +1,68 @@
+<table class="table  table-bordered dataTable no-footer js_tableSave">
+    <thead>
+    <tr class="headings">
+        <th class="column-title">员工名称</th>
+        <th class="column-title">员工自评</th>
+        <th class="column-title">基层评分</th>
+        <th class="column-title">基层评级</th>
+        <th class="column-title">分管评分</th>
+        <th class="column-title">分管评级</th>
+
+        <th class="column-title">委员会评分</th>
+        <th class="column-title">委员会评级</th>
+
+
+        <!--<th class="column-title js_edit hidden" width="100px">操作</th>-->
+
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <%for(var j=0;j < items.length;j++){%>
+    <tr class=" disabled">
+
+        <input type="hidden" id="detail_id" name="detail_id" value="<%=items[j].id%>"/>
+
+        <td class=" "><%=items[j].loginName%></td>
+        <td class=" ">  <%if(items[j].empSelfGrade){%><%=items[j].empSelfGrade%><% }%></td>
+        <td class=""><%=items[j].deptScores%></td>
+        <td class=""> <%=items[j].deptGrade%></td>
+        <td class=""><%=items[j].groupScores%></td>
+        <td class=""> <%=items[j].groupGrade%></td>
+
+
+        <td>
+            <input type='text' class='chargeLeaderScores disabled' style="width:80px;" name="chargeLeaderScores"
+                   disabled="disabled" value="<%=items[j].chargeLeaderScores%>" >
+        </td>
+        <td>
+            <div class="js_hid hidSelect">
+                <select class='chargeLeaderLevel disabled' style="width: 80px;" name="chargeLeaderLevel" disabled="disabled">
+                    <option value="" ></option>
+                    <option value="优秀" <% if(items[j].chargeLeaderLevel =="优秀" ) {%> selected <%}%>>优秀</option>
+                    <option value="称职" <% if(items[j].chargeLeaderLevel =="称职" ) {%> selected <%}%>> 称职</option>
+                    <option value="不称职" <% if(items[j].chargeLeaderLevel =="不称职" ) {%> selected <%}%>>不称职</option>
+
+                </select>
+            </div>
+        </td>
+
+
+
+        <!--<td class="js_edit hidden" >-->
+            <!--<a class="empAppraiseUpdate js_update" data-url=" ">-->
+                <!--<span><i class="green fa fa-edit"></i>修改</span>-->
+            <!--</a>-->
+
+            <!--<a class="empAppraiseSave js_save" data-url=" ">-->
+                <!--<span><i class="green fa fa-edit "></i>保存</span>-->
+            <!--</a>-->
+        <!--</td>-->
+
+
+    </tr>
+    <% }%>
+
+    </tbody>
+</table>

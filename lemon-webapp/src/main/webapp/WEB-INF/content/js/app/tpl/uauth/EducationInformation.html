@@ -1,0 +1,107 @@
+<div class="">
+
+    <div class="">
+        <form id="BasicInfoForm"  class="form-horizontal fa-align-left">
+            <input type="hidden" id="empId" name="empId"  >
+            <input type="hidden" name="id" value="<%=id%>">
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" for="school">是否是当前学历 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="radio" name="isCurrent" value="1" <%if(isCurrent){%> checked="checked"<%}%> >是
+                    <input type="radio" name="isCurrent" value="0" <%if(!isCurrent){%> checked="checked"<%}%> > 否
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" for="school">毕业学校 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" id="school" name="school" required="required" value="<%=school%>"
+                           class="form-control col-md-7 col-xs-12" data-parsley-id="1279">
+                    <ul class="parsley-errors-list" id="parsley-id-1279"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">学习专业 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input id="birthday" class="date-picker form-control col-md-7 col-xs-12"
+                           value="<%=major%>" name="major" type="text" data-parsley-id="3559">
+                    <ul class="parsley-errors-list" id="parsley-id-35590"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12" for="last-name">学习形式 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <select class="form-control col-md-7 col-xs-12" name="studyForm" id="last-name">
+                        <option value="">请选择</option>
+
+                        <option value="全日制" <%if(studyForm == "全日制"){%> selected <%}%> >全日制</option>
+                        <option value="函授" <%if(studyForm == "函授"){%> selected <%}%> >函授</option>
+                        <option value="其他" <%if(studyForm == "其他"){%> selected <%}%> >其他</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">取得学位 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+
+                    <!--<input id="degree" class="date-picker form-control col-md-7 col-xs-12" required="required"-->
+                           <!--value="<%=degree%>" name="degree"  type="text" data-parsley-id="3559">-->
+                    <select class="date-picker form-control col-md-7 col-xs-12" id="degree" name="degree">
+                        <option value="">请选择</option>
+
+                        <option value="博士研究生" <%if(degree == "博士研究生"){%> selected <%}%> >博士研究生</option>
+                        <option value="硕士研究生" <%if(degree == "硕士研究生"){%> selected <%}%> >硕士研究生</option>
+                        <option value="学士" <%if(degree == "学士"){%> selected <%}%> >学士</option>
+                        <option value="其他" <%if(degree == "其他"){%> selected <%}%> >其他</option>
+                        <option value="无" <%if(degree == "无"){%> selected <%}%> >无</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">入学时间 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" class="form-control mini-width Wdate"
+                           value="<%if(strObtain){%><%=dateFormat2(strObtain)%><%}%>"
+                           name="strObtain" placeholder="入学时间" >
+                    <ul class="parsley-errors-list" id="parsley-id-3991"></ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3 col-xs-12">毕业时间 <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" class="form-control mini-width Wdate"
+                           value="<%if(strGraduation){%><%=dateFormat2(strGraduation)%><%}%>"
+                           name="strGraduation"  placeholder="毕业时间" >
+                    <ul class="parsley-errors-list" id="parsley-id-2891"></ul>
+                </div>
+            </div>
+
+
+
+
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <!--<button type="submit"  class="btn btn-success">取消</button>-->
+                    <button type="submit" id="submitUserInfo" data-title="WorkExInformation" data-url="EducationInformation" class="btn btn-success">提交</button>
+                    <button type="button" class="btn btn-primary cancelBtn">取消</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

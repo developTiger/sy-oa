@@ -1,0 +1,45 @@
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+<input type="hidden" id="datastep" name="datastep"value="$clstep"/>
+<form id="approveFormLot">
+    <div class="x_panel">
+        <div class="x_content">
+            <div  style="text-align: center">
+                <a class=" btn btn-success" id="lotApprove">同意</a>
+                <a class=" btn btn-primary" id="goBack">否决</a>
+            </div>
+            <div>
+                <label>审核意见：</label>
+            </div>
+            <div>
+                <textarea class="form-control" style="margin: 0px -0.5px 0px 0px; width: 100%; height: 100px;" id="allContent"></textarea>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div style="text-align: center;font-size: xx-small">
+    <h2>  科管科汇总归档  </h2>
+</div>
+<form id="searchForm">
+    <div class="form-group col-xs-10">
+        <label class="control-label col-xs-5" style="text-align: right; padding-top: 10px;">专业类别:</label>
+        <input name="specialtyType" class="col-xs-5 " style="margin-top: 7px; margin-right: 10px;" id="specialtyType" />
+        <a class=" btn btn-primary col-xs-1" id="search" style="margin-top: 3px;">查询</a>
+    </div>
+</form>
+
+<div id="table1"></div>
+    <div class="col-lg-10 dataTables_paginate  ">
+        <ul class="pagination "></ul>
+    </div>
+</div>
+
+<input type="hidden" id="hidname" name="hidname"/>
+<input type="hidden" id="hidid" name="hidid"/>
+<script>
+    require(["app/delay_flow/syy_kg_lc04_lot8"]);
+</script>
+
+
+
+

@@ -1,0 +1,170 @@
+<form id="detailProjectInfoForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2" >项目编号 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-4"  style="text-align: left;"><%=projectNo%></label>
+
+                        <label class="control-label  col-xs-2" >项目名称 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-4"  style="text-align: left;"><%=projectName%> </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2" >专业类别 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-4"  style="text-align: left;">
+                            <%=specialtyType%>
+                        </label>
+
+                        <label class="control-label  col-xs-2" >研究内容 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-4"  style="text-align: left;"><%=projectPlanInfo%> </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2" >承担单位 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-4"  style="text-align: left;"><%=assumeCompany%></label>
+
+                        <label class="control-label  col-xs-2" >参加单位 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-4"  style="text-align: left;"><%=joinComopany%></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2" >开始时间 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-4"  style="text-align: left;"><%=beginTime1%></label>
+
+                        <label class="control-label  col-xs-2" >截止时间 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-4"  style="text-align: left;"><%=endTime1%></label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2" >项目负责人 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-4"  style="text-align: left;"> <%=leaderName%></label>
+
+                       <!-- <label class="control-label  col-xs-2" >副项目长 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-4"  style="text-align: left;"><%=deputyName%> </label>-->
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="control-label  col-xs-2" >项目类型 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-4"  style="text-align: left;">
+                            <%=projectType%>
+                        </label>
+
+                        <label class="control-label  col-xs-2" >立项状态 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-4"  style="text-align: left;">
+                            <%if(projectStatus==0){%>
+                                未立项
+                            <%}%>
+                            <%if(projectStatus==1){%>
+                                 立项中
+                            <%}%>
+                            <%if(projectStatus==2){%>
+                                 立项完成
+                            <%}%>
+                        </label>
+                    </div>
+                        <div class="form-group">
+
+                            <label class="control-label  col-xs-2" >开题状态<span class="required">:</span>
+                            </label>
+                            <label class="control-label col-xs-4"  style="text-align: left;">
+                                <%if(projectKTStatus==0){%>
+                                未开题
+                                <%}%>
+                                <%if(projectKTStatus==1){%>
+                                开题中
+                                <%}%>
+                                <%if(projectKTStatus==2){%>
+                                开题完成
+                                <%}%>
+                            </label>
+
+                            <label class="control-label  col-xs-2" >检测状态 <span class="required">:</span>
+                            </label>
+                            <label class="control-label col-xs-4"  style="text-align: left;">
+                                <%if(projectJCStatus==0){%>
+                                未检测
+                                <%}%>
+                                <%if(projectJCStatus==1){%>
+                                检测中
+                                <%}%>
+                                <%if(projectJCStatus==2){%>
+                                检测完成
+                                <%}%>
+                            </label>
+                        </div>
+                        <div class="form-group">
+
+                            <label class="control-label  col-xs-2" >验收状态<span class="required">:</span>
+                            </label>
+                            <label class="control-label col-xs-4"  style="text-align: left;">
+                                <%if(projectYSStatus==0){%>
+                                未验收
+                                <%}%>
+                                <%if(projectYSStatus==1){%>
+                                验收中
+                                <%}%>
+                                <%if(projectYSStatus==2){%>
+                                验收完成
+                                <%}%>
+                            </label>
+
+                            <!--<label class="control-label  col-xs-2" >成果申报 <span class="required">:</span>
+                            </label>
+                            <label class="control-label col-xs-4"  style="text-align: left;">
+                                <%if(projectSBStatus==0){%>
+                                未申报成果
+                                <%}%>
+                                <%if(projectSBStatus==1){%>
+                                成果申报中
+                                <%}%>
+                                <%if(projectSBStatus==2){%>
+                                已申报成果
+                                <%}%>
+                            </label>-->
+                        </div>
+
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2" >参加人员 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-10"  style="text-align: left;"><%=groupMembers%> </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2" >备注 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-10"  style="text-align: left;"><%=remark%></label>
+                    </div>
+                   <!-- <div class="form-group">
+                        <label class="control-label  col-xs-2" >批示 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-10"  style="text-align: left;">
+                            <%if(instructions){%>
+                            <%=instructions%>
+                            <%}else{%>
+                            暂无数据
+                            <%}%>
+                        </label>
+                    </div>-->
+                    <div class="form-group">
+                        <label class="control-label  col-xs-2" >专家意见 <span class="required">:</span>
+                        </label>
+                        <label class="control-label col-xs-10"  style="text-align: left;">
+                            <%if(proficientOpinion){%>
+                            <%=proficientOpinion%>
+                            <%}else{%>
+                            暂无数据
+                            <%}%>
+                        </label>
+                    </div>
+
+</form>
+
+

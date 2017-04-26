@@ -1,0 +1,233 @@
+<div id="qjApplyForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" value="<%=id%>"/>
+
+    <div class="form-group">
+        <!--<label class="control-label" style="font-size:larger">请假种类:<%=leaveType%></label>-->
+        <label class="col-xs-6" style="font-size:larger">
+            请假种类:<%if(leaveType == "legalHolidays"){%>
+            法定节假日
+            <%}%>
+            <%if(leaveType == "visitFamily"){%>
+            探亲假
+            <%}%>
+            <%if(leaveType == "paidAnnual"){%>
+            带薪年休假
+            <%}%>
+            <%if(leaveType == "recuperation"){%>
+            疗养假
+            <%}%>
+            <%if(leaveType == "sick"){%>
+            病假
+            <%}%>
+            <%if(leaveType == "thing"){%>
+            事假
+            <%}%>
+            <%if(leaveType == "marry"){%>
+            婚假
+            <%}%>
+            <%if(leaveType == "funeral"){%>
+            丧假
+            <%}%>
+            <%if(leaveType == "birth"){%>
+            生育假
+            <%}%>
+            <%if(leaveType == "onlyChild"){%>
+            独生子女照护假
+            <%}%>
+            <%if(leaveType == "abortion"){%>
+            流产休假
+            <%}%>
+            <%if(leaveType == "escort"){%>
+            陪护假
+            <%}%>
+            <%if(leaveType == "injury"){%>
+            工伤假
+            <%}%>
+
+        </label>
+
+        <label class="col-xs-6" style="font-size: larger">前往地点：<%=target%></label>
+    </div>
+
+
+    <div class="form-group ">
+
+        <div class="col-xs-6">
+            <label class=" " style="font-size: larger">请假时间:</label>
+
+            <label class="control-label js_fromTime" style="font-size: larger" id="time">
+                <%if(fromTime){%>
+                <%=dateFormat(fromTime,'yyyy-MM-dd')%>
+                <%}%>
+            </label>
+
+            <label class="control-label" style="font-size: larger">——</label>
+            <label class="control-label" style="font-size: larger" id="js_toTime">
+                <%if(toTime){%>
+                <%=dateFormat(toTime,'yyyy-MM-dd')%>
+                <%}%>
+            </label>
+        </div>
+
+        <label class="col-xs-6" style="font-size: larger;" id="daySum"></label>
+    </div>
+
+
+    <div class="form-group">
+        <label class=" col-xs-6" style="font-size: larger">请假理由:</label>
+
+        <!-- <label class="col-xs-6">
+             <label class="control-label">销假:</label>
+             <input type="text" class="Wdate" style="width: 200px;height: 34px;padding: 6px 12px;font-size: 14px;line-height: 1.42857143;color: #555;border: 1px solid #ccc;">
+         </label>-->
+
+    </div>
+
+    <div class="form-group ">
+        <label class=" col-xs-offset-1" style="font-size: larger">
+            <%=reason%>
+        </label>
+    </div>
+
+    <div class="form-group ">
+
+    </div>
+
+
+    <!--<%if(clStep>1||(clStep==1&&isComplete==true)){%>-->
+    <!--<label class="control-label  col-xs-3">请假时间01<span class="required"></span></label>-->
+    <!--<label class="control-label" >-->
+
+    <!--<input type="text" class="form-control mini-width Wdate" id="driver-beginDate"  style="float: left;width: 160px"   disabled="disabled"-->
+    <!--value="<%=dateFormat(fromTime)%>" name="beginDate" >-->
+    <!--</label>-->
+
+
+    <!--<%}%>-->
+    <!--<%if(clStep>2||(clStep==2&&isComplete==true)){%>-->
+    <!--02-->
+    <!--<label class="control-label" >-->
+    <!--<input type="text" class="form-control mini-width Wdate" id="driver-endDate"  style="float: left;width: 160px"  disabled="disabled"-->
+    <!--value="<%=dateFormat(toTime)%>"name="endDate" >-->
+    <!--</label>-->
+    <!--<%}%>-->
+
+    <!--流程数据填写-->
+    <%if(isComplete==false&& isViewOnly ==
+    false&&((clStep==3&&formKind=="SYY_RS_LC06_00")||(clStep==4&&formKind=="SYY_RS_LC06_01")||(clStep==4&&formKind=="SYY_RS_LC06_04")||(clStep==4&&formKind=="SYY_RS_LC06_05")
+    || (clStep==4&& formKind=="SYY_RS_LC06_07" || (clStep==4 &&formKind=="SYY_RS_LC06_08"))
+    )){%>
+    <!--<hr style="border: solid 1px #CCCCCC"/>-->
+    <div class=" form-group col-xs-6">
+        <label class="  " style="font-size: larger">实际返岗时间：<span class="required"></span></label>
+        <label class="">
+
+            <input type="text" class="form-control mini-width Wdate Wdate3" id="actualTime" style="width: 285px"
+                   name="actualTime" required="required">
+        </label>
+
+    </div>
+    <div class="form-group col-xs-6" style="margin-top: -7px">
+        <label class="control-label  " style="font-size: larger">实际请假天数：<span class="required"></span></label>
+
+        <label class="control-label">
+
+            <input type="text" min="0" class="form-control"
+                   id="timeCount" name="timeCount" placeholder="填写扣除节假日的天数">
+
+        </label>
+
+    </div>
+
+    <!--<div class="form-group">-->
+    <!--<label class="control-label " style="font-size: larger;float: left">备注：</label>-->
+    <!--<div class="col-xs-9 " >-->
+    <!--<textarea class="form-control col-xs-7" name="remark" id="remark"></textarea>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <%}else{%>
+
+    <!--流程数据展示-->
+
+
+    <%if((formKind=="SYY_RS_LC06_00"&&clStep<4) || (formKind=="SYY_RS_LC06_01"&&clStep<4) ||
+    (formKind=="SYY_RS_LC06_04"&&clStep<4) ||
+    (formKind=="SYY_RS_LC06_05"&&clStep<4) || (formKind=="SYY_RS_LC06_07"&&clStep<4) || (formKind=="SYY_RS_LC06_08") ||
+    (formKind=="SYY_RS_LC06_02")
+    || (formKind=="SYY_RS_LC06_03") || (formKind=="SYY_RS_LC06_06") || (formKind=="SYY_RS_LC06_08")
+    ){%>
+
+    <%}else{%>
+
+    <div class="form-group col-xs-6">
+
+        <label class="control-label  " style="font-size: larger">实际返岗时间:<span class="required"></span></label>
+        <label class="control-label" style="font-size: larger">
+            <%if(actualTime){%>
+            <%=(dateFormat(actualTime)).substring(0,10)%>
+            <%}%>
+        </label>
+
+    </div>
+
+    <div class="col-xs-6">
+        <label class="control-label  " style="font-size: larger">实际请假天数:<span
+                class="required"></span></label>
+        <label class="control-label" style="font-size: larger"><%=countTime%>
+        </label>
+    </div>
+    <%}%>
+
+    <!--<div class="form-group">-->
+    <!--<label class="control-label " style="font-size: larger;float: left">备注：</label>-->
+
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+    <!--<label class=" col-xs-offset-1" style="font-size: larger">-->
+    <!--<%=content%>-->
+    <!--</label>-->
+    <!--</div>-->
+
+    <%}%>
+
+
+    <!--<%if( clStep>3||(clStep==3&&isComplete==true)){%>
+    <label class="control-label  col-xs-3">请假时间--02<span class="required"></span></label>
+    <label class="control-label" >
+
+        <input type="text" class="form-control mini-width Wdate"  style="float: left;width: 160px"
+               value="<%=dateFormat(toTime)%>"name="endDate" >
+
+    </label>~
+    <%}%>-->
+
+</div>
+
+<div style="float: right;font-size: 13px;font-weight: bold;padding-bottom: 10px">
+    <%if((clStep>6 && (formKind=="SYY_RS_LC06_01" || formKind=="SYY_RS_LC06_05"))||(formKind=="SYY_RS_LC06_08" && clStep>4)){%>
+    <%if(leaveType == "escort"){%>
+    <span style="cursor: pointer" data-url="print_leave_pref" data-rurl="<%=formNo%>"
+          class="downLoadPref">下载男职工陪护假请假证明</span>
+
+    <%}else if(leaveType == "abortion"){%>
+       <span style="cursor: pointer;padding-top: 10px" data-url="print_leave_pref" data-rurl="<%=formNo%>"
+             class="downLoadPref">下载女职工流产假请假证明</span>
+
+
+    <%}else if(leaveType == "birth"){%>
+ <span style="cursor: pointer;padding-top: 10px" data-url="print_leave_pref" data-rurl="<%=formNo%>"
+       class="downLoadPref">下载女职工生育假请假证明</span>
+
+    <%}else if(leaveType == "marry"){%>
+    <span style="cursor: pointer;padding-top: 10px" data-url="print_leave_pref" data-rurl="<%=formNo%>"
+          class="downLoadPref">下载职工婚假请假证明</span>
+    <%}%>
+    <%}%>
+     <!--<span style="cursor: pointer;padding-top: 10px" data-url="print_leave_pref" data-rurl="<%=formNo%>"-->
+           <!--class="downLoadPref">下载男职工陪护假请假证明</span>-->
+</div>
+
+

@@ -1,0 +1,28 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+<thead>
+
+<tr class="headings">
+<th style="width: 50px">
+<input type="checkbox" id="check-all"  class="checkAll"></th>
+<th class="column-title">项目编号 </th>
+<th class="column-title">项目名称 </th>
+<th class="column-title no-link last"><span class="nobr">负责人</span></th>
+</tr>
+</thead>
+<tbody>
+
+<%var num = (pageNumber-1) * pageSize%>
+<%if(pagesCount > 0){%>
+<%for(var i = 0 ; i < items.length; i++) {%>
+<tr value="<%=items[i].id%>" class="asdf">
+    <td > <input type="checkbox" class="checkBtn" value="<%=items[i].id%>"></td>
+    <td><%=items[i].projectNo%></td>
+    <td><%=items[i].projectName%></td>
+    <td>
+        <%=items[i].leaderName%>
+    </td>
+</tr>
+    <%}}%>
+
+</tbody>
+</table>

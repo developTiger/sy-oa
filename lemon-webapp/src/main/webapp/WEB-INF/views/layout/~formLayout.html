@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>流程审核</title>
+    <script data-main="js/rjs-config.js" src="js/require.js"></script>
+    <script src="js/jslib/jquery.min.js"></script>
+    $ui.loadCss("bootstrap.min.css")
+    $ui.loadCss("fonts/css/font-awesome.min.css")
+    $ui.loadCss("animate.min.css")
+    $ui.loadCss("custom.css")
+    $ui.loadCss("icheck/skins/minimal/minimal.css")
+
+    <script>
+        require(['app/init']);
+    </script>
+</head>
+<body style=" background: #fff;">
+
+<form id="approveForm">
+    <div class=" x_panel " style="width: 100%;">
+        <div class=" x_panel  ">
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-2">
+                    <div style="margin: auto;width: 300px;align: center">
+                        <a type="button" class="appbtn btn btn-default" id="approve" btn-type="approver"><i
+                                class="fa fa-check-square-o"></i>确定</a>
+                        #if($header.currentAppType=="A")
+                        <!--<a type="button" class="appbtn btn btn-default" id="reject" btn-type="reject"><i-->
+                        <!--class="fa  fa-remove"></i>否决</a> -->
+                        <a type="button" class="appbtn btn btn-default" id="goBack" btn-type="goBack"><i
+                                class="fa  fa-mail-reply-all"></i>退回</a>
+                        #elseif($header.currentAppType=="F")
+                        <a type="button" class="appbtn btn btn-default" id="reject" btn-type="reject"><i
+                                class="fa  fa-remove"></i>否决</a>
+                        #end
+                        <input type="hidden" id="approveUrl" #if($header.currentApproveAction)
+                               value="$header.currentApproveAction" #else
+                               value="ajax_approve" #end>
+                    </div>
+
+                </div>
+                <div class="col-xs-2 ">
+                    <div class="pull-right">
+                        <!--<a type="button" class="btn btn-default" id="change"><i class="fa fa-print"></i></a>-->
+                        <!--<a type="button" class="btn btn-default" id="addapp"><i class="fa fa-download"></i></a>-->
+                    </div>
+                </div>
+                <input type="hidden" name="formNo" value="$header.formNo" id="formNo">
+                <input type="hidden" name="formKind" value="$header.formKind" id="formKind">
+                <input type="hidden" id="appValue" name="appValue">
+                <input type="hidden" name="clStep" value="$header.clStep">
+                <input type="hidden" name="isStepComplete" value="$header.isStepComplete">
+            </div>
+            <label for="content">处理意见：</label>
+            <textarea id="content" class="form-control" name="content" data-parsley-maxlength="1000"
+                      data-parsley-id="6326" style="margin: 0px -0.5px 0px 0px; width: 100%; height: 100px;"></textarea>
+        </div>
+        #parse("/common/formbody.html")
+    </div>
+</form>
+
+</body>
+</html>

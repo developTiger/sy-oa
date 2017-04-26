@@ -1,0 +1,114 @@
+<div style="min-width: 800px">
+
+    <div class="form-group ">
+        <input type="hidden" name="id" #if($beans)value="$beans.id" #end>
+        <!--<input type="hidden" name="formNo" #if($beans)value="$beans.formNo" #end>-->
+
+        <label class="control-label col-xs-2">请假种类<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <select id="type" required="required" name="type" class=" form-control col-xs-7">
+                <option value="" >请假种类</option>
+
+                <!--<option value="legalHolidays" #if($beans.leaveType =="legalHolidays" )selected="selected"#end>法定节假日</option>-->
+
+                <option value="visitFamily" #if($beans.leaveType =="visitFamily" )selected="selected"#end>探亲假</option>
+                <!--工龄不满一年的这一栏不显示-->
+                <!--#if($workAge>=1)-->
+                <!--#end-->
+                <option value="paidAnnual" #if($beans.leaveType =="paidAnnual" )selected="selected"#end>带薪年休假</option>
+
+                <!--工龄不满十年的这一栏不显示-->
+                <!--#if($workAge>=10)-->
+                <!--#end-->
+                <option value="recuperation" #if($beans.leaveType =="recuperation" )selected="selected"#end>疗养假</option>
+
+                <option value="sick" #if($beans.leaveType =="sick" )selected="selected"#end>病假</option>
+                <option value="thing" #if($beans.leaveType =="thing" )selected="selected"#end>事假</option>
+                <option value="marry" #if($beans.leaveType =="marry" )selected="selected"#end>婚假</option>
+                <option value="funeral" #if($beans.leaveType =="funeral" )selected="selected"#end>丧假</option>
+                <option value="birth" #if($beans.leaveType =="birth" )selected="selected"#end>生育假</option>
+                <option value="onlyChild" #if($beans.leaveType =="onlyChild" )selected="selected"#end>独生子女照护假</option>
+                <option value="abortion" #if($beans.leaveType =="abortion" )selected="selected"#end>流产休假</option>
+                <option value="escort" #if($beans.leaveType =="escort" )selected="selected"#end>陪护假</option>
+                <option value="injury" #if($beans.leaveType =="injury" )selected="selected"#end>工伤假</option>
+            </select>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="target">前往地点<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="target" required="required" #if($beans)value="$beans.target" #end name="target"
+                   class="form-control  col-xs-7" data-parsley-id="2038" required="required">
+            <ul class="parsley-errors-list" id="parsley-id-2038"></ul>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">开始时间<span class="required">*</span></label>
+        <div class="col-xs-5">
+            <input type="text" class="form-control mini-width Wdate Wdate1 col-xs-7" id="strFromTime"
+                   placeholder="开始时间" #if($beans) value="$helper.formatDateToString($beans.fromTime,"yyyy-MM-dd")" #end
+                   name="strFromTime" required="required">
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label  col-xs-2">结束时间<span class="required">*</span></label>
+        <div class=" col-xs-5">
+            <input type="text" class="form-control mini-width Wdate Wdate2 col-xs-7" id="strToTime"
+                   placeholder="结束时间"   required="required" #if($beans) value="$helper.formatDateToString($beans.toTime,"yyyy-MM-dd")" #end
+                   name="strToTime">
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="target">请假天数<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <input type="text" id="countTime" required="required"  name="countTime"
+                   class="form-control  col-xs-7" data-parsley-id="2038" value="$!beans.countTime">
+            <ul class="parsley-errors-list" id="parsley-id-12038"></ul>
+            <!--<samll>填写除去法定节假日的天数</samll>-->
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-xs-2" for="reason">请假理由<span class="required">*</span>
+        </label>
+
+        <div class="col-xs-5">
+            <textarea id="reason" required="required"  name="reason"
+                      class="form-control  col-xs-7" data-parsley-id="2038" required="required">#if($beans)$beans.reason#end</textarea>
+            <ul class="parsley-errors-list" id="parsley-id-2036"></ul>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <button type="submit" id="qjSubmit" data-url="ajax_add_update_leave" class="btn btn-success">提交</button>
+            <a class="btn btn-primary" href="javascript:window.close();">取消</a>
+        </div>
+    </div>
+
+</div>
+<script>
+    require(["app/forms/leave"]);
+</script>
+
+
+
+

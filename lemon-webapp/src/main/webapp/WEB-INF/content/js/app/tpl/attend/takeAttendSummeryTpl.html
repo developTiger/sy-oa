@@ -1,0 +1,70 @@
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings text-center">
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">序号</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">姓名</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">出勤</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">公休加班</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">假日加班</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">野外</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">出差</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">学历学习</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">脱产学习</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">带薪休假</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">疗养假</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">探亲</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">婚丧假</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">工伤假</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">产假</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">产后休长假</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">陪护假/护理/计划生育假</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">病假</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">事假</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">旷工</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">拘留</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">戒毒</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">劳保</th>
+        <th rowspan="2" class="column-title text-center" style="vertical-align: middle">补休</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <%var num = (pageNumber-1) * pageSize%>
+    <%if(items.length> 0){%>
+    <%for(var i = 0 ; i < items.length; i++) {%>
+    <tr>
+        <td class="num"><%=num+i+1%></td>
+        <td class=" "><%=items[i].empName%></td>
+        <td class=" "><%if(items[i].attend==0){%><%}else{%> <%=items[i].attend%><%}%></td>
+        <td class=" "><%if(items[i].gwork==0){%><%}else{%> <%=items[i].gwork%><%}%></td>
+        <td class=" "><%if(items[i].jwork==0){%><%}else{%> <%=items[i].jwork%><%}%></td>
+        <td class=" "><%if(items[i].wild==0){%><%}else{%> <%=items[i].wild%><%}%></td>
+        <td class=" "><%if(items[i].businessTravel==0){%><%}else{%> <%=items[i].businessTravel%><%}%></td>
+        <td class=" "><%if(items[i].studyExperience==0){%><%}else{%> <%=items[i].restudyExperiencest%><%}%></td>
+        <td class=" "><%if(items[i].tstudy==0){%><%}else{%> <%=items[i].tstudy%><%}%></td>
+        <td class=" "><%if(items[i].vacation==0){%><%}else{%> <%=items[i].vacation%><%}%></td>
+        <td class=" "><%if(items[i].spa==0){%><%}else{%> <%=items[i].spa%><%}%></td>
+        <td class=" "><%if(items[i].visitFamily==0){%><%}else{%> <%=items[i].visitFamily%><%}%></td>
+        <td class=" "><%if(items[i].weddingFuneral==0){%><%}else{%> <%=items[i].weddingFuneral%><%}%></td>
+        <td class=" "><%if(items[i].workHurt==0){%><%}else{%> <%=items[i].workHurt%><%}%></td>
+        <td class=" "><%if(items[i].birthChild==0){%><%}else{%> <%=items[i].birthChild%><%}%></td>
+        <td class=" "><%if(items[i].lbirth==0){%><%}else{%> <%=items[i].lbirth%><%}%></td>
+        <td class=" "><%if(items[i].nurse==0){%><%}else{%> <%=items[i].nurse%><%}%></td>
+        <td class=" "><%if(items[i].sick==0){%><%}else{%> <%=items[i].sick%><%}%></td>
+        <td class=" "><%if(items[i].aleave==0){%><%}else{%> <%=items[i].aleave%><%}%></td>
+        <td class=" "><%if(items[i].absenteeism==0){%><%}else{%> <%=items[i].absenteeism%><%}%></td>
+        <td class=" "><%if(items[i].custody==0){%><%}else{%> <%=items[i].custody%><%}%></td>
+        <td class=" "><%if(items[i].drug==0){%><%}else{%> <%=items[i].drug%><%}%></td>
+        <td class=" "><%if(items[i].labor==0){%><%}else{%> <%=items[i].labor%><%}%></td>
+        <td class=" "><%if(items[i].compensate==0){%><%}else{%> <%=items[i].compensate%><%}%></td>
+    </tr>
+
+    <%}}else{%>
+    <tr>
+        <td colspan="24" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+
+</table>

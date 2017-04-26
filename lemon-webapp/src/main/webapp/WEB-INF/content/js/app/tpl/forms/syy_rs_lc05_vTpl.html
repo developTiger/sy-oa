@@ -1,0 +1,182 @@
+<div id="qjApplyForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id"  value="<%=id%>" >
+
+    <div class="form-group" >
+        <label class="control-label " style="font-size: larger;min-width: 200px;text-align: left;">前往地点:<%=target%></label>
+
+        <label class="control-label col-xs-offset-2" style="font-size: larger">出差时间:</label>
+
+        <label  class="control-label" style="font-size: larger">
+            <%if(evectionTime){%>
+            <%=dateFormat(evectionTime).substring(0,10)%>
+            <%}%>
+        </label>
+
+        <label class="control-label" style="font-size: larger">——
+            <%if(toTime){%>
+            <%=dateFormat(toTime).substring(0,10)%>
+            <%}%>
+        </label>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label " style="font-size: larger;min-width: 200px;text-align: left;">任务来源:<%=taskSource%></label>
+
+        <label class="control-label col-xs-offset-2" style="font-size: larger">任务内容:</label>
+
+        <label  class="control-label" style="font-size: larger"><%=taskContent%> </label>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label" style="font-size: larger;min-width: 200px;text-align: left;">出差类别:<%=category%></label>
+        <label class="control-label col-xs-offset-2" style="font-size: larger">出差属性:<%=evecAttr%></label>
+        <%if( (clStep>=4 && isViewOnly==false) || (clStep==3 && formKind=="SYY_RS_LC05"  && isViewOnly==false) ){%>
+            <!--<%if(printFlag==true){%>-->
+                <!--<label class="control-label col-xs-offset-3">-->
+                    <!--<a  disabled="false" style="border: 1px solid #E1E1E1;padding: 6px 8px;background-color: #E1E1E1;"> 已打印</a>-->
+                    <!--&lt;!&ndash;<input type="button" value="" class="js_download">&ndash;&gt;-->
+                <!--</label>-->
+            <!--<%}else{%>-->
+                <!--<label class="control-label col-xs-offset-3">-->
+                    <!--<a class="printBusiness" data-num="<%=formNo%>"  data-url="ajax_update_print" data-url-dowLoad="ajax_download_business" style="border: 1px solid #E1E1E1;padding: 6px 8px;background-color: #E1E1E1;"> 打印出差证</a>-->
+                    <!--&lt;!&ndash;<input type="button" value="" class="js_download">&ndash;&gt;-->
+                <!--</label>-->
+            <!--<%}%>-->
+            <label class="control-label col-xs-offset-3">
+            <a class="printBusiness" data-num="<%=formNo%>"  data-url="ajax_update_print" data-url-dowLoad="ajax_download_business" style="border: 1px solid #E1E1E1;padding: 6px 8px;background-color: #E1E1E1;"> 打印出差证</a>
+            <!--<input type="button" value="" class="js_download">-->
+            </label>
+        <%}%>
+    </div>
+
+    <div class="form-group" >
+        <label class="control-label " style="font-size: larger">出差理由:<%=reason%></label>
+    </div>
+
+</div>
+
+<div id="divPrint" style="width: 100%;">
+
+
+    <!--<style>-->
+
+        <!--.tableBusiness, .tableCunGen {border: 1px solid #E1E1E1;width: 100%;}-->
+        <!--.tableBusiness tr, .tableCunGen tr{border: 1px solid #E1E1E1;}-->
+        <!--.tableBusiness tr td, .tableCunGen tr td{border: 1px solid #E1E1E1;text-align: center;padding: 6px 10px;}-->
+        <!--.tableCunGen tr td{text-align: left;}-->
+    <!--</style>-->
+
+    <!--<div style="width: 250px;float: left;font-size: 8px;margin-top: 0px;">-->
+        <!--<div style="text-align: center;font-size: 30px;">存根</div>-->
+        <!--<div style="width: 100%;">-->
+            <!--<table class="tableCunGen" cellpadding="0" cellspacing="0">-->
+                <!--<tbody>-->
+                <!--<tr>-->
+                    <!--<td>单位</td>-->
+                    <!--<td><%=deptName%></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>姓名</td>-->
+                    <!--<td><%=applyerName%></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>工作任务</td>-->
+                    <!--<td><%=evecAttr%></td>-->
+                <!--</tr>-->
+                <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td>出差期限</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td><%=deptName%></td>&ndash;&gt;-->
+                <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                <!--<tr>-->
+                    <!--<td>派遣地点</td>-->
+                    <!--<td><%=target%></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>出发日期</td>-->
+                    <!--<td><%if(evectionTime){%><%=dateFormat(evectionTime).substring(0,10)%><%}%></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>返回日期</td>-->
+                    <!--<td><%if(toTime){%><%=dateFormat(toTime).substring(0,10)%><%}%></td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td colspan="2" style="height: 30px;text-align: left;">-->
+                        <!--备注：<%=reason%>-->
+                    <!--</td>-->
+
+                <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div style="float: left;width: 55px;text-align: center;word-spacing: 300px;padding-top: 55px;line-height: 28px;" >-->
+        <!--既-->
+        <!--（<%=year%>）-->
+        <!--差-->
+        <!--字-->
+        <!--第-->
+        <!--（<%=strFormNo%>）-->
+        <!--号-->
+    <!--</div>-->
+
+    <!--<div style="width: 600px;float: left;">-->
+        <!--<div style="text-align: center;font-size: 30px;">员工油田现场出差证</div>-->
+        <!--<table class="tableBusiness" cellpadding="0" cellspacing="0">-->
+            <!--<tbody class="">-->
+            <!--<tr>-->
+                <!--<td rowspan="2" colspan="2" style="vertical-align: middle;">车号</td>-->
+                <!--<td colspan="2" style="vertical-align: middle;">起讫地点</td>-->
+                <!--<td colspan="2" style="vertical-align: middle;">时间记录</td>-->
+                <!--<td rowspan="2" colspan="2" style="vertical-align: middle;">任务</td>-->
+                <!--<td rowspan="2" colspan="3" style="vertical-align: middle;">主管领导签字</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td style="vertical-align: middle;">由何处</td>-->
+                <!--<td style="vertical-align: middle;">到何处</td>-->
+                <!--<td style="vertical-align: middle;">出发</td>-->
+                <!--<td style="vertical-align: middle;">返回</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td colspan="2">  </td>-->
+                <!--<td></td>-->
+                <!--<td><%=target%></td>-->
+                <!--<td><%if(evectionTime){%><%=dateFormat(evectionTime).substring(0,10)%><%}%></td>-->
+                <!--<td><%if(toTime){%><%=dateFormat(toTime).substring(0,10)%><%}%></td>-->
+                <!--<td colspan="2"><%=evecAttr%></td>-->
+                <!--<td colspan="2"></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td colspan="2" style="height: 30px;">  </td>-->
+                <!--<td style="height: 30px;"> </td>-->
+                <!--<td style="height: 30px;"> </td>-->
+                <!--<td style="height: 30px;"> </td>-->
+                <!--<td style="height: 30px;"> </td>-->
+                <!--<td colspan="2" style="height: 30px;"> </td>-->
+                <!--<td colspan="2" style="height: 30px;"> </td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td colspan="2" style="height: 30px;">  </td>-->
+                <!--<td style="height: 30px;"> </td>-->
+                <!--<td style="height: 30px;"> </td>-->
+                <!--<td style="height: 30px;"> </td>-->
+                <!--<td style="height: 30px;"> </td>-->
+                <!--<td colspan="2" style="height: 30px;"> </td>-->
+                <!--<td colspan="2" style="height: 30px;"> </td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td colspan="10" style="height: 30px;">-->
+                   <!--<div style="width: 70%;display: inline-block;text-align: left;">单位负责人签字：</div>-->
+                    <!--<div style="width: 20%;display: inline-block">    年    月   日</div>-->
+                <!--</td>-->
+
+            <!--</tr>-->
+
+            <!--</tbody>-->
+        <!--</table>-->
+
+    <!--</div>-->
+
+</div>

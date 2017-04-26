@@ -1,0 +1,96 @@
+<input id="hidid" name="hidid" value="<%=moren.id%>" type="hidden"/>
+<table class="table table-striped table-bordered dataTable no-footer">
+    <thead>
+    <tr class="headings">
+        <th><input type="checkbox" id="check-all"  class="checkAll "></th>
+        <th class="column-title">专业分类 </th>
+        <th class="column-title">成果名称 </th>
+        <th class="column-title">主要完成单位 </th>
+        <th class="column-title">主要完成人 </th>
+        <th class="column-title">专利类型及数量 </th>
+        <th class="column-title">选择分管领导 </th>
+    </tr>
+    </thead>
+    <tbody>
+    <%var num=0%>
+    <%if(deliver.length > 0){%>
+    <%for(var i = 0 ; i < deliver.length; i++) {%>
+    <tr class="sicentId"  data-tt-id="<%=deliver[i].id%>">
+        <td> <input type="checkbox"  name="table_records" value="<%=deliver[i].formNo%>"></td>
+        <td>
+            <%if(deliver[i].specialtyType !=null){%>
+            <%if(deliver[i].specialtyType=="01"){%>
+                油气勘探
+            <%}%>
+            <%if(deliver[i].specialtyType=="02"){%>
+            油气开发
+            <%}%>
+            <%if(deliver[i].specialtyType=="03"){%>
+            炼油化工
+            <%}%>
+            <%if(deliver[i].specialtyType=="04"){%>
+            油气集输
+            <%}%>
+            <%if(deliver[i].specialtyType=="05"){%>
+            计 算 机
+            <%}%>
+            <%if(deliver[i].specialtyType=="06"){%>
+            软 科 学
+            <%}%>
+            <%if(deliver[i].specialtyType=="07"){%>
+            安全环保
+            <%}%>
+            <%}%>
+        </td>
+        <td> <%=deliver[i].projectName%></td>
+        <td> <%=deliver[i].assumeCompany%></td>
+        <td> <%=deliver[i].leaderName%> </td>
+        <td> <%=deliver[i].zllxjsl%></td>
+        <td>
+
+            <a class="btn btn-default buttons-copy buttons-html5 btn-sm proname" data-title="分管领导" href=""
+               data-target="#myModal_<%=num+i+1%>" data-toggle="modal"><span><i class="green fa fa-plus"></i>分管领导</span></a>
+
+            <!--分管领导-->
+            <div class="modal fade" id="myModal_<%=num+i+1%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel" style="text-align: center">选择分管领导</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <label class="control-label"  >选择分管领导</label>
+                            <label class="control-label" >
+                                <select required="required" class="form-control col-xs-4 leaders" data-value="<%=num+i+1%>">
+                                    <%for(var j = 0 ; j < listEmpDto.length; j++) {%>
+                                    <option value="<%=listEmpDto[j].id%>"><%=listEmpDto[j].name%></option>
+                                    <%}%>
+                                </select>
+
+                            </label>
+                        </div>
+                        <div class="control-label ">
+                            <div class=" col-xs-6 col-xs-offset-3">
+                                <button type="button" data-value="<%=deliver[i].formNo%>"   class="btn btn-success projectokOne" data-dismiss="modal">提交</button>
+                                <button type="button" data-value="<%=deliver[i].formNo%>"   class="btn btn-success projectnoOne" data-dismiss="modal">打回</button>
+                                <!--    <button type="button" class="btn btn-primary" id="cancelModal_1">取消</button>-->
+                            </div>
+                        </div>
+                        </br></br></br>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <%}%>
+    <%}else{%>
+    <tr>
+        <td colspan="11" align="center">暂无数据</td>
+    </tr>
+    <%}%>
+    </tbody>
+</table>
+<!--<script>
+    require(["app/deliverables_flow/syy_kg_lc06_a_lot"]);
+</script>-->

@@ -1,0 +1,19 @@
+<form id="deleteDriverForm" data-parsley-validate="" class="form-horizontal form-label-left " novalidate="">
+
+    <input type="hidden" name="id" #if($idTemp)value="$idTemp.id"#end>
+    <div class="form-group">
+        <label class="control-label " >确定要删除信息吗</span>
+        </label>
+    </div>
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class=" col-xs-6 col-xs-offset-3">
+            <button type="button" id="cancelModal" class="btn btn-primary">取消</button>
+            <button type="sunmit" id="" data-url="" class="btn btn-success">确定</button>
+          <!--  <a class="btn btn-default buttons-copy buttons-html5 btn-sm" id="deleteDriver"  tabindex="0"
+               aria-controls="datatable-buttons" ><span><i
+                    class=""></i>确定</span></a>
+        -->
+    </div>
+    </div>
+</form>

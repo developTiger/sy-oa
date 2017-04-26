@@ -1,0 +1,68 @@
+$ui.loadCss("select2/select2.min.css")
+$ui.loadCss("bootstrap-multiselect/bootstrap-multiselect.css")
+<input type="hidden" id="datastep" name="datastep"value="$clstep"/>
+<form id="approveFormLot">
+    <div class="x_panel">
+        <div class="x_content">
+            <div  style="text-align: center">
+                <a class=" btn btn-success" id="lotApprove">同意</a>
+                #if($clstep!=8)
+                <a class=" btn btn-primary" id="lotReject">否决</a>
+                #end
+
+            </div>
+            <div>
+                <label>审核意见：</label>
+            </div>
+            <div>
+                <textarea class="form-control" style="margin: 0px -0.5px 0px 0px; width: 100%; height: 100px;" id="allContent"></textarea>
+            </div>
+        </div>
+    </div>
+</form>
+<div style="text-align: center;font-size: xx-small">
+    <h2>科研管理人员汇总审批</h2>
+</div>
+<form id="searchForm">
+    <div class="form-inline col-xs-10 col-xs-offset-8" >
+        <label class="control-label">专业:</label>
+        <div class="form-group">
+            <div class="form-group">
+                <input name="specialtyType" class="form-control " id="specialtyType" />
+            </div>
+            <div class="form-group" style="margin-top: 5px">
+                <a class=" btn btn-default" id="search" style="margin-top: 3px;">查询</a>
+            </div>
+        </div>
+    </div>
+</form>
+    <div id="table1"></div>
+    <div class="col-lg-10 dataTables_paginate  ">
+        <ul class="pagination "></ul>
+    </div>
+</div>
+<div class="form-group col-xs-8">
+    <label class="control-label col-xs-2" style="text-align: right; padding-top: 10px;">选择专家:</label>
+    <div class="col-xs-5">
+        <input id="zj" hidden />
+        <label class="control-label">
+            <select multiple="multiple" class=" select2_multiple form-control txtValue1 col-xs-5 leaders" tabindex="-1" style="display: none;" name="groupMemberList1" required="required">
+                #if($emp)
+                #foreach($people in $emp)
+                <option   data-value="$people.id" value="$people.id">$people.name</option>
+                #end
+                #end
+            </select>
+        </label>
+    </div>
+
+</div>
+<input type="hidden" id="hidname" name="hidname"/>
+<input type="hidden" id="hidid" name="hidid"/>
+<script>
+    require(["app/deliverables_flow/syy_kg_lc06_a_lot4"]);
+</script>
+
+
+
+
